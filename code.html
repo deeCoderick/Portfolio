@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Projects - Ananth Deepak Sharma</title>
+    <title>Tech Projects - Ananth Deepak Sharma</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,100 +23,13 @@
             line-height: 1.6;
             background: #f4f4f9;
             color: #333;
-            padding: 20px;
-            padding-top: 60px; /* Adjust this value based on the height of your nav bar */
-        }
-
-        nav {
-            background: #0078D7;
-            padding: 10px 0;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        nav .icon {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
             padding: 0;
-            margin: 0;
-            display: flex;
         }
 
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        header {
-            background: #0078D7;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .profile {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        .profile-photo {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-left: 20px;
-        }
-
-        .profile-info {
-            margin-left: 20px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        /* Removing custom nav styling to use global styles */
+        
         .page-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #000000, #333333);
             color: var(--light-color);
             padding: 6rem 5% 3rem;
             text-align: center;
@@ -267,20 +180,38 @@
 <body>
     <header>
         <nav>
-            <div class="icon">De</div>
+            <div class="logo-container">
+                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
             <ul>
                 <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
                 <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
                 <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-                <li><a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=k5UsB9EJRyG-bzdJ" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Social Sidebar for quick access -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.threads.net/@de_coderick" target="_blank"><i class="fab fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- Mobile Social Toggle -->
+    <div class="social-mobile-toggle">
+        <i class="fas fa-share-alt"></i>
+    </div>
+
     <div class="page-header">
-        <h1>Code Projects</h1>
+        <h1>Tech Projects</h1>
         <p>A collection of my most significant software development work, showcasing my technical skills and problem-solving abilities.</p>
     </div>
 
@@ -380,6 +311,133 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Soft Skills Projects Section -->
+        <h2 class="section-title" style="margin-top: 4rem;">Soft Skills Projects</h2>
+        
+        <!-- Leadership Projects -->
+        <div id="leadership-projects" class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="project-meta">
+                    <h2>Team Leadership & Management</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Team Building</span>
+                        <span class="tech-tag">Strategic Planning</span>
+                        <span class="tech-tag">Conflict Resolution</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>Led cross-functional teams of 5-10 members to successfully deliver complex software projects on time and within budget. Developed leadership capabilities through formal training and hands-on experience managing diverse teams.</p>
+                    <p>Key achievements include:</p>
+                    <ul>
+                        <li>Led an agile development team that increased productivity by 35% through improved processes</li>
+                        <li>Managed project portfolios with combined budgets exceeding $1M</li>
+                        <li>Mentored junior team members, resulting in 4 promotions within the team</li>
+                        <li>Resolved cross-department conflicts to streamline project delivery</li>
+                        <li>Created team-building initiatives that reduced turnover by 20%</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-certificate"></i> Leadership Certification</a>
+                    <a href="#" class="btn"><i class="fas fa-user-tie"></i> Management Portfolio</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mentorship Projects -->
+        <div id="mentorship-projects" class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')">
+                <div class="project-meta">
+                    <h2>Technical Mentorship Program</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Career Development</span>
+                        <span class="tech-tag">Knowledge Transfer</span>
+                        <span class="tech-tag">Technical Coaching</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>Developed and led a structured mentorship program for junior developers, focusing on technical skill development, career growth, and professional development. Created learning paths and provided one-on-one guidance to accelerate skill acquisition.</p>
+                    <p>Key achievements include:</p>
+                    <ul>
+                        <li>Mentored 15+ junior developers who progressed to mid-level roles within 18 months</li>
+                        <li>Created comprehensive learning materials for modern development stacks</li>
+                        <li>Established pair programming sessions that improved code quality by 25%</li>
+                        <li>Facilitated weekly tech talks and code review sessions</li>
+                        <li>Designed career progression frameworks adopted company-wide</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-chalkboard-teacher"></i> Mentorship Resources</a>
+                    <a href="#" class="btn"><i class="fas fa-book"></i> Learning Materials</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Event Management Projects -->
+        <div id="event-projects" class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="project-meta">
+                    <h2>Tech Conference Coordination</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Event Planning</span>
+                        <span class="tech-tag">Logistics Management</span>
+                        <span class="tech-tag">Speaker Coordination</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>Planned and executed technology conferences, hackathons, and workshops with 100-500 attendees. Managed all aspects of event logistics, speaker selection, scheduling, and technical requirements while staying within budget constraints.</p>
+                    <p>Key achievements include:</p>
+                    <ul>
+                        <li>Organized a three-day tech conference with 30+ speakers and 400+ attendees</li>
+                        <li>Coordinated company-wide hackathons resulting in 5 patentable innovations</li>
+                        <li>Managed event budgets of $50,000-$100,000 with consistently positive ROI</li>
+                        <li>Created streamlined registration and feedback systems</li>
+                        <li>Secured sponsorships reducing event costs by 30%</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Event Portfolio</a>
+                    <a href="#" class="btn"><i class="fas fa-photo-video"></i> Event Highlights</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Operations Management Projects -->
+        <div id="operations-projects" class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="project-meta">
+                    <h2>DevOps Workflow Optimization</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Process Improvement</span>
+                        <span class="tech-tag">Resource Management</span>
+                        <span class="tech-tag">Operational Efficiency</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality. Implemented structured methodologies for continuous integration/deployment and infrastructure management.</p>
+                    <p>Key achievements include:</p>
+                    <ul>
+                        <li>Reduced deployment time from 2 days to 2 hours through CI/CD pipeline optimization</li>
+                        <li>Decreased infrastructure costs by 40% through cloud resource optimization</li>
+                        <li>Implemented monitoring systems that reduced system downtime by 75%</li>
+                        <li>Created cross-team workflow documentation and training programs</li>
+                        <li>Standardized operational procedures across 5 development teams</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-cogs"></i> Operations Portfolio</a>
+                    <a href="#" class="btn"><i class="fas fa-chart-line"></i> Efficiency Metrics</a>
+                </div>
+            </div>
+        </div>
     </main>
 
     <a href="#" class="back-to-top" id="backToTop">
@@ -395,17 +453,38 @@
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/deCoderick" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=k5UsB9EJRyG-bzdJ" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.net/@de_coderick" target="_blank"><i class="fab fa-threads"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
         <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
     </footer>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header" id="chatbot-header">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Initialize ScrollReveal for animations
@@ -437,6 +516,78 @@
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+        
+        // Project filtering functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const tagFilter = urlParams.get('tag');
+            
+            if (tagFilter) {
+                // Get all project cards
+                const projectCards = document.querySelectorAll('.project-card');
+                let visibleCount = 0;
+                
+                // Filter projects by tag
+                projectCards.forEach(card => {
+                    const techTags = card.querySelectorAll('.tech-tag');
+                    let hasTag = false;
+                    
+                    techTags.forEach(tag => {
+                        if (tag.textContent.toLowerCase() === tagFilter.toLowerCase()) {
+                            hasTag = true;
+                        }
+                    });
+                    
+                    if (hasTag) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Add filter indicator
+                const mainContainer = document.querySelector('main');
+                const filterNotice = document.createElement('div');
+                filterNotice.className = 'filter-notice';
+                filterNotice.innerHTML = `
+                    <p>Showing ${visibleCount} projects with tag: <strong>${tagFilter}</strong></p>
+                    <a href="code.html" class="clear-filter">Clear filter</a>
+                `;
+                mainContainer.insertBefore(filterNotice, mainContainer.firstChild);
+                
+                // Add styles for filter notice
+                const style = document.createElement('style');
+                style.textContent = `
+                    .filter-notice {
+                        background: rgba(0,0,0,0.7);
+                        color: white;
+                        padding: 1rem 2rem;
+                        margin-bottom: 2rem;
+                        border-radius: var(--border-radius);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .clear-filter {
+                        background: var(--primary-color);
+                        color: white;
+                        padding: 0.5rem 1rem;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                    }
+                    .clear-filter:hover {
+                        background: var(--secondary-color);
+                        transform: translateY(-3px);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        });
     </script>
+    
+    <script src="chatbot.js"></script>
 </body>
 </html>

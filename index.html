@@ -17,13 +17,15 @@
 <body>
     <header>
         <nav>
-            <div class="icon">De</div>
+            <div class="logo-container">
+                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
             <ul>
                 <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
                 <li><a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="https://instagram.com/your-username" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
             </ul>
         </nav>
         <div class="profile">
@@ -33,16 +35,34 @@
                 <p>Software Developer | AI Enthusiast | Creative Problem Solver</p>
                 <div class="social-icons">
                     <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.threads.net/@de__maverick" target="_blank"><i class="fab fa-threads"></i></a>
                     <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
                     <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
     </header>
+    
+    <!-- Social Sidebar for quick access -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.threads.net/@de__maverick" target="_blank"><i class="fab fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- Mobile Social Toggle -->
+    <div class="social-mobile-toggle">
+        <i class="fas fa-share-alt"></i>
+    </div>
 
     <main>
         <section id="about" class="about">
@@ -70,81 +90,173 @@
             </div>
         </section>
 
-        <section id="skills" class="skills">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-categories">
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
-                    <ul>
-                        <li>JavaScript (ES6+)</li>
-                        <li>React.js & Next.js</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Responsive Design</li>
-                        <li>Tailwind CSS & SASS</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Backend Development</h3>
-                    <ul>
-                        <li>Node.js & Express</li>
-                        <li>Python (Django, Flask)</li>
-                        <li>RESTful API Design</li>
-                        <li>GraphQL</li>
-                        <li>Database Management</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                    <ul>
-                        <li>AWS Services</li>
-                        <li>Azure Functions</li>
-                        <li>Docker & Kubernetes</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Serverless Architecture</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Other Skills</h3>
-                    <ul>
-                        <li>Machine Learning Basics</li>
-                        <li>Data Analysis</li>
-                        <li>Git & Version Control</li>
-                        <li>Agile Methodologies</li>
-                        <li>UI/UX Principles</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <section id="portfolio" class="portfolio">
             <h2>My Portfolio</h2>
             <p class="section-intro">Explore my work across different domains — from coding projects to creative pursuits.</p>
             <ul>
                 <li>
-                    <a href="code.html" target="_blank">
-                        <i class="fas fa-code"></i>
-                        <span>Code Projects</span>
-                    </a>
+                    <a href="code.html"><i class="fas fa-code"></i> Tech Projects</a>
                 </li>
                 <li>
-                    <a href="art.html" target="_blank">
-                        <i class="fas fa-palette"></i>
-                        <span>Art Gallery</span>
-                    </a>
+                    <a href="art.html"><i class="fas fa-palette"></i> Art Gallery</a>
                 </li>
                 <li>
-                    <a href="travel.html" target="_blank">
-                        <i class="fas fa-plane-departure"></i>
-                        <span>Travel Adventures</span>
-                    </a>
+                    <a href="travel.html"><i class="fas fa-plane-departure"></i> Travel Adventures</a>
                 </li>
                 <li>
-                    <a href="sports.html" target="_blank">
-                        <i class="fas fa-basketball-ball"></i>
-                        <span>Sports Activities</span>
-                    </a>
+                    <a href="sports.html"><i class="fas fa-basketball-ball"></i> Sports Activities</a>
                 </li>
             </ul>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Skills & Expertise</h2>
+            <p class="section-intro">A comprehensive overview of my technical skillset, organized by domain.</p>
+            <div class="skills-categories">
+                <!-- Programming Languages -->
+                <div class="skill-cluster languages-cluster">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-tag"><i class="fab fa-java"></i> Java</div>
+                        <div class="skill-tag"><i class="fas fa-hashtag"></i> C#</div>
+                        <div class="skill-tag"><i class="far fa-file-code"></i> TypeScript</div>
+                        <div class="skill-tag"><i class="fas fa-terminal"></i> Bash/Shell</div>
+                    </div>
+                </div>
+                
+                <!-- Frontend Development -->
+                <div class="skill-cluster frontend-cluster">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-react"></i> React.js</div>
+                        <div class="skill-tag"><i class="fab fa-react"></i> Next.js</div>
+                        <div class="skill-tag"><i class="fab fa-html5"></i> HTML5</div>
+                        <div class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</div>
+                        <div class="skill-tag"><i class="fab fa-sass"></i> SASS/SCSS</div>
+                        <div class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                        <div class="skill-tag"><i class="fas fa-wind"></i> Tailwind CSS</div>
+                        <div class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</div>
+                        <div class="skill-tag"><i class="fab fa-angular"></i> Angular</div>
+                        <div class="skill-tag"><i class="fab fa-js-square"></i> jQuery</div>
+                        <div class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
+                        <div class="skill-tag"><i class="fas fa-universal-access"></i> Web Accessibility</div>
+                    </div>
+                </div>
+                
+                <!-- Backend Development -->
+                <div class="skill-cluster backend-cluster">
+                    <h3><i class="fas fa-server"></i> Backend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-node-js"></i> Node.js</div>
+                        <div class="skill-tag"><i class="fab fa-node-js"></i> Express.js</div>
+                        <div class="skill-tag"><i class="fab fa-python"></i> Django</div>
+                        <div class="skill-tag"><i class="fab fa-python"></i> Flask</div>
+                        <div class="skill-tag"><i class="fab fa-java"></i> Spring Boot</div>
+                        <div class="skill-tag"><i class="fas fa-exchange-alt"></i> RESTful APIs</div>
+                        <div class="skill-tag"><i class="fas fa-project-diagram"></i> GraphQL</div>
+                        <div class="skill-tag"><i class="fas fa-cogs"></i> Microservices</div>
+                        <div class="skill-tag"><i class="fas fa-shield-alt"></i> Authentication & Security</div>
+                    </div>
+                </div>
+                
+                <!-- Database Technologies -->
+                <div class="skill-cluster database-cluster">
+                    <h3><i class="fas fa-database"></i> Database Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fas fa-database"></i> MongoDB</div>
+                        <div class="skill-tag"><i class="fas fa-database"></i> MySQL</div>
+                        <div class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</div>
+                        <div class="skill-tag"><i class="fas fa-fire"></i> Firebase</div>
+                        <div class="skill-tag"><i class="fas fa-database"></i> SQL</div>
+                        <div class="skill-tag"><i class="fas fa-database"></i> Redis</div>
+                        <div class="skill-tag"><i class="fas fa-exchange-alt"></i> ORM/ODM</div>
+                    </div>
+                </div>
+                
+                <!-- DevOps & Cloud -->
+                <div class="skill-cluster devops-cluster">
+                    <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-aws"></i> AWS</div>
+                        <div class="skill-tag"><i class="fab fa-microsoft"></i> Azure</div>
+                        <div class="skill-tag"><i class="fab fa-google"></i> Google Cloud</div>
+                        <div class="skill-tag"><i class="fab fa-docker"></i> Docker</div>
+                        <div class="skill-tag"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+                        <div class="skill-tag"><i class="fas fa-code-branch"></i> CI/CD</div>
+                        <div class="skill-tag"><i class="fab fa-github-alt"></i> GitHub Actions</div>
+                        <div class="skill-tag"><i class="fas fa-network-wired"></i> Serverless</div>
+                        <div class="skill-tag"><i class="fas fa-cloud-upload-alt"></i> Deployment</div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Development -->
+                <div class="skill-cluster mobile-cluster">
+                    <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-react"></i> React Native</div>
+                        <div class="skill-tag"><i class="fab fa-android"></i> Android</div>
+                        <div class="skill-tag"><i class="fab fa-apple"></i> iOS</div>
+                        <div class="skill-tag"><i class="fas fa-mobile-alt"></i> Progressive Web Apps</div>
+                        <div class="skill-tag"><i class="fas fa-tablet-alt"></i> Responsive UIs</div>
+                    </div>
+                </div>
+                
+                <!-- AI & Machine Learning -->
+                <div class="skill-cluster ai-cluster">
+                    <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-python"></i> TensorFlow</div>
+                        <div class="skill-tag"><i class="fab fa-python"></i> PyTorch</div>
+                        <div class="skill-tag"><i class="fas fa-chart-bar"></i> Data Analysis</div>
+                        <div class="skill-tag"><i class="fas fa-robot"></i> NLP</div>
+                        <div class="skill-tag"><i class="fas fa-chart-line"></i> Data Visualization</div>
+                        <div class="skill-tag"><i class="fas fa-brain"></i> Machine Learning</div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Methodologies -->
+                <div class="skill-cluster tools-cluster">
+                    <h3><i class="fas fa-tools"></i> Tools & Methodologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag"><i class="fab fa-git-alt"></i> Git</div>
+                        <div class="skill-tag"><i class="fab fa-github"></i> GitHub</div>
+                        <div class="skill-tag"><i class="fab fa-jira"></i> Jira</div>
+                        <div class="skill-tag"><i class="fas fa-tasks"></i> Agile/Scrum</div>
+                        <div class="skill-tag"><i class="fas fa-vial"></i> TDD</div>
+                        <div class="skill-tag"><i class="fas fa-code-branch"></i> Version Control</div>
+                        <div class="skill-tag"><i class="fas fa-sitemap"></i> System Design</div>
+                        <div class="skill-tag"><i class="fas fa-pencil-ruler"></i> UI/UX Design</div>
+                        <div class="skill-tag"><i class="fas fa-terminal"></i> Command Line</div>
+                        <div class="skill-tag"><i class="fas fa-code"></i> VS Code</div>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills & Languages -->
+                <div class="skill-cluster soft-skills-cluster">
+                    <h3><i class="fas fa-users"></i> Soft Skills & Languages</h3>
+                    <div class="skills-grid">
+                        <a href="code.html#leadership-projects" class="skill-tag-link">
+                            <div class="skill-tag"><i class="fas fa-user-tie"></i> Leadership</div>
+                        </a>
+                        <a href="code.html#mentorship-projects" class="skill-tag-link">
+                            <div class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Mentorship</div>
+                        </a>
+                        <a href="code.html#event-projects" class="skill-tag-link">
+                            <div class="skill-tag"><i class="fas fa-calendar-check"></i> Event Management</div>
+                        </a>
+                        <a href="code.html#operations-projects" class="skill-tag-link">
+                            <div class="skill-tag"><i class="fas fa-cogs"></i> Operations Management</div>
+                        </a>
+                        <div class="skill-tag"><i class="fas fa-language"></i> English (Fluent)</div>
+                        <div class="skill-tag"><i class="fas fa-language"></i> Telugu (Native)</div>
+                        <div class="skill-tag"><i class="fas fa-language"></i> Hindi (Fluent)</div>
+                        <div class="skill-tag"><i class="fas fa-language"></i> Tamil (Elementary)</div>
+                        <div class="skill-tag"><i class="fas fa-language"></i> German (Elementary)</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="contact">
@@ -153,24 +265,32 @@
             
             <div class="contact-methods">
                 <div class="contact-method">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <h3>Email Me</h3>
-                    <p><a href="mailto:ananth.deepaksharma@gmail.com">ananth.deepaksharma@gmail.com</a></p>
+                    <a href="mailto:ananth.deepaksharma@gmail.com" target="_blank" class="contact-method-link">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>Email Me</h3>
+                        <p>Send me an email</p>
+                    </a>
                 </div>
                 <div class="contact-method">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>Connect on LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank">linkedin.com/in/ananthdeepaks</a></p>
+                    <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank" class="contact-method-link">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>Connect on LinkedIn</h3>
+                        <p>LinkedIn</p>
+                    </a>
                 </div>
                 <div class="contact-method">
-                    <i class="fab fa-github"></i>
-                    <h3>Follow on GitHub</h3>
-                    <p><a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+                    <a href="https://github.com/deeCoderick" target="_blank" class="contact-method-link">
+                        <i class="fab fa-github"></i>
+                        <h3>Follow on GitHub</h3>
+                        <p>GitHub</p>
+                    </a>
                 </div>
                 <div class="contact-method">
-                    <i class="far fa-calendar-alt"></i>
-                    <h3>Schedule a Meeting</h3>
-                    <p><a href="https://calendly.com/your-username" target="_blank">Book a time on my calendar</a></p>
+                    <a href="https://calendly.com/ananth-deepaksharma/30min" target="_blank" class="contact-method-link">
+                        <i class="far fa-calendar-alt"></i>
+                        <h3>Schedule a Meeting</h3>
+                        <p>Book a time on my calendar</p>
+                    </a>
                 </div>
             </div>
             
@@ -196,16 +316,17 @@
         <div class="footer-content">
             <div class="footer-links">
                 <a href="#about">About</a>
-                <a href="#skills">Skills</a>
                 <a href="#portfolio">Portfolio</a>
+                <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="social-icons">
                 <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.net/@de__maverick" target="_blank"><i class="fab fa-threads"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -213,6 +334,27 @@
         <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
     </footer>
 
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header" id="chatbot-header">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
     <script>
         // Initialize ScrollReveal for animations
         const sr = ScrollReveal({
@@ -235,6 +377,21 @@
             e.preventDefault();
             alert('Thank you for your message! This form is not connected to a backend yet.');
             this.reset();
+        });
+
+        // Add logo animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoContainer = document.querySelector('.logo-container');
+            
+            if (logoContainer) {
+                logoContainer.addEventListener('mouseenter', function() {
+                    this.classList.add('logo-animated');
+                });
+                
+                logoContainer.addEventListener('mouseleave', function() {
+                    this.classList.remove('logo-animated');
+                });
+            }
         });
     </script>
 </body>

@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <style>
         .page-header {
-            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            background: linear-gradient(135deg, #000000, #333333);
             color: var(--light-color);
             padding: 6rem 5% 3rem;
             text-align: center;
@@ -145,8 +145,8 @@
         }
         
         .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -157,37 +157,94 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: row;
+            height: 300px;
         }
         
         .sport-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) translateX(5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .sport-card-header {
             background: var(--primary-color);
             color: var(--light-color);
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sport-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0));
+            z-index: 1;
         }
         
         .sport-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
         
         .sport-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
         }
         
         .sport-level {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
         }
         
         .sport-card-body {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .content-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #000000;
+        }
+        
+        .content-status i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .content-count {
+            margin-left: auto;
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
         
         .skill-level {
@@ -199,6 +256,7 @@
         
         .skill-level-label {
             font-weight: 500;
+            color: #000000;
         }
         
         .skill-level-bar {
@@ -227,7 +285,7 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.9rem;
-            color: #666;
+            color: #000000;
         }
         
         .section-title {
@@ -301,22 +359,60 @@
                 transform: translate(-50%, -50%);
             }
         }
+        
+        .sports-counter {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            background: var(--light-color);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: var(--dark-color);
+            box-shadow: var(--shadow);
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .sports-counter strong {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="icon">De</div>
+            <div class="logo-container">
+                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
             <ul>
                 <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
                 <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
                 <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-                <li><a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=OenKKuuo01KEPZXI" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Social Sidebar for quick access -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@sportsandphysical-rn7gt?si=S_mB_ziNofWZjbG4" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.threads.net/@de_gamerick" target="_blank"><i class="fab fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- Mobile Social Toggle -->
+    <div class="social-mobile-toggle">
+        <i class="fas fa-share-alt"></i>
+    </div>
 
     <div class="page-header">
         <h1>Sports & Fitness</h1>
@@ -324,6 +420,91 @@
     </div>
 
     <main class="sports-container">
+        <!-- Sports Content Visualization Section (Moved to top) -->
+        <section>
+            <h2 class="section-title">Sports Content Overview</h2>
+            <p class="section-description">A visual breakdown of my sports content creation and engagement across different disciplines.</p>
+            
+            <div class="visualization-container dark-theme">
+                <div class="chart-wrapper">
+                    <canvas id="sportsContentChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="sportsCategoryChart"></canvas>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="stat-content">
+                            <h3>Top Sport</h3>
+                            <p>Badminton</p>
+                            <div class="stat-value">9 posts</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-medal"></i></div>
+                        <div class="stat-content">
+                            <h3>Most Active Category</h3>
+                            <p>Racquet Sports</p>
+                            <div class="stat-value">15 posts</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="stat-content">
+                            <h3>Growth Area</h3>
+                            <p>Swimming</p>
+                            <div class="stat-value">Upcoming</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                        <div class="stat-content">
+                            <h3>Most Recent Activity</h3>
+                            <p>Skating</p>
+                            <div class="stat-value">Last week</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-content">
+                            <h3>Most Engaging</h3>
+                            <p>Cricket</p>
+                            <div class="stat-value">65 comments</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-content">
+                            <h3>Time Invested</h3>
+                            <p>Weekly Average</p>
+                            <div class="stat-value">12.5 hours</div>
+                            <div class="stat-bar">
+                                <div class="stat-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section>
             <h2 class="section-title">My Sports Journey</h2>
             <div class="timeline">
@@ -395,87 +576,154 @@
         
         <section>
             <h2 class="section-title">Sports & Activities</h2>
+            <div class="sports-counter">
+                I actively participate in <strong>29</strong> unique sports and activities
+            </div>
             <div class="sports-grid">
+                <!-- Badminton Card - 9 posts -->
                 <div class="sport-card">
-                    <div class="sport-card-header">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #000000, #333333);">
                         <div class="sport-icon">
-                            <i class="fas fa-basketball-ball"></i>
+                            <i class="fas fa-table-tennis"></i>
                         </div>
-                        <h3 class="sport-title">Basketball</h3>
+                        <h3 class="sport-title">Badminton</h3>
                         <p class="sport-level">Advanced</p>
                     </div>
                     <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-fire"></i> Top Sport
+                            <div class="content-count">9 posts</div>
+                        </div>
                         <div class="skill-level">
-                            <div class="skill-level-label">Shooting</div>
+                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Stamina</div>
                             <div class="skill-level-bar">
                                 <div class="skill-level-progress" style="width: 90%;"></div>
                             </div>
                         </div>
                         <div class="skill-level">
-                            <div class="skill-level-label">Dribbling</div>
+                            <div class="skill-level-label">Strategy</div>
                             <div class="skill-level-bar">
                                 <div class="skill-level-progress" style="width: 85%;"></div>
                             </div>
                         </div>
-                        <div class="skill-level">
-                            <div class="skill-level-label">Defense</div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-progress" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <p>Playing basketball since high school, I've developed strong fundamental skills and court awareness. I enjoy both competitive leagues and casual pickup games.</p>
+                        <p>My primary sport with over 7 years of competitive experience. I specialize in singles play with a focus on technical shots and court coverage.</p>
                         <div class="sport-metadata">
                             <div class="sport-metadata-item">
-                                <i class="fas fa-calendar-alt"></i> 10+ years
+                                <i class="fas fa-calendar-alt"></i> 7+ years
                             </div>
                             <div class="sport-metadata-item">
-                                <i class="fas fa-trophy"></i> 3 championships
+                                <i class="fas fa-trophy"></i> Regional champion
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Skating Card - 6 posts -->
                 <div class="sport-card">
-                    <div class="sport-card-header">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #1a1a1a, #333333);">
                         <div class="sport-icon">
-                            <i class="fas fa-running"></i>
+                            <i class="fas fa-skating"></i>
                         </div>
-                        <h3 class="sport-title">Running</h3>
-                        <p class="sport-level">Intermediate</p>
+                        <h3 class="sport-title">Skating</h3>
+                        <p class="sport-level">Intermediate-Advanced</p>
                     </div>
                     <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-clock"></i> Most Recent Activity
+                            <div class="content-count">6 posts</div>
+                        </div>
                         <div class="skill-level">
-                            <div class="skill-level-label">Endurance</div>
+                            <div class="skill-level-label">Balance</div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-progress" style="width: 80%;"></div>
+                                <div class="skill-level-progress" style="width: 88%;"></div>
                             </div>
                         </div>
                         <div class="skill-level">
                             <div class="skill-level-label">Speed</div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-progress" style="width: 70%;"></div>
+                                <div class="skill-level-progress" style="width: 85%;"></div>
                             </div>
                         </div>
                         <div class="skill-level">
-                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-label">Tricks</div>
                             <div class="skill-level-bar">
                                 <div class="skill-level-progress" style="width: 75%;"></div>
                             </div>
                         </div>
-                        <p>Running helps me maintain fitness and clear my mind. I train regularly for half marathons and participate in various community running events throughout the year.</p>
+                        <p>Skating has become my passion in recent years, focusing on urban freestyle and slalom techniques. I frequently practice at local parks and participate in community events.</p>
                         <div class="sport-metadata">
                             <div class="sport-metadata-item">
-                                <i class="fas fa-calendar-alt"></i> 5+ years
+                                <i class="fas fa-calendar-alt"></i> 4+ years
                             </div>
                             <div class="sport-metadata-item">
-                                <i class="fas fa-medal"></i> 3 half marathons
+                                <i class="fas fa-heart"></i> Weekly practice
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Athletic
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Cricket Card - 5 posts -->
                 <div class="sport-card">
-                    <div class="sport-card-header">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #252525, #383838);">
+                        <div class="sport-icon">
+                            <i class="fas fa-baseball-ball"></i>
+                        </div>
+                        <h3 class="sport-title">Cricket</h3>
+                        <p class="sport-level">Intermediate</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-comments"></i> Most Engaging
+                            <div class="content-count">5 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Batting</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Bowling</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Fielding</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <p>Cricket has been a lifelong passion, playing primarily as a middle-order batsman and occasional spin bowler. I follow international cricket closely and engage with a large community of fans.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 12+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> 65 comments
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Ball Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tennis Card - 4 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #202020, #363636);">
                         <div class="sport-icon">
                             <i class="fas fa-table-tennis"></i>
                         </div>
@@ -483,6 +731,10 @@
                         <p class="sport-level">Intermediate-Advanced</p>
                     </div>
                     <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-chart-line"></i> Consistent Growth
+                            <div class="content-count">4 posts</div>
+                        </div>
                         <div class="skill-level">
                             <div class="skill-level-label">Forehand</div>
                             <div class="skill-level-bar">
@@ -509,6 +761,808 @@
                             <div class="sport-metadata-item">
                                 <i class="fas fa-trophy"></i> Regional finalist
                             </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Table Tennis Card - 2 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #292929, #404040);">
+                        <div class="sport-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <h3 class="sport-title">Table Tennis</h3>
+                        <p class="sport-level">Intermediate</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-chess"></i> Technical Focus
+                            <div class="content-count">2 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Spin</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Speed</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Footwork</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <p>Table tennis is my indoor sport of choice, focusing on developing complex spin techniques and rapid reflexes. I enjoy casual games with friends and occasional competitive matches.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 5+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-medal"></i> Local tournaments
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Basketball Card - 1 post -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #1c1c1c, #383838);">
+                        <div class="sport-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h3 class="sport-title">Basketball</h3>
+                        <p class="sport-level">Intermediate</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-users"></i> Team Sport
+                            <div class="content-count">1 post</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Shooting</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Dribbling</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Defense</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <p>Basketball is my go-to team sport, where I play as a defensive specialist and occasional three-point shooter. I enjoy the team dynamics and strategic elements of the game.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 6+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Recreational league
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Ball Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volleyball Card - 1 post -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #222222, #3d3d3d);">
+                        <div class="sport-icon">
+                            <i class="fas fa-volleyball-ball"></i>
+                        </div>
+                        <h3 class="sport-title">Volleyball</h3>
+                        <p class="sport-level">Beginner-Intermediate</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-bolt"></i> Occasional Activity
+                            <div class="content-count">1 post</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Setting</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Spiking</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Serving</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <p>Volleyball is an enjoyable beach and indoor activity I participate in occasionally with friends. I'm working on improving my setting skills and court awareness.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 3+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-umbrella-beach"></i> Beach volleyball
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Ball Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Swimming Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #1e1e1e, #383838);">
+                        <div class="sport-icon">
+                            <i class="fas fa-swimmer"></i>
+                        </div>
+                        <h3 class="sport-title">Swimming</h3>
+                        <p class="sport-level">Growth Area</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-seedling"></i> Developing Skill
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Freestyle</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Breathing</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 35%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Endurance</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <p>Swimming is a new skill I'm actively developing. I've started with basic freestyle techniques and am working on building comfort and endurance in the water.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 6 months
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-chart-line"></i> Upcoming focus
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Water Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Football Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h3 class="sport-title">Football</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-thumbs-up"></i> Social Activity
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Passing</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Control</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Stamina</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <p>Football is primarily a social activity I enjoy with friends on weekends. While I'm not at a competitive level, I appreciate the teamwork and exercise it provides.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 4+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Weekend games
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Ball Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pickleball Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <h3 class="sport-title">Pickleball</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-star"></i> Emerging Interest
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Strategy</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Coordination</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <p>Recently discovered pickleball and enjoy its blend of tennis, badminton, and table tennis elements. The smaller court and paddle make it accessible while still offering strategic depth.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 6 months
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Community courts
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dart/Hammer Throw Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="sport-title">Dart/Hammer Throw</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-compass"></i> Precision Focus
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Accuracy</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Consistency</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Exploring throwing sports that require precision and technique. Enjoying the mental focus required for darts and the physical power needed for hammer throws.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 1+ year
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-bullseye"></i> Target sports
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Target
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Squash Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <h3 class="sport-title">Squash</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-fire-alt"></i> High Intensity
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Footwork</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Racquet Skills</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Endurance</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <p>Squash provides an intense workout in an enclosed court setting. I enjoy the fast pace, quick reflexes required, and the cardiovascular benefits of this racquet sport.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 2+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-heartbeat"></i> Fitness focus
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Racquetball Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <h3 class="sport-title">Racquetball</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-bolt"></i> Fast-Paced
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Power</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Agility</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Court Awareness</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Racquetball offers exciting gameplay with its bouncy ball and enclosed court. I enjoy practicing shots that utilize the walls and ceiling for strategic advantage.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 1+ year
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-arrows-alt"></i> 3D gameplay
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Racquet Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Handball Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3 class="sport-title">Handball</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-users"></i> Team Dynamic
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Throwing</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Catching</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Movement</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Handball combines elements of basketball and soccer with hand-passing and goal shooting. The fast transitions and team coordination make it an engaging group activity.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 1+ year
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Team sport
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Athletic
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Archery Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="sport-title">Archery</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-crosshairs"></i> Precision Sport
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Aim</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Form</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Focus</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <p>Archery demands focus, precision, and consistency. I appreciate the meditative quality of drawing the bow and the satisfaction of hitting the target after adjusting for various factors.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 8 months
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-bullseye"></i> Target practice
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Target
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ultimate Frisbee Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-compact-disc"></i>
+                        </div>
+                        <h3 class="sport-title">Ultimate Frisbee</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-users"></i> Social Sport
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Throwing</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Catching</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Field Movement</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Ultimate Frisbee combines elements of soccer and football with a flying disc. I enjoy the self-officiating aspect that promotes sportsmanship and the non-stop action during play.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 2+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Recreational
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Athletic
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rock Climbing Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3 class="sport-title">Rock Climbing</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-dumbbell"></i> Strength & Problem Solving
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Grip Strength</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Balance</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Route Planning</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Rock climbing combines physical strength with mental problem-solving. I'm primarily focused on indoor bouldering, enjoying the challenge of figuring out different routes and techniques.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 1+ year
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-dumbbell"></i> Strength building
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Strength
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parkour Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="sport-title">Parkour</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-forward"></i> Urban Movement
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Agility</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Spatial Awareness</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 55%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Body Control</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Parkour is about moving efficiently through any environment using only your body. I focus on basic vaults, precision jumps, and safe landing techniques while navigating urban landscapes.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 1+ year
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-city"></i> Urban training
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Athletic
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hockey Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-hockey-puck"></i>
+                        </div>
+                        <h3 class="sport-title">Hockey</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-users"></i> Team Coordination
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Stick Handling</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Positioning</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Game Awareness</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <p>Hockey demands speed, coordination, and teamwork. I play field hockey occasionally, focusing on passing accuracy and positional play while enjoying the fast-paced nature of the game.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 2+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Team play
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Ball Sports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paragliding Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-parachute-box"></i>
+                        </div>
+                        <h3 class="sport-title">Paragliding</h3>
+                        <p class="sport-level">Beginner</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-wind"></i> Adventure Sport
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Wind Reading</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Canopy Control</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Landing Approach</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                        <p>Paragliding offers the thrill of free flight with minimal equipment. I've had a few tandem experiences and am learning about wing control, thermal reading, and safe launching/landing techniques.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 4 months
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-mountain"></i> Tandem flights
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Adventure
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skiing Card - 0 posts -->
+                <div class="sport-card">
+                    <div class="sport-card-header" style="background: linear-gradient(135deg, #242424, #3c3c3c);">
+                        <div class="sport-icon">
+                            <i class="fas fa-skiing"></i>
+                        </div>
+                        <h3 class="sport-title">Skiing</h3>
+                        <p class="sport-level">Casual</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="content-status">
+                            <i class="fas fa-mountain"></i> Seasonal Activity
+                            <div class="content-count">0 posts</div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Balance</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Terrain Adaptation</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <p>I enjoy skiing during winter vacations, focusing on improving my parallel turns and confidence on intermediate slopes. The combination of scenic mountain views and controlled descents makes it a thrilling experience.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 3+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-mountain"></i> Seasonal trips
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-tag"></i> Adventure
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -529,11 +1583,12 @@
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=OenKKuuo01KEPZXI" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://youtube.com/@sportsandphysical-rn7gt?si=S_mB_ziNofWZjbG4" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.net/@de_gamerick" target="_blank"><i class="fab fa-threads"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
                 <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
@@ -541,6 +1596,28 @@
         <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
     </footer>
 
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header" id="chatbot-header">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Initialize ScrollReveal for animations
         const sr = ScrollReveal({
@@ -556,6 +1633,8 @@
         sr.reveal('.section-title', { delay: 200 });
         sr.reveal('.timeline-item', { interval: 300 });
         sr.reveal('.sport-card', { interval: 200 });
+        sr.reveal('.visualization-container', { delay: 300 });
+        sr.reveal('.stat-card', { interval: 200 });
 
         // Back to top button functionality
         const backToTopBtn = document.getElementById('backToTop');
@@ -571,6 +1650,217 @@
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Sports Content Chart
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for the bar chart
+            const sportsContentData = {
+                labels: ['Badminton', 'Skating', 'Cricket', 'Tennis', 'Table Tennis', 'Basketball', 'Volleyball', 'Football', 'Swimming'],
+                datasets: [{
+                    label: 'Content Posts',
+                    data: [9, 6, 5, 4, 2, 1, 1, 0, 0],
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0.9)', 
+                        'rgba(255, 255, 255, 0.8)', 
+                        'rgba(255, 255, 255, 0.7)', 
+                        'rgba(255, 255, 255, 0.6)', 
+                        'rgba(255, 255, 255, 0.5)',
+                        'rgba(255, 255, 255, 0.4)', 
+                        'rgba(255, 255, 255, 0.3)', 
+                        'rgba(255, 255, 255, 0.2)', 
+                        'rgba(255, 255, 255, 0.1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 255, 255, 1)', 
+                        'rgba(255, 255, 255, 0.9)', 
+                        'rgba(255, 255, 255, 0.8)', 
+                        'rgba(255, 255, 255, 0.7)', 
+                        'rgba(255, 255, 255, 0.6)',
+                        'rgba(255, 255, 255, 0.5)', 
+                        'rgba(255, 255, 255, 0.4)', 
+                        'rgba(255, 255, 255, 0.3)', 
+                        'rgba(255, 255, 255, 0.2)'
+                    ],
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    hoverOffset: 10
+                }]
+            };
+
+            // Sport Categories Chart Data
+            const sportsCategoryData = {
+                labels: ['Racquet', 'Ball', 'Athletic', 'Strength', 'Water'],
+                datasets: [{
+                    label: 'Sport Categories',
+                    data: [15, 7, 6, 0, 0],
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0.9)',
+                        'rgba(255, 255, 255, 0.7)',
+                        'rgba(255, 255, 255, 0.5)',
+                        'rgba(255, 255, 255, 0.3)',
+                        'rgba(255, 255, 255, 0.1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 255, 255, 1)',
+                        'rgba(255, 255, 255, 0.8)',
+                        'rgba(255, 255, 255, 0.6)',
+                        'rgba(255, 255, 255, 0.4)',
+                        'rgba(255, 255, 255, 0.2)'
+                    ],
+                    borderWidth: 1,
+                    hoverOffset: 15
+                }]
+            };
+
+            // Chart Configuration
+            const sportsContentChart = new Chart(
+                document.getElementById('sportsContentChart'),
+                {
+                    type: 'bar',
+                    data: sportsContentData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#FFFFFF',
+                                    font: {
+                                        family: "'Poppins', sans-serif",
+                                        size: 12
+                                    },
+                                    boxWidth: 15
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Sports Content Distribution',
+                                color: '#FFFFFF',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold',
+                                    family: "'Poppins', sans-serif"
+                                },
+                                padding: {
+                                    bottom: 20
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                titleFont: {
+                                    family: "'Poppins', sans-serif",
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    family: "'Poppins', sans-serif",
+                                    size: 13
+                                },
+                                padding: 15,
+                                cornerRadius: 8,
+                                displayColors: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)',
+                                    borderDash: [5, 5]
+                                },
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.8)',
+                                    font: {
+                                        family: "'Poppins', sans-serif",
+                                        size: 12
+                                    },
+                                    padding: 10,
+                                    stepSize: 1
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.8)',
+                                    font: {
+                                        family: "'Poppins', sans-serif",
+                                        size: 12
+                                    },
+                                    padding: 10
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                }
+            );
+
+            // Category Pie Chart
+            const sportsCategoryChart = new Chart(
+                document.getElementById('sportsCategoryChart'),
+                {
+                    type: 'doughnut',
+                    data: sportsCategoryData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#FFFFFF',
+                                    font: {
+                                        family: "'Poppins', sans-serif",
+                                        size: 12
+                                    },
+                                    padding: 15,
+                                    boxWidth: 15
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Sport Categories Distribution',
+                                color: '#FFFFFF',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold',
+                                    family: "'Poppins', sans-serif"
+                                },
+                                padding: {
+                                    bottom: 20
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                titleFont: {
+                                    family: "'Poppins', sans-serif",
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    family: "'Poppins', sans-serif",
+                                    size: 13
+                                },
+                                padding: 15,
+                                cornerRadius: 8,
+                                displayColors: false
+                            }
+                        },
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true,
+                            duration: 2000,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                }
+            );
         });
     </script>
 </body>
