@@ -1,0 +1,442 @@
+<!-- filepath: /Users/ananthdeepaksharmananduri/IdeaProjects/Portfolio/code.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Projects - Ananth Deepak Sharma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            padding-top: 60px; /* Adjust this value based on the height of your nav bar */
+        }
+
+        nav {
+            background: #0078D7;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav .icon {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background: #0078D7;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .profile-photo {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-left: 20px;
+        }
+
+        .profile-info {
+            margin-left: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .project-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .project-card {
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+        }
+        
+        .project-meta {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .project-meta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="icon">De</div>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=k5UsB9EJRyG-bzdJ" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Code Projects</h1>
+        <p>A collection of my most significant software development work, showcasing my technical skills and problem-solving abilities.</p>
+    </div>
+
+    <main class="project-container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="project-meta">
+                    <h2>E-commerce Platform</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management. The application is built with a React frontend, Node.js backend, and MongoDB database.</p>
+                    <p>Key features include:</p>
+                    <ul>
+                        <li>Responsive design for all device sizes</li>
+                        <li>Real-time inventory management</li>
+                        <li>Secure payment processing</li>
+                        <li>Admin dashboard for product and order management</li>
+                        <li>User reviews and ratings system</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
+                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                <div class="project-meta">
+                    <h2>AI Task Manager</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>An intelligent task management application that uses machine learning to prioritize tasks, suggest optimal scheduling, and provide productivity insights based on user behavior patterns.</p>
+                    <p>Key features include:</p>
+                    <ul>
+                        <li>Smart task prioritization algorithm</li>
+                        <li>Automated scheduling suggestions</li>
+                        <li>Productivity analytics dashboard</li>
+                        <li>Natural language processing for task creation</li>
+                        <li>Integration with calendar and email services</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
+                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1992&q=80')">
+                <div class="project-meta">
+                    <h2>Weather Visualization Dashboard</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">OpenWeather API</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>An interactive weather dashboard that visualizes real-time and historical weather data from multiple sources. Users can track temperature, precipitation, wind patterns, and other meteorological information across different regions.</p>
+                    <p>Key features include:</p>
+                    <ul>
+                        <li>Interactive maps and data visualizations</li>
+                        <li>Real-time weather updates</li>
+                        <li>Historical data comparison</li>
+                        <li>Customizable dashboard layouts</li>
+                        <li>Weather alerts and notifications</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
+                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=k5UsB9EJRyG-bzdJ" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Initialize ScrollReveal for animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'ease-in-out'
+        });
+
+        // Apply animations to elements
+        sr.reveal('.page-header', { delay: 100 });
+        sr.reveal('.section-title', { delay: 200 });
+        sr.reveal('.project-card', { interval: 300 });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

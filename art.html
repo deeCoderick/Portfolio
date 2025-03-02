@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery - Ananth Deepak Sharma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: var(--light-color);
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn {
+            background: var(--light-color);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            height: 300px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-info {
+            transform: translateY(0);
+        }
+        
+        .gallery-item-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-item-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+        
+        .lightbox-content {
+            max-width: 80%;
+            max-height: 80vh;
+            position: relative;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="icon">De</div>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://www.instagram.com/de_arterick/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=h-9hdCQW66jMDAb8" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Art Gallery</h1>
+        <p>A collection of my creative works including digital art, photography, and illustrations that showcase my artistic vision.</p>
+    </div>
+
+    <main class="gallery-container">
+        <h2 class="section-title">My Creative Work</h2>
+        
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="digital">Digital Art</button>
+            <button class="filter-btn" data-filter="photography">Photography</button>
+            <button class="filter-btn" data-filter="illustration">Illustration</button>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="digital">
+                <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Abstract Digital Art">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">Color Harmony</h3>
+                    <p class="gallery-item-category">Digital Art</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="photography">
+                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1575&q=80" alt="Landscape Photography">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">Mountain Serenity</h3>
+                    <p class="gallery-item-category">Photography</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="illustration">
+                <img src="https://images.unsplash.com/photo-1454908027598-28c44b1716c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hand-drawn Illustration">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">Urban Sketch</h3>
+                    <p class="gallery-item-category">Illustration</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="digital">
+                <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Digital Portrait">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">Neon Dreams</h3>
+                    <p class="gallery-item-category">Digital Art</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="photography">
+                <img src="https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="City Photography">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">City Lights</h3>
+                    <p class="gallery-item-category">Photography</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="illustration">
+                <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pattern Illustration">
+                <div class="gallery-item-info">
+                    <h3 class="gallery-item-title">Geometric Patterns</h3>
+                    <p class="gallery-item-category">Illustration</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de_arterick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=h-9hdCQW66jMDAb8" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Initialize ScrollReveal for animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'ease-in-out'
+        });
+
+        // Apply animations to elements
+        sr.reveal('.page-header', { delay: 100 });
+        sr.reveal('.section-title', { delay: 200 });
+        sr.reveal('.gallery-filters', { delay: 300 });
+        sr.reveal('.gallery-item', { interval: 200 });
+
+        // Gallery filtering functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter gallery items
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').getAttribute('src');
+                const title = item.querySelector('.gallery-item-title').textContent;
+                const category = item.querySelector('.gallery-item-category').textContent;
+                
+                lightboxImage.setAttribute('src', imgSrc);
+                lightboxCaption.textContent = `${title} - ${category}`;
+                lightbox.style.display = 'flex';
+            });
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

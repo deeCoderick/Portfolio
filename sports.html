@@ -1,0 +1,577 @@
+<!-- filepath: /Users/ananthdeepaksharmananduri/IdeaProjects/Portfolio/code.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Activities - Ananth Deepak Sharma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            color: var(--light-color);
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .sports-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 3rem);
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1;
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-title {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-description {
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 12px solid var(--light-color);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -12px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 12px solid var(--light-color);
+        }
+        
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .sport-card {
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .sport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sport-card-header {
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .sport-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sport-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sport-level {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .sport-card-body {
+            padding: 1.5rem;
+        }
+        
+        .skill-level {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-level-label {
+            font-weight: 500;
+        }
+        
+        .skill-level-bar {
+            width: 60%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        .sport-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .sport-metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                float: right;
+                margin-left: 60px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before {
+                left: -12px;
+                right: auto;
+                border-right: 12px solid var(--light-color);
+                border-left: 0;
+            }
+            
+            .timeline-date {
+                left: 20px;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="icon">De</div>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=OenKKuuo01KEPZXI" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Sports & Fitness</h1>
+        <p>Balancing mind and body through various athletic pursuits and fitness activities.</p>
+    </div>
+
+    <main class="sports-container">
+        <section>
+            <h2 class="section-title">My Sports Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Basketball League Champion</h3>
+                        <p class="timeline-description">Led my local basketball team to the league championship, averaging 18 points and 6 assists per game throughout the season.</p>
+                        <div class="timeline-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-medal"></i> First Place
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-users"></i> Team Captain
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-date">2023</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Half Marathon Completion</h3>
+                        <p class="timeline-description">Completed my first half marathon with a personal best time of 1:45:30, after six months of dedicated training and preparation.</p>
+                        <div class="timeline-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-running"></i> 21.1 km
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-stopwatch"></i> 1:45:30
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-date">2022</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Tennis Tournament Finalist</h3>
+                        <p class="timeline-description">Reached the finals of the regional tennis tournament, showcasing improved technique and strategic gameplay developed over years of practice.</p>
+                        <div class="timeline-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-trophy"></i> Runner-up
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-table-tennis"></i> Singles
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-date">2021</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Mountain Biking Adventure</h3>
+                        <p class="timeline-description">Participated in a week-long mountain biking expedition, covering 250 km of challenging terrain across diverse landscapes and elevations.</p>
+                        <div class="timeline-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-mountain"></i> 250 km
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-biking"></i> Intermediate
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-date">2020</div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">Sports & Activities</h2>
+            <div class="sports-grid">
+                <div class="sport-card">
+                    <div class="sport-card-header">
+                        <div class="sport-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h3 class="sport-title">Basketball</h3>
+                        <p class="sport-level">Advanced</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="skill-level">
+                            <div class="skill-level-label">Shooting</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Dribbling</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Defense</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <p>Playing basketball since high school, I've developed strong fundamental skills and court awareness. I enjoy both competitive leagues and casual pickup games.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 10+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-trophy"></i> 3 championships
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sport-card">
+                    <div class="sport-card-header">
+                        <div class="sport-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="sport-title">Running</h3>
+                        <p class="sport-level">Intermediate</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="skill-level">
+                            <div class="skill-level-label">Endurance</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Speed</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Technique</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <p>Running helps me maintain fitness and clear my mind. I train regularly for half marathons and participate in various community running events throughout the year.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 5+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-medal"></i> 3 half marathons
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sport-card">
+                    <div class="sport-card-header">
+                        <div class="sport-icon">
+                            <i class="fas fa-table-tennis"></i>
+                        </div>
+                        <h3 class="sport-title">Tennis</h3>
+                        <p class="sport-level">Intermediate-Advanced</p>
+                    </div>
+                    <div class="sport-card-body">
+                        <div class="skill-level">
+                            <div class="skill-level-label">Forehand</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Backhand</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-level-label">Serve</div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <p>Tennis offers both physical challenge and strategic thinking. I'm a regular at local tournaments and enjoy both singles and doubles play.</p>
+                        <div class="sport-metadata">
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-calendar-alt"></i> 8+ years
+                            </div>
+                            <div class="sport-metadata-item">
+                                <i class="fas fa-trophy"></i> Regional finalist
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@softwareengineeringandco-ss3dy?si=OenKKuuo01KEPZXI" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Initialize ScrollReveal for animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'ease-in-out'
+        });
+
+        // Apply animations to elements
+        sr.reveal('.page-header', { delay: 100 });
+        sr.reveal('.section-title', { delay: 200 });
+        sr.reveal('.timeline-item', { interval: 300 });
+        sr.reveal('.sport-card', { interval: 200 });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

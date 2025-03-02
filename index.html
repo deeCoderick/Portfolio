@@ -1,97 +1,240 @@
+<!-- filepath: /Users/ananthdeepaksharmananduri/IdeaProjects/Portfolio/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Your Name, a software developer specializing in modern web applications.">
-    <meta name="keywords" content="Your Name, software developer, web developer, portfolio, JavaScript, Python, AWS, Azure">
-    <title>Your Name - Portfolio</title>
+    <meta name="description" content="Portfolio of Ananth Deepak Sharma, a software developer specializing in modern web applications, machine learning, and cloud technologies.">
+    <meta name="keywords" content="Ananth Deepak Sharma, software developer, web developer, AI engineer, cloud solutions, portfolio, JavaScript, Python, AWS, Azure">
+    <title>Ananth Deepak Sharma - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
-        <p>Software Developer | Problem Solver | Creative Thinker</p>
+        <nav>
+            <div class="icon">De</div>
+            <ul>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://instagram.com/your-username" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <img src="assets/IMG_3247.jpeg" alt="Ananth Deepak Sharma" class="profile-photo">
+            <div class="profile-info">
+                <h1>Ananth Deepak Sharma</h1>
+                <p>Software Developer | AI Enthusiast | Creative Problem Solver</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                    <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
-        <section class="about">
+        <section id="about" class="about">
             <h2>About Me</h2>
-            <p>Hello! I’m a passionate software developer with expertise in building modern and responsive web applications. I enjoy solving complex problems and learning new technologies.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm a passionate software developer with 5+ years of experience building innovative digital solutions. My journey in technology began with a fascination for how software can transform lives and businesses.</p>
+                    <p>I specialize in full-stack development, with expertise in modern JavaScript frameworks, Python for data analysis, and cloud technologies. I'm constantly exploring new technologies and methodologies to create efficient, scalable, and user-friendly applications.</p>
+                    <p>When I'm not coding, you can find me exploring photography, traveling to new destinations, creating digital art, or playing basketball. I believe that diverse experiences fuel creativity in problem-solving.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="skills">
-            <h2>Skills</h2>
+        <section id="skills" class="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
+                    <ul>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React.js & Next.js</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive Design</li>
+                        <li>Tailwind CSS & SASS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend Development</h3>
+                    <ul>
+                        <li>Node.js & Express</li>
+                        <li>Python (Django, Flask)</li>
+                        <li>RESTful API Design</li>
+                        <li>GraphQL</li>
+                        <li>Database Management</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                    <ul>
+                        <li>AWS Services</li>
+                        <li>Azure Functions</li>
+                        <li>Docker & Kubernetes</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Serverless Architecture</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Other Skills</h3>
+                    <ul>
+                        <li>Machine Learning Basics</li>
+                        <li>Data Analysis</li>
+                        <li>Git & Version Control</li>
+                        <li>Agile Methodologies</li>
+                        <li>UI/UX Principles</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <h2>My Portfolio</h2>
+            <p class="section-intro">Explore my work across different domains — from coding projects to creative pursuits.</p>
             <ul>
-                <li>JavaScript (React, Node.js)</li>
-                <li>Python (Django, Flask)</li>
-                <li>Cloud Computing (AWS, Azure)</li>
-                <li>Database Management (MySQL, MongoDB)</li>
-                <li>Version Control (Git, GitHub)</li>
+                <li>
+                    <a href="code.html" target="_blank">
+                        <i class="fas fa-code"></i>
+                        <span>Code Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="art.html" target="_blank">
+                        <i class="fas fa-palette"></i>
+                        <span>Art Gallery</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="travel.html" target="_blank">
+                        <i class="fas fa-plane-departure"></i>
+                        <span>Travel Adventures</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sports.html" target="_blank">
+                        <i class="fas fa-basketball-ball"></i>
+                        <span>Sports Activities</span>
+                    </a>
+                </li>
             </ul>
-            <canvas id="skillsChart" width="400" height="200"></canvas>
         </section>
 
-        <section class="portfolio">
-            <h2>Portfolio</h2>
-            <ul>
-                <li><a href="#project1" target="_blank">Project 1: E-commerce Website</a></li>
-                <li><a href="#project2" target="_blank">Project 2: Portfolio Website</a></li>
-                <li><a href="#project3" target="_blank">Project 3: Task Management App</a></li>
-            </ul>
-        </section>
-
-        <section class="contact">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out via email or connect on LinkedIn!</p>
-            <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
-            <p>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <p class="section-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Email Me</h3>
+                    <p><a href="mailto:ananth.deepaksharma@gmail.com">ananth.deepaksharma@gmail.com</a></p>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>Connect on LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank">linkedin.com/in/ananthdeepaks</a></p>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <h3>Follow on GitHub</h3>
+                    <p><a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+                </div>
+                <div class="contact-method">
+                    <i class="far fa-calendar-alt"></i>
+                    <h3>Schedule a Meeting</h3>
+                    <p><a href="https://calendly.com/your-username" target="_blank">Book a time on my calendar</a></p>
+                </div>
+            </div>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Your Name | Built with ❤️</p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Ananth Deepak Sharma | Built with <i class="fas fa-heart"></i></p>
     </footer>
 
     <script>
-        var ctx = document.getElementById('skillsChart').getContext('2d');
-        var skillsChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['JavaScript', 'Python', 'AWS', 'Azure', 'MySQL', 'MongoDB', 'Git'],
-                datasets: [{
-                    label: 'Skill Level',
-                    data: [85, 90, 75, 70, 80, 65, 95],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(99, 255, 132, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(99, 255, 132, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+        // Initialize ScrollReveal for animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'ease-in-out'
+        });
+
+        // Apply animations to elements
+        sr.reveal('.about-content', { delay: 200 });
+        sr.reveal('.skills-categories', { delay: 300 });
+        sr.reveal('.portfolio ul li', { interval: 200 });
+        sr.reveal('.contact-methods', { delay: 200 });
+        sr.reveal('.contact-form', { delay: 400 });
+        
+        // Form submission handling (can be expanded)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This form is not connected to a backend yet.');
+            this.reset();
         });
     </script>
 </body>
