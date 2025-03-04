@@ -16,6 +16,7 @@
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     --border-radius: 8px;
     --transition: all 0.3s ease;
+    --primary-color-rgb: 58, 134, 255;
 }
 
 body {
@@ -382,7 +383,7 @@ section:hover {
 .contact-form .form-group textarea {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #333;
-    color: #ffffff;
+    color: #000000;
     padding: 10px;
     width: 100%;
     border-radius: 4px;
@@ -539,6 +540,41 @@ footer p {
 }
 
 .social-icons a:hover {
+    transform: translateY(-5px);
+    color: var(--accent-color);
+}
+
+/* Reset Threads icon styling to use Font Awesome defaults */
+.fa-brands.fa-threads {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+    background: transparent !important;
+    color: var(--light-color);
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fa-brands.fa-threads:before {
+    content: "\e618";
+    display: inline-block;
+}
+
+/* Ensure all social icons, including Threads, have consistent styling */
+.social-sidebar a,
+.social-icons a,
+.footer-content .social-icons a {
+    margin: 0 10px;
+    color: var(--light-color);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-sidebar a:hover,
+.social-icons a:hover,
+.footer-content .social-icons a:hover {
     transform: translateY(-5px);
     color: var(--accent-color);
 }
@@ -777,47 +813,18 @@ footer p {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--light-color);
+    color: #000;
+    border-radius: var(--border-radius);
     font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    color: #000000;
-    background-color: #ffffff;
+    transition: all 0.3s ease;
 }
 
-/* Add placeholder styling for all browsers */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #555555;
-    opacity: 1; /* Firefox */
-}
-
-/* WebKit, Edge */
-.form-group input::-webkit-input-placeholder,
-.form-group textarea::-webkit-input-placeholder {
-    color: #555555;
-}
-
-/* Firefox 4-18 */
-.form-group input:-moz-placeholder,
-.form-group textarea:-moz-placeholder {
-    color: #555555;
-    opacity: 1;
-}
-
-/* Firefox 19+ */
-.form-group input::-moz-placeholder,
-.form-group textarea::-moz-placeholder {
-    color: #555555;
-    opacity: 1;
-}
-
-/* IE 10+ */
-.form-group input:-ms-input-placeholder,
-.form-group textarea:-ms-input-placeholder {
-    color: #555555;
+    color: #333;
 }
 
 .form-group input:focus,
@@ -828,7 +835,9 @@ footer p {
 }
 
 .form-group textarea {
+    height: 120px;
     resize: vertical;
+    color: #000;
 }
 
 /* Footer styling */
@@ -977,24 +986,19 @@ footer p {
     border-radius: 50%;
 }
 
-.social-sidebar .fa-threads {
-    background: transparent;
-    border-radius: 50%;
-    color: #1DA1F2; /* Changing from white to a light blue color */
-}
-
 /* Chatbot */
 .chatbot-container {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 30px; /* Changed back to right */
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .chatbot-icon {
     width: 60px;
     height: 60px;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1002,12 +1006,13 @@ footer p {
     align-items: center;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite alternate;
 }
 
 .chatbot-icon:hover {
     transform: scale(1.1);
-    background: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .chatbot-icon i {
@@ -1017,45 +1022,55 @@ footer p {
 .chatbot-window {
     position: absolute;
     bottom: 80px;
-    right: 0;
-    width: 300px;
-    height: 400px;
+    right: 70px; /* Position to the left of the social sidebar */
+    width: 320px;
+    height: 450px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     display: none;
     flex-direction: column;
+    z-index: 998; /* Ensure it's below the social sidebar */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .chatbot-window.active {
     display: flex;
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .chatbot-header {
-    background: linear-gradient(135deg, #000000, #333333);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
+/* Improve chatbot header styling */
 .chatbot-header h3 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
 .chatbot-header h3 span {
     font-weight: 700;
-    color: #f8d568;
+    color: #ffffff;
     letter-spacing: 1px;
     font-size: 1.3rem;
     display: inline-block;
     margin-left: 3px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .chatbot-close {
@@ -1138,13 +1153,15 @@ footer p {
     
     .chatbot-container {
         bottom: 20px;
-        right: 20px;
+        right: 20px; /* Changed back to right */
     }
     
     .chatbot-window {
         width: 280px;
-        right: 0;
+        right: 0; /* Overlay on mobile */
+        left: auto;
         bottom: 70px;
+        height: 400px; /* Smaller on mobile */
     }
 }
 
@@ -1158,7 +1175,7 @@ footer p {
         display: block;
         position: fixed;
         bottom: 20px;
-        left: 20px;
+        right: 20px;
         width: 50px;
         height: 50px;
         background: var(--primary-color);
@@ -1174,9 +1191,23 @@ footer p {
     .social-sidebar.visible {
         display: flex;
         bottom: 80px;
-        left: 0;
-        right: auto;
-        border-radius: 0 10px 10px 0;
+        right: 0;
+        left: auto;
+        border-radius: 10px 0 0 10px;
+    }
+    
+    /* Ensure chatbot doesn't overlap with the social toggle on very small screens */
+    .chatbot-container {
+        bottom: 20px;
+        right: 90px; /* Move left of social toggle on mobile */
+    }
+    
+    /* Make the chatbot window more compact on very small screens */
+    .chatbot-window {
+        width: 260px;
+        max-height: 350px;
+        bottom: 70px;
+        right: 0;
     }
 }
 
@@ -1189,57 +1220,51 @@ footer p {
     position: relative;
 }
 
-/* Enhanced Logo Styling */
+/* Logo styling */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: 20px;
-    cursor: pointer;
+    gap: 10px;
+    padding: 10px;
     transition: all 0.3s ease;
 }
 
 .logo-image {
-    height: 40px;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
-    transition: all 0.5s ease;
+    height: 35px;
+    width: auto;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
 }
 
-.logo-text {
+.logo {
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-color);
     transition: all 0.3s ease;
 }
 
+/* Add hover effects to the logo */
 .logo-container:hover .logo-image {
-    transform: rotate(5deg) scale(1.1);
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    transform: scale(1.1);
 }
 
-.logo-container:hover .logo-text {
-    color: #f8f8f8;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.logo-container:hover .logo {
+    color: var(--accent-color);
 }
 
+/* Add a little animation when the logo is clicked */
 .logo-animated .logo-image {
-    animation: logo-pulse 1s infinite alternate;
+    transform: scale(1.05);
 }
 
-@keyframes logo-pulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-}
-
-@keyframes logo-glow {
-    0% { filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)); }
-    100% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)); }
-}
-
-/* Adding specific styling for the Threads icon in the footer as well */
-.social-icons .fa-threads {
-    color: #1DA1F2; /* Changing from white to a light blue color */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 30px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
 }
 
 /* Sports Visualization Section */
@@ -1471,4 +1496,403 @@ footer p {
 .skill-tag-link:hover .skill-tag::after {
     transform: scaleX(1);
     transform-origin: left;
+}
+
+/* Journey Timeline Styles */
+.journey {
+    padding: 5rem 5%;
+    background-color: var(--light-bg-color);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    float: right;
+    padding-left: 3rem;
+    text-align: left;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    float: left;
+    padding-right: 3rem;
+    text-align: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    right: calc(50% + 2rem);
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    left: calc(50% + 2rem);
+}
+
+.timeline-item::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.timeline-content {
+    position: relative;
+    width: 45%;
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(58, 134, 255, 0.2);
+}
+
+.timeline-date {
+    position: absolute;
+    top: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.timeline-content p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.timeline-image {
+    width: 100%;
+    height: 200px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.timeline-content:hover .timeline-image img {
+    transform: scale(1.1);
+}
+
+.timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.timeline-item:nth-child(even) .timeline-tags {
+    justify-content: flex-end;
+}
+
+.timeline-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(58, 134, 255, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.timeline-tag i {
+    margin-right: 0.4rem;
+}
+
+@media (max-width: 992px) {
+    .timeline::before {
+        left: 1rem;
+    }
+    
+    .timeline-dot {
+        left: 1rem;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        float: right;
+        width: calc(100% - 4rem);
+        margin-left: 4rem;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        left: 0;
+        right: auto;
+        top: -2rem;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-tags {
+        justify-content: flex-start;
+    }
+}
+
+/* Add this to your CSS for the pulse animation */
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.5);
+    }
+    to {
+        box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.8);
+    }
+}
+
+/* Recent Activity Section */
+.recent-activity {
+    background: #000000;
+    color: var(--text-color);
+}
+
+.section-intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.activity-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.activity-item {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.activity-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.activity-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+}
+
+.activity-date {
+    font-weight: 600;
+    min-width: 120px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.activity-content p {
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.activity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.activity-tag {
+    background: rgba(58, 134, 255, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.activity-tag:hover {
+    background: rgba(58, 134, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.activity-tag i {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+.view-all-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    background: rgba(58, 134, 255, 0.1);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.view-all-link:hover {
+    background: rgba(58, 134, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.view-all-link span {
+    margin-right: 8px;
+}
+
+.view-all-link i {
+    transition: transform 0.3s ease;
+}
+
+.view-all-link:hover i {
+    transform: translateX(5px);
+}
+
+/* Media Queries for Recent Activity Section */
+@media (max-width: 768px) {
+    .activity-item {
+        flex-direction: column;
+    }
+    
+    .activity-date {
+        margin-bottom: 1rem;
+    }
+    
+    .activity-container {
+        gap: 1rem;
+    }
+}
+
+/* Activity Page Specific Styles */
+.activity-section {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.activity-section .activity-item {
+    margin-bottom: 2.5rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 2rem;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.activity-section .activity-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.activity-section .activity-date {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.activity-section .activity-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.activity-section .activity-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.activity-section .activity-tags {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .activity-section .activity-item {
+        padding-left: 1.5rem;
+    }
+    
+    .activity-section .activity-date {
+        font-size: 1rem;
+    }
+    
+    .activity-section .activity-content h3 {
+        font-size: 1.4rem;
+    }
 }
