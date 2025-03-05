@@ -176,6 +176,100 @@
             background: var(--secondary-color);
             transform: translateY(-5px);
         }
+
+        .resume-section {
+            margin-bottom: 4rem;
+        }
+
+        .resume-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resume-card {
+            background: var(--light-color, #ffffff);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color, #2563eb);
+            background: var(--light-accent, #f0f9ff);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .resume-content {
+            flex: 1;
+        }
+
+        .resume-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color, #1f2937);
+        }
+
+        .resume-content p {
+            color: var(--text-muted, #6b7280);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .freshness-date {
+            font-size: 0.85rem;
+            color: var(--text-muted, #6b7280);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color, #2563eb);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--primary-dark, #1d4ed8);
+        }
+
+        @media (max-width: 768px) {
+            .resume-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -217,6 +311,43 @@
     </div>
 
     <main class="project-container">
+        <!-- Resume Section -->
+        <section class="resume-section">
+            <h2 class="section-title">My Resumes</h2>
+            <div class="resume-cards">
+                <div class="resume-card">
+                    <div class="resume-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="resume-content">
+                        <h3>Full Resume</h3>
+                        <p>Complete professional background and experience</p>
+                        <div class="resume-meta">
+                            <span class="freshness-date" data-updated="2024-03-15">Updated 2 days ago</span>
+                            <a href="assets/resumes/ResumeAnanthDeepakSharmaNanduri.pdf" class="download-btn" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="resume-card">
+                    <div class="resume-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="resume-content">
+                        <h3>Technical Resume</h3>
+                        <p>Focused on technical skills and projects</p>
+                        <div class="resume-meta">
+                            <span class="freshness-date" data-updated="2024-03-10">Updated 1 week ago</span>
+                            <a href="assets/resumes/ResumeAnanthDeepakSharmaNanduri.pdf" class="download-btn" download>
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <h2 class="section-title">Featured Projects</h2>
         
         <div class="project-card">
@@ -488,7 +619,7 @@
     </div>
 
     <script>
-        // Initialize ScrollReveal for animations
+        // Initialize ScrollReveal
         const sr = ScrollReveal({
             origin: 'bottom',
             distance: '50px',
@@ -497,96 +628,58 @@
             easing: 'ease-in-out'
         });
 
-        // Apply animations to elements
-        sr.reveal('.page-header', { delay: 100 });
-        sr.reveal('.section-title', { delay: 200 });
-        sr.reveal('.project-card', { interval: 300 });
+        // Apply animations
+        sr.reveal('.resume-card', { interval: 200 });
+        sr.reveal('.project-card', { interval: 200 });
 
-        // Back to top button functionality
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
-        });
+        // Update freshness indicators
+        function updateFreshnessIndicators() {
+            const freshnessElements = document.querySelectorAll('.freshness-date');
+            const now = new Date();
 
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Project filtering functionality
+            freshnessElements.forEach(element => {
+                const updatedDate = new Date(element.dataset.updated);
+                const diffTime = Math.abs(now - updatedDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const diffMonths = Math.floor(diffDays / 30);
+                const diffYears = Math.floor(diffDays / 365);
+
+                let freshnessText = '';
+                if (diffDays === 0) {
+                    freshnessText = 'Updated today';
+                } else if (diffDays === 1) {
+                    freshnessText = 'Updated yesterday';
+                } else if (diffDays < 7) {
+                    freshnessText = `Updated ${diffDays} days ago`;
+                } else if (diffDays < 30) {
+                    const weeks = Math.floor(diffDays / 7);
+                    freshnessText = `Updated ${weeks} week${weeks > 1 ? 's' : ''} ago`;
+                } else if (diffMonths < 12) {
+                    freshnessText = `Updated ${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+                } else {
+                    freshnessText = `Updated ${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
+                }
+
+                element.textContent = freshnessText;
+            });
+        }
+
+        // Update freshness on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Get URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const tagFilter = urlParams.get('tag');
-            
-            if (tagFilter) {
-                // Get all project cards
-                const projectCards = document.querySelectorAll('.project-card');
-                let visibleCount = 0;
-                
-                // Filter projects by tag
-                projectCards.forEach(card => {
-                    const techTags = card.querySelectorAll('.tech-tag');
-                    let hasTag = false;
-                    
-                    techTags.forEach(tag => {
-                        if (tag.textContent.toLowerCase() === tagFilter.toLowerCase()) {
-                            hasTag = true;
-                        }
-                    });
-                    
-                    if (hasTag) {
-                        card.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Add filter indicator
-                const mainContainer = document.querySelector('main');
-                const filterNotice = document.createElement('div');
-                filterNotice.className = 'filter-notice';
-                filterNotice.innerHTML = `
-                    <p>Showing ${visibleCount} projects with tag: <strong>${tagFilter}</strong></p>
-                    <a href="code.html" class="clear-filter">Clear filter</a>
-                `;
-                mainContainer.insertBefore(filterNotice, mainContainer.firstChild);
-                
-                // Add styles for filter notice
-                const style = document.createElement('style');
-                style.textContent = `
-                    .filter-notice {
-                        background: rgba(0,0,0,0.7);
-                        color: white;
-                        padding: 1rem 2rem;
-                        margin-bottom: 2rem;
-                        border-radius: var(--border-radius);
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-                    .clear-filter {
-                        background: var(--primary-color);
-                        color: white;
-                        padding: 0.5rem 1rem;
-                        border-radius: 20px;
-                        text-decoration: none;
-                        transition: all 0.3s ease;
-                    }
-                    .clear-filter:hover {
-                        background: var(--secondary-color);
-                        transform: translateY(-3px);
-                    }
-                `;
-                document.head.appendChild(style);
-            }
+            updateFreshnessIndicators();
         });
+
+        // Handle back-to-top button
+        const backToTop = document.querySelector('.back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+        }
     </script>
     
     <script src="chatbot.js"></script>
