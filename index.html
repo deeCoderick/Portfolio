@@ -686,12 +686,18 @@
                 <input type="text" placeholder="Type your message...">
                 <button><i class="fas fa-paper-plane"></i></button>
             </div>
+            <!-- Test API Connection Button (Remove after debugging) -->
+            <div style="margin-top: 10px; text-align: center;">
+                <button id="test-api-connection" style="padding: 5px 10px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Test API Connection
+                </button>
+            </div>
         </div>
     </div>
 
     <script src="chatbot.js"></script>
     <script>
-        // Initialize ScrollReveal for animations
+        // Initialize ScrollReveal
         const sr = ScrollReveal({
             origin: 'bottom',
             distance: '50px',
@@ -700,27 +706,66 @@
             easing: 'ease-in-out'
         });
 
-        // Apply animations to elements
+        // Apply animations
+        sr.reveal('.section-title', { delay: 100 });
         sr.reveal('.about-content', { delay: 200 });
         sr.reveal('.skills-categories', { delay: 300 });
+        sr.reveal('.skills-item', { interval: 200 });
+        sr.reveal('.portfolio-item', { interval: 200 });
         sr.reveal('.activity-item', { interval: 200 });
-        sr.reveal('.portfolio ul li', { interval: 200 });
-        sr.reveal('.journey .section-intro', { delay: 200 });
-        sr.reveal('.timeline-item', { interval: 300 });
+        sr.reveal('.timeline-item', { interval: 200 });
+        sr.reveal('.contact-form', { delay: 300 });
         sr.reveal('.contact-methods', { delay: 200 });
-        sr.reveal('.contact-form', { delay: 400 });
+        sr.reveal('.footer-content', { delay: 200 });
         
-        // Form submission handling (can be expanded)
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! This form is not connected to a backend yet.');
-            this.reset();
-        });
-
-        // Add logo animation and handle social sidebar
         document.addEventListener('DOMContentLoaded', function() {
-            const logoContainer = document.querySelector('.logo-container');
+            // Navigation highlight on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav ul li a');
             
+            // Create Intersection Observer
+            const observerOptions = {
+                rootMargin: '-20% 0px -80% 0px', // Adjust when section is considered "visible"
+                threshold: 0
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Get the section ID
+                        const id = entry.target.getAttribute('id');
+                        
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        
+                        // Add active class to the corresponding nav link
+                        const currentLink = document.querySelector(`nav ul li a[href="#${id}"]`);
+                        if (currentLink) {
+                            currentLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! This form is not connected to a backend yet.');
+                    this.reset();
+                });
+            }
+            
+            // Add logo animation
+            const logoContainer = document.querySelector('.logo-container');
             if (logoContainer) {
                 logoContainer.addEventListener('mouseenter', function() {
                     this.classList.add('logo-animated');
@@ -746,8 +791,8 @@
                 );
             }
             
-            // Function to handle scroll event
-            function handleScroll() {
+            // Function to handle social sidebar visibility
+            function handleSocialSidebarVisibility() {
                 const currentScrollY = window.scrollY;
                 const headerHeight = header.offsetHeight;
                 const footerVisible = isInViewport(footer);
@@ -764,13 +809,46 @@
             }
             
             // Add scroll event listener
-            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleSocialSidebarVisibility);
             
             // Initial check
-            handleScroll();
+            handleSocialSidebarVisibility();
             
-            // Note: Chatbot functionality is now handled in chatbot.js
+            // Update freshness indicators
+            updateFreshnessIndicators();
         });
+        
+        // Update freshness indicators
+        function updateFreshnessIndicators() {
+            const freshnessElements = document.querySelectorAll('.freshness-date');
+            const now = new Date();
+
+            freshnessElements.forEach(element => {
+                const updatedDate = new Date(element.dataset.updated);
+                const diffTime = Math.abs(now - updatedDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const diffMonths = Math.floor(diffDays / 30);
+                const diffYears = Math.floor(diffDays / 365);
+
+                let freshnessText = '';
+                if (diffDays === 0) {
+                    freshnessText = 'Updated today';
+                } else if (diffDays === 1) {
+                    freshnessText = 'Updated yesterday';
+                } else if (diffDays < 7) {
+                    freshnessText = `Updated ${diffDays} days ago`;
+                } else if (diffDays < 30) {
+                    const weeks = Math.floor(diffDays / 7);
+                    freshnessText = `Updated ${weeks} week${weeks > 1 ? 's' : ''} ago`;
+                } else if (diffMonths < 12) {
+                    freshnessText = `Updated ${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+                } else {
+                    freshnessText = `Updated ${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
+                }
+
+                element.textContent = freshnessText;
+            });
+        }
     </script>
 </body>
 </html>

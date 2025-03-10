@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.querySelector('.chatbot-messages');
     const chatbotHeader = document.querySelector('.chatbot-header');
     
+    // API configuration - Change this when your backend is ready
+    const API_CONFIG = {
+        endpoint: 'http://localhost:3001/api/chat', // HTTPS endpoint
+        enabled: true,        // Enable API communication
+        timeout: 10000         // Timeout in milliseconds
+    };
+    
     let isFirstOpen = true;
     
     // Toggle chatbot window when icon is clicked
@@ -52,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Sample responses for chatbot
+    // Sample responses for chatbot (fallback when API is disabled)
     const responses = {
         'hello': 'Hi there! How can I help you today?',
         'hi': 'Hello! What can I assist you with?',
@@ -77,6 +84,30 @@ document.addEventListener('DOMContentLoaded', function() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
+    // Add a typing indicator
+    function showTypingIndicator() {
+        if (!chatMessages) return;
+        
+        const indicator = document.createElement('div');
+        indicator.className = 'chat-message bot-message typing-indicator';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
+        indicator.id = 'typing-indicator';
+        chatMessages.appendChild(indicator);
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return indicator;
+    }
+    
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+    
     // Add a message from the user to the chat
     function addUserMessage(message) {
         if (!chatMessages) return;
@@ -90,8 +121,48 @@ document.addEventListener('DOMContentLoaded', function() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    // Function to process user input and return a response
-    function getResponse(input) {
+    // Function to get a response from the API
+    async function getApiResponse(message) {
+        console.log('🚀 Sending request to API:', API_CONFIG.endpoint);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
+        
+        try {
+            const response = await fetch(API_CONFIG.endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userToken}` // Add authentication token
+                },
+                body: JSON.stringify({ message: message }),
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) {
+                console.error('❌ API error:', response.status, response.statusText);
+                throw new Error(`API responded with status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('✅ API response received:', data);
+            return data.response || "Sorry, I couldn't process your request at this time.";
+            
+        } catch (error) {
+            console.error('❌ Error fetching from API:', error.message);
+            
+            if (error.name === 'AbortError') {
+                return "I'm sorry, the request took too long. Please try again later.";
+            }
+            
+            // Fallback to local responses
+            return getLocalResponse(message);
+        }
+    }
+    
+    // Function to process user input and return a local response
+    function getLocalResponse(input) {
         input = input.toLowerCase().trim();
         
         // Check for keyword matches
@@ -106,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Send message function
-    function sendMessage() {
+    async function sendMessage() {
         if (!chatInput || !chatMessages) return;
         
         const message = chatInput.value.trim();
@@ -115,11 +186,32 @@ document.addEventListener('DOMContentLoaded', function() {
             addUserMessage(message);
             chatInput.value = '';
             
-            // Get and add bot response after a short delay
-            setTimeout(() => {
-                const response = getResponse(message);
+            // Show typing indicator
+            const typingIndicator = showTypingIndicator();
+            
+            try {
+                let response;
+                
+                // Get response from API or fallback to local responses
+                if (API_CONFIG.enabled) {
+                    response = await getApiResponse(message);
+                } else {
+                    // Simulate network delay for local responses
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    response = getLocalResponse(message);
+                }
+                
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                // Add bot response
                 addBotMessage(response);
-            }, 500);
+                
+            } catch (error) {
+                console.error('Error in sendMessage:', error);
+                removeTypingIndicator();
+                addBotMessage("I'm sorry, something went wrong. Please try again later.");
+            }
         }
     }
     
@@ -132,6 +224,44 @@ document.addEventListener('DOMContentLoaded', function() {
         chatInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
+            }
+        });
+    }
+    
+    // Add test API connection button functionality
+    const testApiBtn = document.getElementById('test-api-connection');
+    if (testApiBtn) {
+        testApiBtn.addEventListener('click', async function() {
+            console.log('Testing API connection...');
+            
+            try {
+                // Show a message in the chat
+                addBotMessage("🔄 Testing connection to backend...");
+                
+                // Make a direct API call
+                const response = await fetch(API_CONFIG.endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: "test connection" })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API responded with status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('API test successful:', data);
+                
+                // Show success message
+                addBotMessage("✅ Backend connection successful! Response received: " + data.response);
+            } catch (error) {
+                console.error('API test failed:', error);
+                
+                // Show error message
+                addBotMessage("❌ Backend connection failed: " + error.message);
+                addBotMessage("Check the console for more details.");
             }
         });
     }
@@ -201,3 +331,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on window resize (in case header/footer positions change)
     window.addEventListener('resize', handleSocialSidebarVisibility);
 }); 
+
+// Keep using environment variables but add validation
+if (!process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY.length < 20) {
+  console.error('Invalid API key configuration');
+  process.exit(1);
+} 
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      'https://your-frontend-domain.com',
+      // Add other trusted domains
+    ];
+    
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}; 
