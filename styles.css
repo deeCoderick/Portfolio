@@ -2083,3 +2083,24 @@ footer p {
         font-size: 1.4rem;
     }
 }
+
+.feature-toggle {
+    transition: opacity 0.3s ease;
+}
+
+.feature-toggle:hover {
+    opacity: 0.9;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.toggle-switch input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+/* Hide toggle in production */
+.production .feature-toggle {
+    display: none !important;
+}

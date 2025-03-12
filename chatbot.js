@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Feature flag configuration - You can control this programmatically
+    const CHATBOT_CONFIG = {
+        enabled: false, // Set this to false by default
+        version: '1.0',
+        debugMode: false
+    };
+
     // Get DOM elements
     const chatbotIcon = document.querySelector('.chatbot-icon');
     const chatbotWindow = document.querySelector('.chatbot-window');
@@ -8,32 +15,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.querySelector('.chatbot-messages');
     const chatbotHeader = document.querySelector('.chatbot-header');
     
-    // API configuration - Change this when your backend is ready
+    // API configuration
     const API_CONFIG = {
-        endpoint: 'http://localhost:3001/api/chat', // HTTPS endpoint
-        enabled: true,        // Enable API communication
-        timeout: 10000         // Timeout in milliseconds
+        endpoint: 'http://ec2-3-145-76-118.us-east-2.compute.amazonaws.com/api/chat',
+        enabled: true,
+        timeout: 15000,
+        debug: true
     };
     
     let isFirstOpen = true;
     
     // Toggle chatbot window when icon is clicked
     if (chatbotIcon) {
-        chatbotIcon.addEventListener('click', function() {
+    chatbotIcon.addEventListener('click', function() {
             console.log('Chatbot icon clicked'); // Debug log
             if (chatbotWindow) {
                 chatbotWindow.classList.toggle('active');
                 console.log('Chatbot window active:', chatbotWindow.classList.contains('active')); // Debug log
-                
+        
                 // Show welcome messages only on first open
                 if (isFirstOpen && chatbotWindow.classList.contains('active')) {
-                    addBotMessage("👋 Hello there! I'm Donna, your friendly virtual assistant.");
-                    setTimeout(() => {
-                        addBotMessage("Welcome to Ananth's portfolio! I'm here to help you navigate and answer any questions you might have about Ananth's work, skills, or how to get in touch.");
-                    }, 800);
-                    setTimeout(() => {
-                        addBotMessage("How can I assist you today?");
-                    }, 1600);
+            addBotMessage("👋 Hello there! I'm Donna, your friendly virtual assistant.");
+            setTimeout(() => {
+                addBotMessage("Welcome to Ananth's portfolio! I'm here to help you navigate and answer any questions you might have about Ananth's work, skills, or how to get in touch.");
+            }, 800);
+            setTimeout(() => {
+                addBotMessage("How can I assist you today?");
+            }, 1600);
                     isFirstOpen = false;
                 }
             }
@@ -45,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotClose.addEventListener('click', function(e) {
             e.stopPropagation(); // Prevent event from bubbling up
             if (chatbotWindow) {
-                chatbotWindow.classList.remove('active');
+        chatbotWindow.classList.remove('active');
             }
-        });
+    });
     }
     
     // Close chatbot window when header is clicked
@@ -123,40 +131,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to get a response from the API
     async function getApiResponse(message) {
-        console.log('🚀 Sending request to API:', API_CONFIG.endpoint);
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
+        console.log('🚀 Sending request:', {
+            url: API_CONFIG.endpoint,
+            message: message
+        });
         
         try {
             const response = await fetch(API_CONFIG.endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userToken}` // Add authentication token
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({ message: message }),
-                signal: controller.signal
+                mode: 'cors',
+                credentials: 'omit'
             });
-            
-            clearTimeout(timeoutId);
-            
+
             if (!response.ok) {
-                console.error('❌ API error:', response.status, response.statusText);
-                throw new Error(`API responded with status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const data = await response.json();
-            console.log('✅ API response received:', data);
-            return data.response || "Sorry, I couldn't process your request at this time.";
+            console.log('✅ Response received:', data);
             
+            return data.response || "I apologize, but I received an unexpected response format.";
         } catch (error) {
-            console.error('❌ Error fetching from API:', error.message);
-            
-            if (error.name === 'AbortError') {
-                return "I'm sorry, the request took too long. Please try again later.";
-            }
-            
-            // Fallback to local responses
+            console.error('❌ Error:', error);
             return getLocalResponse(message);
         }
     }
@@ -182,6 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const message = chatInput.value.trim();
         if (message) {
+            console.log(' Sending message:', message);
+            
             // Add user message
             addUserMessage(message);
             chatInput.value = '';
@@ -190,27 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const typingIndicator = showTypingIndicator();
             
             try {
-                let response;
-                
-                // Get response from API or fallback to local responses
-                if (API_CONFIG.enabled) {
-                    response = await getApiResponse(message);
-                } else {
-                    // Simulate network delay for local responses
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    response = getLocalResponse(message);
-                }
-                
-                // Remove typing indicator
+                const response = await getApiResponse(message);
                 removeTypingIndicator();
-                
-                // Add bot response
                 addBotMessage(response);
                 
             } catch (error) {
-                console.error('Error in sendMessage:', error);
+                console.error('❌ Chat error:', error);
                 removeTypingIndicator();
-                addBotMessage("I'm sorry, something went wrong. Please try again later.");
+                addBotMessage("I apologize, but I'm having trouble connecting to my brain right now. Please try again in a moment.");
             }
         }
     }
@@ -228,41 +218,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add test API connection button functionality
-    const testApiBtn = document.getElementById('test-api-connection');
-    if (testApiBtn) {
-        testApiBtn.addEventListener('click', async function() {
-            console.log('Testing API connection...');
-            
-            try {
-                // Show a message in the chat
-                addBotMessage("🔄 Testing connection to backend...");
-                
-                // Make a direct API call
-                const response = await fetch(API_CONFIG.endpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ message: "test connection" })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`API responded with status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                console.log('API test successful:', data);
-                
-                // Show success message
-                addBotMessage("✅ Backend connection successful! Response received: " + data.response);
-            } catch (error) {
-                console.error('API test failed:', error);
-                
-                // Show error message
-                addBotMessage("❌ Backend connection failed: " + error.message);
-                addBotMessage("Check the console for more details.");
-            }
+    // Test function to verify CORS
+    async function testCORS() {
+        try {
+            const response = await fetch(API_CONFIG.endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: 'test' }),
+                mode: 'cors',
+                credentials: 'omit'
+            });
+
+            const data = await response.json();
+            console.log('CORS test successful:', data);
+            return true;
+        } catch (error) {
+            console.error('CORS test failed:', error);
+            return false;
+        }
+    }
+    
+    // Add test button functionality
+    const testBtn = document.getElementById('test-api-connection');
+    if (testBtn) {
+        testBtn.addEventListener('click', async () => {
+            addBotMessage("🔄 Testing connection...");
+            const success = await testCORS();
+            addBotMessage(success ? 
+                "✅ Connection successful!" : 
+                "❌ Connection failed. Check console for details."
+            );
         });
     }
     
@@ -330,28 +317,110 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check on window resize (in case header/footer positions change)
     window.addEventListener('resize', handleSocialSidebarVisibility);
+
+    // Function to control chatbot visibility
+    function setChatbotVisibility(show) {
+        if (!CHATBOT_CONFIG.enabled) {
+            if (chatbotIcon) chatbotIcon.style.display = 'none';
+            if (chatbotWindow) {
+                chatbotWindow.classList.remove('active');
+                chatbotWindow.style.display = 'none';
+            }
+            return;
+        }
+
+        if (chatbotIcon) chatbotIcon.style.display = show ? 'flex' : 'none';
+        if (chatbotWindow) {
+            if (!show) chatbotWindow.classList.remove('active');
+            chatbotWindow.style.display = show ? 'flex' : 'none';
+        }
+    }
+
+    // Initialize chatbot based on configuration
+    function initializeChatbot() {
+        setChatbotVisibility(CHATBOT_CONFIG.enabled);
+        
+        if (CHATBOT_CONFIG.debugMode) {
+            console.log('Chatbot initialization:', {
+                enabled: CHATBOT_CONFIG.enabled,
+                version: CHATBOT_CONFIG.version
+            });
+        }
+    }
+
+    // Function to programmatically enable/disable chatbot
+    window.toggleChatbot = function(enable) {
+        CHATBOT_CONFIG.enabled = enable;
+        setChatbotVisibility(enable);
+        
+        if (CHATBOT_CONFIG.debugMode) {
+            console.log('Chatbot state changed:', {
+                enabled: enable,
+                timestamp: new Date().toISOString()
+            });
+        }
+    }
+
+    // Function to update chatbot configuration
+    window.updateChatbotConfig = function(config) {
+        Object.assign(CHATBOT_CONFIG, config);
+        initializeChatbot();
+        
+        if (CHATBOT_CONFIG.debugMode) {
+            console.log('Chatbot config updated:', CHATBOT_CONFIG);
+        }
+    }
+
+    // Initialize chatbot
+    initializeChatbot();
 }); 
 
-// Keep using environment variables but add validation
-if (!process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY.length < 20) {
-  console.error('Invalid API key configuration');
-  process.exit(1);
-} 
-
-const corsOptions = {
-  origin: function(origin, callback) {
-    const allowedOrigins = [
-      'https://your-frontend-domain.com',
-      // Add other trusted domains
-    ];
+// Add a diagnostic test function
+async function runDiagnostics() {
+    console.log('🔍 Running API diagnostics...');
     
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    try {
+        // Test basic connectivity
+        const response = await fetch(API_CONFIG.endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: 'test' })
+        });
+
+        console.log('📡 Connection test:', {
+            status: response.status,
+            statusText: response.statusText,
+            headers: Object.fromEntries(response.headers.entries())
+        });
+
+        const data = await response.text();
+        console.log('📦 Response data:', data);
+
+        return {
+            success: response.ok,
+            status: response.status,
+            data: data
+        };
+    } catch (error) {
+        console.error('🚫 Diagnostic failed:', error);
+        return {
+            success: false,
+            error: error.message
+        };
     }
-  },
-  methods: ['POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}; 
+}
+
+// Add diagnostic button if it exists
+const diagButton = document.getElementById('run-diagnostics');
+if (diagButton) {
+    diagButton.addEventListener('click', async () => {
+        addBotMessage("🔍 Running diagnostics...");
+        const result = await runDiagnostics();
+        addBotMessage(result.success ? 
+            "✅ Diagnostics completed successfully" : 
+            `❌ Diagnostics failed: ${result.error}`
+        );
+    });
+} 
