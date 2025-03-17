@@ -143,11 +143,16 @@ nav ul li a:hover::after {
 /* Header & Profile */
 header {
     background: linear-gradient(135deg, #000000, #333333);
-    padding: 8rem 5% 5rem;
+    padding: 0;
     color: var(--light-color);
+    box-shadow: var(--shadow);
+}
+
+/* Only apply these styles for index.html */
+body.home-page header {
+    padding: 8rem 5% 5rem;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     margin-bottom: 3rem;
-    box-shadow: var(--shadow);
 }
 
 .profile {
@@ -651,21 +656,199 @@ footer p {
     display: inline-block;
 }
 
-/* Ensure all social icons, including Threads, have consistent styling */
-.social-sidebar a,
+/* Social Icons styles for profile and footer */
 .social-icons a,
 .footer-content .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(20, 20, 20, 0.9);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
     margin: 0 5px;
-    color: var(--light-color);
-    font-size: 1.5rem;
-    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-.social-sidebar a:hover,
+/* Add before element for fill animation background */
+.social-icons a::before,
+.footer-content .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
 .social-icons a:hover,
 .footer-content .social-icons a:hover {
-    transform: translateY(-5px);
-    color: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-icons a:hover::before,
+.footer-content .social-icons a:hover::before {
+    top: 0;
+}
+
+/* Individual social icon styles for profile and footer */
+/* LinkedIn */
+.social-icons a .fa-linkedin,
+.footer-content .social-icons a .fa-linkedin {
+    color: #0077b5;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-linkedin,
+.footer-content .social-icons a:hover .fa-linkedin {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(1)::before,
+.footer-content .social-icons a:nth-child(1)::before {
+    background-color: #0077b5;
+}
+
+/* GitHub */
+.social-icons a .fa-github,
+.footer-content .social-icons a .fa-github {
+    color: #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-github,
+.footer-content .social-icons a:hover .fa-github {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(2)::before,
+.footer-content .social-icons a:nth-child(2)::before {
+    background-color: #333;
+}
+
+/* Twitter */
+.social-icons a .fa-twitter,
+.footer-content .social-icons a .fa-twitter {
+    color: #1DA1F2;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-twitter,
+.footer-content .social-icons a:hover .fa-twitter {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(3)::before,
+.footer-content .social-icons a:nth-child(3)::before {
+    background-color: #1DA1F2;
+}
+
+/* Instagram */
+.social-icons a .fa-instagram,
+.footer-content .social-icons a .fa-instagram {
+    color: #E1306C;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-instagram,
+.footer-content .social-icons a:hover .fa-instagram {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(4)::before,
+.footer-content .social-icons a:nth-child(4)::before {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+/* YouTube */
+.social-icons a .fa-youtube,
+.footer-content .social-icons a .fa-youtube {
+    color: #FF0000;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-youtube,
+.footer-content .social-icons a:hover .fa-youtube {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(5)::before,
+.footer-content .social-icons a:nth-child(5)::before {
+    background-color: #FF0000;
+}
+
+/* Threads */
+.social-icons a .fa-brands.fa-threads,
+.footer-content .social-icons a .fa-brands.fa-threads {
+    color: #000000;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+    font-size: 0.9rem;
+}
+
+.social-icons a:hover .fa-brands.fa-threads,
+.footer-content .social-icons a:hover .fa-brands.fa-threads {
+    transform: scale(1.2);
+    background: transparent;
+    color: #000000;
+}
+
+.social-icons a:nth-child(6)::before,
+.footer-content .social-icons a:nth-child(6)::before {
+    background-color: #ffffff;
+}
+
+/* Medium */
+.social-icons a .fa-medium,
+.footer-content .social-icons a .fa-medium {
+    color: #00AB6C;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-medium,
+.footer-content .social-icons a:hover .fa-medium {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(7)::before,
+.footer-content .social-icons a:nth-child(7)::before {
+    background-color: #00AB6C;
+}
+
+/* TikTok */
+.social-icons a .fa-tiktok,
+.footer-content .social-icons a .fa-tiktok {
+    color: #ff0050;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover .fa-tiktok,
+.footer-content .social-icons a:hover .fa-tiktok {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-icons a:nth-child(8)::before,
+.footer-content .social-icons a:nth-child(8)::before {
+    background: linear-gradient(90deg, #25F4EE, #000000, #FE2C55);
 }
 
 /* About section stats */
@@ -1006,82 +1189,193 @@ footer p {
 .social-sidebar {
     position: fixed;
     top: 50%;
-    right: -60px; /* Start hidden off-screen */
+    right: 0;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Reduced from 10px */
-    background: #000000;
-    padding: 10px 8px; /* Reduced padding */
-    border-radius: 10px 0 0 10px;
-    box-shadow: var(--shadow);
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 12px 8px;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     z-index: 999;
     backdrop-filter: blur(5px);
-    transition: right 0.5s ease, opacity 0.5s ease; /* Smooth transition */
-    opacity: 0;
+    transition: transform 0.3s ease;
+    opacity: 1;
 }
 
+/* Remove this class as we want the sidebar always visible */
 .social-sidebar.visible {
     right: 0;
     opacity: 1;
-    transition: right 0.5s ease, opacity 0.5s ease; /* Ensure smooth transition when showing */
 }
 
+/* Base styles for all social sidebar links */
 .social-sidebar a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: transparent;
-    color: var(--light-color);
+    background-color: rgba(20, 20, 20, 0.9);
     font-size: 1.2rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     margin: 4px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add before element for fill animation background */
+.social-sidebar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
 }
 
 .social-sidebar a:hover {
-    transform: translateX(-5px);
-    background-color: var(--accent-color);
-    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.social-sidebar .fa-linkedin {
-    background: transparent;
-    border-radius: 50%;
+.social-sidebar a:hover::before {
+    top: 0;
 }
 
-.social-sidebar .fa-github {
-    background: transparent;
-    border-radius: 50%;
+/* Individual social icon styles */
+
+/* LinkedIn */
+.social-sidebar a .fa-linkedin {
+    color: #0077b5;
+    transition: all 0.3s ease;
 }
 
-.social-sidebar .fa-twitter {
-    background: transparent;
-    border-radius: 50%;
+.social-sidebar a:hover .fa-linkedin {
+    transform: scale(1.2);
+    color: white;
 }
 
-.social-sidebar .fa-instagram {
-    background: transparent;
-    border-radius: 50%;
+.social-sidebar a:nth-child(1)::before {
+    background-color: #0077b5;
 }
 
-.social-sidebar .fa-youtube {
-    background: transparent;
-    border-radius: 50%;
+/* GitHub */
+.social-sidebar a .fa-github {
+    color: #f5f5f5;
+    transition: all 0.3s ease;
 }
 
-.social-sidebar .fa-medium {
-    background: transparent;
-    border-radius: 50%;
+.social-sidebar a:hover .fa-github {
+    transform: scale(1.2);
+    color: white;
 }
 
-.social-sidebar .fa-tiktok {
-    background: transparent;
+.social-sidebar a:nth-child(2)::before {
+    background-color: #333;
+}
+
+/* Twitter */
+.social-sidebar a .fa-twitter {
+    color: #1DA1F2;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover .fa-twitter {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-sidebar a:nth-child(3)::before {
+    background-color: #1DA1F2;
+}
+
+/* Instagram */
+.social-sidebar a .fa-instagram {
+    color: #E1306C;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover .fa-instagram {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-sidebar a:nth-child(4)::before {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+/* YouTube */
+.social-sidebar a .fa-youtube {
+    color: #FF0000;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover .fa-youtube {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-sidebar a:nth-child(5)::before {
+    background-color: #FF0000;
+}
+
+/* Threads */
+.social-sidebar a .fa-brands.fa-threads {
+    color: #000000;
+    transition: all 0.3s ease;
+    background: #ffffff;
     border-radius: 50%;
+    padding: 4px;
+    font-size: 0.9rem;
+}
+
+.social-sidebar a:hover .fa-brands.fa-threads {
+    transform: scale(1.2);
+    background: transparent;
+    color: #000000;
+}
+
+.social-sidebar a:nth-child(6)::before {
+    background-color: #ffffff;
+}
+
+/* Medium */
+.social-sidebar a .fa-medium {
+    color: #00AB6C;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover .fa-medium {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-sidebar a:nth-child(7)::before {
+    background-color: #00AB6C;
+}
+
+/* TikTok */
+.social-sidebar a .fa-tiktok {
+    color: #ff0050;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover .fa-tiktok {
+    transform: scale(1.2);
+    color: white;
+}
+
+.social-sidebar a:nth-child(8)::before {
+    background: linear-gradient(90deg, #25F4EE, #000000, #FE2C55);
 }
 
 /* Chatbot */
@@ -1330,16 +1624,62 @@ footer p {
 @media (max-width: 768px) {
     .social-sidebar {
         top: auto;
-        bottom: 100px;
-        right: 0;
+        bottom: 20px;
+        right: 20px;
         transform: none;
         flex-direction: row;
-        padding: 10px;
-        border-radius: 10px 0 0 10px;
+        padding: 8px;
+        border-radius: 30px;
+        background: rgba(0, 0, 0, 0.85);
+    }
+    
+    .social-sidebar a {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
     
     .social-sidebar a:hover {
-        transform: translateY(-5px);
+        transform: scale(1.1);
+    }
+    
+    /* Adjust icon behavior on mobile */
+    .social-sidebar a i {
+        font-size: 1rem;
+    }
+    
+    .social-icons a,
+    .footer-content .social-icons a {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .social-icons a i,
+    .footer-content .social-icons a i {
+        font-size: 1rem;
+    }
+    
+    .social-sidebar.mobile-active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    /* Make the mobile social toggle visible */
+    .social-mobile-toggle {
+        display: flex !important;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        box-shadow: var(--shadow);
+        cursor: pointer;
     }
     
     .chatbot-container {
@@ -1356,6 +1696,23 @@ footer p {
 @media (max-width: 576px) {
     .social-sidebar {
         display: none; /* Hide on very small screens */
+    }
+    
+    /* Social icons gap adjustment for better mobile display */
+    .social-icons {
+        gap: 5px;
+    }
+    
+    .social-icons a,
+    .footer-content .social-icons a {
+        width: 30px;
+        height: 30px;
+        margin: 0 3px;
+    }
+    
+    .social-icons a i,
+    .footer-content .social-icons a i {
+        font-size: 0.9rem;
     }
     
     .social-mobile-toggle {
@@ -2105,4 +2462,28 @@ footer p {
 /* Hide toggle in production */
 .production .feature-toggle {
     display: none !important;
+}
+
+/* Mobile Social Toggle */
+.social-mobile-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-mobile-toggle:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
 }

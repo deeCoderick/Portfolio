@@ -23,8 +23,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* Project metadata text color fix for better readability */
+        .project-meta {
+            color: #000000; /* Change text color to black */
+        }
+        
+        .project-meta h2 {
+            color: #000000; /* Change heading color to black */
+        }
+        
+        .tech-stack .tech-tag {
+            color: #000000; /* Change tech tag text color to black */
+            background: rgba(255,255,255,0.7); /* Make background more opaque for better contrast */
+        }
+        
+        /* Fix for project description and features text */
+        .project-card p {
+            color: #000000 !important; /* Force black text color */
+        }
+        
+        .project-card ul li {
+            color: #000000 !important; /* Force black text for list items */
+        }
+        
+        .project-card h3, .project-card h4 {
+            color: #000000 !important; /* Force black text for headings */
+        }
+        
+        /* Additional fixes for specific project descriptions */
+        .project-content .project-description p {
+            color: #000000 !important; /* Double ensuring paragraphs are black */
+            background: transparent !important; /* Remove any background color */
+        }
+        
+        .project-content .project-description ul li {
+            color: #000000 !important; /* Double ensuring list items are black */
+            background: transparent !important; /* Remove any background color */
+        }
+        
+        /* Target any blue background sections */
+        [style*="background-color:rgb(173, 216, 230)"],
+        [style*="background-color:#ADD8E6"],
+        [style*="background-color:lightblue"],
+        [style*="background:rgb(173, 216, 230)"],
+        [style*="background:#ADD8E6"],
+        [style*="background:lightblue"] {
+            color: #000000 !important; /* Force black text for any elements with lightblue background */
+        }
+        
+        /* Target direct children of elements with blue backgrounds */
+        [style*="background-color:rgb(173, 216, 230)"] *,
+        [style*="background-color:#ADD8E6"] *,
+        [style*="background-color:lightblue"] *,
+        [style*="background:rgb(173, 216, 230)"] *,
+        [style*="background:#ADD8E6"] *,
+        [style*="background:lightblue"] * {
+            color: #000000 !important; /* Force black text for all children */
+        }
+    </style>
 </head>
-<body>
+<body class="home-page">
     <header>
         <nav>
             <a href="#" class="logo-container">
@@ -799,43 +858,7 @@
                 });
             }
             
-            // Social sidebar scroll behavior
-            const socialSidebar = document.querySelector('.social-sidebar');
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            let lastScrollY = window.scrollY;
-            
-            // Function to check if an element is in viewport
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top < window.innerHeight &&
-                    rect.bottom >= 0
-                );
-            }
-            
-            // Function to handle social sidebar visibility
-            function handleSocialSidebarVisibility() {
-                const currentScrollY = window.scrollY;
-                const headerHeight = header.offsetHeight;
-                const footerVisible = isInViewport(footer);
-                
-                // If scrolled past header and footer is not visible, show sidebar
-                if (currentScrollY > headerHeight && !footerVisible) {
-                    socialSidebar.classList.add('visible');
-                } else {
-                    // Otherwise hide sidebar
-                    socialSidebar.classList.remove('visible');
-                }
-                
-                lastScrollY = currentScrollY;
-            }
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', handleSocialSidebarVisibility);
-            
-            // Initial check
-            handleSocialSidebarVisibility();
+            // Social sidebar is now always visible
             
             // Update freshness indicators
             updateFreshnessIndicators();

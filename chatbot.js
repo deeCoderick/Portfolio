@@ -278,46 +278,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Control social sidebar visibility based on scroll position
+    // Social sidebar is now always visible
     const socialLinks = document.querySelector('.social-icons');
     const footerElement = document.querySelector('footer');
     
-    function handleSocialSidebarVisibility() {
-        if (!socialSidebar || !socialLinks) return;
-        
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const bodyHeight = document.body.offsetHeight;
-        const footerOffset = footerElement ? footerElement.offsetTop : bodyHeight;
-        const socialLinksBottom = socialLinks.getBoundingClientRect().bottom + window.scrollY;
-        
-        // On mobile devices
-        if (window.innerWidth <= 768) {
-            // Show when social links go out of scope and hide when reaching footer area
-            if (scrollPosition > socialLinksBottom && scrollPosition < footerOffset - windowHeight) {
-                socialSidebar.classList.add('visible');
-            } else {
-                socialSidebar.classList.remove('visible');
-            }
-        } else {
-            // On desktop, show sidebar but hide when reaching footer
-            if (scrollPosition < footerOffset - windowHeight * 0.8) {
-                socialSidebar.classList.add('visible');
-            } else {
-                socialSidebar.classList.remove('visible');
-            }
-        }
+    // Mobile toggle functionality 
+    const socialMobileToggle = document.querySelector('.social-mobile-toggle');
+    if (socialMobileToggle && socialSidebar) {
+        socialMobileToggle.addEventListener('click', function() {
+            socialSidebar.classList.toggle('mobile-active');
+        });
     }
     
-    // Initial check on page load
-    handleSocialSidebarVisibility();
-    
-    // Check on scroll
-    window.addEventListener('scroll', handleSocialSidebarVisibility);
-    
-    // Check on window resize (in case header/footer positions change)
-    window.addEventListener('resize', handleSocialSidebarVisibility);
-
     // Function to control chatbot visibility
     function setChatbotVisibility(show) {
         if (!CHATBOT_CONFIG.enabled) {
