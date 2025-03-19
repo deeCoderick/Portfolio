@@ -87,10 +87,11 @@
         }
         .social-icons a .fa-medium, .social-sidebar a .fa-medium { color: #00AB6C !important; }
         .social-icons a .fa-tiktok, .social-sidebar a .fa-tiktok { 
-            background: linear-gradient(90deg, #25F4EE, #000000, #FE2C55) !important;
+            background: linear-gradient(90deg, #25F4EE, #FE2C55) !important;
             -webkit-background-clip: text !important;
             background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
+            font-size: 1.2rem !important;
         }
         
         /* Project description specific styles */
@@ -117,69 +118,89 @@
             width: 40px !important;
             height: 40px !important;
             border-radius: 50% !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            backdrop-filter: blur(5px) !important;
-            transition: all 0.3s ease !important;
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
             cursor: pointer !important;
             text-decoration: none !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
 
         .social-icons a i, .social-sidebar a i {
             font-size: 1.2rem !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        /* Hover Effects */
-        .social-icons a:hover {
-            transform: translateY(-3px) !important;
-            background: rgba(255, 255, 255, 0.05) !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-        }
-        
-        .social-sidebar a:hover {
-            transform: translateX(-5px) !important;
-            background: transparent !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-        }
-
-        .social-icons a:hover i, .social-sidebar a:hover i {
-            transform: scale(1.1) !important;
-        }
-        
-        /* Social Sidebar Specific */
-        .social-sidebar {
-            position: fixed !important;
-            top: 50% !important;
-            right: 0 !important;
-            transform: translateY(-50%) !important;
-            flex-direction: column !important;
-            background: rgba(0, 0, 0, 0.8) !important;
-            padding: 12px 8px !important;
-            border-radius: 30px 0 0 30px !important;
-            gap: 12px !important;
-            backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2) !important;
-            z-index: 1000 !important;
-        }
-
-        .social-sidebar a:hover {
-            transform: translateX(-5px) !important;
-            background: transparent !important;
-        }
-        
-        /* Footer Social Icons */
-        .footer-content .social-icons {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            z-index: 1 !important;
+            display: flex !important;
+            align-items: center !important;
             justify-content: center !important;
-            margin-top: 1rem !important;
+            width: 100% !important;
+            height: 100% !important;
         }
 
-        /* Profile Social Icons */
-        .profile-info .social-icons {
-            justify-content: flex-start !important;
-            margin-top: 1.5rem !important;
+        /* Brand Colors */
+        .social-sidebar a[href*="linkedin"] .fa-linkedin { color: #0077b5 !important; }
+        .social-sidebar a[href*="github"] .fa-github { color: #f0f6fc !important; }
+        .social-sidebar a[href*="twitter"] .fa-twitter { color: #1DA1F2 !important; }
+        .social-sidebar a[href*="youtube"] .fa-youtube { color: #FF0000 !important; }
+        .social-sidebar a[href*="medium"] .fa-medium { color: #00AB6C !important; }
+
+        /* Instagram Icon */
+        .social-sidebar a[href*="instagram"] .fa-instagram {
+            background: -webkit-linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+        }
+
+        /* Threads Icon */
+        .social-sidebar a[href*="threads"] .fa-threads {
+            background: -webkit-linear-gradient(45deg, #FFFFFF, #B2B2B2) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+        }
+
+        /* Hover Effects */
+        .social-sidebar a:hover {
+            border-color: transparent !important;
+        }
+
+        /* Brand-specific hover backgrounds */
+        .social-sidebar a[href*="linkedin"]:hover { background: #0077b5 !important; }
+        .social-sidebar a[href*="github"]:hover { background: #24292e !important; }
+        .social-sidebar a[href*="twitter"]:hover { background: #1DA1F2 !important; }
+        .social-sidebar a[href*="instagram"]:hover { background: #E1306C !important; }
+        .social-sidebar a[href*="youtube"]:hover { background: #FF0000 !important; }
+        .social-sidebar a[href*="threads"]:hover { background: #000000 !important; }
+        .social-sidebar a[href*="medium"]:hover { background: #00AB6C !important; }
+        .social-sidebar a[href*="tiktok"]:hover { background: #000000 !important; }
+
+        /* Icon color on hover */
+        .social-sidebar a:hover i {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            background: transparent !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            transform: scale(1.2) !important;
+        }
+
+        /* Specific hover styles for gradient icons */
+        .social-sidebar a:hover[href*="instagram"] .fa-instagram,
+        .social-sidebar a:hover[href*="threads"] .fa-threads {
+            background: transparent !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Hover Transitions */
+        .social-sidebar a:hover {
+            transform: translateX(-5px) !important;
         }
 
         /* Mobile Adjustments */
@@ -189,44 +210,12 @@
             }
             
             .social-icons a, .social-sidebar a {
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
+                width: 36px !important;
+                height: 36px !important;
             }
 
-            .social-sidebar {
-                display: none;
-            }
-
-            .social-mobile-toggle {
-                display: block;
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                background: var(--primary-color);
-                color: var(--text-color);
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-                cursor: pointer;
-            }
-
-            .social-sidebar.visible {
-                display: flex;
-                flex-direction: row;
-                position: fixed;
-                bottom: 80px;
-                right: 20px;
-                top: auto;
-                transform: none;
-                border-radius: 20px;
-                padding: 8px;
-                gap: 8px;
+            .social-icons a i, .social-sidebar a i {
+                font-size: 1.1rem !important;
             }
         }
 
@@ -360,12 +349,20 @@
         }
         
         .project-card {
-            background: var(--light-color);
+            background: rgba(255, 255, 255, 0.1) !important;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15) !important;
         }
         
         .project-image {
@@ -382,7 +379,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
         }
         
         .project-meta {
@@ -391,12 +388,14 @@
             left: 0;
             width: 100%;
             padding: 1.5rem;
-            color: white;
+            color: #FFFFFF !important;
         }
         
         .project-meta h2 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            color: #FFFFFF !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .tech-stack {
@@ -407,19 +406,35 @@
         }
         
         .tech-tag {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             backdrop-filter: blur(5px);
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .project-content {
             padding: 2rem;
+            background: rgba(255, 255, 255, 0.95) !important;
         }
         
         .project-description {
             margin-bottom: 1.5rem;
+        }
+        
+        .project-description h3,
+        .project-description h4 {
+            color: #000000 !important;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .project-description p,
+        .project-description ul,
+        .project-description li {
+            color: #333333 !important;
         }
         
         .project-links {
@@ -427,17 +442,37 @@
             gap: 1rem;
         }
         
-        .btn {
+        .project-links .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.7rem 1.5rem;
+            background: var(--primary-color);
+            color: #FFFFFF !important;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .project-links .btn:hover {
+            background: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-links .btn i {
+            color: #FFFFFF !important;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
+            color: #FFFFFF !important;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .section-title::after {
@@ -457,7 +492,7 @@
             bottom: 2rem;
             right: 2rem;
             background: var(--primary-color);
-            color: white;
+            color: #FFFFFF !important;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -469,6 +504,7 @@
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
+            z-index: 1000;
         }
         
         .back-to-top.active {
@@ -479,6 +515,10 @@
         .back-to-top:hover {
             background: var(--secondary-color);
             transform: translateY(-5px);
+        }
+
+        .back-to-top i {
+            color: #FFFFFF !important;
         }
 
         .resume-section {
@@ -493,24 +533,27 @@
         }
 
         .resume-card {
-            background: var(--light-color, #ffffff);
+            background: rgba(255, 255, 255, 0.1) !important;
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .resume-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15) !important;
         }
 
         .resume-icon {
             font-size: 2.5rem;
-            color: var(--primary-color, #2563eb);
-            background: var(--light-accent, #f0f9ff);
+            color: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.1);
             width: 60px;
             height: 60px;
             border-radius: 12px;
@@ -520,6 +563,10 @@
             flex-shrink: 0;
         }
 
+        .resume-icon i {
+            color: #FFFFFF !important;
+        }
+
         .resume-content {
             flex: 1;
         }
@@ -527,11 +574,11 @@
         .resume-content h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            color: var(--dark-color, #1f2937);
+            color: #FFFFFF !important;
         }
 
         .resume-content p {
-            color: var(--text-muted, #6b7280);
+            color: rgba(255, 255, 255, 0.8) !important;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
@@ -545,7 +592,7 @@
 
         .freshness-date {
             font-size: 0.85rem;
-            color: var(--text-muted, #6b7280);
+            color: rgba(255, 255, 255, 0.6) !important;
         }
 
         .download-btn {
@@ -553,16 +600,23 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: var(--primary-color, #2563eb);
-            color: white;
+            background: var(--primary-color);
+            color: #FFFFFF !important;
             border-radius: 6px;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .download-btn:hover {
-            background: var(--primary-dark, #1d4ed8);
+            background: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn i {
+            color: #FFFFFF !important;
         }
 
         @media (max-width: 768px) {
@@ -591,6 +645,116 @@
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* TikTok specific styles */
+        .social-icons a .fa-tiktok, .social-sidebar a .fa-tiktok { 
+            background: linear-gradient(90deg, #25F4EE, #FE2C55) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            font-size: 1.2rem !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .social-sidebar a:hover .fa-tiktok {
+            background: transparent !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .social-sidebar a:hover {
+            background: #000000 !important;
+            border-color: transparent !important;
+        }
+
+        /* Ensure proper centering and scaling for all icons */
+        .social-sidebar a i {
+            width: 100% !important;
+            height: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        /* Icon scaling on hover */
+        .social-icons a:hover i, .social-sidebar a:hover i {
+            transform: scale(1.2) !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        /* Brand-specific hover effects */
+        .social-sidebar a:hover {
+            border-color: transparent !important;
+        }
+
+        .social-sidebar a:hover[href*="tiktok"] {
+            background: #000000 !important;
+        }
+
+        .social-sidebar a:hover[href*="tiktok"] .fa-tiktok {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            background: transparent !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+        }
+
+        /* Social Sidebar Specific */
+        .social-sidebar {
+            position: fixed !important;
+            top: 50% !important;
+            right: 0 !important;
+            transform: translateY(-50%) !important;
+            flex-direction: column !important;
+            background: rgba(0, 0, 0, 0.95) !important;
+            padding: 12px 8px !important;
+            border-radius: 30px 0 0 30px !important;
+            gap: 12px !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            z-index: 1000 !important;
+        }
+
+        /* Mobile Specific */
+        @media (max-width: 768px) {
+            .social-sidebar {
+                display: none !important;
+            }
+
+            .social-mobile-toggle {
+                display: block !important;
+                position: fixed !important;
+                bottom: 20px !important;
+                right: 20px !important;
+                width: 50px !important;
+                height: 50px !important;
+                background: var(--primary-color) !important;
+                color: var(--text-color) !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                z-index: 1000 !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+                cursor: pointer !important;
+            }
+
+            .social-sidebar.visible {
+                display: flex !important;
+                flex-direction: row !important;
+                position: fixed !important;
+                bottom: 80px !important;
+                right: 20px !important;
+                top: auto !important;
+                transform: none !important;
+                border-radius: 20px !important;
+                padding: 8px !important;
+                gap: 8px !important;
+            }
         }
     </style>
 </head>
@@ -628,7 +792,7 @@
     </div>
 
     <div class="page-header">
-        <h1>Tech Portfolio</h1>
+        <h1>Tech Projects</h1>
         <p>A collection of my most significant software development work, showcasing my technical skills and problem-solving abilities.</p>
     </div>
 

@@ -250,7 +250,7 @@
         }
     </style>
 </head>
-<body>
+<body class="travel-page">
     <header>
         <nav>
             <div class="logo-container">
@@ -428,6 +428,7 @@
         </section>
     </main>
 
+    <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
@@ -542,12 +543,14 @@
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.visibility = 'visible';
             } else {
-                backToTopBtn.classList.remove('active');
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.visibility = 'hidden';
             }
         });
-
+        
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });

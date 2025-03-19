@@ -162,6 +162,8 @@ body.home-page header {
     max-width: 1200px;
     margin: 0 auto;
     animation: fadeIn 1s ease;
+    padding-top: 100px;
+    margin-bottom: 60px;
 }
 
 @keyframes fadeIn {
@@ -243,6 +245,8 @@ section {
     transform: translateY(20px);
     animation: fadeIn 0.8s forwards;
     animation-delay: 0.2s;
+    padding-top: 120px;
+    position: relative;
 }
 
 section:hover {
@@ -340,6 +344,8 @@ section:hover {
     background-color: #000000;
     color: #ffffff;
     padding: 3rem 5%;
+    padding-top: 120px;
+    position: relative;
 }
 
 .contact-methods {
@@ -794,24 +800,27 @@ footer p {
 
 /* Threads */
 .social-icons a .fa-brands.fa-threads,
-.footer-content .social-icons a .fa-brands.fa-threads {
-    color: #000000;
+.footer-content .social-icons a .fa-brands.fa-threads,
+.social-sidebar a .fa-brands.fa-threads {
+    color: #ffffff;
     transition: all 0.3s ease;
-    background: #ffffff;
+    background: transparent;
     border-radius: 50%;
     padding: 4px;
     font-size: 0.9rem;
 }
 
 .social-icons a:hover .fa-brands.fa-threads,
-.footer-content .social-icons a:hover .fa-brands.fa-threads {
+.footer-content .social-icons a:hover .fa-brands.fa-threads,
+.social-sidebar a:hover .fa-brands.fa-threads {
     transform: scale(1.2);
     background: transparent;
-    color: #000000;
+    color: #ffffff;
 }
 
 .social-icons a:nth-child(6)::before,
-.footer-content .social-icons a:nth-child(6)::before {
+.footer-content .social-icons a:nth-child(6)::before,
+.social-sidebar a:nth-child(6)::before {
     background-color: #ffffff;
 }
 
@@ -947,15 +956,35 @@ footer p {
 }
 
 .skill-tag:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    background: var(--primary-color);
-    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .skill-tag i {
     font-size: 1.1rem;
 }
+
+/* Brand Colors for Skill Icons */
+.skill-tag i.fab.fa-js { color: #F7DF1E; }
+.skill-tag i.fab.fa-python { color: #3776AB; }
+.skill-tag i.fab.fa-java { color: #007396; }
+.skill-tag i.fab.fa-react { color: #61DAFB; }
+.skill-tag i.fab.fa-html5 { color: #E34F26; }
+.skill-tag i.fab.fa-css3-alt { color: #1572B6; }
+.skill-tag i.fab.fa-sass { color: #CC6699; }
+.skill-tag i.fab.fa-bootstrap { color: #7952B3; }
+.skill-tag i.fab.fa-vuejs { color: #4FC08D; }
+.skill-tag i.fab.fa-angular { color: #DD0031; }
+.skill-tag i.fab.fa-node-js { color: #339933; }
+.skill-tag i.fab.fa-aws { color: #FF9900; }
+.skill-tag i.fab.fa-microsoft { color: #00A4EF; }
+.skill-tag i.fab.fa-google { color: #4285F4; }
+.skill-tag i.fab.fa-docker { color: #2496ED; }
+.skill-tag i.fab.fa-git-alt { color: #F34F29; }
+.skill-tag i.fab.fa-github { color: #181717; }
+.skill-tag i.fab.fa-jira { color: #0052CC; }
+.skill-tag i.fab.fa-android { color: #3DDC84; }
+.skill-tag i.fab.fa-apple { color: #000000; }
 
 /* Skill cluster colors */
 .frontend-cluster { border-top: 4px solid #3498db; }
@@ -1218,7 +1247,7 @@ footer p {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: #000000;
     font-size: 1.2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -1330,9 +1359,9 @@ footer p {
 
 /* Threads */
 .social-sidebar a .fa-brands.fa-threads {
-    color: #000000;
+    color: #ffffff;
     transition: all 0.3s ease;
-    background: #ffffff;
+    background: transparent;
     border-radius: 50%;
     padding: 4px;
     font-size: 0.9rem;
@@ -1341,7 +1370,7 @@ footer p {
 .social-sidebar a:hover .fa-brands.fa-threads {
     transform: scale(1.2);
     background: transparent;
-    color: #000000;
+    color: #ffffff;
 }
 
 .social-sidebar a:nth-child(6)::before {
@@ -1759,9 +1788,30 @@ footer p {
 .page-header {
     background: linear-gradient(135deg, #000000, #333333);
     color: var(--light-color);
-    padding: 6rem 5% 3rem;
+    padding: 15rem 5% 6rem; /* Significantly increased top padding from 12rem to 15rem */
     text-align: center;
     position: relative;
+    margin-bottom: 3rem;
+    margin-top: 60px; /* Added margin-top for extra spacing */
+    z-index: 1;
+}
+
+/* Specific page header styles for sub-pages */
+.sports-page .page-header,
+.art-page .page-header,
+.travel-page .page-header,
+.activity-page .page-header {
+    padding-top: 15rem; /* Ensure consistent padding across sub-pages */
+    margin-top: 60px;
+}
+
+/* Ensure the header has proper z-index */
+nav {
+    z-index: 1000;
+}
+
+.page-header {
+    z-index: 1;
 }
 
 /* Logo styling */
@@ -2046,6 +2096,8 @@ footer p {
 .journey {
     padding: 5rem 5%;
     background-color: var(--light-bg-color);
+    padding-top: 120px;
+    position: relative;
 }
 
 .timeline {
@@ -2240,6 +2292,8 @@ footer p {
 .recent-activity {
     background: #000000;
     color: var(--text-color);
+    padding-top: 120px;
+    position: relative;
 }
 
 .section-intro {
@@ -2486,4 +2540,102 @@ footer p {
 .social-mobile-toggle:hover {
     transform: scale(1.1);
     background: var(--secondary-color);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: #FFFFFF !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+.back-to-top i {
+    color: #FFFFFF !important;
+    font-size: 1.2rem;
+}
+
+/* Add padding to top sections */
+.about,
+.portfolio,
+.journey,
+.skills,
+.recent-activity,
+.contact,
+.project-section,
+.gallery-section,
+.travel-section,
+.sports-section,
+.art-section {
+    padding-top: 120px; /* Increased from default padding */
+    position: relative;
+}
+
+/* Ensure consistent spacing for section headers */
+.section-title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Adjust profile section spacing */
+.profile {
+    padding-top: 100px; /* Increased padding for the profile section */
+    margin-bottom: 60px;
+}
+
+/* Ensure consistent spacing for all main sections */
+main section {
+    padding-top: 120px;
+    position: relative;
+}
+
+/* Specific section padding for sub-pages */
+.sports-section,
+.art-section,
+.travel-section,
+.activity-section {
+    padding-top: 150px; /* Increased from 120px to 150px */
+    position: relative;
+}
+
+/* Ensure consistent spacing for section headers in sub-pages */
+.sports-section .section-title,
+.art-section .section-title,
+.travel-section .section-title,
+.activity-section .section-title {
+    margin-top: 60px; /* Increased from 40px to 60px */
+    margin-bottom: 40px; /* Increased from 30px to 40px */
+    position: relative;
+}
+
+/* Add spacing for content sections in sub-pages */
+.sports-section .content,
+.art-section .content,
+.travel-section .content,
+.activity-section .content {
+    padding-top: 3rem; /* Increased from 2rem to 3rem */
+    position: relative;
 }
