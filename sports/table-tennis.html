@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R656C658VX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-R656C658VX');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tennis - Ananth Deepak Sharma Nanduri</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* Sport Page Specific Styles */
+        .sport-hero {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: var(--light-color);
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .sport-hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .sport-hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sport-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sport-level-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sport-metadata-large {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .sport-metadata-item-large {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sport-metadata-item-large i {
+            font-size: 1.2rem;
+        }
+        
+        .sport-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .sport-section {
+            margin-bottom: 4rem;
+        }
+        
+        .sport-section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .sport-section-title i {
+            color: var(--primary-color);
+        }
+        
+        .sport-section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .skill-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .skill-item {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-name i {
+            color: var(--primary-color);
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                rgba(255,255,255,0.1) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .skill-level-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .skill-description {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .achievement-card {
+            background: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-icon {
+            background: var(--primary-color);
+            color: white;
+            font-size: 2rem;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .achievement-content {
+            padding: 1.5rem;
+        }
+        
+        .achievement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .achievement-date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .achievement-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            filter: brightness(0.8);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .related-sports {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .related-sport-item {
+            background: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        
+        .related-sport-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .related-sport-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .related-sport-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .back-to-sports {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .back-to-sports:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media screen and (max-width: 992px) {
+            .skill-container, .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-container, .related-sports {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .sport-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .skill-container, .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sport-section-title {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .related-sports {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="sport-page">
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="../assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
+            <ul>
+                <li><a href="../index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="../index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="../index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="../index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Social Sidebar for quick access -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.threads.net/@de_gamerick" target="_blank"><i class="fa-brands fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- Mobile Social Toggle -->
+    <div class="social-mobile-toggle">
+        <i class="fas fa-share-alt"></i>
+    </div>
+
+    <div class="sport-hero">
+        <div class="sport-hero-content">
+            <div class="sport-hero-icon">
+                <i class="fas fa-table-tennis"></i>
+            </div>
+            <h1>Table Tennis</h1>
+            <div class="sport-level-badge">Intermediate</div>
+            <p>Table tennis is a sport I've enjoyed since childhood. The fast-paced nature and technical precision required make it both challenging and rewarding. I play recreationally with friends and at local clubs.</p>
+            <div class="sport-metadata-large">
+                <div class="sport-metadata-item-large">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>8+ years experience</span>
+                </div>
+                <div class="sport-metadata-item-large">
+                    <i class="fas fa-users"></i>
+                    <span>Recreational player</span>
+                </div>
+                <div class="sport-metadata-item-large">
+                    <i class="fas fa-tag"></i>
+                    <span>Racquet Sports</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="sport-container">
+        <a href="../sports.html" class="back-to-sports">
+            <i class="fas fa-arrow-left"></i> Back to Sports
+        </a>
+        
+        <section class="sport-section">
+            <h2 class="sport-section-title"><i class="fas fa-chart-line"></i> Skills & Abilities</h2>
+            <div class="skill-container">
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <i class="fas fa-hand-point-up"></i> Forehand Drive
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                    <div class="skill-level-text">
+                        <span>Developing</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-description">
+                        Strong forehand drive with good power and control. Able to consistently place the ball with topspin and vary pace to keep opponents off balance.
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <i class="fas fa-hand-point-down"></i> Backhand Push
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                    <div class="skill-level-text">
+                        <span>Developing</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-description">
+                        Reliable backhand push with good control and placement. Effective against both topspin and backspin, with the ability to keep the ball low over the net.
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <i class="fas fa-bullseye"></i> Serve
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;"></div>
+                    </div>
+                    <div class="skill-level-text">
+                        <span>Developing</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-description">
+                        Varied serve repertoire including backspin, topspin, and sidespin. Working on developing more deceptive serves and improving consistency with placement.
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <i class="fas fa-bolt"></i> Reaction Speed
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                    <div class="skill-level-text">
+                        <span>Developing</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-description">
+                        Quick reactions and good hand-eye coordination allow for effective responses to fast-paced rallies and unexpected shots. Strong ability to adapt to changing ball speeds.
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sport-section">
+            <h2 class="sport-section-title"><i class="fas fa-trophy"></i> Achievements & Milestones</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Office Tournament Champion</h3>
+                        <div class="achievement-date">
+                            <i class="fas fa-calendar-alt"></i> December 2022
+                        </div>
+                        <p class="achievement-description">
+                            Won the annual office table tennis tournament, demonstrating consistent play and mental focus throughout multiple rounds of competition.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Local Club Membership</h3>
+                        <div class="achievement-date">
+                            <i class="fas fa-calendar-alt"></i> 2019 - Present
+                        </div>
+                        <p class="achievement-description">
+                            Active member of a local table tennis club, participating in weekly practice sessions and friendly competitions to continuously improve skills.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Technique Workshop</h3>
+                        <div class="achievement-date">
+                            <i class="fas fa-calendar-alt"></i> March 2021
+                        </div>
+                        <p class="achievement-description">
+                            Completed an intensive weekend technique workshop with a professional coach, focusing on footwork, serve technique, and tactical play improvements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sport-section">
+            <h2 class="sport-section-title"><i class="fas fa-images"></i> Photo Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="../assets/images/table-tennis1.jpg" alt="Forehand smash">
+                    <div class="gallery-caption">Executing a forehand smash during a club practice session</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../assets/images/table-tennis2.jpg" alt="Office tournament">
+                    <div class="gallery-caption">Competing in the office tournament finals</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../assets/images/table-tennis3.jpg" alt="Technique practice">
+                    <div class="gallery-caption">Practicing serving technique during a training session</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sport-section">
+            <h2 class="sport-section-title"><i class="fas fa-link"></i> Related Sports</h2>
+            <div class="related-sports">
+                <a href="tennis.html" class="related-sport-item">
+                    <div class="related-sport-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <div class="related-sport-name">Tennis</div>
+                </a>
+                
+                <a href="badminton.html" class="related-sport-item">
+                    <div class="related-sport-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <div class="related-sport-name">Badminton</div>
+                </a>
+                
+                <a href="pickleball.html" class="related-sport-item">
+                    <div class="related-sport-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <div class="related-sport-name">Pickleball</div>
+                </a>
+                
+                <a href="squash.html" class="related-sport-item">
+                    <div class="related-sport-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <div class="related-sport-name">Squash</div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#portfolio">Portfolio</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de_gamerick/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.net/@de_gamerick" target="_blank"><i class="fa-brands fa-threads"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Ananth Deepak Sharma Nanduri | Built with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Initialize ScrollReveal for animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'ease-in-out'
+        });
+
+        // Apply animations to elements
+        sr.reveal('.sport-hero-content', { delay: 100 });
+        sr.reveal('.back-to-sports', { delay: 200 });
+        sr.reveal('.sport-section', { delay: 300, interval: 200 });
+        sr.reveal('.skill-item', { interval: 150 });
+        sr.reveal('.achievement-card', { interval: 150 });
+        sr.reveal('.gallery-item', { interval: 150 });
+        sr.reveal('.related-sport-item', { interval: 100 });
+        
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.visibility = 'visible';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html> 

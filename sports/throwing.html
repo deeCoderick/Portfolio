@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <title>Throwing Sports - Ananth Deepak Sharma Nanduri</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Sport Specific Styles */
+        .sport-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/throwing-hero.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .sport-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .sport-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .skill-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .skill-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .skill-item p {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .achievements-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .achievement-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+        }
+        
+        .achievement-list li i {
+            color: #3498db;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .related-sports {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .related-sport-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #e9ecef;
+            border-radius: 30px;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .related-sport-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Ananth Deepak Sharma Nanduri</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../sports.html" class="active">Sports</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="sport-hero">
+        <div class="container">
+            <h1>Throwing Sports</h1>
+            <p>The dynamic world of power, technique, and precision where strength meets skill in javelin, discus, and shot put.</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="container section">
+            <h2>Skills & Techniques</h2>
+            <div class="skill-items">
+                <div class="skill-item" data-scroll>
+                    <h3>Javelin Technique</h3>
+                    <p>Mastering the approach, crossover steps, and release mechanics to achieve maximum distance with proper form and follow-through.</p>
+                </div>
+                <div class="skill-item" data-scroll>
+                    <h3>Discus Footwork</h3>
+                    <p>Developing the rotational movement, balance, and timing required for generating power in the discus throw from the circle.</p>
+                </div>
+                <div class="skill-item" data-scroll>
+                    <h3>Shot Put Glide & Spin</h3>
+                    <p>Refining both traditional glide and rotational techniques for shot put to maximize both power and control in competition.</p>
+                </div>
+                <div class="skill-item" data-scroll>
+                    <h3>Strength & Conditioning</h3>
+                    <p>Building the core strength, explosive power, and mobility necessary for all throwing events through targeted training programs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-section">
+            <div class="container">
+                <h2>Achievements & Milestones</h2>
+                <ul class="achievement-list">
+                    <li data-scroll>
+                        <i class="fas fa-trophy"></i>
+                        <div>Personal best of 45m in javelin throw at regional collegiate competition</div>
+                    </li>
+                    <li data-scroll>
+                        <i class="fas fa-medal"></i>
+                        <div>Placed 3rd in university discus throw championship</div>
+                    </li>
+                    <li data-scroll>
+                        <i class="fas fa-award"></i>
+                        <div>Achieved consistent improvement in shot put technique under certified coach</div>
+                    </li>
+                    <li data-scroll>
+                        <i class="fas fa-star"></i>
+                        <div>Completed specialized throwing sports training camp focused on Olympic techniques</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section">
+            <h2>Photo Gallery</h2>
+            <div class="photo-gallery">
+                <div class="gallery-item" data-scroll>
+                    <img src="../images/javelin-1.jpg" alt="Javelin throw competition">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="../images/discus-1.jpg" alt="Discus throwing technique">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="../images/shotput-1.jpg" alt="Shot put competition">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="../images/throwing-training.jpg" alt="Training session for throwing sports">
+                </div>
+            </div>
+        </section>
+
+        <section class="container section">
+            <h2>Related Sports</h2>
+            <div class="related-sports">
+                <a href="archery.html" class="related-sport-link">Archery</a>
+                <a href="frisbee.html" class="related-sport-link">Frisbee</a>
+                <a href="cricket.html" class="related-sport-link">Cricket</a>
+                <a href="football.html" class="related-sport-link">Football</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ananth Deepak Sharma Nanduri</h3>
+                    <p>Passionate about sports, technology, and personal growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../portfolio.html">Portfolio</a></li>
+                        <li><a href="../sports.html">Sports</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        // Scroll Reveal Animations
+        ScrollReveal().reveal('[data-scroll]', {
+            delay: 200,
+            distance: '30px',
+            origin: 'bottom',
+            opacity: 0,
+            duration: 800,
+            easing: 'ease-in-out',
+            interval: 100
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html> 

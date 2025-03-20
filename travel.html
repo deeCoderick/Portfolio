@@ -248,6 +248,61 @@
             background: var(--secondary-color);
             transform: translateY(-5px);
         }
+
+        /* Instagram Section Styles */
+        .instagram-section {
+            margin: 4rem 0;
+            padding: 0 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instagram-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 2rem auto 1rem;
+        }
+
+        .instagram-media {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instagram-media:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .instagram-follow {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: var(--dark-color);
+        }
+
+        .instagram-follow a {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instagram-follow a:hover {
+            color: #E1306C;
+        }
+
+        .instagram-follow a i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .instagram-container {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body class="travel-page">
@@ -426,7 +481,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Instagram Feed Section -->
+        <section class="instagram-section">
+            <h2 class="section-title">Latest Adventures</h2>
+            <div class="instagram-container">
+                <!-- Instagram post embed - simplified version with minimized caption -->
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DG12SVbJNRG/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1); margin:0 auto; max-width:480px; min-width:326px; padding:0; width:99.375%;">
+                </blockquote>
+            </div>
+            <p class="instagram-follow">Follow more travel stories on <a href="https://www.instagram.com/de_wanderick/" target="_blank">Instagram <i class="fab fa-instagram"></i></a></p>
+        </section>
+
     </main>
+
+    <!-- Instagram Embed Script -->
+    <script async src="//www.instagram.com/embed.js"></script>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop">
