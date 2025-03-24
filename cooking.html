@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Google Analytics Tag -->
+    <script>
+        if (!window.location.hostname.includes('localhost') && 
+            !window.location.hostname.includes('127.0.0.1')) {
+            
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-R656C658VX';
+            document.head.appendChild(gaScript);
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R656C658VX');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culinary Adventures - Ananth Deepak Sharma Nanduri</title>
+    <meta name="description" content="Explore my culinary journey through recipes, food photography, and cooking adventures from around the world.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="theme.js" defer></script>
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: var(--light-color);
+            padding: 6rem 5% 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .recipe-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .recipe-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        html[data-theme="light"] .recipe-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .recipe-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.05);
+        }
+        
+        .recipe-cuisine {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .recipe-cuisine i {
+            margin-right: 0.5rem;
+        }
+        
+        .recipe-time {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .recipe-time i {
+            margin-right: 0.5rem;
+        }
+        
+        .recipe-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .recipe-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        html[data-theme="light"] .recipe-title {
+            color: #333;
+        }
+        
+        .recipe-description {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        html[data-theme="light"] .recipe-description {
+            color: #555;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        html[data-theme="light"] .recipe-meta {
+            color: #777;
+        }
+        
+        .recipe-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .recipe-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        html[data-theme="light"] .recipe-tag {
+            background: rgba(0, 0, 0, 0.05);
+            color: #555;
+        }
+        
+        .recipe-tag:hover {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+        
+        .view-recipe {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+        }
+        
+        .view-recipe:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-button {
+            background: rgba(30, 30, 50, 0.7);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        html[data-theme="light"] .category-button {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-button:hover, .category-button.active {
+            background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cooking-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .cooking-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        html[data-theme="light"] .cooking-header h2 {
+            color: #333;
+        }
+        
+        .cooking-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+        
+        html[data-theme="light"] .cooking-header p {
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .recipe-title {
+                font-size: 1.3rem;
+            }
+            
+            .category-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Floating elements in header background */
+        .floating-utensil {
+            position: absolute;
+            opacity: 0.4;
+            z-index: 1;
+            filter: blur(1px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-utensil:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            transform: rotate(-15deg);
+            animation-delay: 1s;
+            font-size: 2rem;
+            color: rgba(255, 107, 107, 0.6);
+        }
+        
+        .floating-utensil:nth-child(2) {
+            top: 40%;
+            right: 15%;
+            transform: rotate(10deg);
+            animation-delay: 2s;
+            font-size: 2.5rem;
+            color: rgba(108, 138, 255, 0.6);
+        }
+        
+        .floating-utensil:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            transform: rotate(5deg);
+            animation-delay: 3s;
+            font-size: 2.2rem;
+            color: rgba(130, 255, 107, 0.6);
+        }
+        
+        .floating-utensil:nth-child(4) {
+            top: 25%;
+            right: 30%;
+            transform: rotate(-8deg);
+            animation-delay: 4s;
+            font-size: 1.8rem;
+            color: rgba(255, 230, 107, 0.6);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(var(--rotate, 0)); }
+            50% { transform: translateY(-15px) rotate(var(--rotate, 0)); }
+            100% { transform: translateY(0) rotate(var(--rotate, 0)); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="logo-profile">
+            <a href="index.html" class="logo-container">
+                <div class="profile-photo">
+                    <img src="assets/images/ProfileIcon.jpeg" alt="Ananth Deepak Sharma Nanduri">
+                </div>
+                <div class="logo-text">Ananth</div>
+            </a>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html#about" class="nav-item"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#journey" class="nav-item"><i class="fas fa-road"></i> Journey</a></li>
+                <li><a href="index.html#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#skills" class="nav-item"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="theme-toggle-container">
+                <button id="manual-theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <div class="toggle-icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </button>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="floating-utensil"><i class="fas fa-utensils"></i></div>
+        <div class="floating-utensil"><i class="fas fa-chef-hat"></i></div>
+        <div class="floating-utensil"><i class="fas fa-pepper-hot"></i></div>
+        <div class="floating-utensil"><i class="fas fa-cookie"></i></div>
+        <h1>Culinary Adventures</h1>
+        <p>From traditional recipes to creative experiments – explore my journey through global cuisines, cooking techniques, and the joy of sharing food.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="recipe-container">
+        <div class="cooking-header">
+            <h2>Recipe Collection</h2>
+            <p>These recipes represent my culinary exploration across different cuisines and cooking styles. Each dish tells a story of culture, ingredient combinations, and personal adaptations.</p>
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="categories-filter">
+            <button class="category-button active" data-filter="all">All Cuisines</button>
+            <button class="category-button" data-filter="indian">Indian</button>
+            <button class="category-button" data-filter="italian">Italian</button>
+            <button class="category-button" data-filter="asian">Asian</button>
+            <button class="category-button" data-filter="dessert">Desserts</button>
+            <button class="category-button" data-filter="fusion">Fusion</button>
+        </div>
+        
+        <!-- Recipe Grid -->
+        <div class="recipe-grid">
+            <!-- Recipe 1 -->
+            <div class="recipe-card" data-category="indian">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/butter-chicken.jpg" alt="Butter Chicken">
+                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Indian</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 45 min</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Butter Chicken</h3>
+                    <p class="recipe-description">A rich and creamy North Indian curry with tender chicken pieces in a tomato-based sauce, flavored with aromatic spices and finished with butter and cream.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Medium</span>
+                        <span><i class="fas fa-users"></i> Serves 4</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Curry</span>
+                        <span class="recipe-tag">Chicken</span>
+                        <span class="recipe-tag">Spicy</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+            
+            <!-- Recipe 2 -->
+            <div class="recipe-card" data-category="italian">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/pasta-carbonara.jpg" alt="Pasta Carbonara">
+                    <div class="recipe-cuisine"><i class="fas fa-globe-europe"></i> Italian</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 25 min</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Authentic Pasta Carbonara</h3>
+                    <p class="recipe-description">A classic Roman pasta dish made with eggs, cheese, pancetta, and black pepper. Simple ingredients transformed into a silky, luxurious sauce coating al dente pasta.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Easy</span>
+                        <span><i class="fas fa-users"></i> Serves 2</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Pasta</span>
+                        <span class="recipe-tag">Quick</span>
+                        <span class="recipe-tag">Comfort</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+            
+            <!-- Recipe 3 -->
+            <div class="recipe-card" data-category="asian">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/ramen.jpg" alt="Homemade Ramen">
+                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Japanese</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 3 hrs</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Tonkotsu Ramen</h3>
+                    <p class="recipe-description">A rich, pork-based soup with handmade noodles, topped with chashu pork, soft-boiled egg, green onions, and nori. A labor of love that results in a deeply satisfying bowl.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Advanced</span>
+                        <span><i class="fas fa-users"></i> Serves 4</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Soup</span>
+                        <span class="recipe-tag">Noodles</span>
+                        <span class="recipe-tag">Weekend Project</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+            
+            <!-- Recipe 4 -->
+            <div class="recipe-card" data-category="dessert">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/tiramisu.jpg" alt="Tiramisu">
+                    <div class="recipe-cuisine"><i class="fas fa-globe-europe"></i> Italian</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 30 min + chill</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Classic Tiramisu</h3>
+                    <p class="recipe-description">A coffee-flavored Italian dessert made of ladyfingers dipped in coffee, layered with a whipped mixture of eggs, sugar, and mascarpone cheese, dusted with cocoa.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Medium</span>
+                        <span><i class="fas fa-users"></i> Serves 8</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Coffee</span>
+                        <span class="recipe-tag">No-Bake</span>
+                        <span class="recipe-tag">Make Ahead</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+            
+            <!-- Recipe 5 -->
+            <div class="recipe-card" data-category="fusion">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/curry-tacos.jpg" alt="Curry Tacos">
+                    <div class="recipe-cuisine"><i class="fas fa-globe"></i> Fusion</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 40 min</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Indian-Inspired Tacos</h3>
+                    <p class="recipe-description">A creative fusion dish combining the flavors of Indian curries with Mexican taco presentation. Spiced chickpeas, tangy chutney, and cooling raita in warm tortillas.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Medium</span>
+                        <span><i class="fas fa-users"></i> Serves 4</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Fusion</span>
+                        <span class="recipe-tag">Vegetarian</span>
+                        <span class="recipe-tag">Creative</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+            
+            <!-- Recipe 6 -->
+            <div class="recipe-card" data-category="asian">
+                <div class="recipe-image">
+                    <img src="assets/images/recipes/pad-thai.jpg" alt="Pad Thai">
+                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Thai</div>
+                    <div class="recipe-time"><i class="far fa-clock"></i> 35 min</div>
+                </div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Authentic Pad Thai</h3>
+                    <p class="recipe-description">A stir-fried rice noodle dish with the perfect balance of sweet, sour, and umami flavors. Made with tofu, shrimp, peanuts, bean sprouts, and a tangy tamarind sauce.</p>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-fire"></i> Medium</span>
+                        <span><i class="fas fa-users"></i> Serves 2</span>
+                    </div>
+                    <div class="recipe-tags">
+                        <span class="recipe-tag">Noodles</span>
+                        <span class="recipe-tag">Stir-Fry</span>
+                        <span class="recipe-tag">Street Food</span>
+                    </div>
+                    <a href="#" class="view-recipe">View Recipe</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <ul>
+                        <li><a href="code.html">Tech Projects</a></li>
+                        <li><a href="sports.html">Sports & Physical</a></li>
+                        <li><a href="travel.html">Travel & Photography</a></li>
+                        <li><a href="books.html">Books</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:your.email@example.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.category-button');
+            const recipeCards = document.querySelectorAll('.recipe-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter recipes
+                    recipeCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else if (card.getAttribute('data-category').includes(filterValue)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Initialize with animation
+            setTimeout(() => {
+                recipeCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 500);
+            
+            // Initialize ScrollReveal
+            const sr = ScrollReveal({
+                origin: 'bottom',
+                distance: '30px',
+                duration: 800,
+                delay: 300,
+                easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+                reset: false
+            });
+            
+            sr.reveal('.cooking-header', { delay: 100 });
+            sr.reveal('.category-button', { interval: 100 });
+            sr.reveal('.recipe-card', { interval: 200 });
+            
+            // Handle navigation toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

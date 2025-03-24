@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <!-- Google Analytics Tag - Only loads in production -->
     <script>
@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="../theme.js" defer></script>
     <style>
         /* Sport Page Specific Styles */
         .sport-hero {
@@ -396,12 +397,17 @@
     </style>
 </head>
 <body class="sport-page">
+    <!-- Manual theme toggle button -->
+    <button class="theme-toggle" id="manual-theme-toggle" aria-label="Toggle light/dark mode">
+        <i class="fas fa-sun"></i>
+    </button>
+    
     <header>
         <nav>
-            <div class="logo-container">
-                <img src="../assets/Logo/logo.png" alt="Logo" class="logo-image">
-                <span class="logo-text">De</span>
-            </div>
+            <a href="../index.html" class="logo-container" style="display: flex; align-items: center; max-height: 40px; overflow: visible; transform: none !important;">
+                <img src="../assets/Logo/logo.png" alt="Logo" class="logo-image" style="height: 35px; width: auto; max-height: 35px; transform: none !important;">
+                <span class="logo-text" style="font-size: 1.5rem; transform: none !important;">De</span>
+            </a>
             <ul>
                 <li><a href="../index.html#about"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="../index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
@@ -692,6 +698,32 @@
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+        
+        // Manual theme toggle functionality (backup to theme.js)
+        const manualThemeToggle = document.getElementById('manual-theme-toggle');
+        if (manualThemeToggle) {
+            manualThemeToggle.addEventListener('click', function() {
+                const htmlElement = document.documentElement;
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Change the icon
+                const toggleIcon = this.querySelector('i');
+                if (toggleIcon) {
+                    toggleIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                }
+            });
+            
+            // Set initial icon based on current theme
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const toggleIcon = manualThemeToggle.querySelector('i');
+            if (toggleIcon) {
+                toggleIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+        }
     </script>
 </body>
 </html> 

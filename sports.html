@@ -1,6 +1,6 @@
 <!-- filepath: /Users/ananthdeepaksharmananduri/IdeaProjects/Portfolio/code.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <!-- Google Analytics Tag - Only loads in production -->
     <script>
@@ -12,10 +12,10 @@
             gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-R656C658VX';
             document.head.appendChild(gaScript);
             
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-R656C658VX');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R656C658VX');
         }
     </script>
     <meta charset="UTF-8">
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="theme.js" defer></script>
     <style>
         .page-header {
             background: linear-gradient(135deg, #000000, #333333);
@@ -507,13 +508,13 @@
             <h2 class="section-title">Sports & Activities</h2>
             <div class="sports-counter">
                 I actively participate in <strong>29</strong> unique sports and activities
-            </div>
+                </div>
             
             <!-- Tag Filter System -->
             <div class="tag-filter-container">
                 <div class="tag-filter-heading">
                     <h3>Filter by Category</h3>
-                </div>
+                            </div>
                 <div class="tag-filter-buttons">
                     <button class="tag-btn active" data-tag="all">All Sports</button>
                     <button class="tag-btn" data-tag="Racquet Sports">Racquet Sports</button>
@@ -523,9 +524,9 @@
                     <button class="tag-btn" data-tag="Target">Target</button>
                     <button class="tag-btn" data-tag="Adventure">Adventure</button>
                     <button class="tag-btn" data-tag="Strength">Strength</button>
+                            </div>
                 </div>
-            </div>
-            
+                
             <div class="sports-grid">
                 <!-- Badminton Card - 9 posts -->
                 <div class="sport-card">
@@ -1181,7 +1182,7 @@
         sr.reveal('.section-title', { delay: 200 });
         sr.reveal('.sports-grid', { delay: 300 });
         sr.reveal('.sport-card', { interval: 200 });
-        
+
         // Back to top button functionality
         const backToTopBtn = document.getElementById('backToTop');
         
@@ -1194,12 +1195,12 @@
                 backToTopBtn.style.visibility = 'hidden';
             }
         });
-        
+
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        
+
         // Tag Filtering Functionality
         document.addEventListener('DOMContentLoaded', () => {
             const tagButtons = document.querySelectorAll('.tag-btn');

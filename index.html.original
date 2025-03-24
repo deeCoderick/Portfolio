@@ -1,0 +1,1601 @@
+<!-- filepath: /Users/ananthdeepaksharmananduri/IdeaProjects/Portfolio/index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Fix journey items that vanish on hover - load this first for highest priority -->
+    <script src="assets/js/journey-fix.js" defer></script>
+    
+    <!-- Google Analytics Tag - Only loads in production -->
+    <script>
+        if (!window.location.hostname.includes('localhost') && 
+            !window.location.hostname.includes('127.0.0.1')) {
+            
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-R656C658VX';
+            document.head.appendChild(gaScript);
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R656C658VX');
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Ananth Deepak Sharma Nanduri, a software developer specializing in modern web applications, machine learning, and cloud technologies.">
+    <meta name="keywords" content="Ananth Deepak Sharma Nanduri, software developer, web developer, AI engineer, cloud solutions, portfolio, JavaScript, Python, AWS, Azure">
+    <title>Ananth Deepak Sharma Nanduri - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
+    <link rel="stylesheet" href="assets/css/journey.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <!-- Journey smooth theme toggling -->
+    <script src="assets/js/journey-smooth.js" defer></script>
+    <!-- Direct theme implementation instead of external script -->
+    <script>
+        // Theme management for portfolio website
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM content loaded, initializing theme');
+            initTheme();
+        });
+        
+        // Function to initialize theme based on saved preference
+        function initTheme() {
+            const htmlElement = document.documentElement;
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark if no preference
+            
+            // Set the theme attribute
+            htmlElement.setAttribute('data-theme', savedTheme);
+            console.log('Theme initialized to:', savedTheme);
+            
+            // No need to update the toggle icon as the CSS will handle the slider position
+            // based on the data-theme attribute
+        }
+        
+        // Also run initialization immediately
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            console.log('Document already interactive or complete');
+            initTheme();
+        }
+    </script>
+    <style>
+        /* Project metadata text color fix for better readability */
+        .project-meta {
+            color: #000000; /* Change text color to black */
+        }
+        
+        .project-meta h2 {
+            color: #000000; /* Change heading color to black */
+        }
+        
+        .tech-stack .tech-tag {
+            color: #000000; /* Change tech tag text color to black */
+            background: rgba(255,255,255,0.7); /* Make background more opaque for better contrast */
+        }
+        
+        /* Fix for project description and features text */
+        .project-card p {
+            color: #000000 !important; /* Force black text color */
+        }
+        
+        .project-card ul li {
+            color: #000000 !important; /* Force black text for list items */
+        }
+        
+        .project-card h3, .project-card h4 {
+            color: #000000 !important; /* Force black text for headings */
+        }
+        
+        /* Additional fixes for specific project descriptions */
+        .project-content .project-description p {
+            color: #000000 !important; /* Double ensuring paragraphs are black */
+            background: transparent !important; /* Remove any background color */
+        }
+        
+        .project-content .project-description ul li {
+            color: #000000 !important; /* Double ensuring list items are black */
+            background: transparent !important; /* Remove any background color */
+        }
+        
+        /* Target any blue background sections */
+        [style*="background-color:rgb(173, 216, 230)"],
+        [style*="background-color:#ADD8E6"],
+        [style*="background-color:lightblue"],
+        [style*="background:rgb(173, 216, 230)"],
+        [style*="background:#ADD8E6"],
+        [style*="background:lightblue"] {
+            color: #000000 !important; /* Force black text for any elements with lightblue background */
+        }
+        
+        /* Target direct children of elements with blue backgrounds */
+        [style*="background-color:rgb(173, 216, 230)"] *,
+        [style*="background-color:#ADD8E6"] *,
+        [style*="background-color:lightblue"] *,
+        [style*="background:rgb(173, 216, 230)"] *,
+        [style*="background:#ADD8E6"] *,
+        [style*="background:lightblue"] * {
+            color: #000000 !important; /* Force black text for all children */
+        }
+        
+        /* Navigation with fixed position and high z-index */
+        .navigation {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            transform: none !important;
+            background-color: rgba(12, 12, 20, 0.9) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .logo-profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-item {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after, .nav-item.active::after {
+            width: 100%;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: #ff6b6b;
+        }
+        
+        /* Theme toggle styling */
+        .theme-toggle-container {
+            margin-left: 20px;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .theme-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1e1e2a, #24243c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), 
+                       -4px -4px 8px rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        html[data-theme="light"] .theme-toggle {
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                       -4px -4px 8px rgba(255, 255, 255, 0.8);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        .toggle-icons {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toggle-icons i {
+            position: absolute;
+            font-size: 24px;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .toggle-icons i.fa-sun {
+            opacity: 0;
+            transform: translateY(20px) rotate(90deg);
+            color: #f1c40f;
+        }
+        
+        .toggle-icons i.fa-moon {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+            color: #f1c4f1;
+        }
+        
+        html[data-theme="light"] .toggle-icons i.fa-sun {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+        
+        html[data-theme="light"] .toggle-icons i.fa-moon {
+            opacity: 0;
+            transform: translateY(-20px) rotate(-90deg);
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .theme-toggle:hover::before {
+            left: 100%;
+        }
+        
+        /* Mobile styling */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @keyframes togglePulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(255, 107, 107, 0); }
+            100% { transform: scale(1); }
+        }
+        
+        .theme-toggle.animated {
+            animation: togglePulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @media (max-width: 768px) {
+            .navigation {
+                padding: 12px 20px;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: rgba(12, 12, 20, 0.95);
+                padding: 20px 0;
+                display: none;
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav-item::after {
+                display: none;
+            }
+            
+            .nav-toggle {
+                display: block;
+                margin-left: 15px;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .toggle-icons i {
+                font-size: 18px;
+            }
+        }
+        
+        .navigation-top-space {
+            height: 80px; /* Adjust based on your nav height */
+        }
+        
+        /* Ensure navigation is always visible when scrolled */
+        .navigation.scrolled {
+            background-color: rgba(12, 12, 20, 0.98) !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2) !important;
+            padding: 12px 40px;
+        }
+        
+        /* Make sure all navigation elements are visible */
+        .navigation * {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .navigation-menu-container {
+            position: relative !important;
+            z-index: 10000 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+        
+        /* Profile in navigation styles */
+        .profile-mini {
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            margin-right: 15px;
+            transform: translateY(-20px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .scrolled .profile-mini {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .profile-mini-photo {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+            transition: all 0.4s ease;
+        }
+        
+        .profile-mini-name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: all 0.4s ease;
+        }
+        
+        .profile-mini-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        html[data-theme="light"] .profile-mini-name {
+            color: #333;
+        }
+        
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-right: 15px;
+        }
+        
+        .nav-links li {
+            margin-left: 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+                height: 36px;
+                width: 70px;
+                border-radius: 30px;
+                background-color: #1c1c2e;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 5px 8px;
+                cursor: pointer;
+                border: none;
+                overflow: visible;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            html[data-theme="light"] .theme-toggle {
+                background-color: #e0e0e0;
+            }
+            
+            .theme-toggle:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            }
+            
+            .theme-toggle:active {
+                transform: scale(0.98);
+            }
+            
+            .toggle-icons {
+                position: relative;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                z-index: 2;
+            }
+            
+            .toggle-icons i {
+                font-size: 16px;
+                transition: all 0.3s ease;
+            }
+            
+            .toggle-icons i.fa-sun {
+                color: #f1c40f;
+                opacity: 0.6;
+            }
+            
+            .toggle-icons i.fa-moon {
+                color: #f1c4f1;
+                opacity: 0.6;
+            }
+            
+            html[data-theme="light"] .toggle-icons i.fa-sun {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            
+            html[data-theme="dark"] .toggle-icons i.fa-moon {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            
+            .toggle-slider {
+                position: absolute;
+                top: 3px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #ff6b6b;
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+                z-index: 1;
+            }
+            
+            html[data-theme="dark"] .toggle-slider {
+                transform: translateX(0);
+                left: 5px;
+            }
+            
+            html[data-theme="light"] .toggle-slider {
+                transform: translateX(34px);
+                left: 0;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .nav-links {
+                    flex-direction: column;
+                    background-color: rgba(12, 12, 20, 0.98);
+                    position: absolute;
+                    top: 70px;
+                    left: 0;
+                    width: 100%;
+                    padding: 20px 0;
+                    display: none;
+                    gap: 15px;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                }
+                
+                html[data-theme="light"] .nav-links {
+                    background-color: rgba(255, 255, 255, 0.98);
+                }
+                
+                .nav-links.active {
+                    display: flex;
+                }
+                
+                .theme-toggle-wrapper {
+                    margin: 5px 0;
+                }
+                
+                .nav-item {
+                    width: 100%;
+                    text-align: center;
+                    padding: 12px 15px;
+                }
+                
+                .theme-toggle {
+                    margin: 0 auto;
+                }
+            }
+        }
+    </style>
+
+    <style>
+    /* Journey section preload styles */
+    #journey {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: block !important;
+        z-index: 10 !important;
+    }
+
+    html[data-theme="light"] #journey, 
+    html[data-theme="light"] .journey-section {
+        background-color: #f5f7fa !important;
+        color: #333333 !important;
+    }
+    </style>
+
+    <style>
+    /* Animation for theme toggle button */
+    @keyframes togglePulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .theme-toggle.animated {
+        animation: togglePulse 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .nav-item.active {
+        color: #ff6b6b;
+    }
+    
+    .nav-item.active::before {
+        transform: scaleX(1);
+    }
+    </style>
+    
+    <style>
+    /* Additional space theme effect for the hero section */
+    .hero-section {
+        position: relative;
+        min-height: 100vh;
+        background-color: #1a1a2e;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+    </style>
+
+    html[data-theme="light"] #journey,
+    html[data-theme="light"] .journey-section {
+        background-color: #f5f7fa !important;
+        color: #333333 !important;
+    }
+
+    html[data-theme="light"] .journey-content {
+        background: #ffffff !important;
+        border: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    html[data-theme="light"] .journey-section h3 {
+        color: #3a56e4 !important;
+    }
+
+    html[data-theme="light"] .journey-section p {
+        color: #555555 !important;
+    }
+
+    html[data-theme="light"] .journey-tag {
+        background: rgba(58, 86, 228, 0.1) !important;
+        color: #3a56e4 !important;
+    }
+
+    /* Optimize animation for better performance */
+    .journey-item {
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+    }
+
+    /* Preload animation states to reduce flicker */
+    .journey-item:nth-child(odd) .journey-content,
+    .journey-item:nth-child(even) .journey-content {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+</head>
+<body class="home-page">
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="logo-profile">
+            <a href="index.html" class="logo-container">
+                <div class="profile-photo">
+                    <img src="assets/images/ProfileIcon.jpeg" alt="Ananth Deepak Sharma Nanduri">
+                </div>
+                <div class="logo-text">Ananth</div>
+            </a>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-item"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#journey" class="nav-item"><i class="fas fa-road"></i> Journey</a></li>
+                <li><a href="#skills" class="nav-item"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <div class="theme-toggle-container">
+                <button id="manual-theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <div class="toggle-icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </button>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Navigation spacer -->
+    <div class="navigation-top-space"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Shooting stars for space effect -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-profile-image">
+                    <img src="assets/images/ProfileIcon.jpeg" alt="Ananth Deepak Sharma Nanduri">
+                </div>
+                <h1 class="hero-name">Ananth Deepak Sharma Nanduri</h1>
+                <h2 class="hero-title">Software Developer & Designer</h2>
+                <div class="hero-interests">
+                    <p>
+                        <span class="interest-icon"><i class="fas fa-code"></i></span>Passionate about Web Development, AI, and Cloud Technology
+                    </p>
+                </div>
+                <div class="hero-social-links">
+                    <a href="https://github.com/yourusername" class="hero-social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" class="hero-social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/yourusername" class="hero-social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/yourusername" class="hero-social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/c/yourusername" class="hero-social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://threads.net/@yourusername" class="hero-social-link" aria-label="Threads">
+                        <i class="fab fa-threads"></i>
+                    </a>
+                    <a href="https://medium.com/@yourusername" class="hero-social-link" aria-label="Medium">
+                        <i class="fab fa-medium"></i>
+                    </a>
+                    <a href="https://tiktok.com/@yourusername" class="hero-social-link" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="mailto:your.email@example.com" class="hero-social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Ananth Deepak Sharma Nanduri, a passionate software developer with expertise in web development, AI, and cloud technologies. I enjoy creating elegant solutions to complex problems and am constantly exploring new technologies.</p>
+                    <p>With a background in computer science and a keen interest in modern development practices, I focus on building scalable and user-friendly applications. When I'm not coding, you can find me exploring nature, playing sports, or experimenting with new tech.</p>
+                </div>
+                <div class="about-skills">
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">AWS</div>
+                    <div class="skill-tag">Machine Learning</div>
+                    <div class="skill-tag">UI/UX Design</div>
+                    <div class="skill-tag">Cloud Architecture</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="journey-section">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <p class="journey-description">Key milestones and achievements that have shaped my personal and professional development.</p>
+            <div class="journey-timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Journey Item 1 - Amazon -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">June 2022</div>
+                        <div class="journey-marker"></div>
+                        <h3>Amazon.com</h3>
+                        <p>Started working as a Software Engineer at Amazon, joining one of the world's leading tech companies.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Big Tech</span>
+                            <span class="journey-tag">Software Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 2 - Master's Degree -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">May 2022</div>
+                        <div class="journey-marker"></div>
+                        <h3>University at Buffalo</h3>
+                        <p>Completed Master's degree with focus in Artificial Intelligence, securing a GPA of 3.5.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">AI Focus</span>
+                            <span class="journey-tag">GPA 3.5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 3 - Senior Software Engineer -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">December 2020</div>
+                        <div class="journey-marker"></div>
+                        <h3>Senior Software Engineer at Wipro</h3>
+                        <p>Promoted to Senior Software Engineer, leading cloud migration projects for CapitalOne, Hitachi, and DSM clients.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Cloud Migration</span>
+                            <span class="journey-tag">Project Leadership</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 4 - Wipro Technologies -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">June 2018</div>
+                        <div class="journey-marker"></div>
+                        <h3>Wipro Technologies, Bengaluru</h3>
+                        <p>Started professional career as Software Developer and Data Engineer.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Software Development</span>
+                            <span class="journey-tag">Data Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 5 - Bachelor's Degree -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">May 2018</div>
+                        <div class="journey-marker"></div>
+                        <h3>Birla Institute of Technology, Mesra</h3>
+                        <p>Completed Bachelor's degree with focus in Electronics and Communication Engineering, achieving a GPA of 7.3.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">ECE</span>
+                            <span class="journey-tag">GPA 7.3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 6 - Junior College -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">May 2014</div>
+                        <div class="journey-marker"></div>
+                        <h3>Sri Chaitanya Junior College</h3>
+                        <p>Achieved exceptional results in competitive examinations, securing top 1 percentile in JEE Mains and Advanced, along with 96.5% in board exams.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Top 1%ile JEE</span>
+                            <span class="journey-tag">96.5% Board Exams</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 7 - School -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">May 2012</div>
+                        <div class="journey-marker"></div>
+                        <h3>Ravindra Bharathi Public School</h3>
+                        <p>Graduated with outstanding academic performance, ranking in the top 3 students with a GPA of 9.8.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Top 3 in School</span>
+                            <span class="journey-tag">GPA 9.8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey Item 8 - Birthday -->
+                <div class="journey-item">
+                    <div class="journey-content">
+                        <div class="journey-date">November 19, 1997</div>
+                        <div class="journey-marker"></div>
+                        <h3>A Star Was Born</h3>
+                        <p>Born on International Men's Day, marking the beginning of my journey into this world.</p>
+                        <div class="journey-tags">
+                            <span class="journey-tag">Birthday</span>
+                            <span class="journey-tag">Special Day</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inline script to ensure journey section renders properly in light mode -->
+    <script>
+        // Fix journey section rendering in light mode
+        (function() {
+            // Check if we're in light mode
+            if (document.documentElement.getAttribute('data-theme') === 'light') {
+                // Apply light mode styling immediately to journey section
+                const journeyItems = document.querySelectorAll('.journey-item, .journey-content, .journey-date, .journey-tags, .journey-tag');
+                journeyItems.forEach(item => {
+                    item.style.opacity = '1';
+                    item.style.visibility = 'visible';
+                });
+                
+                // Fix journey content colors for light mode
+                const journeyContents = document.querySelectorAll('.journey-content');
+                journeyContents.forEach(content => {
+                    content.style.background = '#ffffff';
+                    content.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                    content.style.border = '1px solid rgba(0, 0, 0, 0.08)';
+                });
+                
+                // Set text colors appropriate for light mode
+                document.querySelectorAll('.journey-section h3').forEach(h3 => {
+                    h3.style.color = '#3a56e4';
+                });
+                
+                document.querySelectorAll('.journey-section p').forEach(p => {
+                    p.style.color = '#555555';
+                });
+                
+                document.querySelectorAll('.journey-tag').forEach(tag => {
+                    tag.style.background = 'rgba(58, 86, 228, 0.1)';
+                    tag.style.color = '#3a56e4';
+                });
+                
+                // Set journey section background
+                const journeySection = document.querySelector('.journey-section');
+                if (journeySection) {
+                    journeySection.style.backgroundColor = '#f5f7fa';
+                }
+            }
+        })();
+    </script>
+
+    <!-- Portfolio Section -->
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-content">
+                <!-- Skill Category 1 -->
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul class="skills-list">
+                        <li><i class="fab fa-html5"></i> HTML5/CSS3</li>
+                        <li><i class="fab fa-js"></i> JavaScript/TypeScript</li>
+                        <li><i class="fab fa-react"></i> React</li>
+                        <li><i class="fab fa-vuejs"></i> Vue.js</li>
+                        <li><i class="fab fa-sass"></i> Sass/SCSS</li>
+                    </ul>
+                </div>
+                
+                <!-- Skill Category 2 -->
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <ul class="skills-list">
+                        <li><i class="fab fa-node-js"></i> Node.js</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fas fa-database"></i> SQL/NoSQL</li>
+                        <li><i class="fas fa-server"></i> RESTful APIs</li>
+                        <li><i class="fas fa-plug"></i> GraphQL</li>
+                    </ul>
+                </div>
+                
+                <!-- Skill Category 3 -->
+                <div class="skill-category">
+                    <h3>DevOps & Cloud</h3>
+                    <ul class="skills-list">
+                        <li><i class="fab fa-aws"></i> AWS</li>
+                        <li><i class="fab fa-docker"></i> Docker</li>
+                        <li><i class="fas fa-dharmachakra"></i> Kubernetes</li>
+                        <li><i class="fas fa-code-branch"></i> CI/CD</li>
+                        <li><i class="fas fa-cloud"></i> Cloud Architecture</li>
+                    </ul>
+                </div>
+                
+                <!-- Skill Category 4 -->
+                <div class="skill-category">
+                    <h3>Others</h3>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-brain"></i> Machine Learning</li>
+                        <li><i class="fas fa-mobile-alt"></i> Mobile Development</li>
+                        <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
+                        <li><i class="fas fa-project-diagram"></i> System Design</li>
+                        <li><i class="fas fa-users"></i> Team Leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-methods">
+                    <!-- Email Contact -->
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Me</h3>
+                        <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                    </div>
+                    
+                    <!-- Social Contact -->
+                    <div class="contact-method">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/yourusername" aria-label="GitHub" class="github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn" class="linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/yourusername" aria-label="Twitter" class="twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>San Francisco, California</p>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Other scripts can stay here, but remove any style blocks from body -->
+    <script>
+        // Hero section animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroProfileImage = document.querySelector('.hero-profile-image');
+            const heroName = document.querySelector('.hero-name');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroInterests = document.querySelector('.hero-interests');
+            const heroSocialLinks = document.querySelector('.hero-social-links');
+            
+            // Function to add animation classes
+            function animateElements() {
+                // Create staggered animation effect
+                setTimeout(() => {
+                    if (heroProfileImage) {
+                        heroProfileImage.style.opacity = '1';
+                        heroProfileImage.style.transform = 'translateY(0)';
+                    }
+                }, 300);
+                
+                setTimeout(() => {
+                    if (heroName) {
+                        heroName.style.opacity = '1';
+                        heroName.style.transform = 'translateY(0)';
+                    }
+                }, 600);
+                
+                setTimeout(() => {
+                    if (heroTitle) {
+                        heroTitle.style.opacity = '1';
+                        heroTitle.style.transform = 'translateY(0)';
+                    }
+                }, 900);
+                
+                setTimeout(() => {
+                    if (heroInterests) {
+                        heroInterests.style.opacity = '1';
+                        heroInterests.style.transform = 'translateY(0)';
+                    }
+                }, 1200);
+                
+                setTimeout(() => {
+                    if (heroSocialLinks) {
+                        heroSocialLinks.style.opacity = '1';
+                        heroSocialLinks.style.transform = 'translateY(0)';
+                    }
+                }, 1500);
+            }
+            
+            // Start animations
+            animateElements();
+        });
+    </script>
+
+    <script>
+        // Particle effect for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create canvas for particles
+            const heroSection = document.querySelector('.hero-section');
+            if (!heroSection) return;
+            
+            const canvas = document.createElement('canvas');
+            canvas.className = 'particle-canvas';
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.style.opacity = '0.5';
+            
+            heroSection.appendChild(canvas);
+            
+            // Set canvas size
+            const resizeCanvas = () => {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+            };
+            
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // Initialize particles
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const particleCount = Math.min(50, window.innerWidth / 20); // Adjust density based on screen width
+            
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 1,
+                    color: `rgba(255, ${Math.floor(Math.random() * 150) + 100}, ${Math.floor(Math.random() * 150) + 100}, ${Math.random() * 0.3 + 0.1})`,
+                    velocity: {
+                        x: Math.random() * 0.5 - 0.25,
+                        y: Math.random() * 0.5 - 0.25
+                    }
+                });
+            }
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw and update particles
+                particles.forEach(particle => {
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                    
+                    // Update position
+                    particle.x += particle.velocity.x;
+                    particle.y += particle.velocity.y;
+                    
+                    // Wrap around edges
+                    if (particle.x < 0) particle.x = canvas.width;
+                    if (particle.x > canvas.width) particle.x = 0;
+                    if (particle.y < 0) particle.y = canvas.height;
+                    if (particle.y > canvas.height) particle.y = 0;
+                });
+                
+                // Continue animation loop
+                requestAnimationFrame(animate);
+            }
+            
+            // Start animation
+            animate();
+            
+            // Check theme and adjust particle colors if needed
+            function updateParticleColors() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                
+                particles.forEach(particle => {
+                    if (isDark) {
+                        // Brighter particles for dark theme
+                        particle.color = `rgba(255, ${Math.floor(Math.random() * 150) + 100}, ${Math.floor(Math.random() * 150) + 100}, ${Math.random() * 0.3 + 0.1})`;
+                    } else {
+                        // Darker particles for light theme
+                        particle.color = `rgba(${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 50)}, ${Math.floor(Math.random() * 100)}, ${Math.random() * 0.2 + 0.05})`;
+                    }
+                });
+            }
+            
+            // Listen for theme changes
+            const themeToggle = document.getElementById('manual-theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    setTimeout(updateParticleColors, 200);
+                });
+            }
+            
+            // Initialize based on current theme
+            updateParticleColors();
+        });
+    </script>
+
+    <!-- Theme Toggle and Navigation Scripts -->
+    <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('manual-theme-toggle');
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const htmlElement = document.documentElement;
+                    const currentTheme = htmlElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    // Add animation class
+                    themeToggle.classList.add('animated');
+                    
+                    // Remove animation class after animation completes
+                    setTimeout(() => {
+                        themeToggle.classList.remove('animated');
+                    }, 600);
+                    
+                    // Set the new theme
+                    htmlElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    console.log('Theme switched to:', newTheme);
+                    
+                    // Dispatch a custom event for theme change
+                    document.dispatchEvent(new CustomEvent('themeChanged', { 
+                        detail: { theme: newTheme } 
+                    }));
+                    
+                    // Fix for Journey section in light mode
+                    if (newTheme === 'light') {
+                        // Force immediate visibility for all journey items
+                        document.querySelectorAll('.journey-item, .journey-content, .journey-date, .journey-tags, .journey-tag').forEach(item => {
+                            item.style.opacity = '1';
+                            item.style.visibility = 'visible';
+                            item.style.display = item.tagName.toLowerCase() === 'div' ? 'flex' : 'inline-block';
+                            item.style.transform = 'none';
+                            item.style.transition = 'none';
+                        });
+                        
+                        // Fix journey content colors for light mode
+                        document.querySelectorAll('.journey-content').forEach(content => {
+                            content.style.background = '#ffffff';
+                            content.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                            content.style.border = '1px solid rgba(0, 0, 0, 0.08)';
+                        });
+                        
+                        document.querySelectorAll('.journey-section h3').forEach(h3 => {
+                            h3.style.color = '#3a56e4';
+                        });
+                        
+                        document.querySelectorAll('.journey-section p').forEach(p => {
+                            p.style.color = '#555555';
+                        });
+                        
+                        document.querySelectorAll('.journey-tag').forEach(tag => {
+                            tag.style.background = 'rgba(58, 86, 228, 0.1)';
+                            tag.style.color = '#3a56e4';
+                        });
+                    }
+                });
+            }
+        });
+        
+        // Mobile Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (navLinks && navLinks.classList.contains('active')) {
+                    if (!event.target.closest('.nav-toggle') && !event.target.closest('.nav-links')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Handle scrolling and active navigation items
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+            const navigation = document.querySelector('.navigation');
+            
+            // Highlight active nav item based on scroll position
+            function highlightNavItem() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === `#${sectionId}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+                
+                // Add scrolled class to navigation when page is scrolled
+                if (scrollY > 50) {
+                    navigation.classList.add('scrolled');
+                } else {
+                    navigation.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', highlightNavItem);
+            
+            // Call once on page load
+            highlightNavItem();
+        });
+    </script>
+
+    <!-- Space Theme Initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create additional stars for the space theme
+            const heroSection = document.querySelector('.hero-section');
+            
+            // Create small stars in the background
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 3 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.borderRadius = '50%';
+                star.style.backgroundColor = '#fff';
+                star.style.position = 'absolute';
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = `${Math.random() * 0.7 + 0.3}`;
+                star.style.animation = `twinkle ${Math.random() * 5 + 3}s linear infinite`;
+                heroSection.appendChild(star);
+            }
+            
+            // Add twinkle animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes twinkle {
+                    0%, 100% { opacity: 0.2; }
+                    50% { opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add orbit effect around profile image
+            const heroProfileImage = document.querySelector('.hero-profile-image');
+            if (heroProfileImage) {
+                const orbitCount = 3;
+                for (let i = 0; i < orbitCount; i++) {
+                    const orbit = document.createElement('div');
+                    orbit.className = 'orbit';
+                    orbit.style.position = 'absolute';
+                    orbit.style.top = '50%';
+                    orbit.style.left = '50%';
+                    orbit.style.width = `${260 + (i * 40)}px`;
+                    orbit.style.height = `${260 + (i * 40)}px`;
+                    orbit.style.transform = 'translate(-50%, -50%)';
+                    orbit.style.borderRadius = '50%';
+                    orbit.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+                    orbit.style.animation = `rotate ${10 + (i * 5)}s linear infinite`;
+                    
+                    // Add particles on the orbit
+                    const particleCount = 1 + i;
+                    for (let j = 0; j < particleCount; j++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'particle';
+                        particle.style.position = 'absolute';
+                        particle.style.width = '8px';
+                        particle.style.height = '8px';
+                        particle.style.borderRadius = '50%';
+                        particle.style.backgroundColor = i === 0 ? '#ff6b6b' : (i === 1 ? '#536dfe' : '#36d1dc');
+                        particle.style.top = '0';
+                        particle.style.left = '50%';
+                        particle.style.transform = `rotate(${j * (360 / particleCount)}deg) translateX(${orbit.style.width.replace('px', '') / 2}px)`;
+                        particle.style.boxShadow = `0 0 10px ${particle.style.backgroundColor}`;
+                        orbit.appendChild(particle);
+                    }
+                    
+                    heroProfileImage.appendChild(orbit);
+                }
+                
+                // Add rotate animation
+                const rotateStyle = document.createElement('style');
+                rotateStyle.textContent = `
+                    @keyframes rotate {
+                        0% { transform: translate(-50%, -50%) rotate(0deg); }
+                        100% { transform: translate(-50%, -50%) rotate(360deg); }
+                    }
+                `;
+                document.head.appendChild(rotateStyle);
+            }
+        });
+    </script>
+
+    <script>
+        // Portfolio filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const portfolioTabs = document.querySelectorAll('.portfolio-tab');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            // Add click event to each tab
+            portfolioTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    portfolioTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter items
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else if (item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Initialize with animation
+            setTimeout(() => {
+                portfolioItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 500);
+        });
+    </script>
+
+    <!-- Initialize ScrollReveal for animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize ScrollReveal
+            const sr = ScrollReveal({
+                origin: 'bottom',
+                distance: '30px',
+                duration: 800,
+                delay: 300,
+                easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+                reset: false
+            });
+            
+            // Animate sections and elements
+            sr.reveal('.section-title', {
+                origin: 'top',
+                delay: 100
+            });
+
+            // Special handling for light mode journey section
+            const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+            
+            // Journey section optimized animations with reduced delay and duration in light mode
+            if (isLightMode) {
+                // Force immediate reveal for journey items in light mode
+                document.querySelectorAll('.journey-item').forEach(item => {
+                    item.style.opacity = '1';
+                    item.style.visibility = 'visible';
+                    item.style.transform = 'translateY(0)';
+                });
+                
+                // Apply faster animations with no delay for timeline elements
+                sr.reveal('.journey-timeline::before', {
+                    origin: 'top',
+                    delay: 0,
+                    duration: 600,
+                    scale: 1
+                });
+                
+                sr.reveal('.journey-date', {
+                    delay: 0,
+                    interval: 50,
+                    scale: 1
+                });
+            } else {
+                // Normal animation timing for dark mode
+                sr.reveal('.journey-timeline::before', {
+                    origin: 'top',
+                    delay: 200,
+                    duration: 1200,
+                    scale: 1
+                });
+                
+                sr.reveal('.journey-item:nth-child(odd) .journey-content', {
+                    origin: 'left',
+                    delay: 300,
+                    interval: 200
+                });
+                
+                sr.reveal('.journey-item:nth-child(even) .journey-content', {
+                    origin: 'right',
+                    delay: 300,
+                    interval: 200
+                });
+                
+                sr.reveal('.journey-date', {
+                    delay: 500,
+                    interval: 200,
+                    scale: 0.8
+                });
+            }
+            
+            // About, Skills, Portfolio sections
+            sr.reveal('.about-content', { delay: 200 });
+            sr.reveal('.skills-content', { delay: 200 });
+            sr.reveal('.portfolio-tabs', { delay: 200 });
+            sr.reveal('.portfolio-item', { delay: 300, interval: 100 });
+            sr.reveal('.contact-methods, .contact-form', { delay: 200, interval: 200 });
+        });
+    </script>
+    <!-- Journey section enhancement script -->
+    <script src="assets/js/journey-smooth.js" defer></script>
+</body>
+</html>
