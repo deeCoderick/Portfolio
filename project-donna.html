@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project D.O.N.N.A. - Ananth Deepak Sharma Nanduri</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Logo/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/Logo/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Project-specific styles */
+        .project-details {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: #0c0c14;
+            color: #ffffff;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .project-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #6c8aff, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .project-date {
+            font-size: 1.2rem;
+            color: #6c8aff;
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(108, 138, 255, 0.1);
+            color: #6c8aff;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(108, 138, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(108, 138, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .project-description {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ffffff;
+        }
+
+        .project-description h2 {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem;
+            color: #6c8aff;
+            border-bottom: 2px solid rgba(108, 138, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-description h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #ff6b6b;
+        }
+
+        .project-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .project-description ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .project-description li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .project-description strong {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-details {
+                padding-top: 60px;
+            }
+
+            .project-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-content {
+                margin: 1rem auto;
+                padding: 2rem;
+            }
+
+            .tech-stack {
+                gap: 0.5rem;
+            }
+
+            .tech-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* First section special styling */
+        .project-description > h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Container width control */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .donna-image {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .donna-portrait {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            max-height: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .donna-image {
+                max-width: 100%;
+                margin: 0 1rem 2rem;
+            }
+            
+            .donna-portrait {
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Details Section -->
+    <section id="donna" class="project-details">
+        <div class="container">
+            <div class="project-header">
+                <div class="donna-image">
+                    <img src="assets/images/DonnaPersonal.jpg" alt="Donna Paulsen" class="donna-portrait">
+                </div>
+                <h1>Project D.O.N.N.A.</h1>
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">TTS</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description">
+                    <h2>Project Overview</h2>
+                    <p>D.O.N.N.A. (Dynamic Orchestrator for Neural-based Next-generation Assistance) is an advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality. Built to be more than just a virtual assistant, D.O.N.N.A. brings together technical capability with human-like interaction patterns.</p>
+
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>Natural Language Understanding:</strong> Powered by advanced LLMs (Language Learning Models) for deep comprehension of user queries and context maintenance.</li>
+                        <li><strong>Natural Voice Interaction:</strong> High-quality text-to-speech and speech-to-text capabilities for seamless vocal communication.</li>
+                        <li><strong>Adaptive Personality:</strong> Dynamic response generation with contextual humor and emotional intelligence.</li>
+                        <li><strong>Multi-modal Interaction:</strong> Supports text, voice, and visual inputs for comprehensive communication.</li>
+                        <li><strong>Real-time Processing:</strong> Optimized response generation with minimal latency.</li>
+                        <li><strong>Context Awareness:</strong> Maintains conversation history and adapts responses based on user preferences and past interactions.</li>
+                    </ul>
+
+                    <h2>Technical Architecture</h2>
+                    <h3>Core Components:</h3>
+                    <ul>
+                        <li><strong>Language Processing Engine:</strong>
+                            <ul>
+                                <li>Custom-trained LLM for natural language understanding</li>
+                                <li>Context management system for conversation tracking</li>
+                                <li>Sentiment analysis for emotional intelligence</li>
+                            </ul>
+                        </li>
+                        <li><strong>Voice System:</strong>
+                            <ul>
+                                <li>Advanced TTS engine for natural speech synthesis</li>
+                                <li>Real-time voice recognition with accent adaptation</li>
+                                <li>Prosody and emotion modeling for expressive speech</li>
+                            </ul>
+                        </li>
+                        <li><strong>Personality Module:</strong>
+                            <ul>
+                                <li>Dynamic response generation with contextual humor</li>
+                                <li>Personality trait modeling for consistent interaction</li>
+                                <li>Adaptive behavior based on user preferences</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2>Technology Stack</h2>
+                    <ul>
+                        <li><strong>Backend:</strong>
+                            <ul>
+                                <li>Python for core processing and ML operations</li>
+                                <li>FastAPI for high-performance API endpoints</li>
+                                <li>Redis for real-time data and context management</li>
+                            </ul>
+                        </li>
+                        <li><strong>Frontend:</strong>
+                            <ul>
+                                <li>React for responsive web interface</li>
+                                <li>WebSocket for real-time communication</li>
+                                <li>Web Speech API for browser-based voice interaction</li>
+                            </ul>
+                        </li>
+                        <li><strong>Cloud Infrastructure:</strong>
+                            <ul>
+                                <li>AWS Lambda for serverless computing</li>
+                                <li>Amazon Polly for TTS capabilities</li>
+                                <li>AWS SageMaker for ML model deployment</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2>Unique Aspects</h2>
+                    <ul>
+                        <li><strong>Personality Development:</strong> D.O.N.N.A.'s personality is crafted through a combination of carefully curated training data and dynamic response generation, allowing for witty, contextual humor while maintaining professionalism.</li>
+                        <li><strong>Emotional Intelligence:</strong> Advanced sentiment analysis and context tracking enable D.O.N.N.A. to provide emotionally appropriate responses and maintain conversation flow naturally.</li>
+                        <li><strong>Learning Capability:</strong> Continuous learning from interactions helps improve response quality and personality adaptation over time.</li>
+                    </ul>
+
+                    <h2>Future Enhancements</h2>
+                    <ul>
+                        <li>Integration with more third-party services and APIs</li>
+                        <li>Enhanced multi-language support with accent recognition</li>
+                        <li>Advanced emotion recognition in voice inputs</li>
+                        <li>Expanded personality customization options</li>
+                        <li>AR/VR integration for immersive interaction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.threads.net/@de_coderick" target="_blank"><i class="fa-brands fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        // Back to top button functionality
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html> 

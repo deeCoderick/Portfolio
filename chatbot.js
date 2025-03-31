@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Feature flag configuration - You can control this programmatically
+    // Feature flag configuration
     const CHATBOT_CONFIG = {
-        enabled: false, // Set this to false by default
+        enabled: true,
         version: '1.0',
         debugMode: false
     };
@@ -15,69 +15,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatMessages = document.querySelector('.chatbot-messages');
     const chatbotHeader = document.querySelector('.chatbot-header');
     
-    // API configuration
-    const API_CONFIG = {
-        endpoint: 'http://ec2-3-145-76-118.us-east-2.compute.amazonaws.com/api/chat',
-        enabled: true,
-        timeout: 15000,
-        debug: true
-    };
-    
     let isFirstOpen = true;
     
-    // Toggle chatbot window when icon is clicked
-    if (chatbotIcon) {
-    chatbotIcon.addEventListener('click', function() {
-            console.log('Chatbot icon clicked'); // Debug log
-            if (chatbotWindow) {
-                chatbotWindow.classList.toggle('active');
-                console.log('Chatbot window active:', chatbotWindow.classList.contains('active')); // Debug log
+    // Initialize chatbot
+    function initializeChatbot() {
+        if (!chatbotIcon || !chatbotWindow) {
+            console.error('Chatbot elements not found');
+            return;
+        }
         
-                // Show welcome messages only on first open
-                if (isFirstOpen && chatbotWindow.classList.contains('active')) {
-            addBotMessage("👋 Hello there! I'm Donna, your friendly virtual assistant.");
-            setTimeout(() => {
-                addBotMessage("Welcome to Ananth's portfolio! I'm here to help you navigate and answer any questions you might have about Ananth's work, skills, or how to get in touch.");
-            }, 800);
-            setTimeout(() => {
-                addBotMessage("How can I assist you today?");
-            }, 1600);
-                    isFirstOpen = false;
-                }
+        // Toggle chatbot window when icon is clicked
+        chatbotIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            chatbotWindow.classList.toggle('active');
+            
+            // Show welcome messages only on first open
+            if (isFirstOpen && chatbotWindow.classList.contains('active')) {
+                setTimeout(() => {
+                    addBotMessage("👋 Hello there! I'm Donna, your friendly virtual assistant.");
+                }, 500);
+                setTimeout(() => {
+                    addBotMessage("Welcome to Ananth's portfolio! I'm here to help you navigate and answer any questions you might have about Ananth's work, skills, or how to get in touch.");
+                }, 1500);
+                setTimeout(() => {
+                    addBotMessage("How can I assist you today?");
+                }, 2500);
+                isFirstOpen = false;
             }
         });
-    }
-    
-    // Close chatbot window when close button is clicked
-    if (chatbotClose) {
-        chatbotClose.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event from bubbling up
-            if (chatbotWindow) {
-        chatbotWindow.classList.remove('active');
-            }
-    });
-    }
-    
-    // Close chatbot window when header is clicked
-    if (chatbotHeader) {
-        chatbotHeader.addEventListener('click', function() {
-            if (chatbotWindow) {
+        
+        // Close chatbot window when close button is clicked
+        if (chatbotClose) {
+            chatbotClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                chatbotWindow.classList.remove('active');
+            });
+        }
+        
+        // Minimize chatbot window when header is clicked
+        if (chatbotHeader) {
+            chatbotHeader.addEventListener('click', function(e) {
+                if (e.target === chatbotHeader || e.target === chatbotHeader.querySelector('h3')) {
+                    e.stopPropagation();
+                    chatbotWindow.classList.remove('active');
+                }
+            });
+        }
+
+        // Close chatbot window when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!chatbotWindow.contains(e.target) && !chatbotIcon.contains(e.target)) {
                 chatbotWindow.classList.remove('active');
             }
         });
     }
-    
-    // Sample responses for chatbot (fallback when API is disabled)
-    const responses = {
-        'hello': 'Hi there! How can I help you today?',
-        'hi': 'Hello! What can I assist you with?',
-        'help': 'I can help with information about my skills, experience, projects, or how to contact me. What would you like to know?',
-        'contact': 'You can reach me through email at ananth.deepaksharma@gmail.com or connect with me on LinkedIn.',
-        'projects': 'I have worked on various projects including web development, AI applications, and cloud solutions. Check out my portfolio section for more details.',
-        'skills': 'My skills include JavaScript, Python, React, Node.js, and various cloud technologies. See the Skills section for the complete list.',
-        'experience': 'I have 5+ years of experience in software development, working with various technologies and industries.',
-        'default': "I'm not sure I understand. Could you try rephrasing or ask me about my skills, projects, or contact information?"
-    };
+
+    // Initialize chatbot
+    initializeChatbot();
     
     // Add a message from the bot to the chat
     function addBotMessage(message) {
@@ -92,30 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
     
-    // Add a typing indicator
-    function showTypingIndicator() {
-        if (!chatMessages) return;
-        
-        const indicator = document.createElement('div');
-        indicator.className = 'chat-message bot-message typing-indicator';
-        indicator.innerHTML = '<span></span><span></span><span></span>';
-        indicator.id = 'typing-indicator';
-        chatMessages.appendChild(indicator);
-        
-        // Scroll to bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        return indicator;
-    }
-    
-    // Remove typing indicator
-    function removeTypingIndicator() {
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) {
-            indicator.remove();
-        }
-    }
-    
     // Add a message from the user to the chat
     function addUserMessage(message) {
         if (!chatMessages) return;
@@ -128,88 +98,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Scroll to bottom
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    
-    // Function to get a response from the API
-    async function getApiResponse(message) {
-        console.log('🚀 Sending request:', {
-            url: API_CONFIG.endpoint,
-            message: message
-        });
-        
-        try {
-            const response = await fetch(API_CONFIG.endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ message: message }),
-                mode: 'cors',
-                credentials: 'omit'
-            });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log('✅ Response received:', data);
-            
-            return data.response || "I apologize, but I received an unexpected response format.";
-        } catch (error) {
-            console.error('❌ Error:', error);
-            return getLocalResponse(message);
-        }
-    }
-    
-    // Function to process user input and return a local response
-    function getLocalResponse(input) {
-        input = input.toLowerCase().trim();
-        
-        // Check for keyword matches
-        for (const key in responses) {
-            if (input.includes(key)) {
-                return responses[key];
-            }
-        }
-        
-        // Default response if no match
-        return responses.default;
-    }
-    
     // Send message function
     async function sendMessage() {
         if (!chatInput || !chatMessages) return;
         
         const message = chatInput.value.trim();
         if (message) {
-            console.log(' Sending message:', message);
-            
             // Add user message
             addUserMessage(message);
             chatInput.value = '';
             
-            // Show typing indicator
-            const typingIndicator = showTypingIndicator();
-            
-            try {
-                const response = await getApiResponse(message);
-                removeTypingIndicator();
+            // Get bot response
+            const response = getBotResponse(message);
+            setTimeout(() => {
                 addBotMessage(response);
-                
-            } catch (error) {
-                console.error('❌ Chat error:', error);
-                removeTypingIndicator();
-                addBotMessage("I apologize, but I'm having trouble connecting to my brain right now. Please try again in a moment.");
-            }
+            }, 1000);
         }
     }
-    
-    // Event listeners for sending messages
+
+    // Handle send button click
     if (chatSendBtn) {
         chatSendBtn.addEventListener('click', sendMessage);
     }
-    
+
+    // Handle enter key press
     if (chatInput) {
         chatInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -217,135 +130,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Test function to verify CORS
-    async function testCORS() {
-        try {
-            const response = await fetch(API_CONFIG.endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: 'test' }),
-                mode: 'cors',
-                credentials: 'omit'
-            });
 
-            const data = await response.json();
-            console.log('CORS test successful:', data);
-            return true;
-        } catch (error) {
-            console.error('CORS test failed:', error);
-            return false;
-        }
-    }
-    
-    // Add test button functionality
-    const testBtn = document.getElementById('test-api-connection');
-    if (testBtn) {
-        testBtn.addEventListener('click', async () => {
-            addBotMessage("🔄 Testing connection...");
-            const success = await testCORS();
-            addBotMessage(success ? 
-                "✅ Connection successful!" : 
-                "❌ Connection failed. Check console for details."
-            );
-        });
-    }
-    
-    // Mobile social icons toggle
-    const socialToggle = document.querySelector('.social-mobile-toggle');
-    const socialSidebar = document.querySelector('.social-sidebar');
-    
-    if (socialToggle && socialSidebar) {
-        // Make sidebar visible by default on desktop
-        if (window.innerWidth > 768) {
-            socialSidebar.classList.add('visible');
-        }
+    // Bot responses
+    function getBotResponse(message) {
+        message = message.toLowerCase();
         
-        // Toggle visibility on mobile when clicked
-        socialToggle.addEventListener('click', function() {
-            socialSidebar.classList.toggle('visible');
-        });
-        
-        // Update visibility on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                socialSidebar.classList.add('visible');
-            } else {
-                socialSidebar.classList.remove('visible');
-            }
-        });
-    }
-    
-    // Social sidebar is now always visible
-    const socialLinks = document.querySelector('.social-icons');
-    const footerElement = document.querySelector('footer');
-    
-    // Mobile toggle functionality 
-    const socialMobileToggle = document.querySelector('.social-mobile-toggle');
-    if (socialMobileToggle && socialSidebar) {
-        socialMobileToggle.addEventListener('click', function() {
-            socialSidebar.classList.toggle('mobile-active');
-        });
-    }
-    
-    // Function to control chatbot visibility
-    function setChatbotVisibility(show) {
-        if (!CHATBOT_CONFIG.enabled) {
-            if (chatbotIcon) chatbotIcon.style.display = 'none';
-            if (chatbotWindow) {
-                chatbotWindow.classList.remove('active');
-                chatbotWindow.style.display = 'none';
-            }
-            return;
+        if (message.includes('hello') || message.includes('hi')) {
+            return "Hello! How can I help you today? 😊";
         }
-
-        if (chatbotIcon) chatbotIcon.style.display = show ? 'flex' : 'none';
-        if (chatbotWindow) {
-            if (!show) chatbotWindow.classList.remove('active');
-            chatbotWindow.style.display = show ? 'flex' : 'none';
+        else if (message.includes('donna') || message.includes('project donna') || message.includes('about you')) {
+            return "I'm D.O.N.N.A., an AI assistant created by Ananth. You can learn more about me in the Project D.O.N.N.A. page! 🚀";
+        }
+        else if (message.includes('contact') || message.includes('email')) {
+            return "You can reach Ananth through email at ananth.deepaksharma@gmail.com";
+        }
+        else if (message.includes('project') || message.includes('work')) {
+            return "I have worked on various projects in web development, AI, and cloud technologies. You can check them out in the Portfolio section! 🚀";
+        }
+        else if (message.includes('experience') || message.includes('background')) {
+            return "I have over 5 years of experience in software development, working with companies like Amazon and Wipro. Check out my journey section for more details! 💼";
+        }
+        else if (message.includes('skill') || message.includes('technology')) {
+            return "I'm proficient in various technologies including JavaScript, Python, React, AWS, and more. You can find my complete skill set in the Skills section. 💻";
+        }
+        else {
+            return "I can help you learn about Ananth's projects, skills, experience, or you can ask me about Project D.O.N.N.A.! 🤔";
         }
     }
-
-    // Initialize chatbot based on configuration
-    function initializeChatbot() {
-        setChatbotVisibility(CHATBOT_CONFIG.enabled);
-        
-        if (CHATBOT_CONFIG.debugMode) {
-            console.log('Chatbot initialization:', {
-                enabled: CHATBOT_CONFIG.enabled,
-                version: CHATBOT_CONFIG.version
-            });
-        }
-    }
-
-    // Function to programmatically enable/disable chatbot
-    window.toggleChatbot = function(enable) {
-        CHATBOT_CONFIG.enabled = enable;
-        setChatbotVisibility(enable);
-        
-        if (CHATBOT_CONFIG.debugMode) {
-            console.log('Chatbot state changed:', {
-                enabled: enable,
-                timestamp: new Date().toISOString()
-            });
-        }
-    }
-
-    // Function to update chatbot configuration
-    window.updateChatbotConfig = function(config) {
-        Object.assign(CHATBOT_CONFIG, config);
-        initializeChatbot();
-        
-        if (CHATBOT_CONFIG.debugMode) {
-            console.log('Chatbot config updated:', CHATBOT_CONFIG);
-        }
-    }
-
-    // Initialize chatbot
-    initializeChatbot();
-}); 
+});
 
 // Add a diagnostic test function
 async function runDiagnostics() {

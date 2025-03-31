@@ -20,7 +20,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ananth Deepak Sharma Nanduri</title>
+    <title>Tech Projects - Ananth Deepak Sharma Nanduri</title>
     <!-- Favicon settings -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/Logo/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/Logo/logo.png">
@@ -199,31 +199,24 @@
         /* Specific hover styles for gradient icons */
         .social-sidebar a:hover[href*="instagram"] .fa-instagram,
         .social-sidebar a:hover[href*="threads"] .fa-threads {
-            background: transparent !important;
-            -webkit-background-clip: unset !important;
-            background-clip: unset !important;
-            -webkit-text-fill-color: #FFFFFF !important;
+            background: none !important;
             color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
         }
 
-        /* Hover Transitions */
-        .social-sidebar a:hover {
-            transform: translateX(-5px) !important;
-        }
-
-        /* Mobile Adjustments */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .social-icons a, .social-sidebar a {
-                width: 36px !important;
-                height: 36px !important;
-            }
-
-            .social-icons a i, .social-sidebar a i {
-                font-size: 1.1rem !important;
+            .social-sidebar {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+                border-radius: 25px;
+                gap: 10px;
+                z-index: 1000;
             }
         }
 
@@ -764,6 +757,121 @@
                 gap: 8px !important;
             }
         }
+
+        .navigation {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            transform: none !important;
+            background-color: rgba(12, 12, 20, 0.9) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .logo-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-item {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-details {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: #0c0c14;
+        }
+
+        .project-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+
+        .project-header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: rgba(108, 138, 255, 0.1);
+            color: #6c8aff;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -782,7 +890,7 @@
         </nav>
     </header>
 
-    <!-- Social Sidebar for quick access -->
+    <!-- Social Sidebar -->
     <div class="social-sidebar">
         <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
@@ -793,11 +901,6 @@
         <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
         <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
-    
-    <!-- Mobile Social Toggle -->
-    <div class="social-mobile-toggle">
-        <i class="fas fa-share-alt"></i>
-    </div>
 
     <div class="page-header">
         <h1>Tech Projects</h1>
@@ -805,45 +908,42 @@
     </div>
 
     <main class="project-container">
-        <!-- Resume Section -->
-        <section class="resume-section">
-            <h2 class="section-title">My Resumes</h2>
-            <div class="resume-cards">
-                <div class="resume-card">
-                    <div class="resume-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="resume-content">
-                        <h3>Full Resume</h3>
-                        <p>Complete professional background and experience</p>
-                        <div class="resume-meta">
-                            <span class="freshness-date" data-updated="2024-03-15">Updated 2 days ago</span>
-                            <a href="assets/resumes/ResumeAnanthDeepakSharmaNanduri.pdf" class="download-btn" download>
-                                <i class="fas fa-download"></i> Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="resume-card">
-                    <div class="resume-icon">
-                        <i class="fas fa-file-code"></i>
-                    </div>
-                    <div class="resume-content">
-                        <h3>Technical Resume</h3>
-                        <p>Focused on technical skills and projects</p>
-                        <div class="resume-meta">
-                            <span class="freshness-date" data-updated="2024-03-10">Updated 1 week ago</span>
-                            <a href="assets/resumes/ResumeAnanthDeepakSharmaNanduri.pdf" class="download-btn" download>
-                                <i class="fas fa-download"></i> Download
-                            </a>
-                        </div>
+        <!-- Project D.O.N.N.A. -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('assets/images/portfolio/donna.jpg')">
+                <div class="project-meta">
+                    <h2>Project D.O.N.N.A.</h2>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">TTS</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">AWS</span>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="project-content">
+                <div class="project-description">
+                    <p>D.O.N.N.A. (Dynamic Orchestrator for Neural-based Next-generation Assistance) is an advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality. Built to be more than just a virtual assistant, D.O.N.N.A. brings together technical capability with human-like interaction patterns.</p>
+                    <p>Key features include:</p>
+                    <ul>
+                        <li>Natural Language Understanding powered by advanced LLMs</li>
+                        <li>High-quality text-to-speech and speech-to-text capabilities</li>
+                        <li>Dynamic response generation with contextual humor</li>
+                        <li>Multi-modal interaction support</li>
+                        <li>Real-time processing with minimal latency</li>
+                        <li>Context awareness and conversation history</li>
+                    </ul>
+                </div>
+                <div class="project-links">
+                    <a href="project-donna.html" class="btn"><i class="fas fa-globe"></i> View Project</a>
+                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
 
-        <h2 class="section-title">Featured Projects</h2>
-        
+        <!-- E-commerce Platform -->
         <div class="project-card">
             <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
                 <div class="project-meta">

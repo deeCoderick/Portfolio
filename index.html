@@ -489,124 +489,124 @@
         
         /* Theme toggle button for navigation */
         .theme-toggle {
-            height: 36px;
-            width: 70px;
-            border-radius: 30px;
-            background-color: #1c1c2e;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px 8px;
-            cursor: pointer;
-            border: none;
-            overflow: visible;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        html[data-theme="light"] .theme-toggle {
-            background-color: #e0e0e0;
-        }
-        
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-        }
-        
-        .theme-toggle:active {
-            transform: scale(0.98);
-        }
-        
-        .toggle-icons {
-            position: relative;
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            z-index: 2;
-        }
-        
-        .toggle-icons i {
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .toggle-icons i.fa-sun {
-            color: #f1c40f;
-            opacity: 0.6;
-        }
-        
-        .toggle-icons i.fa-moon {
-            color: #f1c4f1;
-            opacity: 0.6;
-        }
-        
-        html[data-theme="light"] .toggle-icons i.fa-sun {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        html[data-theme="dark"] .toggle-icons i.fa-moon {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #ff6b6b;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-            z-index: 1;
-        }
-        
-        html[data-theme="dark"] .toggle-slider {
-            transform: translateX(0);
-            left: 5px;
-        }
-        
-        html[data-theme="light"] .toggle-slider {
-            transform: translateX(34px);
-            left: 0;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                background-color: rgba(12, 12, 20, 0.98);
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                padding: 20px 0;
-                display: none;
-                gap: 15px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
-            
-            html[data-theme="light"] .nav-links {
-                background-color: rgba(255, 255, 255, 0.98);
-            }
-            
-            .nav-links.active {
+                height: 36px;
+                width: 70px;
+                border-radius: 30px;
+                background-color: #1c1c2e;
                 display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 5px 8px;
+                cursor: pointer;
+                border: none;
+                overflow: visible;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             }
             
-            .theme-toggle-wrapper {
-                margin: 5px 0;
+            html[data-theme="light"] .theme-toggle {
+                background-color: #e0e0e0;
             }
             
-            .nav-item {
+            .theme-toggle:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            }
+            
+            .theme-toggle:active {
+                transform: scale(0.98);
+            }
+            
+            .toggle-icons {
+                position: relative;
+                display: flex;
                 width: 100%;
-                text-align: center;
-                padding: 12px 15px;
+                justify-content: space-between;
+                z-index: 2;
             }
             
-            .theme-toggle {
-                margin: 0 auto;
+            .toggle-icons i {
+                font-size: 16px;
+                transition: all 0.3s ease;
+            }
+            
+            .toggle-icons i.fa-sun {
+                color: #f1c40f;
+                opacity: 0.6;
+            }
+            
+            .toggle-icons i.fa-moon {
+                color: #f1c4f1;
+                opacity: 0.6;
+            }
+            
+            html[data-theme="light"] .toggle-icons i.fa-sun {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            
+            html[data-theme="dark"] .toggle-icons i.fa-moon {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            
+            .toggle-slider {
+                position: absolute;
+                top: 3px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #ff6b6b;
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+                z-index: 1;
+            }
+            
+            html[data-theme="dark"] .toggle-slider {
+                transform: translateX(0);
+                left: 5px;
+            }
+            
+            html[data-theme="light"] .toggle-slider {
+                transform: translateX(34px);
+                left: 0;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .nav-links {
+                    flex-direction: column;
+                    background-color: rgba(12, 12, 20, 0.98);
+                    position: absolute;
+                    top: 70px;
+                    left: 0;
+                    width: 100%;
+                    padding: 20px 0;
+                    display: none;
+                    gap: 15px;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                }
+                
+                html[data-theme="light"] .nav-links {
+                    background-color: rgba(255, 255, 255, 0.98);
+                }
+                
+                .nav-links.active {
+                    display: flex;
+                }
+                
+                .theme-toggle-wrapper {
+                    margin: 5px 0;
+                }
+                
+                .nav-item {
+                    width: 100%;
+                    text-align: center;
+                    padding: 12px 15px;
+                }
+                
+                .theme-toggle {
+                    margin: 0 auto;
             }
         }
     </style>
@@ -1245,23 +1245,83 @@
     }
     
     .hero-social-link {
-        width: 40px;
-        height: 40px;
+        width: 44px; /* Increased from 40px */
+        height: 44px; /* Increased from 40px */
         display: flex;
         align-items: center;
         justify-content: center;
         color: #fff;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1.32rem; /* Increased from 1.2rem */
     }
     
-    .hero-social-link:hover {
-        background: #ff6b6b;
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    /* Enhanced Social Media Brand Colors on Hover */
+    .hero-social-link[href*="linkedin"]:hover,
+    .social-sidebar a[href*="linkedin"]:hover {
+        background: #0077b5;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 119, 181, 0.6);
+    }
+    
+    .hero-social-link[href*="github"]:hover,
+    .social-sidebar a[href*="github"]:hover {
+        background: #2b3137;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(43, 49, 55, 0.6);
+    }
+    
+    .hero-social-link[href*="twitter"]:hover,
+    .social-sidebar a[href*="twitter"]:hover,
+    .hero-social-link[href*="x.com"]:hover,
+    .social-sidebar a[href*="x.com"]:hover {
+        background: #1DA1F2;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(29, 161, 242, 0.6);
+    }
+    
+    .hero-social-link[href*="instagram"]:hover,
+    .social-sidebar a[href*="instagram"]:hover {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(225, 48, 108, 0.6);
+    }
+    
+    .hero-social-link[href*="youtube"]:hover,
+    .social-sidebar a[href*="youtube"]:hover {
+        background: #FF0000;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(255, 0, 0, 0.6);
+    }
+    
+    .hero-social-link[href*="medium"]:hover,
+    .social-sidebar a[href*="medium"]:hover {
+        background: #12100E;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(18, 16, 14, 0.6);
+    }
+    
+    .hero-social-link[href*="calendly"]:hover,
+    .social-sidebar a[href*="calendly"]:hover {
+        background: #006BFF;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 107, 255, 0.6);
+    }
+    
+    .hero-social-link[href*="tiktok"]:hover,
+    .social-sidebar a[href*="tiktok"]:hover {
+        background: linear-gradient(45deg, #000000, #EE1D52, #69C9D0);
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(238, 29, 82, 0.6);
+    }
+    
+    .hero-social-link[href*="envelope"]:hover,
+    .social-sidebar a[href*="envelope"]:hover {
+        background: #EA4335;
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 5px 15px rgba(234, 67, 53, 0.6);
     }
     
     /* Shooting star animation */
@@ -2741,101 +2801,151 @@
 .social-sidebar {
     position: fixed;
     top: 50%;
-    right: 0;
+    right: -100%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 15px 10px;
-    background: rgba(30, 30, 50, 0.7);
+    background: rgba(30, 30, 50, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 15px 0 0 15px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 999;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    width: 0;
-    opacity: 0;
-    /* Start with the sidebar closed */
+    transition: transform 0.3s ease;
+    opacity: 1;
+    pointer-events: none;
+    will-change: transform;
 }
 
-.social-sidebar.open {
-    width: 55px;
-    opacity: 1;
+.social-sidebar.visible {
+    transform: translate(100%, -50%);
+    pointer-events: auto;
 }
 
 .social-sidebar a {
+    width: 38.5px;
+    height: 38.5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     text-decoration: none;
-    transition: all 0.3s ease;
-    transform: scale(0);
-    opacity: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 1.21rem;
+    will-change: transform;
 }
 
-.social-sidebar a.active {
-    transform: scale(1);
-    opacity: 1;
+/* Brand-specific hover colors */
+.social-sidebar a[href*="linkedin"]:hover {
+    background: #0077b5;
+    transform: translateX(-5px);
 }
 
-.social-sidebar a:hover {
-    transform: scale(1.2);
-    background: rgba(255, 107, 107, 0.8);
+.social-sidebar a[href*="github"]:hover {
+    background: #333;
+    transform: translateX(-5px);
 }
 
-.social-sidebar a i {
-    font-size: 16px;
+.social-sidebar a[href*="twitter"]:hover {
+    background: #1DA1F2;
+    transform: translateX(-5px);
 }
 
-/* Animation for the tumbler effect */
-@keyframes openTumbler {
-    0% { 
-        width: 0;
-        opacity: 0;
-        transform: translateY(-50%) rotateY(-90deg);
-    }
-    20% {
-        width: 20px;
-        opacity: 0.3;
-    }
-    100% { 
-        width: 55px;
-        opacity: 1;
-        transform: translateY(-50%) rotateY(0);
-    }
+.social-sidebar a[href*="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    transform: translateX(-5px);
 }
 
-@keyframes fallAndBounce {
-    0% {
-        transform: translate(var(--start-x), var(--start-y)) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(calc(var(--end-x) - 40px), calc(var(--end-y) - 50px)) rotate(180deg);
-        opacity: 0.7;
-    }
-    70% {
-        transform: translate(calc(var(--end-x) - 20px), calc(var(--end-y) + 30px)) rotate(270deg);
-        opacity: 0.9;
-    }
-    85% {
-        transform: translate(calc(var(--end-x) - 5px), calc(var(--end-y) - 10px)) rotate(330deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--end-x), var(--end-y)) rotate(360deg);
-        opacity: 1;
-    }
+.social-sidebar a[href*="youtube"]:hover {
+    background: #FF0000;
+    transform: translateX(-5px);
 }
 
-/* Styling for the clone that will animate */
+.social-sidebar a[href*="medium"]:hover {
+    background: #12100E;
+    transform: translateX(-5px);
+}
+
+.social-sidebar a[href*="calendly"]:hover {
+    background: #006BFF;
+    transform: translateX(-5px);
+}
+
+.social-sidebar a[href*="tiktok"]:hover {
+    background: linear-gradient(45deg, #000000, #EE1D52, #69C9D0);
+    transform: translateX(-5px);
+}
+
+.social-sidebar a[href*="envelope"]:hover {
+    background: #EA4335;
+    transform: translateX(-5px);
+}
+
+/* Light theme adjustments */
+html[data-theme="light"] .social-sidebar {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .social-sidebar a {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+html[data-theme="light"] .social-sidebar a:hover {
+    color: #fff;
+}
+</style>
+
+<script>
+// Simple social sidebar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSocialLinks = document.querySelector('.hero-social-links');
+    const socialSidebar = document.querySelector('.social-sidebar');
+    
+    if (!heroSocialLinks || !socialSidebar) return;
+    
+    // Clone social links to sidebar
+    heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
+        const clonedLink = link.cloneNode(true);
+        clonedLink.classList.remove('hero-social-link');
+        socialSidebar.appendChild(clonedLink);
+    });
+    
+    // Handle scroll with throttling
+    let lastScrollTime = 0;
+    const throttleDelay = 100; // ms
+    
+    function updateSidebar() {
+        const rect = heroSocialLinks.getBoundingClientRect();
+        const shouldShow = window.scrollY > (rect.bottom + window.scrollY + 50);
+        socialSidebar.classList.toggle('visible', shouldShow);
+    }
+    
+    // Throttled scroll handler
+    window.addEventListener('scroll', () => {
+        const now = Date.now();
+        if (now - lastScrollTime >= throttleDelay) {
+            lastScrollTime = now;
+            updateSidebar();
+        }
+    }, { passive: true });
+    
+    // Handle resize
+    window.addEventListener('resize', updateSidebar);
+    
+    // Initial check
+    updateSidebar();
+});
+</script>
+
+<style>
+/* Styles for rolling animation */
 .animated-social-icon {
     position: fixed;
     width: 40px;
@@ -2849,216 +2959,310 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     pointer-events: none;
+    transform-origin: center;
 }
 
-html[data-theme="light"] .social-sidebar {
-    background: rgba(240, 240, 250, 0.8);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
+.hero-social-link {
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-html[data-theme="light"] .social-sidebar a {
-    background: rgba(0, 0, 0, 0.05);
-    color: #333;
+.hero-social-link.fade-out {
+    opacity: 0;
+    transform: scale(0.8);
 }
 
-html[data-theme="light"] .social-sidebar a:hover {
-    background: rgba(255, 107, 107, 0.8);
+/* Social sidebar animation */
+.social-sidebar {
+    position: fixed;
+    top: 50%;
+    right: -100%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 10px;
+    background: rgba(30, 30, 50, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px 0 0 15px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 999;
+    transition: transform 0.3s ease;
+    opacity: 1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.social-sidebar.visible {
+    right: 0;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.social-sidebar a {
+    width: 38.5px;
+    height: 38.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.21rem;
+    transform: translateX(50px);
+    opacity: 0;
+}
+
+.social-sidebar.visible a {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Floating animation for icons during transition */
+@keyframes floatIcon {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-10px, -20px) rotate(90deg); }
+    50% { transform: translate(-20px, 0) rotate(180deg); }
+    75% { transform: translate(-10px, 20px) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+.floating-social-icon {
+    position: fixed;
+    width: 38.5px;
+    height: 38.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Brand-specific hover colors */
+.social-sidebar a[href*="linkedin"]:hover {
+    background: #0077b5;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.4);
+}
+
+.social-sidebar a[href*="github"]:hover {
+    background: #333;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(51, 51, 51, 0.4);
+}
+
+.social-sidebar a[href*="twitter"]:hover {
+    background: #1DA1F2;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(29, 161, 242, 0.4);
+}
+
+.social-sidebar a[href*="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(225, 48, 108, 0.4);
+}
+
+.social-sidebar a[href*="youtube"]:hover {
+    background: #FF0000;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.social-sidebar a[href*="medium"]:hover {
+    background: #12100E;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(18, 16, 14, 0.4);
+}
+
+.social-sidebar a[href*="calendly"]:hover {
+    background: #006BFF;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(0, 107, 255, 0.4);
+}
+
+.social-sidebar a[href*="tiktok"]:hover {
+    background: linear-gradient(45deg, #000000, #EE1D52, #69C9D0);
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(238, 29, 82, 0.4);
+}
+
+.social-sidebar a[href*="envelope"]:hover {
+    background: #EA4335;
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
 }
 </style>
 
 <script>
-// Add this script at the end of your file
+// Social sidebar animation
 document.addEventListener('DOMContentLoaded', function() {
     const heroSocialLinks = document.querySelector('.hero-social-links');
-    const socialSidebar = document.createElement('div');
-    socialSidebar.className = 'social-sidebar';
-    document.body.appendChild(socialSidebar);
-    
+    const socialSidebar = document.querySelector('.social-sidebar');
     let socialLinksPosition;
-    let sidebarOpen = false;
-    let iconsMoved = false;
-    let animationsInProgress = 0;
-    
-    // Get initial position of the hero social links
+    let sidebarVisible = false;
+    let animationInProgress = false;
+
+    // Clone social links to sidebar
+    function setupSocialSidebar() {
+        if (!heroSocialLinks || !socialSidebar) return;
+        socialSidebar.innerHTML = '';
+        
+        heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
+            const clonedLink = link.cloneNode(true);
+            clonedLink.classList.remove('hero-social-link');
+            socialSidebar.appendChild(clonedLink);
+        });
+    }
+
     function updateSocialLinksPosition() {
         if (heroSocialLinks) {
             const rect = heroSocialLinks.getBoundingClientRect();
             socialLinksPosition = {
-                top: rect.top,
-                left: rect.left,
-                width: rect.width,
-                height: rect.height,
-                bottom: rect.bottom
+                top: rect.top + window.scrollY,
+                bottom: rect.bottom + window.scrollY
             };
         }
     }
-    
-    // Create the social sidebar with the same icons
-    function setupSocialSidebar() {
-        if (!heroSocialLinks) return;
-        
-        // Clear previous content
-        socialSidebar.innerHTML = '';
-        
-        // Clone each social link to the sidebar
-        heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
-            const newLink = document.createElement('a');
-            newLink.href = link.href;
-            newLink.className = link.className.replace('hero-social-link', '');
-            newLink.setAttribute('aria-label', link.getAttribute('aria-label'));
-            
-            const icon = document.createElement('i');
-            icon.className = link.querySelector('i').className;
-            
-            newLink.appendChild(icon);
-            socialSidebar.appendChild(newLink);
+
+    function animateIconToSidebar(originalIcon, targetIcon, index) {
+        return new Promise(resolve => {
+            const originalRect = originalIcon.getBoundingClientRect();
+            const targetRect = targetIcon.getBoundingClientRect();
+
+            const floatingIcon = document.createElement('div');
+            floatingIcon.className = 'floating-social-icon';
+            floatingIcon.innerHTML = originalIcon.innerHTML;
+            floatingIcon.style.top = `${originalRect.top}px`;
+            floatingIcon.style.left = `${originalRect.left}px`;
+            floatingIcon.style.background = window.getComputedStyle(originalIcon).backgroundColor;
+            document.body.appendChild(floatingIcon);
+
+            // Hide original icon
+            originalIcon.style.opacity = '0';
+
+            // Animate floating icon
+            const keyframes = [
+                { 
+                    top: `${originalRect.top}px`, 
+                    left: `${originalRect.left}px`,
+                    transform: 'rotate(0deg)',
+                    offset: 0 
+                },
+                { 
+                    top: `${(originalRect.top + targetRect.top) / 2 - 20}px`,
+                    left: `${(originalRect.left + targetRect.left) / 2}px`,
+                    transform: 'rotate(180deg)',
+                    offset: 0.5 
+                },
+                { 
+                    top: `${targetRect.top}px`, 
+                    left: `${targetRect.left}px`,
+                    transform: 'rotate(360deg)',
+                    offset: 1 
+                }
+            ];
+
+            const timing = {
+                duration: 800,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                delay: index * 100
+            };
+
+            const animation = floatingIcon.animate(keyframes, timing);
+
+            animation.onfinish = () => {
+                floatingIcon.remove();
+                targetIcon.style.opacity = '1';
+                targetIcon.style.transform = 'translateX(0)';
+                resolve();
+            };
         });
     }
-    
-    // Open the sidebar with animation
-    function openSidebar() {
-        if (!sidebarOpen) {
-            socialSidebar.style.animation = 'openTumbler 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
-            socialSidebar.classList.add('open');
-            sidebarOpen = true;
-            
-            // Add a small metal sound effect
-            const audioElement = document.createElement('audio');
-            audioElement.src = 'https://www.soundjay.com/mechanical/sounds/metal-small-lid-drop-1.mp3';
-            audioElement.volume = 0.3;
-            audioElement.play().catch(e => console.log("Sound play prevented by browser policy"));
-        }
-    }
-    
-    // Animate social icons falling into the sidebar
-    function animateIconsToSidebar() {
-        if (iconsMoved || !heroSocialLinks || !sidebarOpen) return;
-        
-        const links = heroSocialLinks.querySelectorAll('.hero-social-link');
-        const sidebarLinks = socialSidebar.querySelectorAll('a');
-        
-        links.forEach((link, index) => {
-            // Create clone for animation
-            const clone = document.createElement('div');
-            clone.className = 'animated-social-icon';
-            
-            // Copy the icon
-            const iconClass = link.querySelector('i').className;
-            const iconElement = document.createElement('i');
-            iconElement.className = iconClass;
-            clone.appendChild(iconElement);
-            
-            // Get positions
-            const linkRect = link.getBoundingClientRect();
-            const sidebarLinkRect = sidebarLinks[index].getBoundingClientRect();
-            
-            // Set starting position
-            clone.style.top = `${linkRect.top}px`;
-            clone.style.left = `${linkRect.left}px`;
-            
-            // Set custom properties for the animation
-            clone.style.setProperty('--start-x', '0px');
-            clone.style.setProperty('--start-y', '0px');
-            clone.style.setProperty('--end-x', `${sidebarLinkRect.left - linkRect.left}px`);
-            clone.style.setProperty('--end-y', `${sidebarLinkRect.top - linkRect.top}px`);
-            
-            // Add to body
-            document.body.appendChild(clone);
-            
-            // Start animation with delay based on index
-            animationsInProgress++;
-            setTimeout(() => {
-                // Add falling animation
-                clone.style.animation = `fallAndBounce 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`;
-                
-                // Hide original icon
+
+    async function handleScroll() {
+        if (!socialLinksPosition || animationInProgress) return;
+
+        const scrollY = window.scrollY;
+        const shouldShowSidebar = scrollY > socialLinksPosition.bottom + 50;
+
+        if (shouldShowSidebar && !sidebarVisible) {
+            animationInProgress = true;
+            sidebarVisible = true;
+            socialSidebar.classList.add('visible');
+
+            const originalIcons = heroSocialLinks.querySelectorAll('.hero-social-link');
+            const targetIcons = socialSidebar.querySelectorAll('a');
+
+            // Animate icons sequentially
+            for (let i = 0; i < originalIcons.length; i++) {
+                await animateIconToSidebar(originalIcons[i], targetIcons[i], i);
+            }
+
+            animationInProgress = false;
+        } else if (!shouldShowSidebar && sidebarVisible) {
+            sidebarVisible = false;
+            socialSidebar.classList.remove('visible');
+
+            // Reset original icons
+            heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
+                link.style.opacity = '1';
+            });
+
+            // Reset sidebar icons
+            socialSidebar.querySelectorAll('a').forEach(link => {
                 link.style.opacity = '0';
-                
-                // Play a falling sound
-                const audioElement = document.createElement('audio');
-                audioElement.src = 'https://www.soundjay.com/button/sounds/button-10.mp3';
-                audioElement.volume = 0.2;
-                audioElement.play().catch(e => console.log("Sound play prevented by browser policy"));
-                
-                // Clean up after animation and show in sidebar
-                setTimeout(() => {
-                    document.body.removeChild(clone);
-                    sidebarLinks[index].classList.add('active');
-                    
-                    // Play a landing sound
-                    const landAudio = document.createElement('audio');
-                    landAudio.src = 'https://www.soundjay.com/button/sounds/button-21.mp3';
-                    landAudio.volume = 0.1;
-                    landAudio.play().catch(e => console.log("Sound play prevented by browser policy"));
-                    
-                    animationsInProgress--;
-                    if (animationsInProgress === 0) {
-                        iconsMoved = true;
-                    }
-                }, 1200);
-            }, index * 150);
-        });
-    }
-    
-    // Handle scroll event
-    function handleScroll() {
-        updateSocialLinksPosition();
-        
-        if (!socialLinksPosition) return;
-        
-        // If scrolled past the social links
-        if (window.scrollY > socialLinksPosition.bottom && !sidebarOpen) {
-            openSidebar();
-            setTimeout(animateIconsToSidebar, 300); // Wait for sidebar to open
-        } else if (window.scrollY <= socialLinksPosition.top && iconsMoved) {
-            // Reset when scrolled back to top
-            socialSidebar.classList.remove('open');
-            sidebarOpen = false;
-            iconsMoved = false;
-            
-            // Reset sidebar links
-            socialSidebar.querySelectorAll('a').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Show original icons
-            heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
-                link.style.opacity = '1';
+                link.style.transform = 'translateX(50px)';
             });
         }
     }
-    
+
     // Initialize
-    updateSocialLinksPosition();
     setupSocialSidebar();
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-    
-    // Update positions on resize
-    window.addEventListener('resize', function() {
+    updateSocialLinksPosition();
+    handleScroll();
+
+    // Event listeners
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(handleScroll, 10);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
         updateSocialLinksPosition();
-        
-        // If icons have moved, and we scroll back up past the hero section,
-        // we should reset the animation state
-        if (window.scrollY <= socialLinksPosition.top && iconsMoved) {
-            socialSidebar.classList.remove('open');
-            sidebarOpen = false;
-            iconsMoved = false;
-            
-            socialSidebar.querySelectorAll('a').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            heroSocialLinks.querySelectorAll('.hero-social-link').forEach(link => {
-                link.style.opacity = '1';
-            });
-        }
+        handleScroll();
     });
 });
 </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
 </head>
 <body class="home-page">
     <!-- Navigation -->
@@ -3177,214 +3381,203 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="section about-section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm a passionate software developer with 5+ years of experience building innovative digital solutions. My journey in technology began with a fascination for how software can transform lives and businesses.</p>
-                    <p>I specialize in full-stack development, with expertise in modern JavaScript frameworks, Python for data analysis, and cloud technologies. I'm constantly exploring new technologies and methodologies to create efficient, scalable, and user-friendly applications.</p>
-                    <p>When I'm not coding, you can find me exploring photography, traveling to new destinations, creating digital art, or playing basketball. I believe that diverse experiences fuel creativity in problem-solving.</p>
-                </div>
+                <p>Hello! I'm a passionate software developer with 5+ years of experience building innovative digital solutions. My journey in technology began with a fascination for how software can transform lives and businesses.</p>
+                
+                <p>I specialize in full-stack development, with expertise in modern JavaScript frameworks, Python for data analysis, and cloud technologies. I'm constantly exploring new technologies and methodologies to create efficient, scalable, and user-friendly applications.</p>
+                
+                <p>When I'm not coding, you can find me exploring photography, traveling to new destinations, creating digital art, or playing basketball. I believe that diverse experiences fuel creativity in problem-solving.</p>
+
                 <div class="about-interests">
-                    <div class="interest-tag"><i class="fas fa-running"></i> 🏃‍♂️ Decathlete</div>
-                    <div class="interest-tag"><i class="fas fa-globe"></i> 🌍 Wanderer</div>
-                    <div class="interest-tag"><i class="fas fa-camera"></i> 📸 Photographer</div>
-                    <div class="interest-tag"><i class="fas fa-palette"></i> 🎨 Artist</div>
+                    <div class="interest-tag">
+                        <i class="fas fa-running"></i>
+                        Decathlete
+                </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-globe"></i>
+                        Wanderer
+                </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-camera"></i>
+                        Photographer
+                    </div>
+                    <div class="interest-tag">
+                        <i class="fas fa-palette"></i>
+                        Artist
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Journey Section -->
-    <section id="journey" class="journey-section">
+    <section id="journey" class="section journey-section">
         <div class="container">
             <h2 class="section-title">My Journey</h2>
-            <p class="journey-description">Key milestones and achievements that have shaped my personal and professional development.</p>
-            
-            <!-- Space-themed journey visualization -->
-            <div class="journey-space-background">
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-star"></div>
-                <div class="journey-orbit"></div>
-                <div class="journey-comet"></div>
-            </div>
-            
+            <p class="section-description">Key milestones and achievements that have shaped my personal and professional development.</p>
+
             <div class="journey-timeline">
                 <div class="timeline-line"></div>
                 
-                <!-- Journey Item 1 - Birthday -->
-                <div class="journey-item" data-aos="fade-up">
+                <!-- Journey Item 1: Birth -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-star-half-alt"></i></div>
-                        <div class="journey-date">November 19, 1997</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">November 19, 1997</span>
                         <h3>A Star Was Born</h3>
                         <p>Born on International Men's Day, marking the beginning of my journey into this world.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-birthday-cake"></i> Birthday</span>
-                            <span class="journey-tag"><i class="fas fa-calendar-day"></i> Special Day</span>
+                            <span class="journey-tag"><i class="fas fa-birthday-cake"></i>Birthday</span>
+                            <span class="journey-tag"><i class="fas fa-star"></i>Special Day</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 2 - School -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="100">
+                <!-- Journey Item 2: School -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-school"></i></div>
-                        <div class="journey-date">May 2012</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">May 2012</span>
                         <h3>Ravindra Bharathi Public School</h3>
                         <p>Graduated with outstanding academic performance, ranking in the top 3 students with a GPA of 9.8.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-medal"></i> Top 3 in School</span>
-                            <span class="journey-tag"><i class="fas fa-chart-line"></i> GPA 9.8</span>
+                            <span class="journey-tag"><i class="fas fa-trophy"></i>Top 3 in School</span>
+                            <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 9.8</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 3 - Junior College -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="200">
+                <!-- Journey Item 3: Junior College -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="journey-date">May 2014</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">May 2014</span>
                         <h3>Sri Chaitanya Junior College</h3>
                         <p>Achieved exceptional results in competitive examinations, securing top 1 percentile in JEE Mains and Advanced, along with 96.5% in board exams.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-trophy"></i> Top 1%ile JEE</span>
-                            <span class="journey-tag"><i class="fas fa-award"></i> 96.5% Board Exams</span>
+                            <span class="journey-tag"><i class="fas fa-medal"></i>Top 1%ile JEE</span>
+                            <span class="journey-tag"><i class="fas fa-award"></i>96.5% Board Exams</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 4 - Bachelor's Degree -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="300">
+                <!-- Journey Item 4: Bachelor's -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-university"></i></div>
-                        <div class="journey-date">May 2018</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">May 2018</span>
                         <h3>Birla Institute of Technology, Mesra</h3>
                         <p>Completed Bachelor's degree with focus in Electronics and Communication Engineering, achieving a GPA of 7.3.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-microchip"></i> ECE</span>
-                            <span class="journey-tag"><i class="fas fa-chart-bar"></i> GPA 7.3</span>
+                            <span class="journey-tag"><i class="fas fa-microchip"></i>ECE</span>
+                            <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 7.3</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 5 - Wipro Technologies -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="400">
+                <!-- Journey Item 5: First Job -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-briefcase"></i></div>
-                        <div class="journey-date">June 2018</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">June 2018</span>
                         <h3>Wipro Technologies, Bengaluru</h3>
                         <p>Started professional career as Software Developer and Data Engineer.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-code"></i> Software Development</span>
-                            <span class="journey-tag"><i class="fas fa-database"></i> Data Engineering</span>
+                            <span class="journey-tag"><i class="fas fa-code"></i>Software Development</span>
+                            <span class="journey-tag"><i class="fas fa-database"></i>Data Engineering</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 6 - Senior Software Engineer -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="500">
+                <!-- Journey Item 6: Senior Role -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-laptop-code"></i></div>
-                        <div class="journey-date">January 2020</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">January 2020</span>
                         <h3>Senior Software Engineer at Wipro</h3>
                         <p>Promoted to Senior Software Engineer, leading cloud migration projects for CapitalOne, Hitachi, and DSM clients.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-cloud-upload-alt"></i> Cloud Migration</span>
-                            <span class="journey-tag"><i class="fas fa-users-cog"></i> Project Leadership</span>
+                            <span class="journey-tag"><i class="fas fa-cloud"></i>Cloud Migration</span>
+                            <span class="journey-tag"><i class="fas fa-users"></i>Project Leadership</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 7 - Master's Degree -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="600">
+                <!-- Journey Item 7: Master's -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fas fa-brain"></i></div>
-                        <div class="journey-date">May 2022</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">May 2022</span>
                         <h3>University at Buffalo</h3>
                         <p>Completed Master's degree with focus in Artificial Intelligence, securing a GPA of 3.5.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-robot"></i> AI Focus</span>
-                            <span class="journey-tag"><i class="fas fa-graduation-cap"></i> GPA 3.5</span>
+                            <span class="journey-tag"><i class="fas fa-brain"></i>AI Focus</span>
+                            <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 3.5</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
                 
-                <!-- Journey Item 8 - Amazon -->
-                <div class="journey-item" data-aos="fade-up" data-aos-delay="700">
+                <!-- Journey Item 8: Amazon -->
+                <div class="journey-item">
                     <div class="journey-content">
-                        <div class="journey-icon"><i class="fab fa-amazon"></i></div>
-                        <div class="journey-date">June 2022</div>
-                        <div class="journey-marker"></div>
+                        <span class="journey-date">June 2022</span>
                         <h3>Amazon.com</h3>
                         <p>Started working as a Software Engineer at Amazon, joining one of the world's leading tech companies.</p>
                         <div class="journey-tags">
-                            <span class="journey-tag"><i class="fas fa-building"></i> Big Tech</span>
-                            <span class="journey-tag"><i class="fas fa-laptop-code"></i> Software Engineering</span>
+                            <span class="journey-tag"><i class="fas fa-building"></i>Big Tech</span>
+                            <span class="journey-tag"><i class="fas fa-laptop-code"></i>Software Engineering</span>
                         </div>
                     </div>
+                    <div class="journey-marker"></div>
                 </div>
-                
-                <!-- Rocket at the end of the timeline -->
-                <div class="journey-rocket">
-                    <i class="fas fa-rocket"></i>
-                    <div class="rocket-flames"></div>
-                </div>
+            </div>
+
+            <!-- Journey Rocket -->
+            <div class="journey-rocket">
+                <i class="fas fa-rocket"></i>
+                <div class="rocket-flames"></div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio-section">
+    <section id="portfolio" class="section portfolio-section">
         <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <p class="section-description">Explore my diverse range of interests and projects across different categories.</p>
+            <h1 class="portfolio-title">Portfolio</h1>
+            <p class="portfolio-description">Explore my diverse range of interests and projects across different categories.</p>
             
             <!-- Main Portfolio Navigation Buttons -->
             <div class="portfolio-nav-buttons">
-                <a href="code.html" class="portfolio-nav-button">
+                <a href="code.html#tech-section" class="portfolio-nav-button" data-category="tech">
                     <i class="fas fa-laptop-code"></i>
                     <span>Tech Projects</span>
                 </a>
-                <a href="sports.html" class="portfolio-nav-button">
+                <a href="sports.html#sports-section" class="portfolio-nav-button" data-category="sports">
                     <i class="fas fa-running"></i>
                     <span>Sports & Physical</span>
                 </a>
-                <a href="travel.html" class="portfolio-nav-button">
-                    <i class="fas fa-globe-americas"></i>
+                <a href="travel.html#travel-section" class="portfolio-nav-button" data-category="travel">
+                    <i class="fas fa-globe"></i>
                     <span>Travel & Photography</span>
                 </a>
-                <a href="art.html" class="portfolio-nav-button">
+                <a href="art.html#art-section" class="portfolio-nav-button" data-category="art">
                     <i class="fas fa-palette"></i>
                     <span>Art</span>
                 </a>
-                <a href="books.html" class="portfolio-nav-button">
-                    <i class="fas fa-book-open"></i>
+                <a href="books.html#books-section" class="portfolio-nav-button" data-category="books">
+                    <i class="fas fa-book"></i>
                     <span>Books</span>
                 </a>
-                <a href="cooking.html" class="portfolio-nav-button">
+                <a href="cooking.html#cooking-section" class="portfolio-nav-button" data-category="cooking">
                     <i class="fas fa-utensils"></i>
                     <span>Cooking</span>
                 </a>
             </div>
-            
-            <!-- Portfolio Tabs (smaller filters) -->
+
+            <!-- Portfolio Filter Tabs -->
             <div class="portfolio-tabs">
                 <button class="portfolio-tab active" data-filter="all">All</button>
                 <button class="portfolio-tab" data-filter="tech">Tech Projects</button>
@@ -3394,153 +3587,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="portfolio-tab" data-filter="books">Books</button>
                 <button class="portfolio-tab" data-filter="cooking">Cooking</button>
             </div>
-            
+
             <!-- Portfolio Grid -->
             <div class="portfolio-grid">
-                <!-- Tech Projects -->
+                <!-- Tech Project 1 -->
                 <div class="portfolio-item" data-category="tech">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/tech1.jpg" alt="Tech Project 1">
-                            <div class="portfolio-overlay">
-                                <a href="code.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Software Development</h3>
-                            <p>Full-stack applications, API development, and cloud solutions</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">React</span>
-                                <span class="portfolio-tag">AWS</span>
-                                <span class="portfolio-tag">Node.js</span>
-                            </div>
-                            <a href="code.html" class="portfolio-button">View Projects</a>
+                    <div class="portfolio-image">
+                        <img src="assets/images/tech1.jpg" alt="Tech Project 1">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Software Development</h3>
+                        <p>Full-stack applications, API development, and cloud solutions</p>
+                        <div class="portfolio-tags">
+                            <span>React</span>
+                            <span>AWS</span>
+                            <span>Node.js</span>
                         </div>
                     </div>
                 </div>
-                
+
+                <!-- Tech Project 2 -->
                 <div class="portfolio-item" data-category="tech">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/tech2.jpg" alt="Tech Project 2">
-                            <div class="portfolio-overlay">
-                                <a href="code.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>AI & Machine Learning</h3>
-                            <p>Projects showcasing AI capabilities and machine learning algorithms</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Python</span>
-                                <span class="portfolio-tag">TensorFlow</span>
-                                <span class="portfolio-tag">NLP</span>
-                            </div>
-                            <a href="code.html" class="portfolio-button">View Projects</a>
+                    <div class="portfolio-image">
+                        <img src="assets/images/tech2.jpg" alt="Tech Project 2">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>AI & Machine Learning</h3>
+                        <p>Projects showcasing AI capabilities and machine learning algorithms</p>
+                        <div class="portfolio-tags">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>NLP</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Sports & Physical -->
+
+                <!-- Sports Project -->
                 <div class="portfolio-item" data-category="sports">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/sports1.jpg" alt="Sports 1">
-                            <div class="portfolio-overlay">
-                                <a href="sports.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Fitness Journey</h3>
-                            <p>My training routines, fitness goals, and achievements</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Strength Training</span>
-                                <span class="portfolio-tag">Nutrition</span>
-                            </div>
-                            <a href="sports.html" class="portfolio-button">View Activities</a>
-                        </div>
+                    <div class="portfolio-image">
+                        <img src="assets/images/sports1.jpg" alt="Sports 1">
                     </div>
-                </div>
-                
-                <!-- Travel & Photography -->
-                <div class="portfolio-item" data-category="travel">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/travel1.jpg" alt="Travel 1">
-                            <div class="portfolio-overlay">
-                                <a href="travel.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>World Explorations</h3>
-                            <p>Visual stories from my travels around the globe</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Photography</span>
-                                <span class="portfolio-tag">Travel</span>
-                            </div>
-                            <a href="travel.html" class="portfolio-button">View Gallery</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Art -->
-                <div class="portfolio-item" data-category="art">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/art1.jpg" alt="Art 1">
-                            <div class="portfolio-overlay">
-                                <a href="art.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Digital Creations</h3>
-                            <p>A collection of my digital art and creative projects</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Digital Art</span>
-                                <span class="portfolio-tag">Design</span>
-                            </div>
-                            <a href="art.html" class="portfolio-button">View Gallery</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Books -->
-                <div class="portfolio-item" data-category="books">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/books1.jpg" alt="Books 1">
-                            <div class="portfolio-overlay">
-                                <a href="books.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Literary Collection</h3>
-                            <p>My favorite books and reviews of literary works</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Fiction</span>
-                                <span class="portfolio-tag">Non-Fiction</span>
-                            </div>
-                            <a href="books.html" class="portfolio-button">View Collection</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Cooking -->
-                <div class="portfolio-item" data-category="cooking">
-                    <div class="portfolio-item-inner">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/cooking1.jpg" alt="Cooking 1">
-                            <div class="portfolio-overlay">
-                                <a href="cooking.html" class="portfolio-link"><i class="fas fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Culinary Adventures</h3>
-                            <p>Recipes, food photography, and cooking experiments</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Recipes</span>
-                                <span class="portfolio-tag">Food Photography</span>
-                            </div>
-                            <a href="cooking.html" class="portfolio-button">View Recipes</a>
+                    <div class="portfolio-content">
+                        <h3>Fitness Journey</h3>
+                        <p>My training routines, fitness goals, and achievements</p>
+                        <div class="portfolio-tags">
+                            <span>Strength Training</span>
+                            <span>Nutrition</span>
                         </div>
                     </div>
                 </div>
@@ -3549,144 +3641,301 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
+    <section id="skills" class="section skills-section">
         <div class="container">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <p class="section-description">A comprehensive overview of my technical skills and areas of expertise</p>
-            <div class="skills-content">
-                <!-- Skill Category 1: Frontend -->
+            <h2 class="skills-title">Skills & Expertise</h2>
+            <p class="skills-description">A comprehensive overview of my technical skills and areas of expertise</p>
+            
+            <div class="skills-grid">
+                <!-- Frontend Development -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-desktop skill-category-icon"></i> Frontend Development</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-html5" style="color: #E44D26;"></i> HTML5/CSS3</li>
-                        <li><i class="fab fa-js" style="color: #F7DF1E;"></i> JavaScript/TypeScript</li>
-                        <li><i class="fab fa-react" style="color: #61DAFB;"></i> <a href="code.html?skill=react" class="skill-link">React</a></li>
-                        <li><i class="fab fa-vuejs" style="color: #41B883;"></i> <a href="code.html?skill=vue" class="skill-link">Vue.js</a></li>
-                        <li><i class="fab fa-angular" style="color: #DD0031;"></i> <a href="code.html?skill=angular" class="skill-link">Angular</a></li>
-                        <li><i class="fab fa-sass" style="color: #CC6699;"></i> Sass/SCSS</li>
-                        <li><i class="fab fa-bootstrap" style="color: #7952B3;"></i> Bootstrap</li>
-                        <li><i class="fab fa-figma" style="color: #F24E1E;"></i> <a href="art.html?skill=figma" class="skill-link">Figma/UI Design</a></li>
-                    </ul>
+                    <div class="skill-header">
+                        <i class="fas fa-desktop" style="color: #61DAFB"></i>
+                    <h3>Frontend Development</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5" style="color: #E44D26"></i>
+                            <span>HTML5/CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js" style="color: #F7DF1E"></i>
+                            <span>JavaScript/TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react" style="color: #61DAFB"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-vuejs" style="color: #4FC08D"></i>
+                            <span>Vue.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-angular" style="color: #DD0031"></i>
+                            <span>Angular</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-sass" style="color: #CC6699"></i>
+                            <span>Sass/SCSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-bootstrap" style="color: #7952B3"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-figma" style="color: #F24E1E"></i>
+                            <span>Figma/UI Design</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Skill Category 2: Backend -->
+                <!-- Backend Development -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-server skill-category-icon"></i> Backend Development</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-node-js" style="color: #68A063;"></i> <a href="code.html?skill=nodejs" class="skill-link">Node.js</a></li>
-                        <li><i class="fab fa-python" style="color: #3776AB;"></i> <a href="code.html?skill=python" class="skill-link">Python</a></li>
-                        <li><i class="fab fa-java" style="color: #007396;"></i> <a href="code.html?skill=java" class="skill-link">Java</a></li>
-                        <li><i class="fas fa-database" style="color: #4479A1;"></i> SQL/NoSQL</li>
-                        <li><i class="fas fa-server" style="color: #FF6C37;"></i> RESTful APIs</li>
-                        <li><i class="fas fa-plug" style="color: #E535AB;"></i> GraphQL</li>
-                        <li><i class="fab fa-php" style="color: #777BB4;"></i> PHP</li>
-                        <li><i class="fas fa-cogs" style="color: #6DB33F;"></i> <a href="code.html?skill=spring" class="skill-link">Spring Framework</a></li>
-                    </ul>
+                    <div class="skill-header">
+                        <i class="fas fa-server" style="color: #68A063"></i>
+                    <h3>Backend Development</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-node-js" style="color: #68A063"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python" style="color: #3776AB"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java" style="color: #007396"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database" style="color: #4479A1"></i>
+                            <span>SQL/NoSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server" style="color: #FF6C37"></i>
+                            <span>RESTful APIs</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-project-diagram" style="color: #E535AB"></i>
+                            <span>GraphQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-php" style="color: #777BB4"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-leaf" style="color: #6DB33F"></i>
+                            <span>Spring Framework</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Skill Category 3: DevOps & Cloud -->
+                <!-- DevOps & Cloud -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-cloud skill-category-icon"></i> DevOps & Cloud</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-aws" style="color: #FF9900;"></i> <a href="code.html?skill=aws" class="skill-link">AWS</a></li>
-                        <li><i class="fab fa-microsoft" style="color: #00A4EF;"></i> <a href="code.html?skill=azure" class="skill-link">Azure</a></li>
-                        <li><i class="fab fa-google" style="color: #4285F4;"></i> <a href="code.html?skill=gcp" class="skill-link">Google Cloud</a></li>
-                        <li><i class="fab fa-docker" style="color: #2496ED;"></i> <a href="code.html?skill=docker" class="skill-link">Docker</a></li>
-                        <li><i class="fas fa-dharmachakra" style="color: #326CE5;"></i> <a href="code.html?skill=kubernetes" class="skill-link">Kubernetes</a></li>
-                        <li><i class="fab fa-jenkins" style="color: #D33833;"></i> <a href="code.html?skill=cicd" class="skill-link">Jenkins</a></li>
-                        <li><i class="fab fa-github-alt" style="color: #6e5494;"></i> <a href="code.html?skill=github" class="skill-link">GitHub Actions</a></li>
-                        <li><i class="fas fa-code-branch" style="color: #F05032;"></i> CI/CD</li>
-                    </ul>
+                    <div class="skill-header">
+                        <i class="fas fa-cloud" style="color: #FF9900"></i>
+                    <h3>DevOps & Cloud</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-aws" style="color: #FF9900"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-microsoft" style="color: #00A4EF"></i>
+                            <span>Azure</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-google" style="color: #4285F4"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-docker" style="color: #2496ED"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-dharmachakra" style="color: #326CE5"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-jenkins" style="color: #D33833"></i>
+                            <span>Jenkins</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-github" style="color: #181717"></i>
+                            <span>GitHub Actions</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code-branch" style="color: #F05032"></i>
+                            <span>CI/CD</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Skill Category 4: Data & AI -->
+                <!-- Data Science & AI -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-brain skill-category-icon"></i> Data Science & AI</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-robot" style="color: #FF6F00;"></i> <a href="code.html?skill=ai" class="skill-link">Machine Learning</a></li>
-                        <li><i class="fas fa-chart-bar" style="color: #E70488;"></i> <a href="code.html?skill=data" class="skill-link">Data Analysis</a></li>
-                        <li><i class="fab fa-python" style="color: #4B8BBE;"></i> <a href="code.html?skill=tensorflow" class="skill-link">TensorFlow</a></li>
-                        <li><i class="fas fa-fire" style="color: #EE4C2C;"></i> <a href="code.html?skill=pytorch" class="skill-link">PyTorch</a></li>
-                        <li><i class="fas fa-comments" style="color: #0084FF;"></i> <a href="code.html?skill=nlp" class="skill-link">NLP</a></li>
-                        <li><i class="fas fa-database" style="color: #13aa52;"></i> <a href="code.html?skill=bigdata" class="skill-link">Big Data</a></li>
-                        <li><i class="fas fa-eye" style="color: #5C3EE8;"></i> <a href="code.html?skill=cv" class="skill-link">Computer Vision</a></li>
-                        <li><i class="fas fa-project-diagram" style="color: #FF4F64;"></i> <a href="code.html?skill=dl" class="skill-link">Deep Learning</a></li>
-                    </ul>
+                    <div class="skill-header">
+                        <i class="fas fa-brain" style="color: #FF6B6B"></i>
+                        <h3>Data Science & AI</h3>
                 </div>
-                
-                <!-- Skill Category 5: Soft Skills -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-users skill-category-icon"></i> Leadership & Soft Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-users-cog" style="color: #4CAF50;"></i> Team Leadership</li>
-                        <li><i class="fas fa-tasks" style="color: #FF5722;"></i> Project Management</li>
-                        <li><i class="fas fa-comments" style="color: #2196F3;"></i> Communication</li>
-                        <li><i class="fas fa-lightbulb" style="color: #FFC107;"></i> Problem Solving</li>
-                        <li><i class="fas fa-handshake" style="color: #9C27B0;"></i> Collaboration</li>
-                        <li><i class="fas fa-chalkboard-teacher" style="color: #3F51B5;"></i> Mentoring</li>
-                        <li><i class="fas fa-laptop-code" style="color: #607D8B;"></i> Technical Writing</li>
-                        <li><i class="fas fa-user-tie" style="color: #795548;"></i> Client Relations</li>
-                    </ul>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-robot" style="color: #FF6F00"></i>
+                            <span>Machine Learning</span>
+            </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-bar" style="color: #E70488"></i>
+                            <span>Data Analysis</span>
+        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python" style="color: #FF6F00"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire" style="color: #EE4C2C"></i>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comments" style="color: #0084FF"></i>
+                            <span>NLP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database" style="color: #13AA52"></i>
+                            <span>Big Data</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-eye" style="color: #5C3EE8"></i>
+                            <span>Computer Vision</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-network-wired" style="color: #FF4F64"></i>
+                            <span>Deep Learning</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Skill Category 6: Other Technologies -->
+
+                <!-- Leadership & Soft Skills -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools skill-category-icon"></i> Other Technologies</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-android" style="color: #3DDC84;"></i> <a href="code.html?skill=android" class="skill-link">Android Development</a></li>
-                        <li><i class="fab fa-apple" style="color: #A2AAAD;"></i> <a href="code.html?skill=ios" class="skill-link">iOS Development</a></li>
-                        <li><i class="fab fa-react" style="color: #61DBFB;"></i> <a href="code.html?skill=react-native" class="skill-link">React Native</a></li>
-                        <li><i class="fab fa-unity" style="color: #000000;"></i> <a href="code.html?skill=unity" class="skill-link">Unity</a></li>
-                        <li><i class="fas fa-vr-cardboard" style="color: #FF4081;"></i> <a href="code.html?skill=ar-vr" class="skill-link">AR/VR Development</a></li>
-                        <li><i class="fas fa-microchip" style="color: #00979D;"></i> <a href="code.html?skill=iot" class="skill-link">IoT</a></li>
-                        <li><i class="fas fa-lock" style="color: #F44336;"></i> <a href="code.html?skill=security" class="skill-link">Cybersecurity</a></li>
-                        <li><i class="fab fa-ethereum" style="color: #627EEA;"></i> <a href="code.html?skill=blockchain" class="skill-link">Blockchain</a></li>
-                    </ul>
+                    <div class="skill-header">
+                        <i class="fas fa-users" style="color: #4CAF50"></i>
+                        <h3>Leadership & Soft Skills</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-users-cog" style="color: #4CAF50"></i>
+                            <span>Team Leadership</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-tasks" style="color: #FF5722"></i>
+                            <span>Project Management</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comments" style="color: #2196F3"></i>
+                            <span>Communication</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-lightbulb" style="color: #FFC107"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-handshake" style="color: #9C27B0"></i>
+                            <span>Collaboration</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chalkboard-teacher" style="color: #3F51B5"></i>
+                            <span>Mentoring</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-alt" style="color: #607D8B"></i>
+                            <span>Technical Writing</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-user-tie" style="color: #795548"></i>
+                            <span>Client Relations</span>
+                        </div>
+                    </div>
+                    </div>
+                    
+                <!-- Other Technologies -->
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <i class="fas fa-tools" style="color: #607D8B"></i>
+                        <h3>Other Technologies</h3>
+                        </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-android" style="color: #3DDC84"></i>
+                            <span>Android Development</span>
+                    </div>
+                        <div class="skill-item">
+                            <i class="fab fa-apple" style="color: #000000"></i>
+                            <span>iOS Development</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react" style="color: #61DAFB"></i>
+                            <span>React Native</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-unity" style="color: #000000"></i>
+                            <span>Unity</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-vr-cardboard" style="color: #FF4081"></i>
+                            <span>AR/VR Development</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-microchip" style="color: #00979D"></i>
+                            <span>IoT</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt" style="color: #F44336"></i>
+                            <span>Cybersecurity</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-ethereum" style="color: #627EEA"></i>
+                            <span>Blockchain</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title">Get In Touch</h2>
+            
             <div class="contact-content">
-                <div class="contact-methods">
-                    <!-- Location -->
-                    <div class="contact-method">
+                <div class="contact-info">
+                    <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Location</h3>
-                        <p>San Francisco, California</p>
+                        <p>San Francisco Bay Area</p>
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
-                <form class="contact-form">
+                <div class="contact-form">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="message" placeholder="Your Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn submit-btn">Send Message</button>
-                </form>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+    <!-- Social Sidebar -->
+    <div class="social-sidebar">
+        <!-- Social icons will be cloned here -->
         </div>
-    </footer>
 
     <!-- Other scripts can stay here, but remove any style blocks from body -->
     <script>
@@ -4480,5 +4729,133 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })();
     </script>
+
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Existing scripts -->
+    <script src="script.js"></script>
+
+    <!-- Books Section -->
+    <section id="books" class="books-section">
+        <div class="container">
+            <h2 class="section-title">Books I've Read</h2>
+            <div class="books-grid">
+                <article class="book-card">
+                    <div class="book-image">
+                        <img src="assets/images/books/dune.jpg" alt="Dune by Frank Herbert">
+                    </div>
+                    <div class="book-content">
+                        <div>
+                            <span class="book-year">1965</span>
+                            <h3 class="book-title">Dune</h3>
+                            <p class="book-author">by Frank Herbert</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="book-description">An epic science fiction masterpiece set in a distant future against a backdrop of political intrigue, ecological themes, and human evolution.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-image">
+                        <img src="assets/images/books/sapiens.jpg" alt="Sapiens: A Brief History of Humankind by Yuval Noah Harari">
+                    </div>
+                    <div class="book-content">
+                        <div>
+                            <span class="book-year">2011</span>
+                            <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
+                            <p class="book-author">by Yuval Noah Harari</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="book-description">A thought-provoking exploration of human history, from the emergence of Homo sapiens to the present day.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card">
+                    <div class="book-image">
+                        <img src="assets/images/books/lean-startup.jpg" alt="The Lean Startup by Eric Ries">
+                    </div>
+                    <div class="book-content">
+                        <div>
+                            <span class="book-year">2011</span>
+                            <h3 class="book-title">The Lean Startup</h3>
+                            <p class="book-author">by Eric Ries</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star-half"></i>
+                            </div>
+                            <p class="book-description">A practical approach to creating and managing successful startups in an age when companies need to innovate more than ever.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cooking Section -->
+    <section id="cooking" class="cooking-section">
+        <div class="container">
+            <h2 class="section-title">My Culinary Adventures</h2>
+            <div class="cooking-grid">
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="assets/images/cooking/recipe1.jpg" alt="Italian Pasta">
+                    </div>
+                    <div class="recipe-content">
+                        <div>
+                            <span class="recipe-category">Italian</span>
+                            <h3 class="recipe-title">Homemade Pasta Carbonara</h3>
+                            <p class="recipe-description">A classic Roman pasta dish made with eggs, cheese, pancetta, and black pepper.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="assets/images/cooking/recipe2.jpg" alt="Indian Curry">
+                    </div>
+                    <div class="recipe-content">
+                        <div>
+                            <span class="recipe-category">Indian</span>
+                            <h3 class="recipe-title">Butter Chicken</h3>
+                            <p class="recipe-description">Tender chicken in a rich, creamy tomato-based curry sauce.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="assets/images/cooking/recipe3.jpg" alt="Japanese Sushi">
+                    </div>
+                    <div class="recipe-content">
+                        <div>
+                            <span class="recipe-category">Japanese</span>
+                            <h3 class="recipe-title">Homemade Sushi Rolls</h3>
+                            <p class="recipe-description">Fresh sushi rolls with salmon, avocado, and cucumber.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
