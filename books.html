@@ -396,235 +396,270 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="page-header">
-        <div class="floating-book"></div>
-        <div class="floating-book"></div>
-        <div class="floating-book"></div>
-        <div class="floating-book"></div>
-        <h1>Books I've Read</h1>
-        <p>Exploring worlds through literature – a curated collection of books that have shaped my perspectives, sparked my imagination, and left lasting impressions on my journey.</p>
-    </header>
+    <!-- Navigation spacer -->
+    <div class="navigation-top-space"></div>
 
-    <!-- Main Content -->
-    <main class="books-container">
-        <div class="book-header">
-            <h2>Favorite Books</h2>
-            <p>This collection represents some of my favorite reads across different genres, each providing unique insights, stories, and experiences. These works have influenced my thinking and expanded my understanding of the world.</p>
+    <!-- Books Section -->
+    <section id="books" class="books-section">
+        <div class="page-header">
+            <h1>Books I've Read</h1>
+            <p>A curated collection of books that have shaped my perspective and knowledge</p>
         </div>
-        
-        <!-- Filter Buttons -->
-        <div class="categories-filter">
-            <button class="category-button active" data-filter="all">All Categories</button>
-            <button class="category-button" data-filter="fiction">Fiction</button>
-            <button class="category-button" data-filter="non-fiction">Non-Fiction</button>
-            <button class="category-button" data-filter="science">Science</button>
-            <button class="category-button" data-filter="philosophy">Philosophy</button>
-            <button class="category-button" data-filter="tech">Technology</button>
-        </div>
-        
-        <!-- Books Grid -->
-        <div class="books-grid">
-            <!-- Book 1 -->
-            <article class="book-card" data-category="fiction">
-                <div class="book-image">
-                    <img src="assets/images/books/dune.jpg" alt="Dune by Frank Herbert">
-                </div>
-                <div class="book-content">
-                    <span class="book-year">1965</span>
-                    <h3 class="book-title">Dune</h3>
-                    <p class="book-author">by Frank Herbert</p>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="book-description">An epic science fiction masterpiece set in a distant future amidst a feudal interstellar society.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">Sci-Fi</span>
-                        <span class="book-tag">Politics</span>
-                        <span class="book-tag">Ecology</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Book 2 -->
-            <article class="book-card" data-category="non-fiction science">
-                <div class="book-image">
-                    <img src="assets/images/books/sapiens.jpg" alt="Sapiens by Yuval Noah Harari">
-                </div>
-                <div class="book-content">
-                    <span class="book-year">2011</span>
-                    <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
-                    <p class="book-author">by Yuval Noah Harari</p>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="book-description">A thought-provoking exploration of humanity's creation and evolution.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">History</span>
-                        <span class="book-tag">Anthropology</span>
-                        <span class="book-tag">Evolution</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Book 3 -->
-            <article class="book-card" data-category="tech non-fiction">
-                <div class="book-image">
-                    <img src="assets/images/books/lean-startup.jpg" alt="The Lean Startup by Eric Ries">
-                </div>
-                <div class="book-content">
-                    <span class="book-year">2011</span>
-                    <h3 class="book-title">The Lean Startup</h3>
-                    <p class="book-author">by Eric Ries</p>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <p class="book-description">A practical approach to creating and managing successful startups in an age when companies need to innovate more than ever.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">Business</span>
-                        <span class="book-tag">Startups</span>
-                        <span class="book-tag">Innovation</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Book 4 -->
-            <div class="book-card" data-category="philosophy non-fiction">
-                <div class="book-card-image">
-                    <img src="assets/images/books/meditations.jpg" alt="Meditations">
-                    <div class="book-category"><i class="fas fa-book"></i> Philosophy</div>
-                    <div class="book-year">180 AD</div>
-                </div>
-                <div class="book-content">
-                    <h3 class="book-title">Meditations</h3>
-                    <div class="book-author">by Marcus Aurelius</div>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="book-excerpt">A series of personal writings by the Roman Emperor Marcus Aurelius, documenting his ideas on Stoic philosophy. These notes were written as a source for his own guidance and self-improvement.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">Stoicism</span>
-                        <span class="book-tag">Ancient</span>
-                        <span class="book-tag">Self-improvement</span>
-                    </div>
-                    <a href="#" class="read-more">Read Review</a>
-                </div>
-            </div>
-            
-            <!-- Book 5 -->
-            <div class="book-card" data-category="fiction">
-                <div class="book-card-image">
-                    <img src="assets/images/books/1984.jpg" alt="1984">
-                    <div class="book-category"><i class="fas fa-book"></i> Fiction</div>
-                    <div class="book-year">1949</div>
-                </div>
-                <div class="book-content">
-                    <h3 class="book-title">1984</h3>
-                    <div class="book-author">by George Orwell</div>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="book-excerpt">A dystopian social science fiction novel that examines the consequences of totalitarianism, mass surveillance, and repressive regimentation of people and behaviors within society.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">Dystopian</span>
-                        <span class="book-tag">Political</span>
-                        <span class="book-tag">Classic</span>
-                    </div>
-                    <a href="#" class="read-more">Read Review</a>
-                </div>
-            </div>
-            
-            <!-- Book 6 -->
-            <div class="book-card" data-category="science non-fiction">
-                <div class="book-card-image">
-                    <img src="assets/images/books/brief-history.jpg" alt="A Brief History of Time">
-                    <div class="book-category"><i class="fas fa-book"></i> Science</div>
-                    <div class="book-year">1988</div>
-                </div>
-                <div class="book-content">
-                    <h3 class="book-title">A Brief History of Time</h3>
-                    <div class="book-author">by Stephen Hawking</div>
-                    <div class="book-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <p class="book-excerpt">A landmark volume in science writing that examines the nature of time, the universe, and our place within it, making complex concepts accessible to non-specialists.</p>
-                    <div class="book-tags">
-                        <span class="book-tag">Physics</span>
-                        <span class="book-tag">Cosmology</span>
-                        <span class="book-tag">Time</span>
-                    </div>
-                    <a href="#" class="read-more">Read Review</a>
-                </div>
-            </div>
-        </div>
-    </main>
 
-    <!-- Footer -->
+        <div class="books-container">
+            <div class="book-header">
+                <h2>Favorite Books</h2>
+                <p>This collection represents some of my favorite reads across different genres, each providing unique insights, stories, and experiences. These works have influenced my thinking and expanded my understanding of the world.</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="categories-filter">
+                <button class="category-button active" data-filter="all">All Categories</button>
+                <button class="category-button" data-filter="fiction">Fiction</button>
+                <button class="category-button" data-filter="non-fiction">Non-Fiction</button>
+                <button class="category-button" data-filter="science">Science</button>
+                <button class="category-button" data-filter="philosophy">Philosophy</button>
+                <button class="category-button" data-filter="tech">Technology</button>
+            </div>
+            
+            <!-- Books Grid -->
+            <div class="books-grid">
+                <!-- Book 1 -->
+                <article class="book-card" data-category="fiction">
+                    <div class="book-image">
+                        <img src="assets/images/books/dune.jpg" alt="Dune by Frank Herbert">
+                        <span class="book-year">1965</span>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Dune</h3>
+                        <p class="book-author">by Frank Herbert</p>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="book-description">An epic science fiction masterpiece set in a distant future amidst a feudal interstellar society.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">Sci-Fi</span>
+                            <span class="book-tag">Politics</span>
+                            <span class="book-tag">Ecology</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Book 2 -->
+                <article class="book-card" data-category="non-fiction science">
+                    <div class="book-image">
+                        <img src="assets/images/books/sapiens.jpg" alt="Sapiens by Yuval Noah Harari">
+                        <span class="book-year">2011</span>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
+                        <p class="book-author">by Yuval Noah Harari</p>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="book-description">A thought-provoking exploration of humanity's creation and evolution.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">History</span>
+                            <span class="book-tag">Anthropology</span>
+                            <span class="book-tag">Evolution</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Book 3 -->
+                <article class="book-card" data-category="tech non-fiction">
+                    <div class="book-image">
+                        <img src="assets/images/books/lean-startup.jpg" alt="The Lean Startup by Eric Ries">
+                        <span class="book-year">2011</span>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">The Lean Startup</h3>
+                        <p class="book-author">by Eric Ries</p>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="book-description">A practical approach to creating and managing successful startups in an age when companies need to innovate more than ever.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">Business</span>
+                            <span class="book-tag">Startups</span>
+                            <span class="book-tag">Innovation</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Book 4 -->
+                <div class="book-card" data-category="philosophy non-fiction">
+                    <div class="book-card-image">
+                        <img src="assets/images/books/meditations.jpg" alt="Meditations">
+                        <div class="book-category"><i class="fas fa-book"></i> Philosophy</div>
+                        <div class="book-year">180 AD</div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">Meditations</h3>
+                        <div class="book-author">by Marcus Aurelius</div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="book-excerpt">A series of personal writings by the Roman Emperor Marcus Aurelius, documenting his ideas on Stoic philosophy. These notes were written as a source for his own guidance and self-improvement.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">Stoicism</span>
+                            <span class="book-tag">Ancient</span>
+                            <span class="book-tag">Self-improvement</span>
+                        </div>
+                        <a href="#" class="read-more">Read Review</a>
+                    </div>
+                </div>
+                
+                <!-- Book 5 -->
+                <div class="book-card" data-category="fiction">
+                    <div class="book-card-image">
+                        <img src="assets/images/books/1984.jpg" alt="1984">
+                        <div class="book-category"><i class="fas fa-book"></i> Fiction</div>
+                        <div class="book-year">1949</div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">1984</h3>
+                        <div class="book-author">by George Orwell</div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="book-excerpt">A dystopian social science fiction novel that examines the consequences of totalitarianism, mass surveillance, and repressive regimentation of people and behaviors within society.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">Dystopian</span>
+                            <span class="book-tag">Political</span>
+                            <span class="book-tag">Classic</span>
+                        </div>
+                        <a href="#" class="read-more">Read Review</a>
+                    </div>
+                </div>
+                
+                <!-- Book 6 -->
+                <div class="book-card" data-category="science non-fiction">
+                    <div class="book-card-image">
+                        <img src="assets/images/books/brief-history.jpg" alt="A Brief History of Time">
+                        <div class="book-category"><i class="fas fa-book"></i> Science</div>
+                        <div class="book-year">1988</div>
+                    </div>
+                    <div class="book-content">
+                        <h3 class="book-title">A Brief History of Time</h3>
+                        <div class="book-author">by Stephen Hawking</div>
+                        <div class="book-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="book-excerpt">A landmark volume in science writing that examines the nature of time, the universe, and our place within it, making complex concepts accessible to non-specialists.</p>
+                        <div class="book-tags">
+                            <span class="book-tag">Physics</span>
+                            <span class="book-tag">Cosmology</span>
+                            <span class="book-tag">Time</span>
+                        </div>
+                        <a href="#" class="read-more">Read Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-medium"></i>
+        </a>
+        <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#journey">Journey</a></li>
                         <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Portfolio</h3>
-                    <ul>
-                        <li><a href="code.html">Tech Projects</a></li>
-                        <li><a href="sports.html">Sports & Physical</a></li>
-                        <li><a href="travel.html">Travel & Photography</a></li>
-                        <li><a href="cooking.html">Cooking</a></li>
-                    </ul>
-                </div>
+                
                 <div class="footer-section">
                     <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/yourusername" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/yourusername" aria-label="Twitter">
+                        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="mailto:your.email@example.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
+                        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> ananthdeepaksharmananduri@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Seattle, Washington</p>
+                </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+                <p>&copy; 2024 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
             </div>
         </div>
     </footer>

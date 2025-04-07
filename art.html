@@ -258,11 +258,6 @@
         <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
     
-    <!-- Mobile Social Toggle -->
-    <div class="social-mobile-toggle">
-        <i class="fas fa-share-alt"></i>
-    </div>
-
     <div class="page-header">
         <h1>Art Gallery</h1>
         <p>A collection of my creative works including digital art, photography, and illustrations that showcase my artistic vision.</p>
@@ -337,10 +332,12 @@
         </div>
     </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -367,10 +364,11 @@
     <!-- Chatbot Container -->
     <div class="chatbot-container">
         <div class="chatbot-icon">
-            <i class="fas fa-comment-dots"></i>
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
         </div>
         <div class="chatbot-window">
-            <div class="chatbot-header" id="chatbot-header">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
                 <h3>Chat with <span>Donna</span></h3>
                 <button class="chatbot-close"><i class="fas fa-times"></i></button>
             </div>
@@ -453,15 +451,13 @@
         });
 
         // Back to top button functionality
-        const backToTopBtn = document.getElementById('backToTop');
+        const backToTopBtn = document.querySelector('.back-to-top');
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTopBtn.style.opacity = '1';
-                backToTopBtn.style.visibility = 'visible';
+                backToTopBtn.classList.add('show');
             } else {
-                backToTopBtn.style.opacity = '0';
-                backToTopBtn.style.visibility = 'hidden';
+                backToTopBtn.classList.remove('show');
             }
         });
         

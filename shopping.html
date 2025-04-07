@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping - Reviews & Gear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="logo-profile">
+            <a href="index.html" class="logo-container">
+                <div class="profile-photo">
+                    <img src="assets/images/ProfileIcon.jpeg" alt="Ananth Deepak Sharma Nanduri">
+                </div>
+                <div class="logo-text">Ananth</div>
+            </a>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html#about" class="nav-item"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#journey" class="nav-item"><i class="fas fa-road"></i> Journey</a></li>
+                <li><a href="index.html#portfolio" class="nav-item active"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#skills" class="nav-item"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            
+            <!-- Theme Toggle Button -->
+            <div class="theme-toggle-container">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <div class="toggle-icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <div class="container">
+                <h2 class="section-title">Product Reviews</h2>
+                <div class="reviews-grid">
+                    <!-- Review Card Template -->
+                    <div class="review-card">
+                        <div class="review-image">
+                            <img src="assets/images/product1.jpg" alt="Product 1">
+                            <span class="review-category">Tech</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Product Name</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5/5</span>
+                            </div>
+                            <p class="review-summary">Brief summary of the product review goes here...</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Jan 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $99.99</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gear Section -->
+        <section class="gear-section">
+            <div class="container">
+                <h2 class="section-title">Recommended Gear</h2>
+                <div class="gear-categories">
+                    <button class="gear-category active">All</button>
+                    <button class="gear-category">Tech</button>
+                    <button class="gear-category">Sports</button>
+                    <button class="gear-category">Photography</button>
+                    <button class="gear-category">Music</button>
+                </div>
+                <div class="gear-grid">
+                    <!-- Gear Card Template -->
+                    <div class="gear-card">
+                        <div class="gear-image">
+                            <img src="assets/images/gear1.jpg" alt="Gear 1">
+                            <div class="gear-badge">Best Value</div>
+                        </div>
+                        <div class="gear-content">
+                            <h3>Gear Name</h3>
+                            <p class="gear-description">Brief description of the gear and its key features...</p>
+                            <div class="gear-specs">
+                                <span><i class="fas fa-check"></i> Feature 1</span>
+                                <span><i class="fas fa-check"></i> Feature 2</span>
+                                <span><i class="fas fa-check"></i> Feature 3</span>
+                            </div>
+                            <div class="gear-footer">
+                                <span class="gear-price">$199.99</span>
+                                <a href="#" class="gear-button">View on Amazon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include Social Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-medium"></i>
+        </a>
+        <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <style>
+    .shopping-projects {
+        padding: 120px 0 80px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    }
+
+    html[data-theme="light"] .shopping-projects {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .project-card {
+        background: rgba(30, 30, 50, 0.7);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    html[data-theme="light"] .project-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+        transform: scale(1.1);
+    }
+
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-link,
+    .project-github {
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a1a2e;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .project-link:hover,
+    .project-github:hover {
+        transform: scale(1.1);
+        background: #ff6b6b;
+        color: white;
+    }
+
+    .project-content {
+        padding: 25px;
+    }
+
+    .project-content h3 {
+        margin: 0 0 15px;
+        color: #fff;
+        font-size: 1.3rem;
+    }
+
+    html[data-theme="light"] .project-content h3 {
+        color: #333;
+    }
+
+    .project-content p {
+        margin: 0 0 20px;
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    html[data-theme="light"] .project-content p {
+        color: #666;
+    }
+
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .project-tech span {
+        padding: 5px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    html[data-theme="light"] .project-tech span {
+        background: rgba(0, 0, 0, 0.05);
+        color: #333;
+    }
+
+    .project-tech span:hover {
+        background: #ff6b6b;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 20px;
+        }
+
+        .shopping-projects {
+            padding: 100px 0 60px;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 15px;
+        }
+    }
+    </style>
+
+    <!-- Scripts -->
+    <script src="theme-toggle.js"></script>
+    <script src="social-sidebar.js"></script>
+    <script src="back-to-top.js"></script>
+</body>
+</html> 

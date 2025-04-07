@@ -72,4 +72,36 @@ setTimeout(function() {
         console.log("Delayed theme toggle button creation");
         initTheme();
     }
-}, 500); 
+}, 500);
+
+// Theme persistence
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update theme when changed
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                localStorage.setItem('theme', currentTheme);
+            }
+        });
+    });
+    
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        });
+    }
+}); 

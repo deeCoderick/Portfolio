@@ -630,10 +630,12 @@
         </section>
     </main>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -677,17 +679,7 @@
         sr.reveal('.related-sport-item', { interval: 100 });
         
         // Back to top button functionality
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.style.opacity = '1';
-                backToTopBtn.style.visibility = 'visible';
-            } else {
-                backToTopBtn.style.opacity = '0';
-                backToTopBtn.style.visibility = 'hidden';
-            }
-        });
+        const backToTopBtn = document.querySelector('.back-to-top');
         
         backToTopBtn.addEventListener('click', (e) => {
             e.preventDefault();

@@ -26,8 +26,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="theme.js" defer></script>
+    <script src="script.js" defer></script>
     <style>
         .page-header {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
@@ -392,217 +394,184 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="page-header">
-        <div class="floating-utensil"><i class="fas fa-utensils"></i></div>
-        <div class="floating-utensil"><i class="fas fa-chef-hat"></i></div>
-        <div class="floating-utensil"><i class="fas fa-pepper-hot"></i></div>
-        <div class="floating-utensil"><i class="fas fa-cookie"></i></div>
-        <h1>Culinary Adventures</h1>
-        <p>From traditional recipes to creative experiments – explore my journey through global cuisines, cooking techniques, and the joy of sharing food.</p>
-    </header>
+    <!-- Navigation spacer -->
+    <div class="navigation-top-space"></div>
 
-    <!-- Main Content -->
-    <main class="recipe-container">
-        <div class="cooking-header">
-            <h2>Recipe Collection</h2>
-            <p>These recipes represent my culinary exploration across different cuisines and cooking styles. Each dish tells a story of culture, ingredient combinations, and personal adaptations.</p>
+    <!-- Cooking Section -->
+    <section id="cooking" class="cooking-section">
+        <div class="page-header">
+            <h1>My Culinary Adventures</h1>
+            <p>Exploring flavors and techniques from around the world</p>
         </div>
-        
-        <!-- Filter Buttons -->
-        <div class="categories-filter">
-            <button class="category-button active" data-filter="all">All Cuisines</button>
-            <button class="category-button" data-filter="indian">Indian</button>
-            <button class="category-button" data-filter="italian">Italian</button>
-            <button class="category-button" data-filter="asian">Asian</button>
-            <button class="category-button" data-filter="dessert">Desserts</button>
-            <button class="category-button" data-filter="fusion">Fusion</button>
-        </div>
-        
-        <!-- Recipe Grid -->
-        <div class="recipe-grid">
-            <!-- Recipe 1 -->
-            <div class="recipe-card" data-category="indian">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/butter-chicken.jpg" alt="Butter Chicken">
-                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Indian</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 45 min</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Butter Chicken</h3>
-                    <p class="recipe-description">A rich and creamy North Indian curry with tender chicken pieces in a tomato-based sauce, flavored with aromatic spices and finished with butter and cream.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Medium</span>
-                        <span><i class="fas fa-users"></i> Serves 4</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Curry</span>
-                        <span class="recipe-tag">Chicken</span>
-                        <span class="recipe-tag">Spicy</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-            
-            <!-- Recipe 2 -->
-            <div class="recipe-card" data-category="italian">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/pasta-carbonara.jpg" alt="Pasta Carbonara">
-                    <div class="recipe-cuisine"><i class="fas fa-globe-europe"></i> Italian</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 25 min</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Authentic Pasta Carbonara</h3>
-                    <p class="recipe-description">A classic Roman pasta dish made with eggs, cheese, pancetta, and black pepper. Simple ingredients transformed into a silky, luxurious sauce coating al dente pasta.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Easy</span>
-                        <span><i class="fas fa-users"></i> Serves 2</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Pasta</span>
-                        <span class="recipe-tag">Quick</span>
-                        <span class="recipe-tag">Comfort</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-            
-            <!-- Recipe 3 -->
-            <div class="recipe-card" data-category="asian">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/ramen.jpg" alt="Homemade Ramen">
-                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Japanese</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 3 hrs</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Tonkotsu Ramen</h3>
-                    <p class="recipe-description">A rich, pork-based soup with handmade noodles, topped with chashu pork, soft-boiled egg, green onions, and nori. A labor of love that results in a deeply satisfying bowl.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Advanced</span>
-                        <span><i class="fas fa-users"></i> Serves 4</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Soup</span>
-                        <span class="recipe-tag">Noodles</span>
-                        <span class="recipe-tag">Weekend Project</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-            
-            <!-- Recipe 4 -->
-            <div class="recipe-card" data-category="dessert">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/tiramisu.jpg" alt="Tiramisu">
-                    <div class="recipe-cuisine"><i class="fas fa-globe-europe"></i> Italian</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 30 min + chill</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Classic Tiramisu</h3>
-                    <p class="recipe-description">A coffee-flavored Italian dessert made of ladyfingers dipped in coffee, layered with a whipped mixture of eggs, sugar, and mascarpone cheese, dusted with cocoa.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Medium</span>
-                        <span><i class="fas fa-users"></i> Serves 8</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Coffee</span>
-                        <span class="recipe-tag">No-Bake</span>
-                        <span class="recipe-tag">Make Ahead</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-            
-            <!-- Recipe 5 -->
-            <div class="recipe-card" data-category="fusion">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/curry-tacos.jpg" alt="Curry Tacos">
-                    <div class="recipe-cuisine"><i class="fas fa-globe"></i> Fusion</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 40 min</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Indian-Inspired Tacos</h3>
-                    <p class="recipe-description">A creative fusion dish combining the flavors of Indian curries with Mexican taco presentation. Spiced chickpeas, tangy chutney, and cooling raita in warm tortillas.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Medium</span>
-                        <span><i class="fas fa-users"></i> Serves 4</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Fusion</span>
-                        <span class="recipe-tag">Vegetarian</span>
-                        <span class="recipe-tag">Creative</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-            
-            <!-- Recipe 6 -->
-            <div class="recipe-card" data-category="asian">
-                <div class="recipe-image">
-                    <img src="assets/images/recipes/pad-thai.jpg" alt="Pad Thai">
-                    <div class="recipe-cuisine"><i class="fas fa-globe-asia"></i> Thai</div>
-                    <div class="recipe-time"><i class="far fa-clock"></i> 35 min</div>
-                </div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Authentic Pad Thai</h3>
-                    <p class="recipe-description">A stir-fried rice noodle dish with the perfect balance of sweet, sour, and umami flavors. Made with tofu, shrimp, peanuts, bean sprouts, and a tangy tamarind sauce.</p>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-fire"></i> Medium</span>
-                        <span><i class="fas fa-users"></i> Serves 2</span>
-                    </div>
-                    <div class="recipe-tags">
-                        <span class="recipe-tag">Noodles</span>
-                        <span class="recipe-tag">Stir-Fry</span>
-                        <span class="recipe-tag">Street Food</span>
-                    </div>
-                    <a href="#" class="view-recipe">View Recipe</a>
-                </div>
-            </div>
-        </div>
-    </main>
 
-    <!-- Footer -->
+        <div class="cooking-container">
+            <!-- Category Filter -->
+            <div class="categories-filter">
+                <button class="category-button active" data-filter="all">All Cuisines</button>
+                <button class="category-button" data-filter="indian">Indian</button>
+                <button class="category-button" data-filter="italian">Italian</button>
+                <button class="category-button" data-filter="asian">Asian</button>
+                <button class="category-button" data-filter="dessert">Desserts</button>
+                <button class="category-button" data-filter="fusion">Fusion</button>
+            </div>
+
+            <!-- Recipes Grid -->
+            <div class="recipes-grid">
+                <!-- Recipe 1 -->
+                <article class="recipe-card" data-category="indian">
+                    <div class="recipe-image">
+                        <img src="assets/images/recipes/butter-chicken.jpg" alt="Butter Chicken">
+                        <span class="recipe-year">45 min</span>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Butter Chicken</h3>
+                        <p class="recipe-author">Indian Cuisine</p>
+                        <div class="recipe-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="recipe-description">A rich and creamy North Indian curry with tender chicken pieces in a tomato-based sauce.</p>
+                        <div class="recipe-tags">
+                            <span class="recipe-tag">Curry</span>
+                            <span class="recipe-tag">Chicken</span>
+                            <span class="recipe-tag">Spicy</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Recipe 2 -->
+                <article class="recipe-card" data-category="italian">
+                    <div class="recipe-image">
+                        <img src="assets/images/recipes/pasta-carbonara.jpg" alt="Pasta Carbonara">
+                        <span class="recipe-year">25 min</span>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Authentic Pasta Carbonara</h3>
+                        <p class="recipe-author">Italian Cuisine</p>
+                        <div class="recipe-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="recipe-description">A classic Roman pasta dish made with eggs, cheese, pancetta, and black pepper.</p>
+                        <div class="recipe-tags">
+                            <span class="recipe-tag">Pasta</span>
+                            <span class="recipe-tag">Quick</span>
+                            <span class="recipe-tag">Comfort</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Recipe 3 -->
+                <article class="recipe-card" data-category="asian">
+                    <div class="recipe-image">
+                        <img src="assets/images/recipes/ramen.jpg" alt="Homemade Ramen">
+                        <span class="recipe-year">3 hrs</span>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Tonkotsu Ramen</h3>
+                        <p class="recipe-author">Japanese Cuisine</p>
+                        <div class="recipe-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="recipe-description">A rich, pork-based soup with handmade noodles, topped with chashu pork and soft-boiled egg.</p>
+                        <div class="recipe-tags">
+                            <span class="recipe-tag">Soup</span>
+                            <span class="recipe-tag">Noodles</span>
+                            <span class="recipe-tag">Weekend</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-medium"></i>
+        </a>
+        <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#journey">Journey</a></li>
                         <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Portfolio</h3>
-                    <ul>
-                        <li><a href="code.html">Tech Projects</a></li>
-                        <li><a href="sports.html">Sports & Physical</a></li>
-                        <li><a href="travel.html">Travel & Photography</a></li>
-                        <li><a href="books.html">Books</a></li>
-                    </ul>
-                </div>
+                
                 <div class="footer-section">
                     <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/yourusername" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn">
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/yourusername" aria-label="Twitter">
+                        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="mailto:your.email@example.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
+                        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> ananthdeepaksharmananduri@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Seattle, Washington</p>
+                </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2023 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+                <p>&copy; 2024 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
             </div>
         </div>
     </footer>

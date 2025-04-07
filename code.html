@@ -890,7 +890,7 @@
         </nav>
     </header>
 
-    <!-- Social Sidebar -->
+    <!-- Social Sidebar for quick access -->
     <div class="social-sidebar">
         <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
@@ -1166,9 +1166,12 @@
         </div>
     </main>
 
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <!-- Back to top button -->
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -1195,10 +1198,11 @@
     <!-- Chatbot Container -->
     <div class="chatbot-container">
         <div class="chatbot-icon">
-            <i class="fas fa-comment-dots"></i>
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
         </div>
         <div class="chatbot-window">
-            <div class="chatbot-header" id="chatbot-header">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
                 <h3>Chat with <span>Donna</span></h3>
                 <button class="chatbot-close"><i class="fas fa-times"></i></button>
             </div>
@@ -1338,5 +1342,6 @@
     </script>
     
     <script src="chatbot.js"></script>
+    <script src="back-to-top.js"></script>
 </body>
 </html>

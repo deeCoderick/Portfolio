@@ -75,6 +75,27 @@
         }
     </script>
     <style>
+        /* Global container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+        }
+
         /* Project metadata text color fix for better readability */
         .project-meta {
             color: #000000; /* Change text color to black */
@@ -1328,27 +1349,28 @@
     .shooting-star {
         position: absolute;
         height: 3px;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
-        border-radius: 50%;
+        background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0) 100%);
         filter: drop-shadow(0 0 6px white);
-        z-index: 1;
-        transform-origin: right center;
-        box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.3);
         opacity: 0;
-        /* All positioning and animation will be set by JavaScript */
+        transform-origin: left;
+        z-index: 1;
+        pointer-events: none;
     }
 
     .shooting-star::after {
         content: '';
         position: absolute;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.8);
-        right: 0;
         top: 50%;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: white;
         transform: translateY(-50%);
-        box-shadow: 0 0 10px 2px white;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
     }
     
     /* Responsive styles */
@@ -2801,7 +2823,7 @@
 .social-sidebar {
     position: fixed;
     top: 50%;
-    right: -100%;
+    right: 0;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -2813,15 +2835,16 @@
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 999;
-    transition: transform 0.3s ease;
-    opacity: 1;
+    transition: all 0.3s ease;
+    opacity: 0;
     pointer-events: none;
-    will-change: transform;
+    transform: translate(100%, -50%);
 }
 
 .social-sidebar.visible {
-    transform: translate(100%, -50%);
+    opacity: 1;
     pointer-events: auto;
+    transform: translate(0, -50%);
 }
 
 .social-sidebar a {
@@ -2834,55 +2857,53 @@
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s ease;
     font-size: 1.21rem;
-    will-change: transform;
+}
+
+.social-sidebar a:hover {
+    transform: translateX(-5px);
 }
 
 /* Brand-specific hover colors */
 .social-sidebar a[href*="linkedin"]:hover {
     background: #0077b5;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.4);
 }
 
 .social-sidebar a[href*="github"]:hover {
     background: #333;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(51, 51, 51, 0.4);
 }
 
 .social-sidebar a[href*="twitter"]:hover {
     background: #1DA1F2;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(29, 161, 242, 0.4);
 }
 
 .social-sidebar a[href*="instagram"]:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(225, 48, 108, 0.4);
 }
 
 .social-sidebar a[href*="youtube"]:hover {
     background: #FF0000;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 
 .social-sidebar a[href*="medium"]:hover {
     background: #12100E;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(18, 16, 14, 0.4);
 }
 
 .social-sidebar a[href*="calendly"]:hover {
     background: #006BFF;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(0, 107, 255, 0.4);
 }
 
 .social-sidebar a[href*="tiktok"]:hover {
     background: linear-gradient(45deg, #000000, #EE1D52, #69C9D0);
-    transform: translateX(-5px);
-}
-
-.social-sidebar a[href*="envelope"]:hover {
-    background: #EA4335;
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(238, 29, 82, 0.4);
 }
 
 /* Light theme adjustments */
@@ -2899,6 +2920,18 @@ html[data-theme="light"] .social-sidebar a {
 
 html[data-theme="light"] .social-sidebar a:hover {
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    .social-sidebar {
+        padding: 10px 8px;
+    }
+    
+    .social-sidebar a {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
 }
 </style>
 
@@ -3575,6 +3608,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fas fa-utensils"></i>
                     <span>Cooking</span>
                 </a>
+                <a href="shopping.html#shopping-section" class="portfolio-nav-button" data-category="shopping">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shopping</span>
+                </a>
             </div>
 
             <!-- Portfolio Filter Tabs -->
@@ -3586,6 +3623,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="portfolio-tab" data-filter="art">Art</button>
                 <button class="portfolio-tab" data-filter="books">Books</button>
                 <button class="portfolio-tab" data-filter="cooking">Cooking</button>
+                <button class="portfolio-tab" data-filter="shopping">Shopping</button>
             </div>
 
             <!-- Portfolio Grid -->
@@ -3857,47 +3895,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     </div>
                     
-                <!-- Other Technologies -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <i class="fas fa-tools" style="color: #607D8B"></i>
-                        <h3>Other Technologies</h3>
-                        </div>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-android" style="color: #3DDC84"></i>
-                            <span>Android Development</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fab fa-apple" style="color: #000000"></i>
-                            <span>iOS Development</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react" style="color: #61DAFB"></i>
-                            <span>React Native</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-unity" style="color: #000000"></i>
-                            <span>Unity</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-vr-cardboard" style="color: #FF4081"></i>
-                            <span>AR/VR Development</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-microchip" style="color: #00979D"></i>
-                            <span>IoT</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-shield-alt" style="color: #F44336"></i>
-                            <span>Cybersecurity</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-ethereum" style="color: #627EEA"></i>
-                            <span>Blockchain</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -3906,36 +3903,399 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="contact" class="section contact-section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
+            <p class="section-description">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
             
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>San Francisco Bay Area</p>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Seattle, Washington</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:ananthdeepaksharmananduri@gmail.com">ananthdeepaksharmananduri@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>Available upon request</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h3>Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <form id="contactForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Sidebar -->
-    <div class="social-sidebar">
-        <!-- Social icons will be cloned here -->
-        </div>
+    <style>
+    .contact-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(15, 52, 96, 0.95));
+        position: relative;
+        overflow: hidden;
+    }
+
+    html[data-theme="light"] .contact-section {
+        background: linear-gradient(135deg, rgba(245, 247, 250, 0.95), rgba(230, 236, 245, 0.95));
+    }
+
+    .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .contact-info {
+        background: rgba(30, 30, 50, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    html[data-theme="light"] .contact-info {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    html[data-theme="light"] .contact-item {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item i {
+        font-size: 1.5rem;
+        color: #ff6b6b;
+        margin-right: 15px;
+        margin-top: 5px;
+    }
+
+    .contact-details h3 {
+        margin: 0 0 5px;
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    html[data-theme="light"] .contact-details h3 {
+        color: #333;
+    }
+
+    .contact-details p {
+        margin: 0;
+        color: #ccc;
+        font-size: 0.95rem;
+    }
+
+    html[data-theme="light"] .contact-details p {
+        color: #666;
+    }
+
+    .contact-details a {
+        color: #6c8aff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+        color: #ff6b6b;
+    }
+
+    .contact-social {
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    html[data-theme="light"] .contact-social {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-social h3 {
+        margin: 0 0 15px;
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+    html[data-theme="light"] .contact-social h3 {
+        color: #333;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    html[data-theme="light"] .social-links a {
+        background: rgba(0, 0, 0, 0.1);
+        color: #333;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-3px);
+    }
+
+    .social-links a[href*="linkedin"]:hover {
+        background: #0077b5;
+        color: white;
+    }
+
+    .social-links a[href*="github"]:hover {
+        background: #333;
+        color: white;
+    }
+
+    .social-links a[href*="twitter"]:hover {
+        background: #1DA1F2;
+        color: white;
+    }
+
+    .social-links a[href*="instagram"]:hover {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        color: white;
+    }
+
+    .contact-form {
+        background: rgba(30, 30, 50, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    html[data-theme="light"] .contact-form {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    html[data-theme="light"] .form-group label {
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.95rem;
+    }
+
+    html[data-theme="light"] .form-group input,
+    html[data-theme="light"] .form-group textarea {
+        background: rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #333;
+    }
+
+    html[data-theme="light"] .form-group input::placeholder,
+    html[data-theme="light"] .form-group textarea::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #6c8aff;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 0 3px rgba(108, 138, 255, 0.15);
+    }
+
+    html[data-theme="light"] .form-group input:focus,
+    html[data-theme="light"] .form-group textarea:focus {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .form-group textarea {
+        height: 120px;
+        resize: vertical;
+        line-height: 1.5;
+    }
+
+    .submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px 30px;
+        background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(108, 138, 255, 0.4);
+    }
+
+    .submit-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .submit-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    @media (max-width: 992px) {
+        .contact-content {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-item {
+            padding: 12px;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            font-size: 1.1rem;
+        }
+
+        .submit-btn {
+            padding: 12px 25px;
+        }
+    }
+    </style>
+
+    <script>
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+        
+        // Here you would typically send the data to your server
+        // For now, we'll just log it and show a success message
+        console.log('Form submitted:', formData);
+        
+        // Show success message
+        alert('Thank you for your message! I will get back to you soon.');
+        
+        // Reset form
+        event.target.reset();
+        
+        return false;
+    }
+    </script>
 
     <!-- Other scripts can stay here, but remove any style blocks from body -->
     <script>
@@ -4737,125 +5097,237 @@ document.addEventListener('DOMContentLoaded', function() {
         </button>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#journey">Journey</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> ananthdeepaksharmananduri@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Seattle, Washington</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ananth Deepak Sharma Nanduri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+    /* Footer Styles */
+    .footer {
+        background: rgba(12, 12, 20, 0.95);
+        padding: 60px 0 20px;
+        color: #fff;
+        position: relative;
+        z-index: 100;
+    }
+
+    html[data-theme="light"] .footer {
+        background: rgba(245, 247, 250, 0.95);
+        color: #333;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .footer-section h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    html[data-theme="light"] .footer-section a {
+        color: #333;
+    }
+
+    .footer-section a:hover {
+        color: #ff6b6b;
+    }
+
+    .footer-social-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    </style>
+
+    <script>
+    // Shooting stars animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+
+        const MAX_STARS = 3;
+        let activeStars = 0;
+
+        function createShootingStar() {
+            if (activeStars >= MAX_STARS) return;
+
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            heroSection.appendChild(star);
+            activeStars++;
+
+            // Start from left side with some vertical variation
+            const startY = Math.random() * (window.innerHeight * 0.7); // Use 70% of screen height
+            const length = Math.random() * 100 + 150; // Length between 150-250px
+            
+            // Consistent upward-right angle between 15 and 35 degrees
+            const angle = Math.random() * 20 + 15;
+            
+            star.style.width = `${length}px`;
+            star.style.top = `${startY}px`;
+            star.style.left = '0';
+            star.style.transform = `rotate(${angle}deg)`;
+
+            // Calculate end position
+            const radians = angle * (Math.PI / 180);
+            const distance = window.innerWidth * 1.5; // Ensure stars travel across entire screen
+            const deltaX = Math.cos(radians) * distance;
+            const deltaY = -Math.sin(radians) * distance; // Negative for upward movement
+
+            // Faster animation (1.5-2 seconds)
+            const duration = Math.random() * 500 + 1500;
+
+            // Smoother animation with better easing
+            const animation = star.animate([
+                {
+                    opacity: 0,
+                    transform: `rotate(${angle}deg) translateX(0)`,
+                    offset: 0
+                },
+                {
+                    opacity: 1,
+                    transform: `rotate(${angle}deg) translateX(50px)`,
+                    offset: 0.05
+                },
+                {
+                    opacity: 1,
+                    transform: `rotate(${angle}deg) translateX(${deltaX * 0.7}px)`,
+                    offset: 0.8
+                },
+                {
+                    opacity: 0,
+                    transform: `rotate(${angle}deg) translateX(${deltaX}px)`,
+                    offset: 1
+                }
+            ], {
+                duration: duration,
+                easing: 'cubic-bezier(0.42, 0, 0.58, 1)',
+                fill: 'forwards'
+            });
+
+            // Clean up and create new star with slight delay
+            animation.onfinish = () => {
+                star.remove();
+                activeStars--;
+                setTimeout(createShootingStar, Math.random() * 500); // Shorter delay between stars
+            };
+        }
+
+        // Initial creation of stars with shorter stagger
+        for (let i = 0; i < MAX_STARS; i++) {
+            setTimeout(createShootingStar, i * 500);
+        }
+
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const stars = document.querySelectorAll('.shooting-star');
+                stars.forEach(star => star.remove());
+                activeStars = 0;
+                for (let i = 0; i < MAX_STARS; i++) {
+                    setTimeout(createShootingStar, i * 500);
+                }
+            }, 250);
+        });
+    });
+    </script>
+
     <!-- Existing scripts -->
     <script src="script.js"></script>
+    <script src="social-sidebar.js"></script>
+    <script src="chatbot.js"></script>
 
-    <!-- Books Section -->
-    <section id="books" class="books-section">
-        <div class="container">
-            <h2 class="section-title">Books I've Read</h2>
-            <div class="books-grid">
-                <article class="book-card">
-                    <div class="book-image">
-                        <img src="assets/images/books/dune.jpg" alt="Dune by Frank Herbert">
-                    </div>
-                    <div class="book-content">
-                        <div>
-                            <span class="book-year">1965</span>
-                            <h3 class="book-title">Dune</h3>
-                            <p class="book-author">by Frank Herbert</p>
-                            <div class="book-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="book-description">An epic science fiction masterpiece set in a distant future against a backdrop of political intrigue, ecological themes, and human evolution.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="book-card">
-                    <div class="book-image">
-                        <img src="assets/images/books/sapiens.jpg" alt="Sapiens: A Brief History of Humankind by Yuval Noah Harari">
-                    </div>
-                    <div class="book-content">
-                        <div>
-                            <span class="book-year">2011</span>
-                            <h3 class="book-title">Sapiens: A Brief History of Humankind</h3>
-                            <p class="book-author">by Yuval Noah Harari</p>
-                            <div class="book-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <p class="book-description">A thought-provoking exploration of human history, from the emergence of Homo sapiens to the present day.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="book-card">
-                    <div class="book-image">
-                        <img src="assets/images/books/lean-startup.jpg" alt="The Lean Startup by Eric Ries">
-                    </div>
-                    <div class="book-content">
-                        <div>
-                            <span class="book-year">2011</span>
-                            <h3 class="book-title">The Lean Startup</h3>
-                            <p class="book-author">by Eric Ries</p>
-                            <div class="book-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star-half"></i>
-                            </div>
-                            <p class="book-description">A practical approach to creating and managing successful startups in an age when companies need to innovate more than ever.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cooking Section -->
-    <section id="cooking" class="cooking-section">
-        <div class="container">
-            <h2 class="section-title">My Culinary Adventures</h2>
-            <div class="cooking-grid">
-                <article class="recipe-card">
-                    <div class="recipe-image">
-                        <img src="assets/images/cooking/recipe1.jpg" alt="Italian Pasta">
-                    </div>
-                    <div class="recipe-content">
-                        <div>
-                            <span class="recipe-category">Italian</span>
-                            <h3 class="recipe-title">Homemade Pasta Carbonara</h3>
-                            <p class="recipe-description">A classic Roman pasta dish made with eggs, cheese, pancetta, and black pepper.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="recipe-card">
-                    <div class="recipe-image">
-                        <img src="assets/images/cooking/recipe2.jpg" alt="Indian Curry">
-                    </div>
-                    <div class="recipe-content">
-                        <div>
-                            <span class="recipe-category">Indian</span>
-                            <h3 class="recipe-title">Butter Chicken</h3>
-                            <p class="recipe-description">Tender chicken in a rich, creamy tomato-based curry sauce.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="recipe-card">
-                    <div class="recipe-image">
-                        <img src="assets/images/cooking/recipe3.jpg" alt="Japanese Sushi">
-                    </div>
-                    <div class="recipe-content">
-                        <div>
-                            <span class="recipe-category">Japanese</span>
-                            <h3 class="recipe-title">Homemade Sushi Rolls</h3>
-                            <p class="recipe-description">Fresh sushi rolls with salmon, avocado, and cucumber.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+    <!-- Back to top button functionality -->
+    <script>
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

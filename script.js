@@ -395,4 +395,39 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+});
+
+// Social sidebar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const socialSidebar = document.querySelector('.social-sidebar');
+    
+    if (!socialSidebar) return;
+    
+    function updateSidebar() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Show sidebar when scrolled down and not at the very bottom
+        const shouldShow = scrollPosition > 100 && scrollPosition < (documentHeight - windowHeight - 100);
+        socialSidebar.classList.toggle('visible', shouldShow);
+    }
+    
+    // Handle scroll with throttling
+    let lastScrollTime = 0;
+    const throttleDelay = 100; // ms
+    
+    window.addEventListener('scroll', () => {
+        const now = Date.now();
+        if (now - lastScrollTime >= throttleDelay) {
+            lastScrollTime = now;
+            updateSidebar();
+        }
+    }, { passive: true });
+    
+    // Handle resize
+    window.addEventListener('resize', updateSidebar);
+    
+    // Initial check
+    setTimeout(updateSidebar, 1000);
 }); 
