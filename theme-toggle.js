@@ -1,14 +1,13 @@
 // Theme Toggle Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize theme from localStorage
+function initializeTheme() {
+    // Get the saved theme or default to dark
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
     // Find theme toggle button
     const themeToggle = document.querySelector('.theme-toggle');
-    const toggleIcons = document.querySelector('.toggle-icons');
     
-    if (themeToggle && toggleIcons) {
+    if (themeToggle) {
         // Update initial icon state
         updateToggleIcons(savedTheme);
         
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => themeToggle.classList.remove('animated'), 300);
         });
     }
-});
+}
 
 // Function to update toggle icons based on theme
 function updateToggleIcons(theme) {
@@ -49,6 +48,13 @@ function updateToggleIcons(theme) {
             moonIcon.style.transform = 'translateY(0) rotate(0deg)';
         }
     }
+}
+
+// Initialize theme when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTheme);
+} else {
+    initializeTheme();
 }
 
 // Watch for theme changes from other scripts or windows

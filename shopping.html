@@ -45,18 +45,54 @@
 
     <main>
         <!-- Reviews Section -->
-        <section class="reviews-section">
+        <section class="reviews-section" id="shopping-section">
             <div class="container">
                 <h2 class="section-title">Product Reviews</h2>
+                <p class="section-description">My honest opinions and experiences with products across various categories</p>
+                
+                <!-- Category Navigation -->
+                <div class="category-nav">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="clothing">Clothing</button>
+                    <button class="category-btn" data-category="accessories">Accessories</button>
+                    <button class="category-btn" data-category="gadgets">Gadgets</button>
+                    <button class="category-btn" data-category="media-gear">Media Gear</button>
+                    <button class="category-btn" data-category="others">Others</button>
+                </div>
+                
                 <div class="reviews-grid">
-                    <!-- Review Card Template -->
-                    <div class="review-card">
+                    <!-- Clothing Category -->
+                    <div class="review-card" data-category="clothing">
                         <div class="review-image">
-                            <img src="assets/images/product1.jpg" alt="Product 1">
-                            <span class="review-category">Tech</span>
+                            <img src="assets/images/shopping/clothing1.jpg" alt="Lululemon ABC Pants">
+                            <span class="review-category">Clothing</span>
                         </div>
                         <div class="review-content">
-                            <h3>Product Name</h3>
+                            <h3>Lululemon ABC Pants</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0/5</span>
+                            </div>
+                            <p class="review-summary">These versatile pants have revolutionized my wardrobe. Comfortable enough for travel, stylish enough for the office, and durable through countless washes.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Mar 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $128</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="clothing">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/clothing2.jpg" alt="Patagonia Better Sweater">
+                            <span class="review-category">Clothing</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Patagonia Better Sweater</h3>
                             <div class="review-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -65,10 +101,254 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>4.5/5</span>
                             </div>
-                            <p class="review-summary">Brief summary of the product review goes here...</p>
+                            <p class="review-summary">The perfect mid-layer for spring hikes and fall evenings. Sustainably made and impressively durable, though it can get a bit warm for indoor use.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Feb 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $139</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="clothing">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/clothing3.jpg" alt="AllBirds Merino Runners">
+                            <span class="review-category">Clothing</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>AllBirds Merino Runners</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0/5</span>
+                            </div>
+                            <p class="review-summary">Incredibly comfortable for all-day wear and temperature regulating. Great for travel, though not ideal for intense workouts or rainy conditions.</p>
                             <div class="review-meta">
                                 <span class="review-date"><i class="far fa-calendar"></i> Jan 2024</span>
-                                <span class="review-price"><i class="fas fa-tag"></i> $99.99</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $95</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Accessories Category -->
+                    <div class="review-card" data-category="accessories">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/accessory1.jpg" alt="Peak Design Everyday Backpack">
+                            <span class="review-category">Accessories</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Peak Design Everyday Backpack</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5/5</span>
+                            </div>
+                            <p class="review-summary">A photographer's dream with unmatched organization. Weatherproof, expandable, and thoughtfully designed with quick access points. Worth the investment.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Mar 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $259</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="accessories">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/accessory2.jpg" alt="Bellroy Hide & Seek Wallet">
+                            <span class="review-category">Accessories</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Bellroy Hide & Seek Wallet</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0/5</span>
+                            </div>
+                            <p class="review-summary">The perfect slim wallet with clever hidden compartments. Premium leather that ages beautifully, and smart organization for daily essentials.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Feb 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $89</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gadgets Category -->
+                    <div class="review-card" data-category="gadgets">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/gadget1.jpg" alt="Apple AirPods Pro 2">
+                            <span class="review-category">Gadgets</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Apple AirPods Pro 2</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5/5</span>
+                            </div>
+                            <p class="review-summary">The noise cancellation is mind-blowing for their size, and the transparency mode feels natural. Battery life improved over previous gen, but case scratches easily.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Mar 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $249</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="gadgets">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/gadget2.jpg" alt="Kindle Paperwhite 11th Gen">
+                            <span class="review-category">Gadgets</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Kindle Paperwhite 11th Gen</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0/5</span>
+                            </div>
+                            <p class="review-summary">The perfect e-reader with warm lighting, waterproofing, and weeks of battery life. The larger screen and USB-C charging make it worth upgrading from older models.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Feb 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $139</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="gadgets">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/gadget3.jpg" alt="Sony WH-1000XM5">
+                            <span class="review-category">Gadgets</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Sony WH-1000XM5 Headphones</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.8/5</span>
+                            </div>
+                            <p class="review-summary">Class-leading noise cancellation with incredible sound quality. The comfort for long sessions is unmatched, though the new design doesn't fold as compactly.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Jan 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $399</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Media Gear Category -->
+                    <div class="review-card" data-category="media-gear">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/media1.jpg" alt="Sony A7IV Camera">
+                            <span class="review-category">Media Gear</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Sony A7IV Camera</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7/5</span>
+                            </div>
+                            <p class="review-summary">A near-perfect hybrid shooter with beautiful 33MP stills and 4K60 video. The autofocus is mind-blowing, though the menu system still has a learning curve.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Mar 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $2,499</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="media-gear">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/media2.jpg" alt="Rode VideoMic Pro+">
+                            <span class="review-category">Media Gear</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Rode VideoMic Pro+</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0/5</span>
+                            </div>
+                            <p class="review-summary">The gold standard for on-camera microphones. Incredible audio quality, smart features like auto power-on, and the Rycote suspension is remarkably effective.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Feb 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $299</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Others Category -->
+                    <div class="review-card" data-category="others">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/other1.jpg" alt="Oura Ring Gen 3">
+                            <span class="review-category">Others</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Oura Ring Gen 3</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0/5</span>
+                            </div>
+                            <p class="review-summary">The most unobtrusive health tracker with excellent sleep analysis. Battery life is solid at 5-7 days, though the subscription model is disappointing.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Jan 2024</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $299 + subscription</span>
+                            </div>
+                            <a href="#" class="review-link">Read Full Review</a>
+                        </div>
+                    </div>
+                    
+                    <div class="review-card" data-category="others">
+                        <div class="review-image">
+                            <img src="assets/images/shopping/other2.jpg" alt="Fellow Stagg EKG Electric Kettle">
+                            <span class="review-category">Others</span>
+                        </div>
+                        <div class="review-content">
+                            <h3>Fellow Stagg EKG Kettle</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5/5</span>
+                            </div>
+                            <p class="review-summary">A beautiful electric kettle with precise temperature control and a gorgeous pour. Perfect for pour-over coffee enthusiasts, though the price is premium.</p>
+                            <div class="review-meta">
+                                <span class="review-date"><i class="far fa-calendar"></i> Dec 2023</span>
+                                <span class="review-price"><i class="fas fa-tag"></i> $165</span>
                             </div>
                             <a href="#" class="review-link">Read Full Review</a>
                         </div>
@@ -81,31 +361,118 @@
         <section class="gear-section">
             <div class="container">
                 <h2 class="section-title">Recommended Gear</h2>
+                <p class="section-description">Equipment and products I personally use and recommend</p>
+                
                 <div class="gear-categories">
-                    <button class="gear-category active">All</button>
-                    <button class="gear-category">Tech</button>
-                    <button class="gear-category">Sports</button>
-                    <button class="gear-category">Photography</button>
-                    <button class="gear-category">Music</button>
+                    <button class="gear-category active" data-category="all">All</button>
+                    <button class="gear-category" data-category="clothing">Clothing</button>
+                    <button class="gear-category" data-category="accessories">Accessories</button>
+                    <button class="gear-category" data-category="gadgets">Gadgets</button>
+                    <button class="gear-category" data-category="media-gear">Media Gear</button>
+                    <button class="gear-category" data-category="others">Others</button>
                 </div>
+                
                 <div class="gear-grid">
-                    <!-- Gear Card Template -->
-                    <div class="gear-card">
+                    <!-- Clothing Category -->
+                    <div class="gear-card" data-category="clothing">
                         <div class="gear-image">
-                            <img src="assets/images/gear1.jpg" alt="Gear 1">
+                            <img src="assets/images/shopping/clothing-gear1.jpg" alt="Patagonia Nano Puff Jacket">
+                            <div class="gear-badge">Editor's Choice</div>
+                        </div>
+                        <div class="gear-content">
+                            <h3>Patagonia Nano Puff Jacket</h3>
+                            <p class="gear-description">My go-to packable jacket for travel and unpredictable weather. Surprisingly warm for how lightweight it is.</p>
+                            <div class="gear-specs">
+                                <span><i class="fas fa-check"></i> Ultra lightweight (11oz)</span>
+                                <span><i class="fas fa-check"></i> Packs into its own pocket</span>
+                                <span><i class="fas fa-check"></i> Fair Trade Certified sewn</span>
+                            </div>
+                            <div class="gear-footer">
+                                <span class="gear-price">$229</span>
+                                <a href="https://www.patagonia.com" target="_blank" class="gear-button">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accessories Category -->
+                    <div class="gear-card" data-category="accessories">
+                        <div class="gear-image">
+                            <img src="assets/images/shopping/accessory-gear1.jpg" alt="Aer Travel Pack 3">
                             <div class="gear-badge">Best Value</div>
                         </div>
                         <div class="gear-content">
-                            <h3>Gear Name</h3>
-                            <p class="gear-description">Brief description of the gear and its key features...</p>
+                            <h3>Aer Travel Pack 3</h3>
+                            <p class="gear-description">The perfect one-bag travel backpack with incredible organization, comfort, and durability.</p>
                             <div class="gear-specs">
-                                <span><i class="fas fa-check"></i> Feature 1</span>
-                                <span><i class="fas fa-check"></i> Feature 2</span>
-                                <span><i class="fas fa-check"></i> Feature 3</span>
+                                <span><i class="fas fa-check"></i> 35L capacity</span>
+                                <span><i class="fas fa-check"></i> Laptop compartment (16")</span>
+                                <span><i class="fas fa-check"></i> Weatherproof materials</span>
                             </div>
                             <div class="gear-footer">
-                                <span class="gear-price">$199.99</span>
-                                <a href="#" class="gear-button">View on Amazon</a>
+                                <span class="gear-price">$235</span>
+                                <a href="https://www.aersf.com" target="_blank" class="gear-button">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gadgets Category -->
+                    <div class="gear-card" data-category="gadgets">
+                        <div class="gear-image">
+                            <img src="assets/images/shopping/gadget-gear1.jpg" alt="Apple MacBook Pro M2">
+                            <div class="gear-badge">Premium Pick</div>
+                        </div>
+                        <div class="gear-content">
+                            <h3>MacBook Pro M2 Pro</h3>
+                            <p class="gear-description">My primary workhorse for coding, content creation, and everything in between. Amazing battery life and performance.</p>
+                            <div class="gear-specs">
+                                <span><i class="fas fa-check"></i> 14" Liquid Retina XDR display</span>
+                                <span><i class="fas fa-check"></i> 32GB unified memory</span>
+                                <span><i class="fas fa-check"></i> 1TB SSD storage</span>
+                            </div>
+                            <div class="gear-footer">
+                                <span class="gear-price">$2,499</span>
+                                <a href="https://www.apple.com" target="_blank" class="gear-button">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Media Gear Category -->
+                    <div class="gear-card" data-category="media-gear">
+                        <div class="gear-image">
+                            <img src="assets/images/shopping/media-gear1.jpg" alt="Zhiyun Crane M3">
+                            <div class="gear-badge">Great Value</div>
+                        </div>
+                        <div class="gear-content">
+                            <h3>Zhiyun Crane M3 Gimbal</h3>
+                            <p class="gear-description">Compact yet powerful 3-axis gimbal that handles smartphones to mirrorless cameras with ease.</p>
+                            <div class="gear-specs">
+                                <span><i class="fas fa-check"></i> Built-in fill light</span>
+                                <span><i class="fas fa-check"></i> Wireless image transmission</span>
+                                <span><i class="fas fa-check"></i> 1.4kg payload capacity</span>
+                            </div>
+                            <div class="gear-footer">
+                                <span class="gear-price">$369</span>
+                                <a href="https://www.zhiyun-tech.com" target="_blank" class="gear-button">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Others Category -->
+                    <div class="gear-card" data-category="others">
+                        <div class="gear-image">
+                            <img src="assets/images/shopping/other-gear1.jpg" alt="Ember Temperature Control Mug">
+                        </div>
+                        <div class="gear-content">
+                            <h3>Ember Smart Mug</h3>
+                            <p class="gear-description">Keeps your coffee or tea at the perfect temperature from the first sip to the last drop.</p>
+                            <div class="gear-specs">
+                                <span><i class="fas fa-check"></i> 80 minutes battery life</span>
+                                <span><i class="fas fa-check"></i> App temperature control</span>
+                                <span><i class="fas fa-check"></i> Auto sleep mode</span>
+                            </div>
+                            <div class="gear-footer">
+                                <span class="gear-price">$129</span>
+                                <a href="https://ember.com" target="_blank" class="gear-button">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -164,139 +531,349 @@
         margin: 0 auto;
         padding: 0 30px;
     }
-
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
+    
+    .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #fff;
+        font-weight: 700;
     }
-
-    .project-card {
+    
+    html[data-theme="light"] .section-title {
+        color: #333;
+    }
+    
+    .section-description {
+        text-align: center;
+        color: #ccc;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    html[data-theme="light"] .section-description {
+        color: #666;
+    }
+    
+    .reviews-section, .gear-section {
+        padding: 80px 0;
+    }
+    
+    /* Category Navigation */
+    .category-nav, .gear-categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .category-btn, .gear-category {
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    html[data-theme="light"] .category-btn, 
+    html[data-theme="light"] .gear-category {
+        background: rgba(0, 0, 0, 0.05);
+        color: #333;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-btn:hover, .gear-category:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    html[data-theme="light"] .category-btn:hover,
+    html[data-theme="light"] .gear-category:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-btn.active, .gear-category.active {
+        background: #6c8aff;
+        color: white;
+        box-shadow: 0 5px 15px rgba(108, 138, 255, 0.3);
+    }
+    
+    html[data-theme="light"] .category-btn.active,
+    html[data-theme="light"] .gear-category.active {
+        background: #6c8aff;
+        color: white;
+    }
+    
+    /* Review Grid */
+    .reviews-grid, .gear-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+    }
+    
+    /* Review Card */
+    .review-card {
         background: rgba(30, 30, 50, 0.7);
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-
-    html[data-theme="light"] .project-card {
+    
+    html[data-theme="light"] .review-card {
         background: rgba(255, 255, 255, 0.9);
         border: 1px solid rgba(0, 0, 0, 0.1);
     }
-
-    .project-card:hover {
-        transform: translateY(-10px);
+    
+    .review-card:hover {
+        transform: translateY(-5px);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     }
-
-    .project-image {
+    
+    .review-image {
         position: relative;
         height: 200px;
         overflow: hidden;
     }
-
-    .project-image img {
+    
+    .review-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
     }
-
-    .project-card:hover .project-image img {
-        transform: scale(1.1);
+    
+    .review-card:hover .review-image img {
+        transform: scale(1.05);
     }
-
-    .project-overlay {
+    
+    .review-category {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .project-card:hover .project-overlay {
-        opacity: 1;
-    }
-
-    .project-link,
-    .project-github {
-        width: 45px;
-        height: 45px;
-        background: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #1a1a2e;
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-
-    .project-link:hover,
-    .project-github:hover {
-        transform: scale(1.1);
-        background: #ff6b6b;
+        top: 15px;
+        right: 15px;
+        padding: 5px 15px;
+        background: rgba(108, 138, 255, 0.9);
         color: white;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
     }
-
-    .project-content {
+    
+    .review-content {
         padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
-
-    .project-content h3 {
-        margin: 0 0 15px;
+    
+    .review-content h3 {
+        margin: 0 0 10px;
         color: #fff;
         font-size: 1.3rem;
     }
-
-    html[data-theme="light"] .project-content h3 {
+    
+    html[data-theme="light"] .review-content h3 {
         color: #333;
     }
-
-    .project-content p {
-        margin: 0 0 20px;
+    
+    .review-rating {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .review-rating i {
+        color: #FFD700;
+        margin-right: 2px;
+    }
+    
+    .review-rating span {
+        margin-left: 8px;
+        color: #ccc;
+        font-size: 0.9rem;
+    }
+    
+    html[data-theme="light"] .review-rating span {
+        color: #666;
+    }
+    
+    .review-summary {
         color: #ccc;
         font-size: 0.95rem;
         line-height: 1.6;
+        margin-bottom: 15px;
+        flex-grow: 1;
     }
-
-    html[data-theme="light"] .project-content p {
+    
+    html[data-theme="light"] .review-summary {
         color: #666;
     }
-
-    .project-tech {
+    
+    .review-meta {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .project-tech span {
-        padding: 5px 12px;
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        border-radius: 20px;
+        justify-content: space-between;
+        color: #999;
         font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    
+    html[data-theme="light"] .review-meta {
+        color: #777;
+    }
+    
+    .review-link {
+        align-self: flex-start;
+        padding: 8px 20px;
+        background: #6c8aff;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.9rem;
         transition: all 0.3s ease;
     }
-
-    html[data-theme="light"] .project-tech span {
-        background: rgba(0, 0, 0, 0.05);
-        color: #333;
+    
+    .review-link:hover {
+        background: #5872d8;
+        transform: translateY(-2px);
     }
-
-    .project-tech span:hover {
+    
+    /* Gear Card */
+    .gear-card {
+        background: rgba(30, 30, 50, 0.7);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    html[data-theme="light"] .gear-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .gear-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .gear-image {
+        position: relative;
+        height: 220px;
+    }
+    
+    .gear-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .gear-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 5px 15px;
         background: #ff6b6b;
         color: white;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .gear-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .gear-content h3 {
+        margin: 0 0 10px;
+        color: #fff;
+        font-size: 1.3rem;
+    }
+    
+    html[data-theme="light"] .gear-content h3 {
+        color: #333;
+    }
+    
+    .gear-description {
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    html[data-theme="light"] .gear-description {
+        color: #666;
+    }
+    
+    .gear-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+    
+    .gear-specs span {
+        color: #ccc;
+        font-size: 0.9rem;
+    }
+    
+    html[data-theme="light"] .gear-specs span {
+        color: #666;
+    }
+    
+    .gear-specs i {
+        color: #6c8aff;
+        margin-right: 8px;
+    }
+    
+    .gear-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .gear-price {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    
+    html[data-theme="light"] .gear-price {
+        color: #333;
+    }
+    
+    .gear-button {
+        padding: 8px 15px;
+        background: #6c8aff;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    
+    .gear-button:hover {
+        background: #5872d8;
         transform: translateY(-2px);
     }
 
@@ -305,18 +882,28 @@
             padding: 0 20px;
         }
 
-        .shopping-projects {
-            padding: 100px 0 60px;
+        .reviews-section, .gear-section {
+            padding: 60px 0;
         }
-
-        .projects-grid {
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .reviews-grid, .gear-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .project-card {
-            max-width: 400px;
-            margin: 0 auto;
+        
+        .category-nav, .gear-categories {
+            gap: 10px;
+        }
+        
+        .category-btn, .gear-category {
+            padding: 8px 15px;
+            font-size: 0.9rem;
         }
     }
 
@@ -324,12 +911,96 @@
         .container {
             padding: 0 15px;
         }
+        
+        .section-title {
+            font-size: 1.8rem;
+        }
+        
+        .section-description {
+            font-size: 1rem;
+        }
     }
     </style>
 
     <!-- Scripts -->
+    <script>
+        // Category filtering for reviews
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            // Add click event to category buttons
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide review cards based on category
+                    reviewCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Category filtering for gear
+            const gearCategoryBtns = document.querySelectorAll('.gear-category');
+            const gearCards = document.querySelectorAll('.gear-card');
+            
+            // Add click event to gear category buttons
+            gearCategoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    gearCategoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide gear cards based on category
+                    gearCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Back to top button functionality
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.opacity = '1';
+                    backToTopBtn.style.visibility = 'visible';
+                } else {
+                    backToTopBtn.style.opacity = '0';
+                    backToTopBtn.style.visibility = 'hidden';
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
     <script src="theme-toggle.js"></script>
     <script src="social-sidebar.js"></script>
-    <script src="back-to-top.js"></script>
+    <!-- Auto-generated social sidebar -->
+    <script src="auto-social-sidebar.js"></script>
 </body>
 </html> 
