@@ -158,8 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     portfolioNavButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            e.preventDefault();
             const category = this.getAttribute('data-category');
+            
+            // Always allow shopping links to navigate directly
+            if (category === 'shopping') {
+                return; // Don't prevent default for shopping category
+            }
+            
+            e.preventDefault();
             const targetPage = getCategoryPage(category);
             
             // If we're already on the target page, just scroll to the section
@@ -225,7 +231,8 @@ function getCategoryPage(category) {
         'travel': 'travel.html',
         'art': 'art.html',
         'books': 'books.html',
-        'cooking': 'cooking.html'
+        'cooking': 'cooking.html',
+        'shopping': 'shopping.html'
     };
     return pageMap[category] || 'index.html';
 }

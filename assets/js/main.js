@@ -35,16 +35,19 @@ function initNavigation() {
             }
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scroll for navigation links - only for same-page anchors
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    navLinks.classList.remove('active');
-                }
-            });
+            // Only apply to pure hash links (not links to other pages with hash fragments)
+            if (anchor.getAttribute('href').indexOf('.html') === -1) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
         });
     }
 }
@@ -216,22 +219,26 @@ function initPortfolio() {
     // Handle nav button clicks
     portfolioNavButtons.forEach(button => {
         button.addEventListener('click', (e) => {
-            e.preventDefault();
             const category = button.getAttribute('data-category');
             
-            // Update active states
-            portfolioNavButtons.forEach(btn => btn.classList.remove('active'));
-            portfolioTabs.forEach(tab => {
-                if (tab.getAttribute('data-filter') === category) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-            button.classList.add('active');
-            
-            // Filter items
-            filterItems(category);
+            // Only prevent default for non-shopping categories
+            if (category !== 'shopping') {
+                e.preventDefault();
+                
+                // Update active states
+                portfolioNavButtons.forEach(btn => btn.classList.remove('active'));
+                portfolioTabs.forEach(tab => {
+                    if (tab.getAttribute('data-filter') === category) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                button.classList.add('active');
+                
+                // Filter items
+                filterItems(category);
+            }
         });
     });
 

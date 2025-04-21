@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const msgElement = document.createElement('div');
         msgElement.className = 'chat-message bot-message';
-        msgElement.textContent = message;
+        msgElement.innerHTML = message;
         chatMessages.appendChild(msgElement);
         
         // Scroll to bottom
@@ -133,13 +133,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Bot responses
     function getBotResponse(message) {
+        // Default response for all questions
+        return "Deepak is still busy in designing me, head over to the detailed project page to see the updates. <a href='project-donna.html' class='chat-link'>Project D.O.N.N.A.</a>";
+        
+        /* Original response logic commented out
         message = message.toLowerCase();
         
         if (message.includes('hello') || message.includes('hi')) {
             return "Hello! How can I help you today? 😊";
         }
         else if (message.includes('donna') || message.includes('project donna') || message.includes('about you')) {
-            return "I'm D.O.N.N.A., an AI assistant created by Ananth. You can learn more about me in the Project D.O.N.N.A. page! 🚀";
+            return "Project D.O.N.N.A. is under development. Head over to the detailed project page at - <a href='project-donna.html' class='chat-link'>Project D.O.N.N.A.</a>";
         }
         else if (message.includes('contact') || message.includes('email')) {
             return "You can reach Ananth through email at ananth.deepaksharma@gmail.com";
@@ -156,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             return "I can help you learn about Ananth's projects, skills, experience, or you can ask me about Project D.O.N.N.A.! 🤔";
         }
+        */
     }
 });
 

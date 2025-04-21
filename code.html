@@ -36,338 +36,74 @@
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="theme.js" defer></script>
     <style>
+        /* Remove problematic styles that forced black text */
+        /* Use consistent colors with the rest of the site */
         :root {
-            --primary-color: #000000;
-            --secondary-color: #333333;
-            --accent-color: #FFFFFF;
-            --text-color: #FFFFFF;
+            --primary-color: #6c8aff;
+            --secondary-color: #ff6b6b;
+            --text-color: #fff;
+            --text-color-light: #333;
+            --text-muted: #ccc;
+            --text-muted-light: #666;
+            --background-main: #0c0c14;
+            --background-light: #f5f7fa;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             --border-radius: 8px;
         }
-
-        /* Force all text to be black */
-        * {
-            color: #000000 !important;
+        
+        /* Base layout styles */
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+            overflow-x: hidden;
         }
         
-        /* Except for specific elements that should remain white */
-        nav a, 
-        .btn, 
-        footer, 
-        footer *, 
-        header, 
-        header *,
-        .social-sidebar a,
-        .social-icons a {
-            color: #FFFFFF !important;
-        }
-        
-        /* Ensure navigation text is white */
-        nav ul li a,
-        nav .logo-text,
-        .page-header h1,
-        .page-header p {
-            color: #FFFFFF !important;
-        }
-        
-        /* Fix social icons styling */
-        .social-sidebar a i, 
-        .social-icons a i {
-            color: inherit !important;
-        }
-        
-        /* Brand-specific icon colors */
-        .social-icons a .fa-linkedin, .social-sidebar a .fa-linkedin { color: #0077b5 !important; }
-        .social-icons a .fa-github, .social-sidebar a .fa-github { color: #f0f6fc !important; }
-        .social-icons a .fa-twitter, .social-sidebar a .fa-twitter { color: #1DA1F2 !important; }
-        .social-icons a .fa-instagram, .social-sidebar a .fa-instagram { 
-            background: -webkit-linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-        }
-        .social-icons a .fa-youtube, .social-sidebar a .fa-youtube { color: #FF0000 !important; }
-        .social-icons a .fa-threads, .social-sidebar a .fa-threads { 
-            background: -webkit-linear-gradient(45deg, #FFFFFF, #B2B2B2) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-        }
-        .social-icons a .fa-medium, .social-sidebar a .fa-medium { color: #00AB6C !important; }
-        .social-icons a .fa-tiktok, .social-sidebar a .fa-tiktok { 
-            background: linear-gradient(90deg, #25F4EE, #FE2C55) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            font-size: 1.2rem !important;
-        }
-        
-        /* Project description specific styles */
-        .project-description p,
-        .project-description ul,
-        .project-description li,
-        .project-description h3,
-        .project-description h4 {
-            color: #000000 !important;
-            background-color: transparent !important;
-        }
-
-        /* Social Icons Global Styles */
-        .social-icons, .social-sidebar {
-            display: flex;
-            gap: 8px;
-        }
-
-        .social-icons a, .social-sidebar a {
-            all: unset;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 50% !important;
-            background: transparent !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            cursor: pointer !important;
-            text-decoration: none !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-
-        .social-icons a i, .social-sidebar a i {
-            font-size: 1.2rem !important;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            z-index: 1 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        /* Brand Colors */
-        .social-sidebar a[href*="linkedin"] .fa-linkedin { color: #0077b5 !important; }
-        .social-sidebar a[href*="github"] .fa-github { color: #f0f6fc !important; }
-        .social-sidebar a[href*="twitter"] .fa-twitter { color: #1DA1F2 !important; }
-        .social-sidebar a[href*="youtube"] .fa-youtube { color: #FF0000 !important; }
-        .social-sidebar a[href*="medium"] .fa-medium { color: #00AB6C !important; }
-
-        /* Instagram Icon */
-        .social-sidebar a[href*="instagram"] .fa-instagram {
-            background: -webkit-linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            color: transparent !important;
-        }
-
-        /* Threads Icon */
-        .social-sidebar a[href*="threads"] .fa-threads {
-            background: -webkit-linear-gradient(45deg, #FFFFFF, #B2B2B2) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            color: transparent !important;
-        }
-
-        /* Hover Effects */
-        .social-sidebar a:hover {
-            border-color: transparent !important;
-        }
-
-        /* Brand-specific hover backgrounds */
-        .social-sidebar a[href*="linkedin"]:hover { background: #0077b5 !important; }
-        .social-sidebar a[href*="github"]:hover { background: #24292e !important; }
-        .social-sidebar a[href*="twitter"]:hover { background: #1DA1F2 !important; }
-        .social-sidebar a[href*="instagram"]:hover { background: #E1306C !important; }
-        .social-sidebar a[href*="youtube"]:hover { background: #FF0000 !important; }
-        .social-sidebar a[href*="threads"]:hover { background: #000000 !important; }
-        .social-sidebar a[href*="medium"]:hover { background: #00AB6C !important; }
-        .social-sidebar a[href*="tiktok"]:hover { background: #000000 !important; }
-
-        /* Icon color on hover */
-        .social-sidebar a:hover i {
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-            background: transparent !important;
-            -webkit-background-clip: unset !important;
-            background-clip: unset !important;
-            transform: scale(1.2) !important;
-        }
-
-        /* Specific hover styles for gradient icons */
-        .social-sidebar a:hover[href*="instagram"] .fa-instagram,
-        .social-sidebar a:hover[href*="threads"] .fa-threads {
-            background: none !important;
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .social-sidebar {
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                flex-direction: row;
-                background: rgba(0, 0, 0, 0.8);
-                padding: 10px;
-                border-radius: 25px;
-                gap: 10px;
-                z-index: 1000;
-            }
-        }
-
-        /* Logo styles */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-        }
-
-        .logo-container:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .logo-image {
-            width: 35px;
-            height: 35px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            transition: all 0.3s ease;
-        }
-
-        .logo-container:hover .logo-image {
-            transform: scale(1.1) rotate(-5deg);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            text-transform: none;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .logo-container:hover .logo-text {
-            transform: scale(1.05);
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            color: var(--accent-color);
-        }
-
-        /* Clear filter styles */
-        .clear-filter {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .clear-filter p {
-            margin: 0;
-            color: var(--text-color);
-            font-size: 1.1rem;
-        }
-
-        .clear-filter strong {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .clear-filter .btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .clear-filter .btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Existing styles */
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #121212;
-            color: var(--text-color);
-            line-height: 1.6;
+            background: var(--background-main);
+            height: 100%;
+            overflow-x: hidden;
         }
-
-        /* Removing custom nav styling to use global styles */
         
-        .page-header {
-            background: linear-gradient(135deg, #000000, #333333);
-            color: var(--light-color);
-            padding: 6rem 5% 3rem;
-            text-align: center;
+        html[data-theme="light"] body {
+            background: var(--background-light);
+        }
+        
+        /* Main container styling */
+        .project-container {
+            width: 100%;
+            padding: 0;
+            height: 90vh; /* Increased from 100vh to allow for better aspect ratio */
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
             position: relative;
         }
         
-        .page-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        .project-container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 5%;
-        }
-        
+        /* Project Cards Styling */
         .project-card {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-radius: var(--border-radius);
+            width: 100%;
+            height: 80vh; /* 80% of viewport height */
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto 20vh; /* 20% bottom margin to peek the next card */
+            display: flex;
+            flex-direction: row;
+            scroll-snap-align: start;
+            max-width: 95%; /* Increased from 90% to 95% */
+            aspect-ratio: 2/1; /* Make cards twice as wide as high */
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15) !important;
+        html[data-theme="light"] .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .project-image {
-            height: 300px;
+            width: 35%; /* Reduced from 40% to 35% */
+            height: 100%;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -380,400 +116,195 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
         }
         
+        .project-content {
+            width: 65%; /* Increased from 60% to 65% */
+            padding: 40px 50px;
+            background: rgba(30, 30, 50, 0.5);
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        html[data-theme="light"] .project-content {
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            scrollbar-color: var(--primary-color) rgba(0,0,0,0.05);
+        }
+        
+        /* Project meta information */
         .project-meta {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem;
-            color: #FFFFFF !important;
+            top: 40px;
+            left: 40px;
+            width: calc(35% - 80px); /* Updated to match new image width */
+            z-index: 10;
         }
         
         .project-meta h2 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #FFFFFF !important;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem; /* Reduced from 2rem */
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
         
         .tech-tag {
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Reduced from 0.8rem */
             backdrop-filter: blur(5px);
-            color: #FFFFFF !important;
+            color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .project-content {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.95) !important;
-        }
-        
+        /* Project description */
         .project-description {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
-        .project-description h3,
-        .project-description h4 {
-            color: #000000 !important;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .project-description p,
+        .project-description p, 
         .project-description ul,
         .project-description li {
-            color: #333333 !important;
+            color: #ccc;
+            line-height: 1.5;
+            font-size: 0.95rem; /* Reduced text size */
         }
         
+        html[data-theme="light"] .project-description p,
+        html[data-theme="light"] .project-description ul,
+        html[data-theme="light"] .project-description li {
+            color: #666;
+        }
+        
+        .project-description ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .project-description li {
+            margin-bottom: 8px;
+        }
+        
+        /* Project links */
         .project-links {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
+            margin-top: auto;
+            padding-top: 20px;
         }
         
         .project-links .btn {
+            padding: 8px 18px;
+            background: #6c8aff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.85rem; /* Reduced from 0.9rem */
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.5rem;
-            background: var(--primary-color);
-            color: #FFFFFF !important;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            gap: 8px;
         }
         
         .project-links .btn:hover {
-            background: #333333;
+            background: #5872d8;
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .project-links .btn i {
-            color: #FFFFFF !important;
+            font-size: 1rem;
         }
         
+        /* Section styling */
         .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            color: #FFFFFF !important;
-            font-size: 2.2rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary-color);
-            color: #FFFFFF !important;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--secondary-color);
-            transform: translateY(-5px);
-        }
-
-        .back-to-top i {
-            color: #FFFFFF !important;
-        }
-
-        .resume-section {
-            margin-bottom: 4rem;
-        }
-
-        .resume-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .resume-card {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .resume-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.15) !important;
-        }
-
-        .resume-icon {
             font-size: 2.5rem;
-            color: #FFFFFF !important;
-            background: rgba(255, 255, 255, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            font-weight: 700;
         }
-
-        .resume-icon i {
-            color: #FFFFFF !important;
+        
+        html[data-theme="light"] .section-title {
+            color: #333;
         }
-
-        .resume-content {
-            flex: 1;
-        }
-
-        .resume-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #FFFFFF !important;
-        }
-
-        .resume-content p {
-            color: rgba(255, 255, 255, 0.8) !important;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .resume-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
-        .freshness-date {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
-            color: #FFFFFF !important;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .download-btn:hover {
-            background: #333333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-btn i {
-            color: #FFFFFF !important;
-        }
-
-        @media (max-width: 768px) {
-            .resume-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .resume-card {
-                padding: 1.5rem;
-            }
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--text-color);
-            text-transform: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Project Cards */
-        .project-card {
-            background: var(--light-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        
+        .section-description {
+            text-align: center;
+            color: #ccc;
             margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        /* TikTok specific styles */
-        .social-icons a .fa-tiktok, .social-sidebar a .fa-tiktok { 
-            background: linear-gradient(90deg, #25F4EE, #FE2C55) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            font-size: 1.2rem !important;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        
+        html[data-theme="light"] .section-description {
+            color: #666;
         }
-
-        .social-sidebar a:hover .fa-tiktok {
-            background: transparent !important;
-            -webkit-background-clip: unset !important;
-            background-clip: unset !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-            color: #FFFFFF !important;
+        
+        /* Page header styling with wider aspect ratio */
+        .page-header {
+            text-align: center;
+            padding: 80px 0 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            margin-bottom: 5vh;
         }
-
-        .social-sidebar a:hover {
-            background: #000000 !important;
-            border-color: transparent !important;
+        
+        html[data-theme="light"] .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
         }
-
-        /* Ensure proper centering and scaling for all icons */
-        .social-sidebar a i {
-            width: 100% !important;
-            height: 100% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 700;
         }
-
-        /* Icon scaling on hover */
-        .social-icons a:hover i, .social-sidebar a:hover i {
-            transform: scale(1.2) !important;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        
+        html[data-theme="light"] .page-header h1 {
+            color: #333;
         }
-
-        /* Brand-specific hover effects */
-        .social-sidebar a:hover {
-            border-color: transparent !important;
+        
+        .page-header p {
+            color: #ccc;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        .social-sidebar a:hover[href*="tiktok"] {
-            background: #000000 !important;
+        
+        html[data-theme="light"] .page-header p {
+            color: #666;
         }
-
-        .social-sidebar a:hover[href*="tiktok"] .fa-tiktok {
-            color: #FFFFFF !important;
-            -webkit-text-fill-color: #FFFFFF !important;
-            background: transparent !important;
-            -webkit-background-clip: unset !important;
-            background-clip: unset !important;
-        }
-
-        /* Social Sidebar Specific */
-        .social-sidebar {
-            position: fixed !important;
-            top: 50% !important;
-            right: 0 !important;
-            transform: translateY(-50%) !important;
-            flex-direction: column !important;
-            background: rgba(0, 0, 0, 0.95) !important;
-            padding: 12px 8px !important;
-            border-radius: 30px 0 0 30px !important;
-            gap: 12px !important;
-            backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            z-index: 1000 !important;
-        }
-
-        /* Mobile Specific */
-        @media (max-width: 768px) {
-            .social-sidebar {
-                display: none !important;
-            }
-
-            .social-mobile-toggle {
-                display: block !important;
-                position: fixed !important;
-                bottom: 20px !important;
-                right: 20px !important;
-                width: 50px !important;
-                height: 50px !important;
-                background: var(--primary-color) !important;
-                color: var(--text-color) !important;
-                border-radius: 50% !important;
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                z-index: 1000 !important;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-                cursor: pointer !important;
-            }
-
-            .social-sidebar.visible {
-                display: flex !important;
-                flex-direction: row !important;
-                position: fixed !important;
-                bottom: 80px !important;
-                right: 20px !important;
-                top: auto !important;
-                transform: none !important;
-                border-radius: 20px !important;
-                padding: 8px !important;
-                gap: 8px !important;
-            }
-        }
-
+        
+        /* Navigation styling */
         .navigation {
-            position: fixed !important;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 15px 40px;
-            display: flex !important;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 9999 !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            transform: none !important;
-            background-color: rgba(12, 12, 20, 0.9) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
-            transition: all 0.3s ease !important;
+            z-index: 1000;
+            background-color: rgba(12, 12, 20, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        html[data-theme="light"] .navigation {
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .logo-profile {
@@ -811,6 +342,10 @@
             letter-spacing: 0.5px;
         }
 
+        html[data-theme="light"] .logo-text {
+            color: #333;
+        }
+
         .nav-container {
             display: flex;
             align-items: center;
@@ -837,69 +372,364 @@
             transition: all 0.3s ease;
         }
 
-        .project-details {
-            padding-top: 100px;
-            min-height: 100vh;
-            background: #0c0c14;
+        html[data-theme="light"] .nav-item {
+            color: #333;
         }
 
-        .project-content {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-top: 30px;
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff6b6b;
+            transition: width 0.3s ease;
         }
 
-        .project-header h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .nav-item:hover::after, 
+        .nav-item.active::after {
+            width: 100%;
         }
 
-        .tech-stack {
+        .nav-item:hover, 
+        .nav-item.active {
+            color: #ff6b6b;
+        }
+
+        /* Theme toggle styling */
+        .theme-toggle-container {
+            margin-left: 20px;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .theme-toggle {
+            height: 36px;
+            width: 70px;
+            border-radius: 30px;
+            background-color: #1c1c2e;
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 8px;
+            cursor: pointer;
+            border: none;
+            overflow: visible;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .tech-tag {
-            padding: 8px 16px;
-            background: rgba(108, 138, 255, 0.1);
-            color: #6c8aff;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        html[data-theme="light"] .theme-toggle {
+            background-color: #e0e0e0;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.98);
+        }
+
+        .toggle-icons {
+            position: relative;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        .toggle-icons i {
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-icons i.fa-sun {
+            color: #f1c40f;
+            opacity: 0.6;
+        }
+
+        .toggle-icons i.fa-moon {
+            color: #f1c4f1;
+            opacity: 0.6;
+        }
+
+        html[data-theme="light"] .toggle-icons i.fa-sun {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        html[data-theme="dark"] .toggle-icons i.fa-moon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff6b6b;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+            z-index: 1;
+        }
+
+        html[data-theme="dark"] .toggle-slider {
+            transform: translateX(0);
+            left: 5px;
+        }
+
+        html[data-theme="light"] .toggle-slider {
+            transform: translateX(34px);
+            left: 0;
+        }
+        
+        /* Project card hover effect */
+        .project-card {
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Ensure back to top button appears above the scrollable area */
+        .back-to-top-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6c8aff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+        
+        #backToTop:hover {
+            background: #5872d8;
+            transform: translateY(-3px);
+        }
+        
+        #backToTop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Custom scrollbar styling */
+        .project-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .project-content::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        
+        .project-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        /* Media queries for responsive behavior */
+        @media (max-width: 1200px) {
+            .project-card, .section-separator {
+                max-width: 97%;
+                height: 70vh;
+            }
+            
+            .project-content {
+                padding: 30px 40px;
+            }
+            
+            .project-meta {
+                top: 30px;
+                left: 30px;
+                width: calc(35% - 60px);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .project-card {
+                flex-direction: column;
+                height: auto;
+                min-height: 70vh;
+                aspect-ratio: auto;
+            }
+            
+            .project-image {
+                width: 100%;
+                height: 35vh;
+            }
+            
+            .project-content {
+                width: 100%;
+                padding: 30px;
+                max-height: 50vh;
+            }
+            
+            .project-meta {
+                top: auto;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-card, .section-separator {
+                margin-bottom: 10vh;
+                max-width: 100%;
+            }
+            
+            .project-image {
+                height: 30vh;
+            }
+            
+            .project-meta h2 {
+                font-size: 1.4rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .project-content {
+                padding: 25px;
+                max-height: 45vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .project-card, .section-separator {
+                max-width: 100%;
+                border-radius: 0;
+                margin-bottom: 5vh;
+            }
+            
+            .project-image {
+                height: 25vh;
+            }
+            
+            .project-content {
+                padding: 20px;
+                max-height: 55vh;
+            }
+            
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+        
+        /* Section separator for soft skills */
+        .section-separator {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            height: 20vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            width: 100%;
+            max-width: 95%; /* Match card width */
+            margin: 0 auto 20vh;
+            border-radius: 15px;
+            aspect-ratio: 2/0.5; /* Makes it wider but not as tall */
+        }
+        
+        .section-separator h2 {
+            font-size: 2.2rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        
+        html[data-theme="light"] .section-separator {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
-                <span class="logo-text">De</span>
-            </div>
-            <ul>
-                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
-                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
-                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="logo-profile">
+            <a href="index.html" class="logo-container">
+                <div class="profile-photo">
+                    <img src="assets/images/ProfileIcon.jpeg" alt="Ananth Deepak Sharma Nanduri">
+                </div>
+                <div class="logo-text">Ananth</div>
+            </a>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html#about" class="nav-item"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#journey" class="nav-item"><i class="fas fa-road"></i> Journey</a></li>
+                <li><a href="index.html#portfolio" class="nav-item active"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#skills" class="nav-item"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-        </nav>
-    </header>
+            
+            <!-- Theme Toggle Button -->
+            <div class="theme-toggle-container">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <div class="toggle-icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Social Sidebar for quick access -->
     <div class="social-sidebar">
-        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.threads.net/@de_coderick" target="_blank"><i class="fa-brands fa-threads"></i></a>
-        <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
-        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-medium"></i>
+        </a>
+        <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
     </div>
 
     <div class="page-header">
@@ -910,7 +740,7 @@
     <main class="project-container">
         <!-- Project D.O.N.N.A. -->
         <div class="project-card">
-            <div class="project-image" style="background-image: url('assets/images/portfolio/donna.jpg')">
+            <div class="project-image" style="background-image: url('assets/images/suits-donna-harvey.jpg'); background-position: top center;">
                 <div class="project-meta">
                     <h2>Project D.O.N.N.A.</h2>
                     <div class="tech-stack">
@@ -938,7 +768,6 @@
                 </div>
                 <div class="project-links">
                     <a href="project-donna.html" class="btn"><i class="fas fa-globe"></i> View Project</a>
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
         </div>
@@ -958,15 +787,15 @@
                 </div>
             </div>
             <div class="project-content">
-                <div class="project-description" style="color: #000000 !important;">
-                    <p style="color: #000000 !important;">A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management. The application is built with a React frontend, Node.js backend, and MongoDB database.</p>
-                    <p style="color: #000000 !important;">Key features include:</p>
-                    <ul style="color: #000000 !important;">
-                        <li style="color: #000000 !important;">Responsive design for all device sizes</li>
-                        <li style="color: #000000 !important;">Real-time inventory management</li>
-                        <li style="color: #000000 !important;">Secure payment processing</li>
-                        <li style="color: #000000 !important;">Admin dashboard for product and order management</li>
-                        <li style="color: #000000 !important;">User reviews and ratings system</li>
+                <div class="project-description">
+                    <p>A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management. The application is built with a React frontend, Node.js backend, and MongoDB database.</p>
+                    <p>Key features include:</p>
+                    <ul>
+                        <li>Responsive design for all device sizes</li>
+                        <li>Real-time inventory management</li>
+                        <li>Secure payment processing</li>
+                        <li>Admin dashboard for product and order management</li>
+                        <li>User reviews and ratings system</li>
                     </ul>
                 </div>
                 <div class="project-links">
@@ -1039,136 +868,140 @@
         </div>
         
         <!-- Soft Skills Projects Section -->
-        <h2 class="section-title" style="margin-top: 4rem;">Soft Skills Projects</h2>
-        
-        <!-- Leadership Projects -->
-        <div id="leadership-projects" class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                <div class="project-meta">
-                    <h2>Team Leadership & Management</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Team Building</span>
-                        <span class="tech-tag">Strategic Planning</span>
-                        <span class="tech-tag">Conflict Resolution</span>
+        <div class="section-separator">
+            <h2 class="section-title">Soft Skills Projects</h2>
+        </div>
+
+        <main class="project-container">
+            <!-- Leadership Projects -->
+            <div id="leadership-projects" class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="project-meta">
+                        <h2>Team Leadership & Management</h2>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Team Building</span>
+                            <span class="tech-tag">Strategic Planning</span>
+                            <span class="tech-tag">Conflict Resolution</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Led cross-functional teams of 5-10 members to successfully deliver complex software projects on time and within budget. Developed leadership capabilities through formal training and hands-on experience managing diverse teams.</p>
+                        <p>Key achievements include:</p>
+                        <ul>
+                            <li>Led an agile development team that increased productivity by 35% through improved processes</li>
+                            <li>Managed project portfolios with combined budgets exceeding $1M</li>
+                            <li>Mentored junior team members, resulting in 4 promotions within the team</li>
+                            <li>Resolved cross-department conflicts to streamline project delivery</li>
+                            <li>Created team-building initiatives that reduced turnover by 20%</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn"><i class="fas fa-certificate"></i> Leadership Certification</a>
+                        <a href="#" class="btn"><i class="fas fa-user-tie"></i> Management Portfolio</a>
                     </div>
                 </div>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>Led cross-functional teams of 5-10 members to successfully deliver complex software projects on time and within budget. Developed leadership capabilities through formal training and hands-on experience managing diverse teams.</p>
-                    <p>Key achievements include:</p>
-                    <ul>
-                        <li>Led an agile development team that increased productivity by 35% through improved processes</li>
-                        <li>Managed project portfolios with combined budgets exceeding $1M</li>
-                        <li>Mentored junior team members, resulting in 4 promotions within the team</li>
-                        <li>Resolved cross-department conflicts to streamline project delivery</li>
-                        <li>Created team-building initiatives that reduced turnover by 20%</li>
-                    </ul>
+            
+            <!-- Mentorship Projects -->
+            <div id="mentorship-projects" class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')">
+                    <div class="project-meta">
+                        <h2>Technical Mentorship Program</h2>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Career Development</span>
+                            <span class="tech-tag">Knowledge Transfer</span>
+                            <span class="tech-tag">Technical Coaching</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-certificate"></i> Leadership Certification</a>
-                    <a href="#" class="btn"><i class="fas fa-user-tie"></i> Management Portfolio</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mentorship Projects -->
-        <div id="mentorship-projects" class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')">
-                <div class="project-meta">
-                    <h2>Technical Mentorship Program</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Career Development</span>
-                        <span class="tech-tag">Knowledge Transfer</span>
-                        <span class="tech-tag">Technical Coaching</span>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Developed and led a structured mentorship program for junior developers, focusing on technical skill development, career growth, and professional development. Created learning paths and provided one-on-one guidance to accelerate skill acquisition.</p>
+                        <p>Key achievements include:</p>
+                        <ul>
+                            <li>Mentored 15+ junior developers who progressed to mid-level roles within 18 months</li>
+                            <li>Created comprehensive learning materials for modern development stacks</li>
+                            <li>Established pair programming sessions that improved code quality by 25%</li>
+                            <li>Facilitated weekly tech talks and code review sessions</li>
+                            <li>Designed career progression frameworks adopted company-wide</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn"><i class="fas fa-chalkboard-teacher"></i> Mentorship Resources</a>
+                        <a href="#" class="btn"><i class="fas fa-book"></i> Learning Materials</a>
                     </div>
                 </div>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>Developed and led a structured mentorship program for junior developers, focusing on technical skill development, career growth, and professional development. Created learning paths and provided one-on-one guidance to accelerate skill acquisition.</p>
-                    <p>Key achievements include:</p>
-                    <ul>
-                        <li>Mentored 15+ junior developers who progressed to mid-level roles within 18 months</li>
-                        <li>Created comprehensive learning materials for modern development stacks</li>
-                        <li>Established pair programming sessions that improved code quality by 25%</li>
-                        <li>Facilitated weekly tech talks and code review sessions</li>
-                        <li>Designed career progression frameworks adopted company-wide</li>
-                    </ul>
+            
+            <!-- Event Management Projects -->
+            <div id="event-projects" class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="project-meta">
+                        <h2>Tech Conference Coordination</h2>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Event Planning</span>
+                            <span class="tech-tag">Logistics Management</span>
+                            <span class="tech-tag">Speaker Coordination</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-chalkboard-teacher"></i> Mentorship Resources</a>
-                    <a href="#" class="btn"><i class="fas fa-book"></i> Learning Materials</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Event Management Projects -->
-        <div id="event-projects" class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                <div class="project-meta">
-                    <h2>Tech Conference Coordination</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Event Planning</span>
-                        <span class="tech-tag">Logistics Management</span>
-                        <span class="tech-tag">Speaker Coordination</span>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Planned and executed technology conferences, hackathons, and workshops with 100-500 attendees. Managed all aspects of event logistics, speaker selection, scheduling, and technical requirements while staying within budget constraints.</p>
+                        <p>Key achievements include:</p>
+                        <ul>
+                            <li>Organized a three-day tech conference with 30+ speakers and 400+ attendees</li>
+                            <li>Coordinated company-wide hackathons resulting in 5 patentable innovations</li>
+                            <li>Managed event budgets of $50,000-$100,000 with consistently positive ROI</li>
+                            <li>Created streamlined registration and feedback systems</li>
+                            <li>Secured sponsorships reducing event costs by 30%</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Event Portfolio</a>
+                        <a href="#" class="btn"><i class="fas fa-photo-video"></i> Event Highlights</a>
                     </div>
                 </div>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>Planned and executed technology conferences, hackathons, and workshops with 100-500 attendees. Managed all aspects of event logistics, speaker selection, scheduling, and technical requirements while staying within budget constraints.</p>
-                    <p>Key achievements include:</p>
-                    <ul>
-                        <li>Organized a three-day tech conference with 30+ speakers and 400+ attendees</li>
-                        <li>Coordinated company-wide hackathons resulting in 5 patentable innovations</li>
-                        <li>Managed event budgets of $50,000-$100,000 with consistently positive ROI</li>
-                        <li>Created streamlined registration and feedback systems</li>
-                        <li>Secured sponsorships reducing event costs by 30%</li>
-                    </ul>
+            
+            <!-- Operations Management Projects -->
+            <div id="operations-projects" class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="project-meta">
+                        <h2>DevOps Workflow Optimization</h2>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Process Improvement</span>
+                            <span class="tech-tag">Resource Management</span>
+                            <span class="tech-tag">Operational Efficiency</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Event Portfolio</a>
-                    <a href="#" class="btn"><i class="fas fa-photo-video"></i> Event Highlights</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Operations Management Projects -->
-        <div id="operations-projects" class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                <div class="project-meta">
-                    <h2>DevOps Workflow Optimization</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Process Improvement</span>
-                        <span class="tech-tag">Resource Management</span>
-                        <span class="tech-tag">Operational Efficiency</span>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality. Implemented structured methodologies for continuous integration/deployment and infrastructure management.</p>
+                        <p>Key achievements include:</p>
+                        <ul>
+                            <li>Reduced deployment time from 2 days to 2 hours through CI/CD pipeline optimization</li>
+                            <li>Decreased infrastructure costs by 40% through cloud resource optimization</li>
+                            <li>Implemented monitoring systems that reduced system downtime by 75%</li>
+                            <li>Created cross-team workflow documentation and training programs</li>
+                            <li>Standardized operational procedures across 5 development teams</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn"><i class="fas fa-cogs"></i> Operations Portfolio</a>
+                        <a href="#" class="btn"><i class="fas fa-chart-line"></i> Efficiency Metrics</a>
                     </div>
                 </div>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality. Implemented structured methodologies for continuous integration/deployment and infrastructure management.</p>
-                    <p>Key achievements include:</p>
-                    <ul>
-                        <li>Reduced deployment time from 2 days to 2 hours through CI/CD pipeline optimization</li>
-                        <li>Decreased infrastructure costs by 40% through cloud resource optimization</li>
-                        <li>Implemented monitoring systems that reduced system downtime by 75%</li>
-                        <li>Created cross-team workflow documentation and training programs</li>
-                        <li>Standardized operational procedures across 5 development teams</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-cogs"></i> Operations Portfolio</a>
-                    <a href="#" class="btn"><i class="fas fa-chart-line"></i> Efficiency Metrics</a>
-                </div>
-            </div>
-        </div>
+        </main>
     </main>
 
     <!-- Back to top button -->
     <div class="back-to-top-container">
-        <button class="back-to-top" aria-label="Back to top">
+        <button id="backToTop" class="back-to-top" aria-label="Back to top">
             <i class="fas fa-chevron-up"></i>
         </button>
     </div>
@@ -1182,14 +1015,14 @@
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="social-icons">
-                <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="placeholder" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/de_coderick/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.threads.net/@de_coderick" target="_blank"><i class="fa-brands fa-threads"></i></a>
-                <a href="placeholder" target="_blank"><i class="fab fa-medium"></i></a>
-                <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+                <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-threads"></i></a>
+                <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
         <p>&copy; 2025 Ananth Deepak Sharma Nanduri | Built with <i class="fas fa-heart"></i></p>
@@ -1341,9 +1174,11 @@
         });
     </script>
     
-    <script src="chatbot.js"></script>
-    <script src="back-to-top.js"></script>
+    <script src="theme-toggle.js"></script>
+    <script src="social-sidebar.js"></script>
     <!-- Auto-generated social sidebar -->
     <script src="auto-social-sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+    <!-- Google Analytics Tag - Only loads in production -->
+    <script>
+        if (!window.location.hostname.includes('localhost') && 
+            !window.location.hostname.includes('127.0.0.1')) {
+            
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-R656C658VX';
+            document.head.appendChild(gaScript);
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R656C658VX');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping - Reviews & Gear</title>
@@ -997,10 +1013,23 @@
                 });
             });
         });
+
+        // Fix for any #hash links in the shopping page to ensure they work properly
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all links with hash references and prevent them from being intercepted
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.classList.add('shopping-internal-link');
+                // Remove any previously attached event listeners that might interfere
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+            });
+        });
     </script>
     <script src="theme-toggle.js"></script>
     <script src="social-sidebar.js"></script>
     <!-- Auto-generated social sidebar -->
     <script src="auto-social-sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html> 
