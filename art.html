@@ -228,6 +228,189 @@
             transform: translateX(-50%);
             border-radius: 2px;
         }
+        
+        /* Styles for Music, Singing, Instruments, and Dance sections */
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .music-section,
+        .singing-section,
+        .instruments-section,
+        .dance-section {
+            padding: 80px 0;
+            background: var(--bg-color);
+        }
+        
+        .music-container,
+        .singing-container,
+        .instruments-container,
+        .dance-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .music-item,
+        .singing-item,
+        .instrument-item,
+        .dance-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        html[data-theme="light"] .music-item,
+        html[data-theme="light"] .singing-item,
+        html[data-theme="light"] .instrument-item,
+        html[data-theme="light"] .dance-item {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .music-item:hover,
+        .singing-item:hover,
+        .instrument-item:hover,
+        .dance-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .music-item-image,
+        .singing-item-image,
+        .instrument-item-image,
+        .dance-item-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .music-item-image img,
+        .singing-item-image img,
+        .instrument-item-image img,
+        .dance-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .music-item:hover .music-item-image img,
+        .singing-item:hover .singing-item-image img,
+        .instrument-item:hover .instrument-item-image img,
+        .dance-item:hover .dance-item-image img {
+            transform: scale(1.05);
+        }
+        
+        .music-item-content,
+        .singing-item-content,
+        .instrument-item-content,
+        .dance-item-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .music-item-content h3,
+        .singing-item-content h3,
+        .instrument-item-content h3,
+        .dance-item-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--light-color);
+        }
+        
+        html[data-theme="light"] .music-item-content h3,
+        html[data-theme="light"] .singing-item-content h3,
+        html[data-theme="light"] .instrument-item-content h3,
+        html[data-theme="light"] .dance-item-content h3 {
+            color: var(--dark-color);
+        }
+        
+        .music-item-content p,
+        .singing-item-content p,
+        .instrument-item-content p,
+        .dance-item-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        html[data-theme="light"] .music-item-content p,
+        html[data-theme="light"] .singing-item-content p,
+        html[data-theme="light"] .instrument-item-content p,
+        html[data-theme="light"] .dance-item-content p {
+            color: var(--text-dark);
+        }
+        
+        .music-item-tags,
+        .singing-item-tags,
+        .instrument-item-tags,
+        .dance-item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+        
+        .music-item-tags span,
+        .singing-item-tags span,
+        .instrument-item-tags span,
+        .dance-item-tags span {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        
+        html[data-theme="light"] .music-item-tags span,
+        html[data-theme="light"] .singing-item-tags span,
+        html[data-theme="light"] .instrument-item-tags span,
+        html[data-theme="light"] .dance-item-tags span {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-dark);
+        }
+        
+        .music-item-tags span:hover,
+        .singing-item-tags span:hover,
+        .instrument-item-tags span:hover,
+        .dance-item-tags span:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .music-container,
+            .singing-container,
+            .instruments-container,
+            .dance-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+            
+            .music-item-image,
+            .singing-item-image,
+            .instrument-item-image,
+            .dance-item-image {
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body class="art-page">
@@ -271,6 +454,10 @@
             <button class="filter-btn" data-filter="digital">Digital Art</button>
             <button class="filter-btn" data-filter="photography">Photography</button>
             <button class="filter-btn" data-filter="illustration">Illustration</button>
+            <button class="filter-btn" data-filter="music">Music</button>
+            <button class="filter-btn" data-filter="singing">Singing</button>
+            <button class="filter-btn" data-filter="instruments">Instruments</button>
+            <button class="filter-btn" data-filter="dance">Dance</button>
         </div>
         
         <div class="gallery-grid">
@@ -323,6 +510,166 @@
             </div>
         </div>
     </main>
+    
+    <!-- Music Section -->
+    <section class="music-section" id="music-section">
+        <div class="container">
+            <h2 class="section-title">Music</h2>
+            <p class="section-description">My journey through sound, exploring various genres and musical expressions</p>
+            
+            <div class="music-container">
+                <div class="music-item">
+                    <div class="music-item-image">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Classical Music">
+                    </div>
+                    <div class="music-item-content">
+                        <h3>Classical Appreciation</h3>
+                        <p>My journey exploring the timeless compositions of Bach, Mozart, and Beethoven, understanding musical structure and emotional depth.</p>
+                        <div class="music-item-tags">
+                            <span>Classical</span>
+                            <span>Orchestral</span>
+                            <span>Instrumental</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="music-item">
+                    <div class="music-item-image">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Contemporary Music">
+                    </div>
+                    <div class="music-item-content">
+                        <h3>Contemporary Explorations</h3>
+                        <p>Diving into modern musical expressions across rock, jazz, and electronic genres, analyzing innovative sound design and production techniques.</p>
+                        <div class="music-item-tags">
+                            <span>Modern</span>
+                            <span>Experimental</span>
+                            <span>Production</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Singing Section -->
+    <section class="singing-section" id="singing-section">
+        <div class="container">
+            <h2 class="section-title">Singing</h2>
+            <p class="section-description">My vocal journey, exploring different styles and techniques</p>
+            
+            <div class="singing-container">
+                <div class="singing-item">
+                    <div class="singing-item-image">
+                        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Vocal Training">
+                    </div>
+                    <div class="singing-item-content">
+                        <h3>Vocal Training</h3>
+                        <p>My ongoing journey of developing vocal techniques, breath control, and expanding my range through dedicated practice and professional coaching.</p>
+                        <div class="singing-item-tags">
+                            <span>Technique</span>
+                            <span>Breath Control</span>
+                            <span>Range</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="singing-item">
+                    <div class="singing-item-image">
+                        <img src="https://images.unsplash.com/photo-1524650359799-842906ca1c06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Performance">
+                    </div>
+                    <div class="singing-item-content">
+                        <h3>Performance Experience</h3>
+                        <p>Highlights from my vocal performances in various settings, from intimate gatherings to larger community events, exploring different musical styles.</p>
+                        <div class="singing-item-tags">
+                            <span>Live Performance</span>
+                            <span>Repertoire</span>
+                            <span>Interpretation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instruments Section -->
+    <section class="instruments-section" id="instruments-section">
+        <div class="container">
+            <h2 class="section-title">Instruments</h2>
+            <p class="section-description">My journey learning and playing various musical instruments</p>
+            
+            <div class="instruments-container">
+                <div class="instrument-item">
+                    <div class="instrument-item-image">
+                        <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Piano">
+                    </div>
+                    <div class="instrument-item-content">
+                        <h3>Piano</h3>
+                        <p>My experience learning piano, from early classical training to exploring jazz and contemporary styles, developing technical skill and musical expression.</p>
+                        <div class="instrument-item-tags">
+                            <span>Classical</span>
+                            <span>Technique</span>
+                            <span>Composition</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instrument-item">
+                    <div class="instrument-item-image">
+                        <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Guitar">
+                    </div>
+                    <div class="instrument-item-content">
+                        <h3>Guitar</h3>
+                        <p>My self-taught guitar journey, exploring acoustic and electric styles, learning chord progressions, fingerpicking techniques, and song arrangement.</p>
+                        <div class="instrument-item-tags">
+                            <span>Acoustic</span>
+                            <span>Fingerstyle</span>
+                            <span>Songwriting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Dance Section -->
+    <section class="dance-section" id="dance-section">
+        <div class="container">
+            <h2 class="section-title">Dance</h2>
+            <p class="section-description">My exploration of movement and rhythm through various dance styles</p>
+            
+            <div class="dance-container">
+                <div class="dance-item">
+                    <div class="dance-item-image">
+                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Contemporary Dance">
+                    </div>
+                    <div class="dance-item-content">
+                        <h3>Contemporary</h3>
+                        <p>My journey into contemporary dance, exploring fluid movements, emotional expression, and the intersection of various dance techniques.</p>
+                        <div class="dance-item-tags">
+                            <span>Contemporary</span>
+                            <span>Expression</span>
+                            <span>Technique</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dance-item">
+                    <div class="dance-item-image">
+                        <img src="https://images.unsplash.com/photo-1504609813442-a9845c1c38dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Street Dance">
+                    </div>
+                    <div class="dance-item-content">
+                        <h3>Urban Styles</h3>
+                        <p>Exploring hip-hop, breakdancing, and other urban dance forms, focusing on rhythm, improvisation, and cultural context.</p>
+                        <div class="dance-item-tags">
+                            <span>Hip-Hop</span>
+                            <span>Freestyle</span>
+                            <span>Urban</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
@@ -398,22 +745,43 @@
         sr.reveal('.section-title', { delay: 200 });
         sr.reveal('.gallery-filters', { delay: 300 });
         sr.reveal('.gallery-item', { interval: 200 });
-
-        // Gallery filtering functionality
+        sr.reveal('.music-item', { interval: 200 });
+        sr.reveal('.singing-item', { interval: 200 });
+        sr.reveal('.instrument-item', { interval: 200 });
+        sr.reveal('.dance-item', { interval: 200 });
+        
+        // Gallery filtering
         const filterBtns = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
         
         filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
                 
-                // Filter gallery items
-                const filter = btn.getAttribute('data-filter');
+                // Add active class to clicked button
+                this.classList.add('active');
                 
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Special case for navigating to section filters
+                if (filterValue === 'music') {
+                    document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                } else if (filterValue === 'singing') {
+                    document.getElementById('singing-section').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                } else if (filterValue === 'instruments') {
+                    document.getElementById('instruments-section').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                } else if (filterValue === 'dance') {
+                    document.getElementById('dance-section').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+                
+                // For regular gallery filtering
                 galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                         item.style.display = 'block';
                     } else {
                         item.style.display = 'none';
@@ -421,7 +789,7 @@
                 });
             });
         });
-
+        
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');

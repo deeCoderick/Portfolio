@@ -936,6 +936,90 @@
             font-size: 1rem;
         }
     }
+    
+    /* Footer styles */
+    footer {
+        background: rgba(20, 20, 35, 0.95);
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    html[data-theme="light"] footer {
+        background: rgba(240, 240, 245, 0.95);
+    }
+    
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .footer-links {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    html[data-theme="light"] .footer-links a {
+        color: #333;
+    }
+    
+    .footer-links a:hover {
+        color: #6c8aff;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    html[data-theme="light"] .social-icons a {
+        background: rgba(0, 0, 0, 0.1);
+        color: #333;
+    }
+    
+    .social-icons a:hover {
+        background: #6c8aff;
+        transform: translateY(-3px);
+        color: white;
+    }
+    
+    footer p {
+        margin-top: 20px;
+        color: #aaa;
+        font-size: 0.9rem;
+    }
+    
+    html[data-theme="light"] footer p {
+        color: #666;
+    }
+    
+    footer i.fa-heart {
+        color: #ff6b6b;
+    }
     </style>
 
     <!-- Scripts -->
@@ -1031,5 +1115,52 @@
     <script src="auto-social-sidebar.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="script.js"></script>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+                <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 Ananth Deepak Sharma Nanduri | Built with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages">
+                <!-- Messages will be added dynamically -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+    <script src="back-to-top.js"></script>
 </body>
 </html> 
