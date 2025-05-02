@@ -1,0 +1,1 @@
+                <li><a href="#skills" class="nav-item"><i class="fas fa-code"></i> Skills</a></li>

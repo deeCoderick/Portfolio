@@ -3504,3 +3504,157 @@ html[data-theme="light"] .activity-content p {
         padding: 20px;
     }
 }
+
+/* Recent Activity Dropdown */
+.recent-activity-dropdown {
+    position: relative;
+    margin-right: 15px;
+}
+
+.recent-activity-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.recent-activity-btn:hover {
+    color: var(--accent-color);
+}
+
+.activity-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+}
+
+.recent-activity-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.recent-activity-dropdown:hover .recent-activity-menu {
+    display: block;
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.mark-all-read {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.activity-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+}
+
+.activity-item.unread {
+    background: rgba(var(--accent-color-rgb), 0.05);
+}
+
+.activity-item i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 4px;
+}
+
+.activity-footer {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.view-all {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .recent-activity-menu {
+        position: fixed;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        max-width: 300px;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .recent-activity-btn {
+        font-size: 1.1rem;
+    }
+}

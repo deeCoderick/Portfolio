@@ -1,0 +1,1 @@
+                <li><a href="#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a></li>
