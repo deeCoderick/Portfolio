@@ -1,0 +1,18 @@
+    <a href="mailto:ananth.deepaksharma@gmail.com" class="hero-social-link" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="section journey-section">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <p class="section-description">Key milestones and achievements that have shaped my personal and professional development.</p>
+
+            <!-- Horizontal Carousel for Journey -->
+            <div class="journey-carousel-container">
+                <button class="carousel-nav carousel-prev" aria-label="Previous journey item">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                

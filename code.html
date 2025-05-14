@@ -28,6 +28,7 @@
     <link rel="mask-icon" href="assets/Logo/logo.png" color="#000000">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme-toggle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,64 +37,126 @@
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="theme.js" defer></script>
     <style>
-        /* Remove problematic styles that forced black text */
-        /* Use consistent colors with the rest of the site */
-        :root {
-            --primary-color: #6c8aff;
-            --secondary-color: #ff6b6b;
-            --text-color: #fff;
-            --text-color-light: #333;
-            --text-muted: #ccc;
-            --text-muted-light: #666;
-            --background-main: #0c0c14;
-            --background-light: #f5f7fa;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --border-radius: 8px;
-        }
-        
-        /* Base layout styles */
-        html {
-            scroll-behavior: smooth;
-            height: 100%;
-            overflow-x: hidden;
-        }
-        
-        body {
-            background: var(--background-main);
-            height: 100%;
-            overflow-x: hidden;
-        }
-        
-        html[data-theme="light"] body {
-            background: var(--background-light);
-        }
-        
-        /* Main container styling */
-        .project-container {
-            width: 100%;
-            padding: 0;
-            height: 90vh; /* Increased from 100vh to allow for better aspect ratio */
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
+        /* Page Header styles */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            color: #fff;
+            padding: 6rem 5% 3rem;
+            text-align: center;
             position: relative;
+            margin-bottom: 2rem;
         }
         
-        /* Project Cards Styling */
-        .project-card {
-            width: 100%;
-            height: 80vh; /* 80% of viewport height */
+        html[data-theme="light"] .page-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            color: #333;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #ccc;
+        }
+        
+        html[data-theme="light"] .page-header p {
+            color: #666;
+        }
+
+        /* Tag Filter System */
+        .tag-filter-container {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem;
             background: rgba(30, 30, 50, 0.7);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 0 auto 20vh; /* 20% bottom margin to peek the next card */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        html[data-theme="light"] .tag-filter-container {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .tag-filter-heading h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        html[data-theme="light"] .tag-filter-heading h3 {
+            color: #333;
+        }
+        
+        .tag-filter-buttons {
             display: flex;
-            flex-direction: row;
-            scroll-snap-align: start;
-            max-width: 95%; /* Increased from 90% to 95% */
-            aspect-ratio: 2/1; /* Make cards twice as wide as high */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+        
+        .tag-btn {
+            background: rgba(108, 138, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(108, 138, 255, 0.4);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        html[data-theme="light"] .tag-btn {
+            background: rgba(108, 138, 255, 0.1);
+            color: #333;
+            border: 1px solid rgba(108, 138, 255, 0.3);
+        }
+        
+        .tag-btn:hover, .tag-btn.active {
+            background: #6c8aff;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Projects Container */
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        /* Project Card */
+        .project-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         html[data-theme="light"] .project-card {
@@ -101,9 +164,13 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
         .project-image {
-            width: 35%; /* Reduced from 40% to 35% */
-            height: 100%;
+            height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -116,558 +183,193 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
         }
         
         .project-content {
-            width: 65%; /* Increased from 60% to 65% */
-            padding: 40px 50px;
-            background: rgba(30, 30, 50, 0.5);
-            color: #ccc;
+            padding: 1.5rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
         }
         
-        html[data-theme="light"] .project-content {
-            background: rgba(255, 255, 255, 0.9);
-            color: #666;
-            scrollbar-color: var(--primary-color) rgba(0,0,0,0.05);
-        }
-        
-        /* Project meta information */
-        .project-meta {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            width: calc(35% - 80px); /* Updated to match new image width */
-            z-index: 10;
-        }
-        
-        .project-meta h2 {
-            font-size: 1.8rem; /* Reduced from 2rem */
-            margin-bottom: 1rem;
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
             color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        html[data-theme="light"] .project-title {
+            color: #333;
+        }
+        
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        html[data-theme="light"] .project-description {
+            color: #666;
         }
         
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .tech-tag {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.75rem; /* Reduced from 0.8rem */
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(5px);
         }
         
-        /* Project description */
-        .project-description {
-            margin-bottom: 20px;
+        html[data-theme="light"] .tech-tag {
+            background: rgba(108, 138, 255, 0.1);
+            color: #333;
         }
         
-        .project-description p, 
-        .project-description ul,
-        .project-description li {
-            color: #ccc;
-            line-height: 1.5;
-            font-size: 0.95rem; /* Reduced text size */
-        }
-        
-        html[data-theme="light"] .project-description p,
-        html[data-theme="light"] .project-description ul,
-        html[data-theme="light"] .project-description li {
-            color: #666;
-        }
-        
-        .project-description ul {
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-        
-        .project-description li {
-            margin-bottom: 8px;
-        }
-        
-        /* Project links */
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
             margin-top: auto;
-            padding-top: 20px;
         }
         
-        .project-links .btn {
-            padding: 8px 18px;
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
             background: #6c8aff;
             color: white;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 0.85rem; /* Reduced from 0.9rem */
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
-        .project-links .btn:hover {
+        .project-link:hover {
             background: #5872d8;
             transform: translateY(-2px);
         }
         
-        .project-links .btn i {
-            font-size: 1rem;
-        }
-        
-        /* Section styling */
+        /* Section styles */
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 0;
+            font-size: 2.2rem;
             color: #fff;
-            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
         }
         
         html[data-theme="light"] .section-title {
             color: #333;
         }
         
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ff6b6b;
+            border-radius: 3px;
+        }
+        
         .section-description {
             text-align: center;
             color: #ccc;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
         }
         
         html[data-theme="light"] .section-description {
             color: #666;
         }
         
-        /* Page header styling with wider aspect ratio */
-        .page-header {
-            text-align: center;
-            padding: 80px 0 40px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            margin-bottom: 5vh;
-        }
-        
-        html[data-theme="light"] .page-header {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-        }
-        
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            font-weight: 700;
-        }
-        
-        html[data-theme="light"] .page-header h1 {
-            color: #333;
-        }
-        
-        .page-header p {
-            color: #ccc;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        html[data-theme="light"] .page-header p {
-            color: #666;
-        }
-        
-        /* Navigation styling */
-        .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background-color: rgba(12, 12, 20, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        html[data-theme="light"] .navigation {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-
-        .logo-profile {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .profile-photo {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            border: 2px solid #ff6b6b;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: white;
-            letter-spacing: 0.5px;
-        }
-
-        html[data-theme="light"] .logo-text {
-            color: #333;
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin: 0 15px;
-        }
-
-        .nav-item {
-            position: relative;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            padding: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        html[data-theme="light"] .nav-item {
-            color: #333;
-        }
-
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #ff6b6b;
-            transition: width 0.3s ease;
-        }
-
-        .nav-item:hover::after, 
-        .nav-item.active::after {
-            width: 100%;
-        }
-
-        .nav-item:hover, 
-        .nav-item.active {
-            color: #ff6b6b;
-        }
-
-        /* Theme toggle styling */
-        .theme-toggle-container {
-            margin-left: 20px;
-            margin-right: 15px;
-            position: relative;
-        }
-
-        .theme-toggle {
-            height: 36px;
-            width: 70px;
-            border-radius: 30px;
-            background-color: #1c1c2e;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px 8px;
-            cursor: pointer;
-            border: none;
-            overflow: visible;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        html[data-theme="light"] .theme-toggle {
-            background-color: #e0e0e0;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-        }
-
-        .theme-toggle:active {
-            transform: scale(0.98);
-        }
-
-        .toggle-icons {
-            position: relative;
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            z-index: 2;
-        }
-
-        .toggle-icons i {
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-icons i.fa-sun {
-            color: #f1c40f;
-            opacity: 0.6;
-        }
-
-        .toggle-icons i.fa-moon {
-            color: #f1c4f1;
-            opacity: 0.6;
-        }
-
-        html[data-theme="light"] .toggle-icons i.fa-sun {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        html[data-theme="dark"] .toggle-icons i.fa-moon {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #ff6b6b;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-            z-index: 1;
-        }
-
-        html[data-theme="dark"] .toggle-slider {
-            transform: translateX(0);
-            left: 5px;
-        }
-
-        html[data-theme="light"] .toggle-slider {
-            transform: translateX(34px);
-            left: 0;
-        }
-        
-        /* Project card hover effect */
-        .project-card {
-            transition: all 0.4s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Ensure back to top button appears above the scrollable area */
-        .back-to-top-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        /* Back to top button */
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #6c8aff;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 99;
-        }
-        
-        #backToTop:hover {
-            background: #5872d8;
-            transform: translateY(-3px);
-        }
-        
-        #backToTop.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Custom scrollbar styling */
-        .project-content::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .project-content::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-            border-radius: 4px;
-        }
-        
-        .project-content::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
-            border-radius: 4px;
-        }
-        
-        /* Media queries for responsive behavior */
-        @media (max-width: 1200px) {
-            .project-card, .section-separator {
-                max-width: 97%;
-                height: 70vh;
-            }
-            
-            .project-content {
-                padding: 30px 40px;
-            }
-            
-            .project-meta {
-                top: 30px;
-                left: 30px;
-                width: calc(35% - 60px);
-            }
-        }
-        
+        /* Responsive adjustments */
         @media (max-width: 992px) {
-            .project-card {
-                flex-direction: column;
-                height: auto;
-                min-height: 70vh;
-                aspect-ratio: auto;
+            .page-header {
+                padding: 5rem 5% 2.5rem;
             }
             
-            .project-image {
-                width: 100%;
-                height: 35vh;
+            .page-header h1 {
+                font-size: 2.4rem;
             }
             
-            .project-content {
-                width: 100%;
-                padding: 30px;
-                max-height: 50vh;
-            }
-            
-            .project-meta {
-                top: auto;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 1.5rem;
+            .section-title {
+                font-size: 2rem;
             }
         }
         
         @media (max-width: 768px) {
-            .project-card, .section-separator {
-                margin-bottom: 10vh;
-                max-width: 100%;
+            .page-header h1 {
+                font-size: 2rem;
             }
             
-            .project-image {
-                height: 30vh;
+            .page-header p {
+                font-size: 1rem;
             }
             
-            .project-meta h2 {
-                font-size: 1.4rem;
-                margin-bottom: 0.5rem;
+            .tag-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
             }
             
-            .project-content {
-                padding: 25px;
-                max-height: 45vh;
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
             }
         }
         
-        @media (max-width: 576px) {
-            .project-card, .section-separator {
-                max-width: 100%;
-                border-radius: 0;
-                margin-bottom: 5vh;
-            }
-            
-            .project-image {
-                height: 25vh;
-            }
-            
-            .project-content {
-                padding: 20px;
-                max-height: 55vh;
-            }
-            
-            .tech-tag {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
-            }
-        }
-        
-        /* Section separator for soft skills */
-        .section-separator {
-            text-align: center;
-            padding: 30px 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            height: 20vh;
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #6c8aff;
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            scroll-snap-align: start;
-            width: 100%;
-            max-width: 95%; /* Match card width */
-            margin: 0 auto 20vh;
-            border-radius: 15px;
-            aspect-ratio: 2/0.5; /* Makes it wider but not as tall */
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
         }
         
-        .section-separator h2 {
-            font-size: 2.2rem;
-            margin: 0;
-            letter-spacing: 1px;
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
         
-        html[data-theme="light"] .section-separator {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+        .back-to-top:hover {
+            background: #5872d8;
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -699,6 +401,7 @@
                         <i class="fas fa-sun"></i>
                         <i class="fas fa-moon"></i>
                     </div>
+                    <div class="toggle-slider"></div>
                 </button>
             </div>
         </div>
@@ -706,306 +409,236 @@
 
     <!-- Social Sidebar for quick access -->
     <div class="social-sidebar">
-        <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/deeCoderick" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/DeepakNand57581" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-twitter"></i>
         </a>
-        <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/de__maverick/" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="https://medium.com/@ananth.deepaksharma" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-medium"></i>
         </a>
-        <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.threads.net/@de__maverick" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-threads"></i>
         </a>
-        <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer">
+        <a href="placeholder" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="mailto:ananth.deepaksharma@gmail.com" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-envelope"></i>
         </a>
     </div>
 
-    <div class="page-header">
+    <!-- Page Header -->
+    <header class="page-header">
         <h1>Tech Projects</h1>
         <p>A collection of my most significant software development work, showcasing my technical skills and problem-solving abilities.</p>
-    </div>
+    </header>
 
-    <main class="project-container">
-        <!-- Project D.O.N.N.A. -->
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('assets/images/suits-donna-harvey.jpg'); background-position: top center;">
-                <div class="project-meta">
-                    <h2>Project D.O.N.N.A.</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">LLM</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">TTS</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">AWS</span>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <main id="tech-section">
+        <!-- Filter Tags -->
+        <div class="tag-filter-container">
+            <div class="tag-filter-heading">
+                <h3>Filter by Technology</h3>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>D.O.N.N.A. (Dynamic Orchestrator for Neural-based Next-generation Assistance) is an advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality. Built to be more than just a virtual assistant, D.O.N.N.A. brings together technical capability with human-like interaction patterns.</p>
-                    <p>Key features include:</p>
-                    <ul>
-                        <li>Natural Language Understanding powered by advanced LLMs</li>
-                        <li>High-quality text-to-speech and speech-to-text capabilities</li>
-                        <li>Dynamic response generation with contextual humor</li>
-                        <li>Multi-modal interaction support</li>
-                        <li>Real-time processing with minimal latency</li>
-                        <li>Context awareness and conversation history</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="project-donna.html" class="btn"><i class="fas fa-globe"></i> View Project</a>
-                </div>
+            <div class="tag-filter-buttons">
+                <button class="tag-btn active" data-filter="all">All Projects</button>
+                <button class="tag-btn" data-filter="python">Python</button>
+                <button class="tag-btn" data-filter="react">React</button>
+                <button class="tag-btn" data-filter="node">Node.js</button>
+                <button class="tag-btn" data-filter="aws">AWS</button>
+                <button class="tag-btn" data-filter="llm">LLM</button>
+                <button class="tag-btn" data-filter="tensorflow">TensorFlow</button>
+                <button class="tag-btn" data-filter="mongodb">MongoDB</button>
+                <button class="tag-btn" data-filter="django">Django</button>
+                <button class="tag-btn" data-filter="vue">Vue.js</button>
+                <button class="tag-btn" data-filter="d3">D3.js</button>
             </div>
         </div>
 
-        <!-- E-commerce Platform -->
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                <div class="project-meta">
-                    <h2>E-commerce Platform</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">AWS</span>
+        <!-- Technical Projects Section -->
+        <section class="projects-container">
+            <h2 class="section-title">Technical Projects</h2>
+            <p class="section-description">Explore my technical projects spanning various domains including web development, AI, data visualization, and cloud solutions.</p>
+            
+            <div class="projects-grid">
+                <!-- Project D.O.N.N.A. -->
+                <div class="project-card" data-tags="llm python react aws">
+                    <div class="project-image" style="background-image: url('assets/images/suits-donna-harvey.jpg')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Project D.O.N.N.A.</h3>
+                        <p class="project-description">An advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">TTS</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-donna.html" class="project-link"><i class="fas fa-globe"></i> View Project</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management. The application is built with a React frontend, Node.js backend, and MongoDB database.</p>
-                    <p>Key features include:</p>
-                    <ul>
-                        <li>Responsive design for all device sizes</li>
-                        <li>Real-time inventory management</li>
-                        <li>Secure payment processing</li>
-                        <li>Admin dashboard for product and order management</li>
-                        <li>User reviews and ratings system</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                <div class="project-meta">
-                    <h2>AI Task Manager</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                <!-- E-commerce Platform -->
+                <div class="project-card" data-tags="react node mongodb express aws">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Platform</h3>
+                        <p class="project-description">A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Task Manager -->
+                <div class="project-card" data-tags="python django tensorflow postgresql">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Task Manager</h3>
+                        <p class="project-description">An intelligent task management application that uses machine learning to prioritize tasks, suggest optimal scheduling, and provide productivity insights based on user behavior patterns.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Weather Visualization Dashboard -->
+                <div class="project-card" data-tags="vue d3 firebase">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1992&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Visualization Dashboard</h3>
+                        <p class="project-description">An interactive weather dashboard that visualizes real-time and historical weather data from multiple sources, with customizable views and alerts.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">OpenWeather API</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>An intelligent task management application that uses machine learning to prioritize tasks, suggest optimal scheduling, and provide productivity insights based on user behavior patterns.</p>
-                    <p>Key features include:</p>
-                    <ul>
-                        <li>Smart task prioritization algorithm</li>
-                        <li>Automated scheduling suggestions</li>
-                        <li>Productivity analytics dashboard</li>
-                        <li>Natural language processing for task creation</li>
-                        <li>Integration with calendar and email services</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1992&q=80')">
-                <div class="project-meta">
-                    <h2>Weather Visualization Dashboard</h2>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">OpenWeather API</span>
-                        <span class="tech-tag">Firebase</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <p>An interactive weather dashboard that visualizes real-time and historical weather data from multiple sources. Users can track temperature, precipitation, wind patterns, and other meteorological information across different regions.</p>
-                    <p>Key features include:</p>
-                    <ul>
-                        <li>Interactive maps and data visualizations</li>
-                        <li>Real-time weather updates</li>
-                        <li>Historical data comparison</li>
-                        <li>Customizable dashboard layouts</li>
-                        <li>Weather alerts and notifications</li>
-                    </ul>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </div>
-        </div>
+        </section>
         
         <!-- Soft Skills Projects Section -->
-        <div class="section-separator">
+        <section class="projects-container">
             <h2 class="section-title">Soft Skills Projects</h2>
-        </div>
-
-        <main class="project-container">
-            <!-- Leadership Projects -->
-            <div id="leadership-projects" class="project-card">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                    <div class="project-meta">
-                        <h2>Team Leadership & Management</h2>
+            <p class="section-description">Showcasing my leadership, mentoring, event management, and operational efficiency improvement projects.</p>
+            
+            <div class="projects-grid">
+                <!-- Team Leadership & Management -->
+                <div class="project-card" data-tags="leadership management teambuilding">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Team Leadership & Management</h3>
+                        <p class="project-description">Led cross-functional teams to successfully deliver complex software projects, improving productivity and reducing turnover through effective management practices.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Team Building</span>
                             <span class="tech-tag">Strategic Planning</span>
                             <span class="tech-tag">Conflict Resolution</span>
                         </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-certificate"></i> Certification</a>
+                            <a href="#" class="project-link"><i class="fas fa-user-tie"></i> Portfolio</a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>Led cross-functional teams of 5-10 members to successfully deliver complex software projects on time and within budget. Developed leadership capabilities through formal training and hands-on experience managing diverse teams.</p>
-                        <p>Key achievements include:</p>
-                        <ul>
-                            <li>Led an agile development team that increased productivity by 35% through improved processes</li>
-                            <li>Managed project portfolios with combined budgets exceeding $1M</li>
-                            <li>Mentored junior team members, resulting in 4 promotions within the team</li>
-                            <li>Resolved cross-department conflicts to streamline project delivery</li>
-                            <li>Created team-building initiatives that reduced turnover by 20%</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn"><i class="fas fa-certificate"></i> Leadership Certification</a>
-                        <a href="#" class="btn"><i class="fas fa-user-tie"></i> Management Portfolio</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mentorship Projects -->
-            <div id="mentorship-projects" class="project-card">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')">
-                    <div class="project-meta">
-                        <h2>Technical Mentorship Program</h2>
+                
+                <!-- Technical Mentorship Program -->
+                <div class="project-card" data-tags="mentorship coaching development">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Technical Mentorship Program</h3>
+                        <p class="project-description">Developed and led a structured mentorship program for junior developers, creating learning paths and providing guidance to accelerate skill acquisition.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Career Development</span>
                             <span class="tech-tag">Knowledge Transfer</span>
                             <span class="tech-tag">Technical Coaching</span>
                         </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-chalkboard-teacher"></i> Resources</a>
+                            <a href="#" class="project-link"><i class="fas fa-book"></i> Materials</a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>Developed and led a structured mentorship program for junior developers, focusing on technical skill development, career growth, and professional development. Created learning paths and provided one-on-one guidance to accelerate skill acquisition.</p>
-                        <p>Key achievements include:</p>
-                        <ul>
-                            <li>Mentored 15+ junior developers who progressed to mid-level roles within 18 months</li>
-                            <li>Created comprehensive learning materials for modern development stacks</li>
-                            <li>Established pair programming sessions that improved code quality by 25%</li>
-                            <li>Facilitated weekly tech talks and code review sessions</li>
-                            <li>Designed career progression frameworks adopted company-wide</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn"><i class="fas fa-chalkboard-teacher"></i> Mentorship Resources</a>
-                        <a href="#" class="btn"><i class="fas fa-book"></i> Learning Materials</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Event Management Projects -->
-            <div id="event-projects" class="project-card">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                    <div class="project-meta">
-                        <h2>Tech Conference Coordination</h2>
+                
+                <!-- Tech Conference Coordination -->
+                <div class="project-card" data-tags="events planning logistics">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tech Conference Coordination</h3>
+                        <p class="project-description">Planned and executed technology conferences and hackathons, managing logistics, speaker selection, and technical requirements while staying within budget constraints.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Event Planning</span>
                             <span class="tech-tag">Logistics Management</span>
                             <span class="tech-tag">Speaker Coordination</span>
                         </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-calendar-check"></i> Portfolio</a>
+                            <a href="#" class="project-link"><i class="fas fa-photo-video"></i> Highlights</a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>Planned and executed technology conferences, hackathons, and workshops with 100-500 attendees. Managed all aspects of event logistics, speaker selection, scheduling, and technical requirements while staying within budget constraints.</p>
-                        <p>Key achievements include:</p>
-                        <ul>
-                            <li>Organized a three-day tech conference with 30+ speakers and 400+ attendees</li>
-                            <li>Coordinated company-wide hackathons resulting in 5 patentable innovations</li>
-                            <li>Managed event budgets of $50,000-$100,000 with consistently positive ROI</li>
-                            <li>Created streamlined registration and feedback systems</li>
-                            <li>Secured sponsorships reducing event costs by 30%</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Event Portfolio</a>
-                        <a href="#" class="btn"><i class="fas fa-photo-video"></i> Event Highlights</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Operations Management Projects -->
-            <div id="operations-projects" class="project-card">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
-                    <div class="project-meta">
-                        <h2>DevOps Workflow Optimization</h2>
+                
+                <!-- DevOps Workflow Optimization -->
+                <div class="project-card" data-tags="devops process efficiency">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">DevOps Workflow Optimization</h3>
+                        <p class="project-description">Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality through structured methodologies.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Process Improvement</span>
                             <span class="tech-tag">Resource Management</span>
                             <span class="tech-tag">Operational Efficiency</span>
                         </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality. Implemented structured methodologies for continuous integration/deployment and infrastructure management.</p>
-                        <p>Key achievements include:</p>
-                        <ul>
-                            <li>Reduced deployment time from 2 days to 2 hours through CI/CD pipeline optimization</li>
-                            <li>Decreased infrastructure costs by 40% through cloud resource optimization</li>
-                            <li>Implemented monitoring systems that reduced system downtime by 75%</li>
-                            <li>Created cross-team workflow documentation and training programs</li>
-                            <li>Standardized operational procedures across 5 development teams</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn"><i class="fas fa-cogs"></i> Operations Portfolio</a>
-                        <a href="#" class="btn"><i class="fas fa-chart-line"></i> Efficiency Metrics</a>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-cogs"></i> Portfolio</a>
+                            <a href="#" class="project-link"><i class="fas fa-chart-line"></i> Metrics</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </section>
     </main>
 
     <!-- Back to top button -->
-    <div class="back-to-top-container">
-        <button id="backToTop" class="back-to-top" aria-label="Back to top">
-            <i class="fas fa-chevron-up"></i>
-        </button>
-    </div>
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -1015,18 +648,107 @@
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/ananthdeepaksharmananduri/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                <a href="https://medium.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
-                <a href="https://www.threads.net/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-threads"></i></a>
-                <a href="https://www.tiktok.com/@ananthdeepaksharmananduri" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/deeCoderick" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/DeepakNand57581" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/de__maverick/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://medium.com/@ananth.deepaksharma" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+                <a href="https://www.threads.net/@de__maverick" target="_blank" rel="noopener noreferrer"><i class="fab fa-threads"></i></a>
+                <a href="placeholder" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="mailto:ananth.deepaksharma@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
         <p>&copy; 2025 Ananth Deepak Sharma Nanduri | Built with <i class="fas fa-heart"></i></p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="social-sidebar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize ScrollReveal
+            const sr = ScrollReveal({
+                origin: 'bottom',
+                distance: '30px',
+                duration: 800,
+                delay: 100,
+                easing: 'ease-in-out'
+            });
+
+            sr.reveal('.project-card', { interval: 100 });
+            sr.reveal('.section-title', { delay: 100 });
+            sr.reveal('.section-description', { delay: 200 });
+            sr.reveal('.tag-filter-container', { delay: 300 });
+
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            function updateBackToTopButton() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            }
+            
+            window.addEventListener('scroll', updateBackToTopButton);
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Initial check
+            updateBackToTopButton();
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.tag-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    projectCards.forEach(card => {
+                        const tags = card.getAttribute('data-tags');
+                        
+                        if (filterValue === 'all' || tags.includes(filterValue)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Check for URL parameters for filtering
+            const urlParams = new URLSearchParams(window.location.search);
+            const tagParam = urlParams.get('tag');
+            
+            if (tagParam) {
+                const tagButton = document.querySelector(`.tag-btn[data-filter="${tagParam}"]`);
+                if (tagButton) {
+                    tagButton.click();
+                }
+            }
+        });
+    </script>
 
     <!-- Chatbot Container -->
     <div class="chatbot-container">
@@ -1049,137 +771,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize ScrollReveal
-            const sr = ScrollReveal({
-                origin: 'bottom',
-                distance: '50px',
-                duration: 1000,
-                delay: 200,
-                easing: 'ease-in-out'
-            });
-
-            // Apply animations
-            sr.reveal('.project-card', { interval: 200 });
-            sr.reveal('.section-title', { delay: 100 });
-            sr.reveal('.section-intro', { delay: 200 });
-        });
-
-        // Update freshness indicators
-        function updateFreshnessIndicators() {
-            const freshnessElements = document.querySelectorAll('.freshness-date');
-            const now = new Date();
-
-            freshnessElements.forEach(element => {
-                const updatedDate = new Date(element.dataset.updated);
-                const diffTime = Math.abs(now - updatedDate);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                const diffMonths = Math.floor(diffDays / 30);
-                const diffYears = Math.floor(diffDays / 365);
-
-                let freshnessText = '';
-                if (diffDays === 0) {
-                    freshnessText = 'Updated today';
-                } else if (diffDays === 1) {
-                    freshnessText = 'Updated yesterday';
-                } else if (diffDays < 7) {
-                    freshnessText = `Updated ${diffDays} days ago`;
-                } else if (diffDays < 30) {
-                    const weeks = Math.floor(diffDays / 7);
-                    freshnessText = `Updated ${weeks} week${weeks > 1 ? 's' : ''} ago`;
-                } else if (diffMonths < 12) {
-                    freshnessText = `Updated ${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
-                } else {
-                    freshnessText = `Updated ${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
-                }
-
-                element.textContent = freshnessText;
-            });
-        }
-
-        // Update freshness on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateFreshnessIndicators();
-        });
-
-        // Handle back-to-top button
-        const backToTop = document.querySelector('.back-to-top');
-        if (backToTop) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('active');
-                } else {
-                    backToTop.classList.remove('active');
-                }
-            });
-        }
-
-        // Get URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const filterTag = urlParams.get('tag');
-        
-        // Get all project cards
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        // If there's a filter tag, filter the projects
-        if (filterTag) {
-            projectCards.forEach(card => {
-                const techTags = card.querySelectorAll('.tech-tag');
-                const hasTag = Array.from(techTags).some(tag => 
-                    tag.textContent.toLowerCase() === filterTag.toLowerCase()
-                );
-                
-                if (!hasTag) {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // Add a clear filter button if filtering is active
-            const mainSection = document.querySelector('main');
-            const clearFilter = document.createElement('div');
-            clearFilter.className = 'clear-filter';
-            clearFilter.innerHTML = `
-                <p>Showing projects for: <strong>${filterTag}</strong></p>
-                <a href="code.html" class="btn"><i class="fas fa-times"></i> Clear Filter</a>
-            `;
-            mainSection.insertBefore(clearFilter, mainSection.firstChild);
-        }
-
-        // Handle hash-based navigation for soft skills sections
-        const hash = window.location.hash;
-        if (hash) {
-            const targetSection = document.querySelector(hash);
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Back to top button functionality
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.style.opacity = '1';
-                backToTopBtn.style.visibility = 'visible';
-            } else {
-                backToTopBtn.style.opacity = '0';
-                backToTopBtn.style.visibility = 'hidden';
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
-    
-    <script src="theme-toggle.js"></script>
-    <script src="social-sidebar.js"></script>
-    <!-- Auto-generated social sidebar -->
-    <script src="auto-social-sidebar.js"></script>
     <script src="chatbot.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>

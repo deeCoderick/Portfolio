@@ -1,1 +1,0 @@
-                <li><a href="activity.html" class="nav-item"><i class="fas fa-history"></i> Recent Activity</a></li>
