@@ -3,7 +3,7 @@ const socialLinks = {
     personal: {
         instagram: "https://www.instagram.com/de__maverick/",
         youtube: "https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q",
-        twitter: "placeholder",
+        twitter: "https://x.com/DeepakNand57581",
         tiktok: "placeholder",
         github: "https://github.com/deeCoderick",
         email: "ananth.deepaksharma@gmail.com",
@@ -12,9 +12,9 @@ const socialLinks = {
     coding: {
         instagram: "https://www.instagram.com/de_coderick/",
         youtube: "https://youtube.com/@softwareengineeringandco-ss3dy?si=k5UsB9EJRyG-bzdJ",
-        twitter: "placeholder",
+        twitter: "https://x.com/AnanthDeepak",
         tiktok: "placeholder",
-        medium: "placeholder",
+        medium: "https://medium.com/@ananth.deepaksharma",
         linkedin: "https://www.linkedin.com/in/ananthdeepaks/",
         email: "ananth.deepaksharma2@gmail.com",
         github: "https://github.com/deCoderick",

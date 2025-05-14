@@ -39,6 +39,42 @@
     <!-- ScrollReveal.js -->
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="theme.js" defer></script>
+    <style>
+        /* Back to top button styles */
+        .back-to-top-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        
+        .back-to-top {
+            background: var(--primary-color, #6c8aff);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color, #5872d8);
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
 <body class="activity-page">
     <header>
@@ -223,9 +259,11 @@
     </main>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -300,26 +338,52 @@
             
             // Note: Chatbot functionality is handled in chatbot.js
         });
-
-        // Back to top button functionality
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.style.opacity = '1';
-                backToTopBtn.style.visibility = 'visible';
-            } else {
-                backToTopBtn.style.opacity = '0';
-                backToTopBtn.style.visibility = 'hidden';
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
     </script>
     <!-- Auto-generated social sidebar -->
     <script src="auto-social-sidebar.js"></script>
+    <script src="back-to-top.js"></script>
+    
+    <!-- Debug script to ensure the button displays -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force button visibility
+            const backToTopBtn = document.querySelector('.back-to-top');
+            const backToTopContainer = document.querySelector('.back-to-top-container');
+            
+            if (backToTopBtn && backToTopContainer) {
+                // Apply direct styles
+                backToTopContainer.style.position = 'fixed';
+                backToTopContainer.style.bottom = '2rem';
+                backToTopContainer.style.right = '2rem';
+                backToTopContainer.style.zIndex = '9999';
+                
+                backToTopBtn.style.backgroundColor = '#6c8aff';
+                backToTopBtn.style.color = 'white';
+                backToTopBtn.style.width = '50px';
+                backToTopBtn.style.height = '50px';
+                backToTopBtn.style.borderRadius = '50%';
+                backToTopBtn.style.display = 'flex';
+                backToTopBtn.style.justifyContent = 'center';
+                backToTopBtn.style.alignItems = 'center';
+                backToTopBtn.style.border = 'none';
+                backToTopBtn.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+                backToTopBtn.style.cursor = 'pointer';
+                
+                // Force visibility after scroll
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 100) {
+                        backToTopBtn.style.opacity = '1';
+                        backToTopBtn.style.visibility = 'visible';
+                    } else {
+                        backToTopBtn.style.opacity = '0';
+                        backToTopBtn.style.visibility = 'hidden';
+                    }
+                });
+                
+                // Manually trigger scroll event
+                window.dispatchEvent(new Event('scroll'));
+            }
+        });
+    </script>
 </body>
 </html> 
