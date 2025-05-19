@@ -3733,3 +3733,28 @@ html[data-theme="light"] .interest-tag {
         font-size: 1rem;
     }
 }
+
+/* Fix for faded hero/about text in light mode */
+html[data-theme="light"] .hero-section,
+html[data-theme="light"] .about-section,
+html[data-theme="light"] .about-content,
+html[data-theme="light"] .hero-section * {
+  color: #222 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="light"] .hero-name,
+html[data-theme="light"] .hero-title,
+html[data-theme="light"] .hero-interests,
+html[data-theme="light"] .about-content p,
+html[data-theme="light"] .about-content {
+  color: #222 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Utility class for hiding elements */
+.hidden {
+  display: none !important;
+}

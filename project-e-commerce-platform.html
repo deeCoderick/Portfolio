@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Platform - Ananth Deepak Sharma Nanduri</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Logo/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/Logo/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Use project-donna.html styles for consistency */
+    </style>
+</head>
+<body>
+    <!-- Navigation (reuse from project-donna.html) -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="assets/Logo/logo.png" alt="Logo" class="logo-image">
+                <span class="logo-text">De</span>
+            </div>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-code"></i> Skills</a></li>
+                <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="theme-toggle-container">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <div class="toggle-icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <section class="project-details">
+        <div class="container">
+            <div class="project-header">
+                <div class="donna-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="E-commerce Platform" class="donna-portrait">
+                </div>
+                <h1>E-commerce Platform</h1>
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-description">
+                    <h2>Project Overview</h2>
+                    <p>A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management. Designed for scalability and security, it provides a seamless shopping experience for users and robust management tools for administrators.</p>
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li>User registration, login, and profile management</li>
+                        <li>Product catalog with search and filtering</li>
+                        <li>Shopping cart and checkout process</li>
+                        <li>Secure payment integration</li>
+                        <li>Order history and tracking</li>
+                        <li>Admin dashboard for product and order management</li>
+                        <li>Responsive design for mobile and desktop</li>
+                    </ul>
+                    <h2>Technical Architecture</h2>
+                    <ul>
+                        <li><strong>Frontend:</strong> React.js for dynamic UI, Redux for state management</li>
+                        <li><strong>Backend:</strong> Node.js with Express for RESTful APIs</li>
+                        <li><strong>Database:</strong> MongoDB for product, user, and order data</li>
+                        <li><strong>Authentication:</strong> JWT-based authentication and authorization</li>
+                        <li><strong>Cloud:</strong> AWS for hosting, storage, and deployment</li>
+                    </ul>
+                    <h2>Unique Aspects</h2>
+                    <ul>
+                        <li>Highly modular codebase for easy feature extension</li>
+                        <li>Optimized for performance and scalability</li>
+                        <li>Comprehensive test coverage and CI/CD integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Social Sidebar, Back to Top, Chatbot, and scripts (reuse from project-donna.html) -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/ananthdeepaks/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/deeCoderick" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/DeepakNand57581" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/de__maverick/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@ananthdeepaksharma?si=O_5Ws_L86XfMth2q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://medium.com/@ananth.deepaksharma" target="_blank"><i class="fab fa-medium"></i></a>
+        <a href="https://www.threads.net/@de__maverick" target="_blank"><i class="fab fa-threads"></i></a>
+        <a href="placeholder" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:ananth.deepaksharma@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="back-to-top-container">
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <img src="assets/images/DonnaPaulsen.jpg" alt="Donna">
+                <h3>Chat with <span>Donna</span></h3>
+                <button class="chatbot-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="chatbot.js"></script>
+    <script src="auto-social-sidebar.js"></script>
+    <script src="back-to-top.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html> 
