@@ -437,4 +437,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initial check
     setTimeout(updateSidebar, 1000);
-}); 
+});
+
+// Idle detection for mobile: hide sidebar and back-to-top after 5s inactivity
+(function() {
+  const MOBILE_MAX_WIDTH = 768;
+  const IDLE_TIMEOUT = 5000; // 5 seconds
+  let idleTimer = null;
+  let lastActive = Date.now();
+
+  function isMobile() {
+    return window.innerWidth <= MOBILE_MAX_WIDTH;
+  }
+
+  function showUI() {
+    const sidebar = document.querySelector('.social-sidebar');
+    const backToTop = document.querySelector('.back-to-top-container');
+    if (sidebar) sidebar.classList.remove('hidden');
+    if (backToTop) backToTop.classList.remove('hidden');
+  }
+
+  function hideUI() {
+    const sidebar = document.querySelector('.social-sidebar');
+    const backToTop = document.querySelector('.back-to-top-container');
+    if (sidebar) sidebar.classList.add('hidden');
+    if (backToTop) backToTop.classList.add('hidden');
+  }
+
+  function resetIdleTimer() {
+    if (!isMobile()) {
+      showUI();
+      return;
+    }
+    showUI();
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(hideUI, IDLE_TIMEOUT);
+    lastActive = Date.now();
+  }
+
+  // Listen for user activity
+  ['scroll', 'touchstart', 'mousemove', 'keydown'].forEach(evt => {
+    window.addEventListener(evt, resetIdleTimer, { passive: true });
+  });
+  window.addEventListener('resize', resetIdleTimer);
+
+  // Initial state
+  document.addEventListener('DOMContentLoaded', resetIdleTimer);
+})(); 
