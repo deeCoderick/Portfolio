@@ -30,7 +30,8 @@ class GitHubActivity {
 
             return commitData;
         } catch (error) {
-            console.error('Error fetching GitHub data:', error);
+            console.warn('GitHub API temporarily unavailable:', error.message);
+            console.info('This is normal if rate limits are exceeded or network is unavailable');
             return {};
         }
     }
@@ -40,7 +41,7 @@ class GitHubActivity {
             const response = await fetch(`${this.apiBase}/users/${this.username}`);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching user stats:', error);
+            console.warn('GitHub user stats temporarily unavailable:', error.message);
             return null;
         }
     }

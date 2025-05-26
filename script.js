@@ -325,85 +325,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Back to top button functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    if (!backToTopButton) {
-        console.warn('Back to top button not found in the document');
-        return;
-    }
-
-    let ticking = false;
-
-    function updateBackToTopButton() {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollPosition > 300) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
-        }
-        
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                updateBackToTopButton();
-            });
-            ticking = true;
-        }
-    });
-
-    backToTopButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Initial check
-    updateBackToTopButton();
-});
-
-// Books category filtering
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryButtons = document.querySelectorAll('.category-button');
-    const bookCards = document.querySelectorAll('.book-card');
-
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            const category = button.getAttribute('data-filter');
-
-            bookCards.forEach(card => {
-                const cardCategories = card.getAttribute('data-category').split(' ');
-                
-                if (category === 'all' || cardCategories.includes(category)) {
-                    card.style.display = 'flex';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-});
-
 // Social sidebar functionality
 document.addEventListener('DOMContentLoaded', function() {
     const socialSidebar = document.querySelector('.social-sidebar');
@@ -483,4 +404,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initial state
   document.addEventListener('DOMContentLoaded', resetIdleTimer);
-})(); 
+})();
+
+// Books category filtering
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryButtons = document.querySelectorAll('.category-button');
+    const bookCards = document.querySelectorAll('.book-card');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const category = button.getAttribute('data-filter');
+
+            bookCards.forEach(card => {
+                const cardCategories = card.getAttribute('data-category').split(' ');
+                
+                if (category === 'all' || cardCategories.includes(category)) {
+                    card.style.display = 'flex';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}); 
