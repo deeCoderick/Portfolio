@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize chatbot
     function initializeChatbot() {
         if (!chatbotIcon || !chatbotWindow) {
-            console.error('Chatbot elements not found');
+            // Graceful handling - chatbot elements may not exist on all pages
+            console.info('Chatbot elements not found - chatbot functionality disabled for this page');
             return;
         }
         

@@ -1,0 +1,53 @@
+/* 
+ * Modular CSS Structure
+ * Breaking down the massive styles.css into manageable components
+ */
+
+/* Import order matters for cascade */
+@import url('./base/reset.css');
+@import url('./base/variables.css');
+@import url('./base/typography.css');
+
+/* Layout components */
+@import url('./layout/navigation.css');
+@import url('./layout/grid.css');
+@import url('./layout/containers.css');
+
+/* UI components */
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/forms.css');
+@import url('./components/theme-toggle.css');
+@import url('./components/social-sidebar.css');
+@import url('./components/back-to-top.css');
+@import url('./components/chatbot.css');
+
+/* Section-specific styles */
+@import url('./sections/hero.css');
+@import url('./sections/about.css');
+@import url('./sections/journey.css');
+@import url('./sections/skills.css');
+@import url('./sections/portfolio.css');
+@import url('./sections/contact.css');
+
+/* Page-specific styles */
+@import url('./pages/books.css');
+@import url('./pages/sports.css');
+@import url('./pages/cooking.css');
+@import url('./pages/travel.css');
+@import url('./pages/art.css');
+@import url('./pages/activity.css');
+
+/* Utility classes */
+@import url('./utilities/spacing.css');
+@import url('./utilities/display.css');
+@import url('./utilities/animations.css');
+
+/* Media queries */
+@import url('./responsive/mobile.css');
+@import url('./responsive/tablet.css');
+@import url('./responsive/desktop.css');
+
+/* Theme-specific overrides */
+@import url('./themes/light-theme.css');
+@import url('./themes/dark-theme.css'); 
