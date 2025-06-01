@@ -3758,3 +3758,252 @@ html[data-theme="light"] .about-content {
 .hidden {
   display: none !important;
 }
+
+/* ========================================
+   PROJECT PAGES UNIVERSAL STYLES
+   ======================================== */
+
+/* Project-specific styles with theme support */
+.project-details {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.project-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+}
+
+[data-theme="light"] .project-header h1 {
+    background: linear-gradient(135deg, #4f46e5, #e11d48);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.project-date {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.tech-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: rgba(var(--primary-color-rgb), 0.2);
+    transform: translateY(-2px);
+}
+
+.project-content {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    max-width: 1200px;
+    margin: 2rem auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .project-content {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-description {
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--text-color);
+}
+
+.project-description h2 {
+    font-size: 2rem;
+    margin: 2.5rem 0 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.project-description h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--accent-color);
+}
+
+.project-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.project-description ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.project-description li {
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.project-description strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Project images */
+.project-image,
+.donna-image {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+[data-theme="light"] .project-image,
+[data-theme="light"] .donna-image {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-image img,
+.donna-portrait {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    max-height: 500px;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+    .project-header h1 {
+        color: var(--primary-color);
+        background: none;
+        -webkit-text-fill-color: unset;
+    }
+}
+
+/* Project page responsive adjustments */
+@media (max-width: 768px) {
+    .project-details {
+        padding-top: 60px;
+    }
+
+    .project-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .project-content {
+        margin: 1rem auto;
+        padding: 2rem;
+    }
+
+    .tech-stack {
+        gap: 0.5rem;
+    }
+
+    .tech-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .project-description h2 {
+        font-size: 1.8rem;
+    }
+
+    .project-description h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-description p {
+        font-size: 1rem;
+    }
+}
+
+/* First section special styling */
+.project-description > h2:first-of-type {
+    margin-top: 0;
+}
+
+/* Ensure proper text contrast in all themes */
+[data-theme="light"] .project-details {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-theme="light"] .project-description {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .project-description p {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .project-description li {
+    color: var(--text-muted);
+}
+
+[data-theme="light"] .project-description h2 {
+    color: var(--primary-color);
+}
+
+[data-theme="light"] .project-description h3 {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .project-description strong {
+    color: var(--accent-color);
+}
+
+/* ========================================
+   END PROJECT PAGES UNIVERSAL STYLES
+   ======================================== */
