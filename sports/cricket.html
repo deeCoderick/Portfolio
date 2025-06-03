@@ -399,7 +399,11 @@
 <body class="sport-page">
     <!-- Manual theme toggle button -->
     <button class="theme-toggle" id="manual-theme-toggle" aria-label="Toggle light/dark mode">
-        <i class="fas fa-sun"></i>
+        <div class="toggle-icons">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="toggle-slider"></div>
     </button>
     
     <header>
@@ -711,17 +715,23 @@
                 localStorage.setItem('theme', newTheme);
                 
                 // Change the icon
-                const toggleIcon = this.querySelector('i');
-                if (toggleIcon) {
-                    toggleIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                const toggleIcons = this.querySelector('.toggle-icons');
+                if (toggleIcons) {
+                    const sunIcon = toggleIcons.querySelector('i:nth-child(1)');
+                    const moonIcon = toggleIcons.querySelector('i:nth-child(2)');
+                    sunIcon.className = newTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                    moonIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
                 }
             });
             
             // Set initial icon based on current theme
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            const toggleIcon = manualThemeToggle.querySelector('i');
-            if (toggleIcon) {
-                toggleIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            const toggleIcons = manualThemeToggle.querySelector('.toggle-icons');
+            if (toggleIcons) {
+                const sunIcon = toggleIcons.querySelector('i:nth-child(1)');
+                const moonIcon = toggleIcons.querySelector('i:nth-child(2)');
+                sunIcon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                moonIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
             }
         }
     </script>
