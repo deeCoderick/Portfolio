@@ -159,6 +159,15 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        .project-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
         html[data-theme="light"] .project-card {
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -371,6 +380,536 @@
             background: #5872d8;
             transform: translateY(-3px);
         }
+        
+        /* LeetCode Section Styles */
+        .leetcode-showcase {
+            display: flex !important;
+            justify-content: center;
+            margin: 2rem 0;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .leetcode-profile-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        html[data-theme="light"] .leetcode-profile-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .leetcode-profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .leetcode-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        html[data-theme="light"] .leetcode-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .leetcode-icon {
+            background: linear-gradient(135deg, #ff6b6b, #6c8aff);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .leetcode-info h3 {
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+        
+        html[data-theme="light"] .leetcode-info h3 {
+            color: #333;
+        }
+        
+        .leetcode-username {
+            color: #6c8aff;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .leetcode-badge {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .leetcode-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        html[data-theme="light"] .stat-item {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6c8aff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        html[data-theme="light"] .stat-label {
+            color: #666;
+        }
+        
+        .difficulty-breakdown {
+            margin-bottom: 2rem;
+        }
+        
+        .difficulty-breakdown h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        html[data-theme="light"] .difficulty-breakdown h4 {
+            color: #333;
+        }
+        
+        .difficulty-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .difficulty-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .difficulty-label {
+            width: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .difficulty-bar.easy .difficulty-label {
+            color: #4ade80;
+        }
+        
+        .difficulty-bar.medium .difficulty-label {
+            color: #fbbf24;
+        }
+        
+        .difficulty-bar.hard .difficulty-label {
+            color: #f87171;
+        }
+        
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        html[data-theme="light"] .progress-bar {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+        
+        .difficulty-bar.easy .progress-fill {
+            background: #4ade80;
+        }
+        
+        .difficulty-bar.medium .progress-fill {
+            background: #fbbf24;
+        }
+        
+        .difficulty-bar.hard .progress-fill {
+            background: #f87171;
+        }
+        
+        .difficulty-count {
+            width: 40px;
+            text-align: right;
+            font-weight: 500;
+            color: #ccc;
+        }
+        
+        html[data-theme="light"] .difficulty-count {
+            color: #666;
+        }
+        
+        .leetcode-skills {
+            margin-bottom: 2rem;
+        }
+        
+        .leetcode-skills h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        html[data-theme="light"] .leetcode-skills h4 {
+            color: #333;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: rgba(108, 138, 255, 0.2);
+            color: #6c8aff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(108, 138, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(108, 138, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .leetcode-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .leetcode-link {
+            background: linear-gradient(135deg, #6c8aff, #ff6b6b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 138, 255, 0.3);
+        }
+        
+        .leetcode-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 138, 255, 0.4);
+        }
+        
+        .leetcode-streak {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+        
+        .leetcode-streak i {
+            color: #ff6b6b;
+        }
+        
+        /* Project Navigation Sections */
+        .project-overview {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 1rem;
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .overview-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        html[data-theme="light"] .overview-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #6c8aff;
+        }
+        
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #6c8aff, #4ade80);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .overview-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .overview-icon {
+            background: linear-gradient(135deg, #6c8aff, #ff6b6b);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .overview-card:hover .overview-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(108, 138, 255, 0.4);
+        }
+        
+        .overview-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        html[data-theme="light"] .overview-title {
+            color: #333;
+        }
+        
+        .overview-description {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        html[data-theme="light"] .overview-description {
+            color: #666;
+        }
+        
+        .overview-count {
+            background: rgba(108, 138, 255, 0.2);
+            color: #6c8aff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .overview-cta {
+            background: linear-gradient(135deg, #6c8aff, #ff6b6b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .overview-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 138, 255, 0.4);
+        }
+        
+        /* Project Sections */
+        .project-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: none;
+        }
+        
+        .project-section.active {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Debug CSS for competitive programming section */
+        #competitive-programming-section * {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        #competitive-programming-section .leetcode-showcase,
+        #competitive-programming-section .leetcode-profile-card,
+        #competitive-programming-section .leetcode-header,
+        #competitive-programming-section .leetcode-stats,
+        #competitive-programming-section .difficulty-breakdown {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        #competitive-programming-section .leetcode-showcase {
+            display: flex !important;
+        }
+        
+        #competitive-programming-section .leetcode-stats {
+            display: grid !important;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        html[data-theme="light"] .section-back-btn {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-back-btn:hover {
+            background: #6c8aff;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation state management */
+        .main-overview.hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .overview-card {
+                padding: 1.5rem;
+            }
+            
+            .overview-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            /* LeetCode responsive styles */
+            .leetcode-profile-card {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
+            .leetcode-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .leetcode-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .difficulty-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            
+            .leetcode-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .leetcode-link {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -446,299 +985,500 @@
 
     <!-- Main Content -->
     <main id="tech-section">
-        <!-- Filter Tags -->
-        <div class="tag-filter-container">
-            <div class="tag-filter-heading">
-                <h3>Filter by Technology</h3>
-            </div>
-            <div class="tag-filter-buttons">
-                <button class="tag-btn active" data-filter="all">All Projects</button>
-                <button class="tag-btn" data-filter="python">Python</button>
-                <button class="tag-btn" data-filter="react">React</button>
-                <button class="tag-btn" data-filter="node">Node.js</button>
-                <button class="tag-btn" data-filter="aws">AWS</button>
-                <button class="tag-btn" data-filter="llm">LLM</button>
-                <button class="tag-btn" data-filter="tensorflow">TensorFlow</button>
-                <button class="tag-btn" data-filter="mongodb">MongoDB</button>
-                <button class="tag-btn" data-filter="django">Django</button>
-                <button class="tag-btn" data-filter="vue">Vue.js</button>
-                <button class="tag-btn" data-filter="d3">D3.js</button>
+        <!-- Main Overview Section -->
+        <div class="main-overview" id="main-overview">
+            <!-- Project Overview Navigation -->
+            <div class="project-overview">
+                <h2 class="section-title">Explore My Work</h2>
+                <p class="section-description">Dive into different areas of my technical expertise and project portfolio</p>
+                
+                <div class="overview-grid">
+                    <!-- Technical Projects -->
+                    <div class="overview-card" onclick="showSection('tech-projects-section')">
+                        <div class="overview-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="overview-title">Technical Projects</h3>
+                        <p class="overview-description">Full-stack applications, AI systems, and innovative software solutions built with modern technologies.</p>
+                        <div class="overview-count">24 Projects</div>
+                        <button class="overview-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            Explore Tech Projects
+                        </button>
+                    </div>
+                    
+                    <!-- Competitive Programming -->
+                    <div class="overview-card" onclick="showSection('competitive-programming-section')">
+                        <div class="overview-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="overview-title">Competitive Programming</h3>
+                        <p class="overview-description">Algorithm challenges, data structure mastery, and problem-solving achievements on coding platforms.</p>
+                        <div class="overview-count">332 Problems Solved</div>
+                        <button class="overview-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            View LeetCode Profile
+                        </button>
+                    </div>
+                    
+                    <!-- Soft Skills Projects -->
+                    <div class="overview-card" onclick="showSection('soft-skills-section')">
+                        <div class="overview-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="overview-title">Leadership & Management</h3>
+                        <p class="overview-description">Team leadership, mentorship programs, event coordination, and process improvement initiatives.</p>
+                        <div class="overview-count">4 Key Projects</div>
+                        <button class="overview-cta">
+                            <i class="fas fa-arrow-right"></i>
+                            View Soft Skills
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Technical Projects Section -->
-        <section id="tech-projects" class="section tech-section">
-            <div class="container">
-                <h2 class="section-title">Tech Projects</h2>
-                <div class="projects-grid">
-                    <!-- Restored original project cards -->
-                    <a href="project-donna.html" class="project-card-link">
-                        <div class="project-card" data-tags="llm python react aws">
-                            <div class="project-image" style="background-image: url('assets/images/suits-donna-harvey.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Project D.O.N.N.A.</h3>
-                                <p class="project-description">An advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">LLM</span>
-                                    <span class="tech-tag">NLP</span>
-                                    <span class="tech-tag">TTS</span>
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">AWS</span>
-                                </div>
-                                <div class="project-links">
-                                    <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-e-commerce-platform.html" class="project-card-link">
-                        <div class="project-card" data-tags="react node mongodb express aws">
-                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">E-commerce Platform</h3>
-                                <p class="project-description">A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">React.js</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">MongoDB</span>
-                                    <span class="tech-tag">Express</span>
-                                    <span class="tech-tag">AWS</span>
-                                </div>
-                                <div class="project-links">
-                                    <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
-                                    <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-ai-task-manager.html" class="project-card-link">
-                        <div class="project-card" data-tags="python django tensorflow postgresql">
-                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">AI Task Manager</h3>
-                                <p class="project-description">An intelligent task management application that uses machine learning to prioritize tasks, suggest optimal scheduling, and provide productivity insights based on user behavior patterns.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Python</span>
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">TensorFlow</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                </div>
-                                <div class="project-links">
-                                    <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
-                                    <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-weather-visualization-dashboard.html" class="project-card-link">
-                        <div class="project-card" data-tags="vue d3 firebase">
-                            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-4.0.3&auto=format&fit=crop&w=1992&q=80')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Weather Visualization Dashboard</h3>
-                                <p class="project-description">An interactive weather dashboard that visualizes real-time and historical weather data from multiple sources, with customizable views and alerts.</p>
-                                <div class="tech-stack">
-                                    <span class="tech-tag">Vue.js</span>
-                                    <span class="tech-tag">D3.js</span>
-                                    <span class="tech-tag">OpenWeather API</span>
-                                    <span class="tech-tag">Firebase</span>
-                                </div>
-                                <div class="project-links">
-                                    <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
-                                    <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Add the 20 new tech projects as cards below -->
-                    <a href="project-universal-mcp-gateway.html" class="project-card-link">
-                        <div class="project-card" data-tags="llm api gateway">
-                            <div class="project-image" style="background-image: url('assets/images/projects/gateway.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Universal MCP Gateway</h3>
-                                <p class="project-description">Bridges LLMs to private APIs via Model‑Context‑Protocol; think "API Gateway for AI agents".</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-ai-knowledge-lake.html" class="project-card-link">
-                        <div class="project-card" data-tags="supabase ai vector">
-                            <div class="project-image" style="background-image: url('assets/images/projects/knowledge-lake.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">AI Knowledge Lake</h3>
-                                <p class="project-description">Supabase‑style stack that ingests, vectorizes, and chats with your docs.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-multi-agent-research-assistant.html" class="project-card-link">
-                        <div class="project-card" data-tags="multi-agent research ai">
-                            <div class="project-image" style="background-image: url('assets/images/projects/research-assistant.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Multi‑Agent Research Assistant</h3>
-                                <p class="project-description">OWL‑inspired system where planner, researcher, and writer agents collaborate.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-cli-mcp-tools.html" class="project-card-link">
-                        <div class="project-card" data-tags="cli mcp tools">
-                            <div class="project-image" style="background-image: url('assets/images/projects/cli-tools.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">CLI MCP Tools</h3>
-                                <p class="project-description">Turns any HTTP MCP server into local shell commands (auto‑completes & JSON output).</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-self-updating-portfolio-builder.html" class="project-card-link">
-                        <div class="project-card" data-tags="portfolio ai nextjs">
-                            <div class="project-image" style="background-image: url('assets/images/projects/portfolio-builder.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Self‑Updating Portfolio Builder</h3>
-                                <p class="project-description">AI converts résumé → Next.js site; Github‑Actions rebuild on commit.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-precise-timing-tts-engine.html" class="project-card-link">
-                        <div class="project-card" data-tags="tts voice ai">
-                            <div class="project-image" style="background-image: url('assets/images/projects/tts-engine.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Precise‑Timing TTS Engine</h3>
-                                <p class="project-description">Open‑source voice model that respects exact duration for media workflows.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-digital-twin-chatbot.html" class="project-card-link">
-                        <div class="project-card" data-tags="chatbot digital-twin ai">
-                            <div class="project-image" style="background-image: url('assets/images/projects/digital-twin.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Digital‑Twin Chatbot</h3>
-                                <p class="project-description">Personal assistant trained on my notes & style; can draft emails and tweets.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-multimodal-speech-model.html" class="project-card-link">
-                        <div class="project-card" data-tags="speech transformer ai">
-                            <div class="project-image" style="background-image: url('assets/images/projects/speech-model.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Multimodal Speech Model</h3>
-                                <p class="project-description">Text+audio Transformer producing natural speech on consumer GPUs.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-agent-container-spec.html" class="project-card-link">
-                        <div class="project-card" data-tags="agent container spec">
-                            <div class="project-image" style="background-image: url('assets/images/projects/agent-container.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Agent Container Spec</h3>
-                                <p class="project-description">Portable archive (zip) bundling agent weights, memory, and tools.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-blender-copilot.html" class="project-card-link">
-                        <div class="project-card" data-tags="blender copilot 3d">
-                            <div class="project-image" style="background-image: url('assets/images/projects/blender-copilot.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Blender Copilot</h3>
-                                <p class="project-description">Natural‑language → 3‑D geometry via MCP calls to Blender Python API.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-crypto-hft-backtester.html" class="project-card-link">
-                        <div class="project-card" data-tags="crypto hft rust">
-                            <div class="project-image" style="background-image: url('assets/images/projects/hft-backtester.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Crypto HFT Backtester</h3>
-                                <p class="project-description">Tick‑level simulation of limit‑order‑book strategies in Rust.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-staking-smart-contract-suite.html" class="project-card-link">
-                        <div class="project-card" data-tags="staking smart-contract solidity">
-                            <div class="project-image" style="background-image: url('assets/images/projects/staking-contract.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Staking Smart‑Contract Suite</h3>
-                                <p class="project-description">Audited ERC‑20/1155 contracts with upgradeable proxies.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-iot-telemetry-platform.html" class="project-card-link">
-                        <div class="project-card" data-tags="iot telemetry kafka druid">
-                            <div class="project-image" style="background-image: url('assets/images/projects/iot-platform.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">IoT Telemetry Platform</h3>
-                                <p class="project-description">MQTT edge → Kafka / Druid dashboards with per‑device auth.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-legged-robot-slam-stack.html" class="project-card-link">
-                        <div class="project-card" data-tags="robot slam ros2 lidar">
-                            <div class="project-image" style="background-image: url('assets/images/projects/robot-slam.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Legged‑Robot SLAM Stack</h3>
-                                <p class="project-description">ROS2 package for lidar‑based autonomy in GNSS‑denied spaces.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-end-to-end-ml-pipeline.html" class="project-card-link">
-                        <div class="project-card" data-tags="ml pipeline airflow">
-                            <div class="project-image" style="background-image: url('assets/images/projects/ml-pipeline.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">End‑to‑End ML Pipeline</h3>
-                                <p class="project-description">Airflow orchestrated feature store, model training, and CI/CD.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-customer-ltv-predictor.html" class="project-card-link">
-                        <div class="project-card" data-tags="ltv predictor gradient-boosting">
-                            <div class="project-image" style="background-image: url('assets/images/projects/ltv-predictor.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Customer LTV Predictor</h3>
-                                <p class="project-description">Gradient‑boosting & cohort analysis for e‑commerce retention.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-bias-behavior-experiment-app.html" class="project-card-link">
-                        <div class="project-card" data-tags="bias behavior experiment">
-                            <div class="project-image" style="background-image: url('assets/images/projects/bias-experiment.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Bias‑Behavior Experiment App</h3>
-                                <p class="project-description">Gamified tasks logging decision‑bias metrics for research.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-serverless-e-commerce-pay-by-bank.html" class="project-card-link">
-                        <div class="project-card" data-tags="serverless ecommerce astro fednow">
-                            <div class="project-image" style="background-image: url('assets/images/projects/serverless-ecommerce.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Serverless E‑Commerce Pay‑by‑Bank</h3>
-                                <p class="project-description">Astro storefront + FedNow rails Step‑Functions backend.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-federated-expense-classifier.html" class="project-card-link">
-                        <div class="project-card" data-tags="federated expense classifier tflite">
-                            <div class="project-image" style="background-image: url('assets/images/projects/expense-classifier.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Federated Expense Classifier</h3>
-                                <p class="project-description">On‑device TensorFlow Lite model with TFF aggregator.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="project-quantum-safe-file-vault.html" class="project-card-link">
-                        <div class="project-card" data-tags="quantum safe file vault tauri">
-                            <div class="project-image" style="background-image: url('assets/images/projects/file-vault.jpg')"></div>
-                            <div class="project-content">
-                                <h3 class="project-title">Quantum‑Safe File Vault</h3>
-                                <p class="project-description">Kyber‑encrypted vault with Tauri desktop UI.</p>
-                            </div>
-                        </div>
-                    </a>
+        <div class="project-section" id="tech-projects-section">
+            <button class="section-back-btn" onclick="showOverview()">
+                <i class="fas fa-arrow-left"></i>
+                Back to Overview
+            </button>
+            
+            <div class="section-header">
+                <h2 class="section-title">Technical Projects</h2>
+                <p class="section-description">A showcase of my software development work spanning AI, web applications, and innovative solutions.</p>
+            </div>
+            
+            <!-- Filter Tags -->
+            <div class="tag-filter-container">
+                <div class="tag-filter-heading">
+                    <h3>Filter by Technology</h3>
+                </div>
+                <div class="tag-filter-buttons">
+                    <button class="tag-btn active" data-filter="all">All Projects</button>
+                    <button class="tag-btn" data-filter="python">Python</button>
+                    <button class="tag-btn" data-filter="react">React</button>
+                    <button class="tag-btn" data-filter="node">Node.js</button>
+                    <button class="tag-btn" data-filter="aws">AWS</button>
+                    <button class="tag-btn" data-filter="llm">LLM</button>
+                    <button class="tag-btn" data-filter="tensorflow">TensorFlow</button>
+                    <button class="tag-btn" data-filter="mongodb">MongoDB</button>
+                    <button class="tag-btn" data-filter="django">Django</button>
+                    <button class="tag-btn" data-filter="vue">Vue.js</button>
+                    <button class="tag-btn" data-filter="d3">D3.js</button>
                 </div>
             </div>
-        </section>
-        
-        <!-- Soft Skills Projects Section -->
-        <section class="projects-container">
-            <h2 class="section-title">Soft Skills Projects</h2>
-            <p class="section-description">Showcasing my leadership, mentoring, event management, and operational efficiency improvement projects.</p>
+            
+            <div class="projects-grid">
+                <!-- Project D.O.N.N.A. -->
+                <a href="project-donna.html" class="project-card-link">
+                    <div class="project-card" data-tags="llm python react aws">
+                        <div class="project-image" style="background-image: url('assets/images/suits-donna-harvey.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Project D.O.N.N.A.</h3>
+                            <p class="project-description">An advanced AI assistant that combines state-of-the-art language models with natural voice interaction and a uniquely crafted personality.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">LLM</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">TTS</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- E-commerce Platform -->
+                <a href="project-e-commerce-platform.html" class="project-card-link">
+                    <div class="project-card" data-tags="react node mongodb express aws">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">E-commerce Platform</h3>
+                            <p class="project-description">A full-featured e-commerce platform with user authentication, product catalog, shopping cart, payment processing, and order management.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React.js</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
+                                <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- AI Task Manager -->
+                <a href="project-ai-task-manager.html" class="project-card-link">
+                    <div class="project-card" data-tags="python django tensorflow postgresql">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI Task Manager</h3>
+                            <p class="project-description">An intelligent task management application that uses machine learning to prioritize tasks, suggest optimal scheduling, and provide productivity insights based on user behavior patterns.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
+                                <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Weather Visualization Dashboard -->
+                <a href="project-weather-visualization-dashboard.html" class="project-card-link">
+                    <div class="project-card" data-tags="vue d3 firebase">
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-4.0.3&auto=format&fit=crop&w=1992&q=80')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Weather Visualization Dashboard</h3>
+                            <p class="project-description">An interactive weather dashboard that visualizes real-time and historical weather data from multiple sources, with customizable views and alerts.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">OpenWeather API</span>
+                                <span class="tech-tag">Firebase</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
+                                <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- All other projects... -->
+                <a href="project-universal-mcp-gateway.html" class="project-card-link">
+                    <div class="project-card" data-tags="llm api gateway">
+                        <div class="project-image" style="background-image: url('assets/images/projects/gateway.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Universal MCP Gateway</h3>
+                            <p class="project-description">Bridges LLMs to private APIs via Model‑Context‑Protocol; think "API Gateway for AI agents".</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-ai-knowledge-lake.html" class="project-card-link">
+                    <div class="project-card" data-tags="supabase ai vector">
+                        <div class="project-image" style="background-image: url('assets/images/projects/knowledge-lake.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI Knowledge Lake</h3>
+                            <p class="project-description">Supabase‑style stack that ingests, vectorizes, and chats with your docs.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-multi-agent-research-assistant.html" class="project-card-link">
+                    <div class="project-card" data-tags="multi-agent research ai">
+                        <div class="project-image" style="background-image: url('assets/images/projects/research-assistant.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Multi‑Agent Research Assistant</h3>
+                            <p class="project-description">OWL‑inspired system where planner, researcher, and writer agents collaborate.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-cli-mcp-tools.html" class="project-card-link">
+                    <div class="project-card" data-tags="cli mcp tools">
+                        <div class="project-image" style="background-image: url('assets/images/projects/cli-tools.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">CLI MCP Tools</h3>
+                            <p class="project-description">Turns any HTTP MCP server into local shell commands (auto‑completes & JSON output).</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-self-updating-portfolio-builder.html" class="project-card-link">
+                    <div class="project-card" data-tags="portfolio ai nextjs">
+                        <div class="project-image" style="background-image: url('assets/images/projects/portfolio-builder.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Self‑Updating Portfolio Builder</h3>
+                            <p class="project-description">AI converts résumé → Next.js site; Github‑Actions rebuild on commit.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-precise-timing-tts-engine.html" class="project-card-link">
+                    <div class="project-card" data-tags="tts voice ai">
+                        <div class="project-image" style="background-image: url('assets/images/projects/tts-engine.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Precise‑Timing TTS Engine</h3>
+                            <p class="project-description">Open‑source voice model that respects exact duration for media workflows.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-digital-twin-chatbot.html" class="project-card-link">
+                    <div class="project-card" data-tags="chatbot digital-twin ai">
+                        <div class="project-image" style="background-image: url('assets/images/projects/digital-twin.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Digital‑Twin Chatbot</h3>
+                            <p class="project-description">Personal assistant trained on my notes & style; can draft emails and tweets.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-multimodal-speech-model.html" class="project-card-link">
+                    <div class="project-card" data-tags="speech transformer ai">
+                        <div class="project-image" style="background-image: url('assets/images/projects/speech-model.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Multimodal Speech Model</h3>
+                            <p class="project-description">Text+audio Transformer producing natural speech on consumer GPUs.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-agent-container-spec.html" class="project-card-link">
+                    <div class="project-card" data-tags="agent container spec">
+                        <div class="project-image" style="background-image: url('assets/images/projects/agent-container.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Agent Container Spec</h3>
+                            <p class="project-description">Portable archive (zip) bundling agent weights, memory, and tools.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-blender-copilot.html" class="project-card-link">
+                    <div class="project-card" data-tags="blender copilot 3d">
+                        <div class="project-image" style="background-image: url('assets/images/projects/blender-copilot.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Blender Copilot</h3>
+                            <p class="project-description">Natural‑language → 3‑D geometry via MCP calls to Blender Python API.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-crypto-hft-backtester.html" class="project-card-link">
+                    <div class="project-card" data-tags="crypto hft rust">
+                        <div class="project-image" style="background-image: url('assets/images/projects/hft-backtester.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Crypto HFT Backtester</h3>
+                            <p class="project-description">Tick‑level simulation of limit‑order‑book strategies in Rust.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-staking-smart-contract-suite.html" class="project-card-link">
+                    <div class="project-card" data-tags="staking smart-contract solidity">
+                        <div class="project-image" style="background-image: url('assets/images/projects/staking-contract.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Staking Smart‑Contract Suite</h3>
+                            <p class="project-description">Audited ERC‑20/1155 contracts with upgradeable proxies.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-iot-telemetry-platform.html" class="project-card-link">
+                    <div class="project-card" data-tags="iot telemetry kafka druid">
+                        <div class="project-image" style="background-image: url('assets/images/projects/iot-platform.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">IoT Telemetry Platform</h3>
+                            <p class="project-description">MQTT edge → Kafka / Druid dashboards with per‑device auth.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-legged-robot-slam-stack.html" class="project-card-link">
+                    <div class="project-card" data-tags="robot slam ros2 lidar">
+                        <div class="project-image" style="background-image: url('assets/images/projects/robot-slam.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Legged‑Robot SLAM Stack</h3>
+                            <p class="project-description">ROS2 package for lidar‑based autonomy in GNSS‑denied spaces.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-end-to-end-ml-pipeline.html" class="project-card-link">
+                    <div class="project-card" data-tags="ml pipeline airflow">
+                        <div class="project-image" style="background-image: url('assets/images/projects/ml-pipeline.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">End‑to‑End ML Pipeline</h3>
+                            <p class="project-description">Airflow orchestrated feature store, model training, and CI/CD.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-customer-ltv-predictor.html" class="project-card-link">
+                    <div class="project-card" data-tags="ltv predictor gradient-boosting">
+                        <div class="project-image" style="background-image: url('assets/images/projects/ltv-predictor.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Customer LTV Predictor</h3>
+                            <p class="project-description">Gradient‑boosting & cohort analysis for e‑commerce retention.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-bias-behavior-experiment-app.html" class="project-card-link">
+                    <div class="project-card" data-tags="bias behavior experiment">
+                        <div class="project-image" style="background-image: url('assets/images/projects/bias-experiment.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Bias‑Behavior Experiment App</h3>
+                            <p class="project-description">Gamified tasks logging decision‑bias metrics for research.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-serverless-e-commerce-pay-by-bank.html" class="project-card-link">
+                    <div class="project-card" data-tags="serverless ecommerce astro fednow">
+                        <div class="project-image" style="background-image: url('assets/images/projects/serverless-ecommerce.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Serverless E‑Commerce Pay‑by‑Bank</h3>
+                            <p class="project-description">Astro storefront + FedNow rails Step‑Functions backend.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-federated-expense-classifier.html" class="project-card-link">
+                    <div class="project-card" data-tags="federated expense classifier tflite">
+                        <div class="project-image" style="background-image: url('assets/images/projects/expense-classifier.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Federated Expense Classifier</h3>
+                            <p class="project-description">On‑device TensorFlow Lite model with TFF aggregator.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="project-quantum-safe-file-vault.html" class="project-card-link">
+                    <div class="project-card" data-tags="quantum safe file vault tauri">
+                        <div class="project-image" style="background-image: url('assets/images/projects/file-vault.jpg')"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Quantum‑Safe File Vault</h3>
+                            <p class="project-description">Kyber‑encrypted vault with Tauri desktop UI.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Competitive Programming Section -->
+        <div class="project-section" id="competitive-programming-section">
+            <button class="section-back-btn" onclick="showOverview()">
+                <i class="fas fa-arrow-left"></i>
+                Back to Overview
+            </button>
+            
+            <div class="section-header">
+                <h2 class="section-title">Competitive Programming</h2>
+                <p class="section-description">Solving algorithmic challenges and strengthening problem-solving skills through consistent practice on coding platforms.</p>
+            </div>
+            
+            <div class="leetcode-showcase">
+                <div class="leetcode-profile-card">
+                    <div class="leetcode-header">
+                        <div class="leetcode-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="leetcode-info">
+                            <h3>LeetCode Profile</h3>
+                            <p class="leetcode-username">@De_Maverick</p>
+                        </div>
+                        <div class="leetcode-badge">
+                            <i class="fas fa-trophy"></i>
+                            <span>1 Badge • 50 Days Badge 2022</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leetcode-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="problems-solved">-</div>
+                            <div class="stat-label">Problems Solved</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="acceptance-rate">-</div>
+                            <div class="stat-label">Acceptance Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="contest-rating">-</div>
+                            <div class="stat-label">Estimated Rating</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="leetcode-rank">-</div>
+                            <div class="stat-label">Global Rank</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="yearly-submissions">-</div>
+                            <div class="stat-label">Yearly Submissions</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="max-streak">-</div>
+                            <div class="stat-label">Max Streak</div>
+                        </div>
+                    </div>
+                    
+                    <div class="difficulty-breakdown">
+                        <h4>Problem Difficulty Distribution</h4>
+                        <div class="difficulty-bars">
+                            <div class="difficulty-bar easy">
+                                <span class="difficulty-label">Easy</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%" id="easy-progress"></div>
+                                </div>
+                                <span class="difficulty-count" id="easy-count">0</span>
+                            </div>
+                            <div class="difficulty-bar medium">
+                                <span class="difficulty-label">Medium</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%" id="medium-progress"></div>
+                                </div>
+                                <span class="difficulty-count" id="medium-count">0</span>
+                            </div>
+                            <div class="difficulty-bar hard">
+                                <span class="difficulty-label">Hard</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%" id="hard-progress"></div>
+                                </div>
+                                <span class="difficulty-count" id="hard-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="leetcode-skills">
+                        <h4>Focus Areas</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Dynamic Programming</span>
+                            <span class="skill-tag">Arrays & Strings</span>
+                            <span class="skill-tag">Tree & Graph</span>
+                            <span class="skill-tag">Algorithms</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">System Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leetcode-actions">
+                        <a href="https://leetcode.com/u/De_Maverick/" target="_blank" rel="noopener noreferrer" class="leetcode-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View LeetCode Profile
+                        </a>
+                        <div class="leetcode-streak">
+                            <i class="fas fa-fire"></i>
+                            <span>Coding Streak: Daily Practice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills Section -->
+        <div class="project-section" id="soft-skills-section">
+            <button class="section-back-btn" onclick="showOverview()">
+                <i class="fas fa-arrow-left"></i>
+                Back to Overview
+            </button>
+            
+            <div class="section-header">
+                <h2 class="section-title">Leadership & Management</h2>
+                <p class="section-description">Showcasing my leadership, mentoring, event management, and operational efficiency improvement projects.</p>
+            </div>
             
             <div class="projects-grid">
                 <!-- Team Leadership & Management -->
@@ -821,7 +1561,7 @@
                     </div>
                 </a>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Back to top button -->
@@ -867,10 +1607,10 @@
                 easing: 'ease-in-out'
             });
 
-            sr.reveal('.project-card', { interval: 100 });
+            // Initial reveals for overview section
+            sr.reveal('.overview-card', { interval: 100 });
             sr.reveal('.section-title', { delay: 100 });
             sr.reveal('.section-description', { delay: 200 });
-            sr.reveal('.tag-filter-container', { delay: 300 });
 
             // Back to top button functionality
             const backToTopButton = document.querySelector('.back-to-top');
@@ -897,7 +1637,6 @@
             
             // Filter functionality
             const filterButtons = document.querySelectorAll('.tag-btn');
-            const projectCards = document.querySelectorAll('.project-card');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -908,23 +1647,29 @@
                     
                     const filterValue = this.getAttribute('data-filter');
                     
-                    projectCards.forEach(card => {
-                        const tags = card.getAttribute('data-tags');
+                    // Only filter cards within the active project section
+                    const activeSection = document.querySelector('.project-section.active');
+                    if (activeSection) {
+                        const projectCards = activeSection.querySelectorAll('.project-card');
                         
-                        if (filterValue === 'all' || tags.includes(filterValue)) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
+                        projectCards.forEach(card => {
+                            const tags = card.getAttribute('data-tags');
+                            
+                            if (filterValue === 'all' || (tags && tags.includes(filterValue))) {
+                                card.parentElement.style.display = 'block';
+                                setTimeout(() => {
+                                    card.parentElement.style.opacity = '1';
+                                    card.parentElement.style.transform = 'translateY(0)';
+                                }, 10);
+                            } else {
+                                card.parentElement.style.opacity = '0';
+                                card.parentElement.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    card.parentElement.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    }
                 });
             });
             
@@ -938,6 +1683,195 @@
                     tagButton.click();
                 }
             }
+            
+            // LeetCode Section Animation
+            function animateLeetCodeStats() {
+                console.log('animateLeetCodeStats called');
+                // Real data from De_Maverick's LeetCode profile (updated January 2025)
+                // To keep this updated: Visit https://leetcode.com/u/De_Maverick/ and update the numbers below
+                const leetcodeData = {
+                    problemsSolved: 332,
+                    acceptanceRate: 85.2, // Calculated from submissions vs solved
+                    contestRating: 1520, // Estimated based on rank 303,120
+                    easy: 275,
+                    medium: 55,
+                    hard: 2,
+                    totalProblems: 3571,
+                    rank: 303120,
+                    badges: 1,
+                    yearlySubmissions: 32,
+                    activeDays: 12,
+                    maxStreak: 3
+                };
+                
+                // Check if LeetCode elements exist
+                const problemsSolvedEl = document.getElementById('problems-solved');
+                const acceptanceRateEl = document.getElementById('acceptance-rate');
+                const contestRatingEl = document.getElementById('contest-rating');
+                const leetcodeRankEl = document.getElementById('leetcode-rank');
+                const yearlySubmissionsEl = document.getElementById('yearly-submissions');
+                const maxStreakEl = document.getElementById('max-streak');
+                const easyCountEl = document.getElementById('easy-count');
+                const mediumCountEl = document.getElementById('medium-count');
+                const hardCountEl = document.getElementById('hard-count');
+                const easyProgressEl = document.getElementById('easy-progress');
+                const mediumProgressEl = document.getElementById('medium-progress');
+                const hardProgressEl = document.getElementById('hard-progress');
+                
+                console.log('Elements found:', {
+                    problemsSolved: !!problemsSolvedEl,
+                    acceptanceRate: !!acceptanceRateEl,
+                    contestRating: !!contestRatingEl,
+                    leetcodeRank: !!leetcodeRankEl,
+                    yearlySubmissions: !!yearlySubmissionsEl,
+                    maxStreak: !!maxStreakEl
+                });
+                
+                // If elements don't exist, return early
+                if (!problemsSolvedEl) {
+                    console.log('LeetCode elements not found, returning');
+                    return;
+                }
+                
+                console.log('Setting values immediately for testing');
+                // Test by setting values immediately first
+                problemsSolvedEl.textContent = leetcodeData.problemsSolved;
+                acceptanceRateEl.textContent = leetcodeData.acceptanceRate + '%';
+                contestRatingEl.textContent = leetcodeData.contestRating;
+                leetcodeRankEl.textContent = leetcodeData.rank.toLocaleString();
+                yearlySubmissionsEl.textContent = leetcodeData.yearlySubmissions;
+                maxStreakEl.textContent = leetcodeData.maxStreak;
+                easyCountEl.textContent = leetcodeData.easy;
+                mediumCountEl.textContent = leetcodeData.medium;
+                hardCountEl.textContent = leetcodeData.hard;
+                
+                // Set progress bars immediately
+                easyProgressEl.style.width = ((leetcodeData.easy / leetcodeData.problemsSolved) * 100) + '%';
+                mediumProgressEl.style.width = ((leetcodeData.medium / leetcodeData.problemsSolved) * 100) + '%';
+                hardProgressEl.style.width = ((leetcodeData.hard / leetcodeData.problemsSolved) * 100) + '%';
+                
+                console.log('Values set immediately, starting animations');
+                
+                return; // Temporary return to test immediate values
+            }
+            
+            // Function to reset LeetCode stats to initial state
+            function resetLeetCodeStats() {
+                const elements = [
+                    'problems-solved', 'acceptance-rate', 'contest-rating', 
+                    'leetcode-rank', 'yearly-submissions', 'max-streak',
+                    'easy-count', 'medium-count', 'hard-count'
+                ];
+                
+                elements.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.textContent = '-';
+                    }
+                });
+                
+                // Reset progress bars
+                const progressBars = ['easy-progress', 'medium-progress', 'hard-progress'];
+                progressBars.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.style.width = '0%';
+                    }
+                });
+            }
+            
+            // Initialize LeetCode animations
+            animateLeetCodeStats();
+            
+            // Section Navigation Functions
+            window.showSection = function(sectionId) {
+                // Hide overview
+                document.getElementById('main-overview').classList.add('hidden');
+                
+                // Hide all sections
+                document.querySelectorAll('.project-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show target section
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    // Add active class to show the section
+                    targetSection.classList.add('active');
+                    
+                    // Ensure all project cards are visible by default
+                    const projectCards = targetSection.querySelectorAll('.project-card-link');
+                    projectCards.forEach(card => {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                    
+                    // Reset filter to "All Projects" if there are filter buttons
+                    const filterButtons = targetSection.querySelectorAll('.tag-btn');
+                    if (filterButtons.length > 0) {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        const allButton = targetSection.querySelector('.tag-btn[data-filter="all"]');
+                        if (allButton) {
+                            allButton.classList.add('active');
+                        }
+                    }
+                    
+                    // Scroll to top of section
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Re-initialize animations for LeetCode if it's the competitive programming section
+                    if (sectionId === 'competitive-programming-section') {
+                        console.log('Entering competitive programming section');
+                        // Reset LeetCode stats first
+                        resetLeetCodeStats();
+                        console.log('Reset LeetCode stats');
+                        // Then animate them after a short delay
+                        setTimeout(() => {
+                            console.log('Starting LeetCode animations');
+                            animateLeetCodeStats();
+                        }, 800);
+                    }
+                    
+                    // Re-initialize ScrollReveal for the active section
+                    setTimeout(() => {
+                        const cards = targetSection.querySelectorAll('.project-card');
+                        if (cards.length > 0) {
+                            sr.reveal(cards, { interval: 100 });
+                        }
+                        const leetcodeCard = targetSection.querySelector('.leetcode-profile-card');
+                        if (leetcodeCard) {
+                            sr.reveal(leetcodeCard, { delay: 400, distance: '50px' });
+                        }
+                        const tagContainer = targetSection.querySelector('.tag-filter-container');
+                        if (tagContainer) {
+                            sr.reveal(tagContainer, { delay: 300 });
+                        }
+                    }, 200);
+                }
+            };
+            
+            window.showOverview = function() {
+                // Hide all sections
+                document.querySelectorAll('.project-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show overview
+                document.getElementById('main-overview').classList.remove('hidden');
+                
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+            
+            // Add scroll reveal for LeetCode section
+            sr.reveal('.leetcode-profile-card', { delay: 400, distance: '50px' });
         });
     </script>
 
