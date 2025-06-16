@@ -1,0 +1,635 @@
+/* Enhanced Journey Section Styles */
+
+/* Enhanced Journey Carousel Styles - Higher Specificity */
+.journey-section .journey-carousel-container,
+.section.journey-section .journey-carousel-container,
+section#journey .journey-carousel-container {
+    position: relative !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 60px 20px !important;
+    z-index: 5 !important;
+    background: linear-gradient(135deg, rgba(15, 20, 40, 0.95) 0%, rgba(25, 30, 60, 0.95) 100%) !important;
+    border-radius: 30px !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(108, 138, 255, 0.2) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    overflow: hidden !important;
+}
+
+.journey-section .journey-carousel,
+.section.journey-section .journey-carousel,
+section#journey .journey-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-behavior: smooth !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 35px !important;
+    padding: 30px 25px !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.journey-carousel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(108, 138, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.journey-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth !important;
+    scroll-snap-type: x mandatory;
+    gap: 35px !important;
+    padding: 30px 25px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width: 100%;
+    position: relative;
+}
+
+.journey-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Enhanced Card Styles - Higher Specificity */
+.journey-section .journey-carousel-container .journey-carousel .journey-card,
+.section.journey-section .journey-carousel .journey-card,
+section#journey .journey-card {
+    min-width: calc(40% - 20px) !important;
+    max-width: calc(40% - 20px) !important;
+    perspective: 1200px !important;
+    opacity: 1 !important;
+    scroll-snap-align: start !important;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    flex: 0 0 calc(40% - 20px) !important;
+    height: 520px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: calc(40% - 20px) !important;
+}
+
+.journey-card::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        rgba(108, 138, 255, 0.6), 
+        rgba(255, 107, 107, 0.6), 
+        rgba(108, 138, 255, 0.6));
+    border-radius: 25px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    filter: blur(8px);
+}
+
+.journey-card:hover::before {
+    opacity: 1;
+    animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% { filter: blur(8px) brightness(1); }
+    100% { filter: blur(12px) brightness(1.2); }
+}
+
+.journey-card .journey-content {
+    background: linear-gradient(145deg, 
+        rgba(15, 20, 40, 0.95) 0%, 
+        rgba(25, 30, 60, 0.95) 50%, 
+        rgba(35, 40, 80, 0.95) 100%) !important;
+    padding: 40px !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 5px 15px rgba(108, 138, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(108, 138, 255, 0.2) !important;
+    backdrop-filter: blur(20px) !important;
+    transform-style: preserve-3d;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-card .journey-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(108, 138, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(108, 138, 255, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%);
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.journey-card:hover .journey-content {
+    transform: translateY(-20px) rotateX(8deg) rotateY(3deg) !important;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 15px 35px rgba(108, 138, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(108, 138, 255, 0.3) !important;
+    border: 1px solid rgba(108, 138, 255, 0.4) !important;
+}
+
+.journey-card:hover .journey-content::before {
+    opacity: 1.5;
+}
+
+/* Enhanced Date Badge */
+.journey-card .journey-date {
+    display: inline-block !important;
+    background: linear-gradient(135deg, #6c8aff 0%, #5b68ff 50%, #4a56ff 100%) !important;
+    color: white !important;
+    padding: 12px 24px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    margin-bottom: 25px !important;
+    box-shadow: 
+        0 8px 20px rgba(108, 138, 255, 0.4),
+        0 3px 10px rgba(108, 138, 255, 0.2) !important;
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem !important;
+    align-self: flex-start;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase;
+    transition: all 0.4s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.journey-card:hover .journey-date {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 12px 25px rgba(108, 138, 255, 0.5),
+        0 5px 15px rgba(108, 138, 255, 0.3) !important;
+}
+
+/* Enhanced Title */
+.journey-card h3 {
+    color: white !important;
+    margin-bottom: 25px !important;
+    font-size: 2rem !important;
+    position: relative;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.5px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.4s ease;
+}
+
+.journey-card:hover h3 {
+    background: linear-gradient(135deg, #6c8aff 0%, #ffffff 50%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateY(-3px);
+}
+
+/* Enhanced Description */
+.journey-card p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.8 !important;
+    margin-bottom: 35px !important;
+    flex-grow: 1;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.3px !important;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.journey-card:hover p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Enhanced Tags */
+.journey-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    margin-top: auto !important;
+}
+
+.journey-tag {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 100%) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    padding: 12px 20px !important;
+    border-radius: 50px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    letter-spacing: 0.4px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.journey-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(108, 138, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.journey-tag:hover::before {
+    left: 100%;
+}
+
+.journey-tag i {
+    font-size: 0.9rem !important;
+    color: #6c8aff !important;
+    transition: all 0.3s ease;
+}
+
+.journey-tag:hover {
+    background: linear-gradient(135deg, 
+        rgba(108, 138, 255, 0.3) 0%, 
+        rgba(255, 107, 107, 0.3) 100%) !important;
+    color: white !important;
+    transform: translateY(-8px) scale(1.08) !important;
+    box-shadow: 
+        0 15px 30px rgba(108, 138, 255, 0.3),
+        0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(108, 138, 255, 0.3) !important;
+}
+
+.journey-tag:hover i {
+    color: white !important;
+    transform: scale(1.15);
+}
+
+/* Enhanced Navigation */
+.carousel-nav {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, 
+        rgba(15, 20, 40, 0.9) 0%, 
+        rgba(25, 30, 60, 0.9) 100%) !important;
+    color: white !important;
+    border: 2px solid rgba(108, 138, 255, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.4rem !important;
+    cursor: pointer !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 10 !important;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 3px 10px rgba(108, 138, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.carousel-prev {
+    left: -30px !important;
+}
+
+.carousel-next {
+    right: -30px !important;
+}
+
+.carousel-nav:hover {
+    background: linear-gradient(135deg, #6c8aff 0%, #5b68ff 100%) !important;
+    transform: translateY(-50%) scale(1.2) !important;
+    box-shadow: 
+        0 15px 40px rgba(108, 138, 255, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.carousel-nav:active {
+    transform: translateY(-50%) scale(1.05) !important;
+}
+
+.carousel-nav:disabled {
+    opacity: 0.4 !important;
+    cursor: not-allowed !important;
+    transform: translateY(-50%) scale(0.9) !important;
+}
+
+/* Enhanced Indicators */
+.carousel-indicators {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-top: 40px !important;
+    padding: 20px !important;
+    background: rgba(15, 20, 40, 0.6) !important;
+    border-radius: 50px !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(108, 138, 255, 0.1) !important;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-dot {
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    cursor: pointer !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, #6c8aff 0%, #5b68ff 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+}
+
+.carousel-dot:hover {
+    background: rgba(108, 138, 255, 0.3) !important;
+    transform: scale(1.3) !important;
+    border: 2px solid rgba(108, 138, 255, 0.5) !important;
+}
+
+.carousel-dot.active {
+    background: linear-gradient(135deg, #6c8aff 0%, #5b68ff 100%) !important;
+    transform: scale(1.4) !important;
+    box-shadow: 
+        0 0 20px rgba(108, 138, 255, 0.6),
+        0 0 40px rgba(108, 138, 255, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.carousel-dot.active::before {
+    width: 6px;
+    height: 6px;
+    background: white;
+}
+
+/* Light Theme Adjustments */
+html[data-theme="light"] .journey-carousel-container {
+    background: linear-gradient(135deg, 
+        rgba(250, 252, 255, 0.95) 0%, 
+        rgba(240, 245, 255, 0.95) 100%) !important;
+    border: 1px solid rgba(108, 138, 255, 0.2) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+html[data-theme="light"] .journey-card .journey-content {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(250, 252, 255, 0.95) 50%, 
+        rgba(240, 245, 255, 0.95) 100%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+html[data-theme="light"] .journey-card:hover .journey-content {
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        0 10px 30px rgba(108, 138, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+html[data-theme="light"] .journey-card h3 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+html[data-theme="light"] .journey-card:hover h3 {
+    background: linear-gradient(135deg, #6c8aff 0%, #1a1a2e 50%, #ff6b6b 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+html[data-theme="light"] .journey-card p {
+    color: rgba(80, 80, 96, 0.9) !important;
+}
+
+html[data-theme="light"] .journey-tag {
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.08) 0%, 
+        rgba(0, 0, 0, 0.03) 100%) !important;
+    color: rgba(80, 80, 96, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="light"] .carousel-nav {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(250, 252, 255, 0.95) 100%) !important;
+    color: #333 !important;
+    border: 2px solid rgba(108, 138, 255, 0.2) !important;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 3px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+html[data-theme="light"] .carousel-indicators {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="light"] .carousel-dot {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+    .journey-card {
+        min-width: calc(60% - 15px) !important;
+        max-width: calc(60% - 15px) !important;
+        flex: 0 0 calc(60% - 15px) !important;
+        height: 480px !important;
+    }
+    
+    .carousel-prev {
+        left: -25px !important;
+    }
+    
+    .carousel-next {
+        right: -25px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .journey-carousel-container {
+        padding: 40px 15px !important;
+        margin: 0 10px !important;
+        border-radius: 20px !important;
+    }
+    
+    .journey-carousel {
+        padding: 20px 15px !important;
+        gap: 20px !important;
+    }
+    
+    .journey-card {
+        min-width: 350px !important;
+        max-width: 350px !important;
+        flex: 0 0 350px !important;
+        height: 450px !important;
+    }
+    
+    .journey-card .journey-content {
+        padding: 30px !important;
+    }
+    
+    .journey-card h3 {
+        font-size: 1.6rem !important;
+    }
+    
+    .journey-card p {
+        font-size: 1rem !important;
+    }
+    
+    .carousel-nav {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    .carousel-prev {
+        left: -20px !important;
+    }
+    
+    .carousel-next {
+        right: -20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .journey-card {
+        min-width: 320px !important;
+        max-width: 320px !important;
+        flex: 0 0 320px !important;
+        height: 420px !important;
+    }
+    
+    .journey-card .journey-content {
+        padding: 25px !important;
+    }
+    
+    .journey-card h3 {
+        font-size: 1.4rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .journey-card p {
+        font-size: 0.95rem !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .journey-tags {
+        gap: 10px !important;
+    }
+    
+    .journey-tag {
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Add smooth scrolling animation */
+@keyframes smoothSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(var(--slide-distance)); }
+}
+
+/* Floating animation for enhanced effect */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.journey-card:nth-child(odd) {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.journey-card:nth-child(even) {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+/* Force Override for Card Widths - Maximum Specificity */
+html body .journey-section .journey-carousel .journey-card,
+html body section#journey .journey-carousel .journey-card,
+html body .section.journey-section .journey-carousel .journey-card {
+    min-width: calc(40% - 20px) !important;
+    max-width: calc(40% - 20px) !important;
+    flex: 0 0 calc(40% - 20px) !important;
+    width: calc(40% - 20px) !important;
+}
+
+/* Override any conflicting flex-basis styles */
+html body .journey-card {
+    flex-basis: calc(40% - 20px) !important;
+}
+
+/* Force gap spacing */
+html body .journey-carousel {
+    gap: 35px !important;
+}
+
+/* Override any calc(33.333% styles that might exist */
+html body .journey-carousel .journey-card {
+    min-width: calc(40% - 20px) !important;
+    max-width: calc(40% - 20px) !important;
+    flex: 0 0 calc(40% - 20px) !important;
+    width: calc(40% - 20px) !important;
+} 

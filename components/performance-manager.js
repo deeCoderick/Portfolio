@@ -211,7 +211,7 @@ class PerformanceManager {
         const result = fn();
         const end = performance.now();
         
-        console.log(`${name} took ${end - start} milliseconds`);
+        // console.log(`${name} took ${end - start} milliseconds`);
         return result;
     }
 

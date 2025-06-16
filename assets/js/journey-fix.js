@@ -152,7 +152,7 @@
                     return originalReveal.apply(this, arguments);
                 };
                 
-                console.log("Successfully patched ScrollReveal for journey items");
+                // console.log("Successfully patched ScrollReveal for journey items");
             } catch (e) {
                 console.warn("Could not patch ScrollReveal:", e);
             }

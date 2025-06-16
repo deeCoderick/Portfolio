@@ -1,0 +1,703 @@
+/**
+ * Optimized Portfolio Styles
+ * Performance-focused CSS with modern patterns
+ * Consolidates common styles and optimizations
+ */
+
+/* ==========================================================================
+   Performance Optimizations
+   ========================================================================== */
+
+/* GPU acceleration for frequently animated elements */
+.theme-toggle,
+.nav-toggle,
+.back-to-top,
+.journey-card,
+.carousel-dot {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce layout thrashing */
+.journey-managed * {
+    box-sizing: border-box;
+}
+
+/* Optimize font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Theme Transition Optimizations
+   ========================================================================== */
+
+.theme-transitioning {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-transitioning * {
+    transition: inherit;
+}
+
+/* Theme toggle animations */
+.theme-toggle {
+    transition: transform 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+}
+
+.theme-toggle.theme-animate {
+    transform: scale(0.95) rotate(180deg);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle .fa-sun,
+.theme-toggle .fa-moon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Journey Section Optimizations
+   ========================================================================== */
+
+/* Force visibility fixes */
+.journey-managed,
+.journey-visible,
+.force-visible {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.journey-managed .journey-item,
+.journey-managed .journey-content,
+.journey-managed .journey-marker,
+.journey-managed .timeline-line {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Journey content hover enhancements */
+.journey-content {
+    transition: transform 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+}
+
+.journey-content.hover-active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Journey animations */
+.journey-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay, 0ms);
+}
+
+.journey-item.animate-in {
+    animation-play-state: running;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   Carousel Optimizations
+   ========================================================================== */
+
+.journey-carousel {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.journey-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.journey-card {
+    flex: 0 0 calc(40% - 20px) !important;
+    min-width: calc(40% - 20px) !important;
+    max-width: calc(40% - 20px) !important;
+    scroll-snap-align: start;
+    transition: transform 0.2s ease-out;
+}
+
+.journey-card:hover {
+    transform: scale(1.02);
+}
+
+/* Carousel controls */
+.carousel-prev,
+.carousel-next {
+    transition: opacity 0.2s ease-out,
+                transform 0.2s ease-out;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    transform: scale(1.1);
+}
+
+.carousel-prev:disabled,
+.carousel-next:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.carousel-dot.active {
+    background: var(--accent-color, #007bff);
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   Navigation Optimizations
+   ========================================================================== */
+
+.navigation {
+    transition: background-color 0.3s ease-out,
+                box-shadow 0.3s ease-out,
+                transform 0.3s ease-out;
+}
+
+.navigation.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navigation.scroll-up {
+    transform: translateY(0);
+}
+
+.navigation.scroll-down {
+    transform: translateY(-100%);
+}
+
+/* Mobile menu optimizations */
+.nav-links {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Navigation links */
+.nav-link {
+    position: relative;
+    transition: color 0.2s ease-out;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color, #007bff);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Back to Top Optimizations
+   ========================================================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-color, #007bff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+}
+
+/* ==========================================================================
+   Performance Animation Classes
+   ========================================================================== */
+
+/* Fade in animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animation utility classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.6s ease-out;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ==========================================================================
+   Performance Media Queries
+   ========================================================================== */
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High performance mode for mobile */
+@media (max-width: 768px) {
+    .journey-card {
+        flex: 0 0 calc(90% - 20px) !important;
+        min-width: calc(90% - 20px) !important;
+        max-width: calc(90% - 20px) !important;
+    }
+    
+    /* Reduce animations on mobile for better performance */
+    .journey-content.hover-active {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* ==========================================================================
+   Print Optimizations
+   ========================================================================== */
+
+@media print {
+    .theme-toggle,
+    .nav-toggle,
+    .back-to-top,
+    .carousel-prev,
+    .carousel-next,
+    .carousel-indicators {
+        display: none !important;
+    }
+    
+    .journey-carousel {
+        display: block !important;
+        overflow: visible !important;
+    }
+    
+    .journey-card {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Enhanced Chatbot Styles */
+.chatbot-window {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.chatbot-window.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.chatbot-messages {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.chat-message {
+    animation: messageSlideIn 0.3s ease-out;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+    max-width: 85%;
+}
+
+.chat-message.user-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: auto;
+    padding: 10px 14px;
+    border-radius: 18px 18px 4px 18px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.chat-message.bot-message {
+    background: white;
+    color: #333;
+    border: 1px solid #e1e5e9;
+    margin-right: auto;
+    padding: 10px 14px;
+    border-radius: 18px 18px 18px 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-message.error-message {
+    background: #fee;
+    color: #c33;
+    border-color: #fcc;
+    box-shadow: 0 2px 8px rgba(204, 51, 51, 0.2);
+}
+
+.chat-message a.chat-link {
+    color: #667eea;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.chat-message a.chat-link:hover {
+    color: #5a6fd8;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: none;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid #e1e5e9;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 80%;
+    margin-right: auto;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+.typing-dots {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.typing-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #667eea;
+    margin: 0 2px;
+    animation: typingDots 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) { 
+    animation-delay: -0.32s; 
+}
+
+.typing-dots span:nth-child(2) { 
+    animation-delay: -0.16s; 
+}
+
+.typing-dots span:nth-child(3) { 
+    animation-delay: 0s; 
+}
+
+@keyframes typingDots {
+    0%, 80%, 100% { 
+        transform: scale(0.8); 
+        opacity: 0.5; 
+    }
+    40% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Chatbot Input */
+.chatbot-input {
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e1e5e9;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    background: #fafafa;
+}
+
+.chatbot-input input:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.chatbot-input input:disabled {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.chatbot-input button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+.chatbot-input button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.chatbot-input button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.chatbot-input button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Chatbot Icon Enhancement */
+.chatbot-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.chatbot-icon:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.chatbot-icon:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Responsive Chatbot */
+@media (max-width: 768px) {
+    .chatbot-window {
+        width: 95vw;
+        height: 70vh;
+        right: 2.5vw;
+        bottom: 80px;
+    }
+    
+    .chat-message {
+        max-width: 90%;
+        font-size: 14px;
+    }
+    
+    .chatbot-input {
+        padding: 12px;
+    }
+    
+    .chatbot-input input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+    .chat-message.bot-message {
+        background: #2a2a2a;
+        color: #e0e0e0;
+        border-color: #404040;
+    }
+    
+    .typing-indicator {
+        background: #2a2a2a;
+        color: #e0e0e0;
+        border-color: #404040;
+    }
+    
+    .chatbot-input {
+        background: #1a1a1a;
+        border-color: #404040;
+    }
+    
+    .chatbot-input input {
+        background: #2a2a2a;
+        color: #e0e0e0;
+        border-color: #404040;
+    }
+    
+    .chatbot-input input:focus {
+        background: #333;
+        border-color: #667eea;
+    }
+}
+
+/* Accessibility Enhancements */
+.chatbot-window:focus-within {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.chat-message:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .chat-message.user-message {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    .chat-message.bot-message {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+} 

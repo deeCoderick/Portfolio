@@ -218,18 +218,18 @@ function generateUpdatedPortfolioSection() {
  * Console output for manual updates
  */
 function showUpdateInstructions() {
-    console.log('🔄 Project Link Update Instructions\n');
-    console.log('Replace the following old links with new dynamic template URLs:\n');
+    // console.log('🔄 Project Link Update Instructions\n');
+    // console.log('Replace the following old links with new dynamic template URLs:\n');
     
     Object.entries(projectMappings).forEach(([oldFile, projectId]) => {
         const newURL = generateProjectURL(projectId);
-        console.log(`❌ OLD: ${oldFile}`);
-        console.log(`✅ NEW: ${newURL}\n`);
+        // console.log(`❌ OLD: ${oldFile}`);
+        // console.log(`✅ NEW: ${newURL}\n`);
     });
     
-    console.log('📋 Updated Portfolio Section:');
-    console.log('Copy the following HTML to replace your portfolio section:\n');
-    console.log(generateUpdatedPortfolioSection());
+    // console.log('📋 Updated Portfolio Section:');
+    // console.log('Copy the following HTML to replace your portfolio section:\n');
+    // console.log(generateUpdatedPortfolioSection());
 }
 
 // Export functions for use

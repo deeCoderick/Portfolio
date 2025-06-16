@@ -74,7 +74,7 @@ class ProjectGenerator {
                     size: html.length
                 });
 
-                console.log(`✅ Generated: ${filename}`);
+                // console.log(`✅ Generated: ${filename}`);
 
             } catch (error) {
                 results.errors.push({
@@ -215,25 +215,25 @@ if (require.main === module) {
             if (projectId && projectId !== 'all') {
                 try {
                     generator.generateProject(projectId, `project-${projectId}.html`);
-                    console.log(`✅ Generated project: ${projectId}`);
+                    // console.log(`✅ Generated project: ${projectId}`);
                 } catch (error) {
                     console.error(`❌ Error:`, error.message);
                 }
             } else {
                 const results = generator.generateAllProjects(args.includes('--overwrite'));
-                console.log('\n📊 Generation Summary:');
-                console.log(`✅ Success: ${results.success.length}`);
-                console.log(`❌ Errors: ${results.errors.length}`);
-                console.log(`⏭️  Skipped: ${results.skipped.length}`);
+                // console.log('\n📊 Generation Summary:');
+                // console.log(`✅ Success: ${results.success.length}`);
+                // console.log(`❌ Errors: ${results.errors.length}`);
+                // console.log(`⏭️  Skipped: ${results.skipped.length}`);
             }
             break;
 
         case 'list':
             const projects = generator.listProjects();
-            console.log('\n📋 Available Projects:');
+            // console.log('\n📋 Available Projects:');
             projects.forEach(project => {
-                console.log(`• ${project.id}: ${project.title} (${project.date})`);
-                console.log(`  Tech: ${project.techStack.join(', ')}\n`);
+                // console.log(`• ${project.id}: ${project.title} (${project.date})`);
+                // console.log(`  Tech: ${project.techStack.join(', ')}\n`);
             });
             break;
 
@@ -242,27 +242,28 @@ if (require.main === module) {
             if (validateId) {
                 const validation = generator.validateProject(validateId);
                 if (validation.valid) {
-                    console.log(`✅ Project '${validateId}' is valid`);
+                    // console.log(`✅ Project '${validateId}' is valid`);
                 } else {
-                    console.log(`❌ Project '${validateId}' has errors:`);
+                    // console.log(`❌ Project '${validateId}' has errors:`);
                     validation.errors.forEach(error => console.log(`  • ${error}`));
                 }
             } else {
-                console.log('Please specify a project ID to validate');
+                // console.log('Please specify a project ID to validate');
             }
             break;
 
         case 'report':
             const report = generator.generateSummaryReport();
-            console.log('\n📊 Project Summary Report:');
-            console.log(`Total Projects: ${report.totalProjects}`);
-            console.log('\nTech Stack Usage:');
+            // console.log('\n📊 Project Summary Report:');
+            // console.log(`Total Projects: ${report.totalProjects}`);
+            // console.log('\nTech Stack Usage:');
             Object.entries(report.techStackUsage).forEach(([tech, count]) => {
-                console.log(`  ${tech}: ${count} project(s)`);
+                // console.log(`  ${tech}: ${count} project(s)`);
             });
             break;
 
         default:
+            /*
             console.log(`
 🚀 Project Generator CLI
 
@@ -287,6 +288,7 @@ Examples:
   node project-generator.js validate donna
   node project-generator.js report
             `);
+            */
     }
 }
 
