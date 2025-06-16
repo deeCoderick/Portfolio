@@ -274,6 +274,7 @@ class PortfolioApp {
         // Initialize other modules
         await Promise.all([
             this.initModule('journey'),
+            this.initModule('chatbot'),
             this.initModule('portfolio'),
             this.initModule('animations')
         ]);
@@ -316,6 +317,10 @@ class PortfolioApp {
         
         if (typeof OptimizedJourneyManager !== 'undefined') {
             this.registerModule('journey', OptimizedJourneyManager);
+        }
+        
+        if (typeof OptimizedChatbotManager !== 'undefined') {
+            this.registerModule('chatbot', OptimizedChatbotManager);
         }
         
         if (typeof OptimizedPortfolioManager !== 'undefined') {
