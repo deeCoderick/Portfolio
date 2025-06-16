@@ -1,0 +1,401 @@
+/**
+ * Optimized Portfolio Styles
+ * Performance-focused CSS with modern patterns
+ * Consolidates common styles and optimizations
+ */
+
+/* ==========================================================================
+   Performance Optimizations
+   ========================================================================== */
+
+/* GPU acceleration for frequently animated elements */
+.theme-toggle,
+.nav-toggle,
+.back-to-top,
+.journey-card,
+.carousel-dot {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce layout thrashing */
+.journey-managed * {
+    box-sizing: border-box;
+}
+
+/* Optimize font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Theme Transition Optimizations
+   ========================================================================== */
+
+.theme-transitioning {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-transitioning * {
+    transition: inherit;
+}
+
+/* Theme toggle animations */
+.theme-toggle {
+    transition: transform 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+}
+
+.theme-toggle.theme-animate {
+    transform: scale(0.95) rotate(180deg);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle .fa-sun,
+.theme-toggle .fa-moon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Journey Section Optimizations
+   ========================================================================== */
+
+/* Force visibility fixes */
+.journey-managed,
+.journey-visible,
+.force-visible {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.journey-managed .journey-item,
+.journey-managed .journey-content,
+.journey-managed .journey-marker,
+.journey-managed .timeline-line {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Journey content hover enhancements */
+.journey-content {
+    transition: transform 0.2s ease-out,
+                box-shadow 0.2s ease-out;
+}
+
+.journey-content.hover-active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Journey animations */
+.journey-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay, 0ms);
+}
+
+.journey-item.animate-in {
+    animation-play-state: running;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   Carousel Optimizations
+   ========================================================================== */
+
+.journey-carousel {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.journey-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.journey-card {
+    flex: 0 0 calc(40% - 20px) !important;
+    min-width: calc(40% - 20px) !important;
+    max-width: calc(40% - 20px) !important;
+    scroll-snap-align: start;
+    transition: transform 0.2s ease-out;
+}
+
+.journey-card:hover {
+    transform: scale(1.02);
+}
+
+/* Carousel controls */
+.carousel-prev,
+.carousel-next {
+    transition: opacity 0.2s ease-out,
+                transform 0.2s ease-out;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    transform: scale(1.1);
+}
+
+.carousel-prev:disabled,
+.carousel-next:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.carousel-dot.active {
+    background: var(--accent-color, #007bff);
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   Navigation Optimizations
+   ========================================================================== */
+
+.navigation {
+    transition: background-color 0.3s ease-out,
+                box-shadow 0.3s ease-out,
+                transform 0.3s ease-out;
+}
+
+.navigation.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navigation.scroll-up {
+    transform: translateY(0);
+}
+
+.navigation.scroll-down {
+    transform: translateY(-100%);
+}
+
+/* Mobile menu optimizations */
+.nav-links {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Navigation links */
+.nav-link {
+    position: relative;
+    transition: color 0.2s ease-out;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color, #007bff);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Back to Top Optimizations
+   ========================================================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-color, #007bff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+}
+
+/* ==========================================================================
+   Performance Animation Classes
+   ========================================================================== */
+
+/* Fade in animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animation utility classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.6s ease-out;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ==========================================================================
+   Performance Media Queries
+   ========================================================================== */
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High performance mode for mobile */
+@media (max-width: 768px) {
+    .journey-card {
+        flex: 0 0 calc(90% - 20px) !important;
+        min-width: calc(90% - 20px) !important;
+        max-width: calc(90% - 20px) !important;
+    }
+    
+    /* Reduce animations on mobile for better performance */
+    .journey-content.hover-active {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* ==========================================================================
+   Print Optimizations
+   ========================================================================== */
+
+@media print {
+    .theme-toggle,
+    .nav-toggle,
+    .back-to-top,
+    .carousel-prev,
+    .carousel-next,
+    .carousel-indicators {
+        display: none !important;
+    }
+    
+    .journey-carousel {
+        display: block !important;
+        overflow: visible !important;
+    }
+    
+    .journey-card {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+} 

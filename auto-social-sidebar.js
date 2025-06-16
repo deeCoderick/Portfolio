@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let socialSidebar = document.querySelector('.social-sidebar');
     
     if (!socialSidebar) {
-        console.log('Creating social sidebar');
+        // console.log('Creating social sidebar');
         socialSidebar = document.createElement('div');
         socialSidebar.className = 'social-sidebar';
         document.body.appendChild(socialSidebar);

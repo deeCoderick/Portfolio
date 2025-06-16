@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add a diagnostic test function
 async function runDiagnostics() {
-    console.log('🔍 Running API diagnostics...');
+    // console.log('🔍 Running API diagnostics...');
     
     try {
         // Test basic connectivity
@@ -179,14 +179,14 @@ async function runDiagnostics() {
             body: JSON.stringify({ message: 'test' })
         });
 
-        console.log('📡 Connection test:', {
-            status: response.status,
-            statusText: response.statusText,
-            headers: Object.fromEntries(response.headers.entries())
-        });
+        // console.log('📡 Connection test:', {
+        //     status: response.status,
+        //     statusText: response.statusText,
+        //     headers: Object.fromEntries(response.headers.entries())
+        // });
 
         const data = await response.text();
-        console.log('📦 Response data:', data);
+        // console.log('📦 Response data:', data);
 
         return {
             success: response.ok,

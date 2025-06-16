@@ -11,7 +11,7 @@ function smoothTypewriterEffect(element, text, speed = 90) {
         return;
     }
     
-    console.log('Starting ultra-smooth typewriter effect for:', text);
+    // console.log('Starting ultra-smooth typewriter effect for:', text);
     
     // Store original styles to preserve spacing
     const originalStyles = window.getComputedStyle(element);
@@ -262,7 +262,7 @@ function smoothTypewriterEffect(element, text, speed = 90) {
         isAnimationComplete = true;
         cleanup();
         
-        console.log('Ultra-smooth typewriter effect completed for:', text);
+        // console.log('Ultra-smooth typewriter effect completed for:', text);
         
         // Immediately start cursor fade out
         const fadeTimeout = setTimeout(() => {
@@ -303,7 +303,7 @@ function smoothTypewriterEffect(element, text, speed = 90) {
 
 // Enhanced initialization with better page detection and error handling
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Ultra-smooth typewriter script loaded');
+    // console.log('Ultra-smooth typewriter script loaded');
     
     // Optimize for smooth animations
     if (typeof requestIdleCallback !== 'undefined') {
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (aboutTitle && aboutTitle.textContent.trim() === 'About Me') {
                     targetElement = aboutTitle;
                     targetText = aboutTitle.textContent.trim();
-                    console.log('Found About Me section title for typewriter effect');
+                    // console.log('Found About Me section title for typewriter effect');
                     
                     // After title animation, also animate the first paragraph
                     setTimeout(() => {
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             if (firstParagraph && !firstParagraph.querySelector('.typewriter-cursor')) {
                                 const paragraphText = firstParagraph.textContent.trim();
                                 if (paragraphText.length > 0) {
-                                    console.log('Applying typewriter effect to About Me first paragraph');
+                                    // console.log('Applying typewriter effect to About Me first paragraph');
                                     smoothTypewriterEffect(firstParagraph, paragraphText, 50);
                                 }
                             }
@@ -366,27 +366,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (element && element.textContent && element.textContent.trim().length > 0) {
                         targetElement = element;
                         targetText = element.textContent.trim();
-                        console.log(`Found target element with selector: ${selector}`);
+                        // console.log(`Found target element with selector: ${selector}`);
                         break;
                     }
                 }
             }
             
             if (targetElement && targetText && targetText.length > 0) {
-                console.log('Applying ultra-smooth typewriter effect to:', targetText);
+                // console.log('Applying ultra-smooth typewriter effect to:', targetText);
                 
                 // Apply enhanced typewriter effect
                 smoothTypewriterEffect(targetElement, targetText, 80);
             } else {
-                console.log('No suitable target element found for typewriter effect');
+                // console.log('No suitable target element found for typewriter effect');
                 
                 // Debug: show available elements
-                const allTitles = document.querySelectorAll('h1, h2, h3, .title, [class*="title"], [class*="hero"]');
-                console.log('Available title elements:', Array.from(allTitles).map(el => ({
-                    tag: el.tagName,
-                    class: el.className,
-                    text: el.textContent?.substring(0, 50)
-                })));
+                // const allTitles = document.querySelectorAll('h1, h2, h3, .title, [class*="title"], [class*="hero"]');
+                // console.log('Available title elements:', Array.from(allTitles).map(el => ({
+                //     tag: el.tagName,
+                //     class: el.className,
+                //     text: el.textContent?.substring(0, 50)
+                // })));
             }
         } catch (error) {
             console.error('Error in typewriter initialization:', error);
@@ -413,7 +413,7 @@ window.addEventListener('load', function() {
                 // Only apply if it hasn't been applied yet and has valid content
                 if (element && element.textContent && element.textContent.trim().length > 0 && !element.querySelector('.typewriter-cursor')) {
                     const originalText = element.textContent.trim();
-                    console.log(`Backup: Applying ultra-smooth typewriter effect to ${selector}:`, originalText);
+                    // console.log(`Backup: Applying ultra-smooth typewriter effect to ${selector}:`, originalText);
                     smoothTypewriterEffect(element, originalText, 80);
                     break;
                 }
