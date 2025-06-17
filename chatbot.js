@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
         enabled: true,
         version: '2.0',
         debugMode: false,
+        // Input restrictions
+        maxMessageLength: 500,
         // EC2 Service Configuration
         apiConfig: {
             baseURL: 'https://assistantdonna.duckdns.org',
@@ -27,6 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let isLoading = false;
     let retryCount = 0;
     let messageHistory = [];
+    let characterCountElement = null;
+    
+    // Check if welcome messages have been shown this session
+    function hasShownWelcomeThisSession() {
+        return sessionStorage.getItem('chatbot_welcome_shown') === 'true';
+    }
+    
+    // Mark welcome messages as shown for this session
+    function markWelcomeAsShown() {
+        sessionStorage.setItem('chatbot_welcome_shown', 'true');
+    }
     
     // Initialize chatbot
     function initializeChatbot() {
@@ -41,13 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Load message history
         loadMessageHistory();
         
+        // Setup input restrictions
+        setupInputRestrictions();
+        
         // Toggle chatbot window when icon is clicked
         chatbotIcon.addEventListener('click', function(e) {
             e.stopPropagation();
             chatbotWindow.classList.toggle('active');
             
-            // Show welcome messages only on first open
-            if (isFirstOpen && chatbotWindow.classList.contains('active')) {
+            // Show welcome messages only once per session and only on first open
+            if (isFirstOpen && chatbotWindow.classList.contains('active') && !hasShownWelcomeThisSession()) {
                 setTimeout(() => {
                     addBotMessage("👋 Hello there! I'm Donna, your AI assistant.");
                 }, 500);
@@ -57,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     addBotMessage("How can I assist you today?");
                 }, 2500);
+                markWelcomeAsShown();
                 isFirstOpen = false;
             }
             
@@ -201,9 +218,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const message = chatInput.value.trim();
         if (!message) return;
         
+        // Validate message length
+        if (message.length > CHATBOT_CONFIG.maxMessageLength) {
+            addBotMessage(`Message too long! Please keep it under ${CHATBOT_CONFIG.maxMessageLength} characters.`, true);
+            return;
+        }
+        
         // Add user message
         addUserMessage(message);
         chatInput.value = '';
+        
+        // Update character counter after clearing input
+        if (characterCountElement) {
+            chatInput.dispatchEvent(new Event('input'));
+        }
         
         // Set loading state
         isLoading = true;
@@ -459,6 +487,64 @@ document.addEventListener('DOMContentLoaded', function() {
             messageHistory
         };
     }
+
+    // Setup input restrictions and character counter
+    function setupInputRestrictions() {
+        if (!chatInput) return;
+        
+        // Set maxlength attribute
+        chatInput.setAttribute('maxlength', CHATBOT_CONFIG.maxMessageLength);
+        
+        // Create character counter element
+        const inputContainer = chatInput.closest('.chatbot-input');
+        if (inputContainer && !characterCountElement) {
+            characterCountElement = document.createElement('div');
+            characterCountElement.className = 'character-counter';
+            characterCountElement.innerHTML = `<span class="count">0</span>/${CHATBOT_CONFIG.maxMessageLength}`;
+            inputContainer.appendChild(characterCountElement);
+        }
+        
+        // Update character counter on input
+        chatInput.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            const remaining = CHATBOT_CONFIG.maxMessageLength - currentLength;
+            
+            if (characterCountElement) {
+                const countSpan = characterCountElement.querySelector('.count');
+                if (countSpan) {
+                    countSpan.textContent = currentLength;
+                    
+                    // Only show counter when user crosses 400 characters
+                    if (currentLength > 400) {
+                        characterCountElement.style.display = 'block';
+                        
+                        // Change color based on remaining characters
+                        if (remaining < 50) {
+                            characterCountElement.classList.add('warning');
+                            characterCountElement.classList.remove('danger');
+                        } else if (remaining < 20) {
+                            characterCountElement.classList.add('danger');
+                            characterCountElement.classList.remove('warning');
+                        } else {
+                            characterCountElement.classList.remove('warning', 'danger');
+                        }
+                    } else {
+                        characterCountElement.style.display = 'none';
+                        characterCountElement.classList.remove('warning', 'danger');
+                    }
+                }
+            }
+            
+            // Disable send button if message is too long or empty
+            if (chatSendBtn) {
+                const trimmed = this.value.trim();
+                chatSendBtn.disabled = isLoading || trimmed.length === 0 || trimmed.length > CHATBOT_CONFIG.maxMessageLength;
+            }
+        });
+        
+        // Update counter initially
+        chatInput.dispatchEvent(new Event('input'));
+    }
 });
 
 // Add enhanced CSS styles for typing indicator and improved UI
@@ -599,17 +685,115 @@ chatbotStyles.textContent = `
 }
 
 /* Enhanced Input */
+.chatbot-input {
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e1e5e9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chatbot-input .input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: #ffffff;
+    resize: none;
+    color: #333333;
+    font-weight: 400;
+}
+
+.chatbot-input input:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
 .chatbot-input input:disabled {
-    background: #f5f5f5;
-    color: #999;
+    background: #f8f9fa;
+    color: #6c757d;
     cursor: not-allowed;
+    border-color: #dee2e6;
+}
+
+.chatbot-input input::placeholder {
+    color: #6c757d;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.chatbot-input button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-input button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.chatbot-input button:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .chatbot-input button:disabled {
-    background: #ccc;
+    background: linear-gradient(135deg, #a0a0a0 0%, #888888 100%);
+    color: #ffffff;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
+    opacity: 0.7;
+    border: 1px solid #999;
+}
+
+/* Character Counter */
+.character-counter {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+    padding: 0 4px;
+    transition: color 0.2s ease;
+    display: none; /* Hidden by default */
+}
+
+.character-counter .count {
+    font-weight: 600;
+}
+
+.character-counter.warning {
+    color: #ff9800;
+}
+
+.character-counter.danger {
+    color: #f44336;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 /* Responsive */
