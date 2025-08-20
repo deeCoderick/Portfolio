@@ -362,9 +362,24 @@ body {
 /* High performance mode for mobile */
 @media (max-width: 768px) {
     .journey-card {
-        flex: 0 0 calc(90% - 20px) !important;
-        min-width: calc(90% - 20px) !important;
-        max-width: calc(90% - 20px) !important;
+        flex: 0 0 calc(92vw - 10px) !important;
+        min-width: calc(92vw - 10px) !important;
+        max-width: calc(92vw - 10px) !important;
+        width: calc(92vw - 10px) !important;
+    }
+    
+    /* Enhanced text wrapping for mobile */
+    .journey-card h3,
+    .journey-card p,
+    .journey-date,
+    .journey-tag {
+        word-break: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        text-overflow: clip !important;
+        overflow: visible !important;
+        hyphens: auto !important;
     }
     
     /* Reduce animations on mobile for better performance */
