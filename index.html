@@ -18567,6 +18567,8 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 480px;
     display: flex;
     flex-direction: column;
+    overflow: visible !important;
+    box-sizing: border-box !important;
 }
 
 .journey-card .journey-content {
@@ -18580,9 +18582,54 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 100%;
     transition: all 0.4s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible !important;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Mobile text fixes */
+@media (max-width: 768px) {
+    .journey-card {
+        min-width: calc(92vw - 10px) !important;
+        max-width: calc(92vw - 10px) !important;
+        flex: 0 0 calc(92vw - 10px) !important;
+        width: calc(92vw - 10px) !important;
+    }
+    
+    .journey-card h3,
+    .journey-card p,
+    .journey-date,
+    .journey-tag {
+        word-break: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        text-overflow: clip !important;
+        overflow: visible !important;
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -moz-hyphens: auto !important;
+        line-break: auto !important;
+    }
+    
+    .journey-card h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .journey-card p {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .journey-card .journey-content {
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 280px !important;
+        padding: 25px !important;
+        width: 100% !important;
+    }
 }
 
 .journey-card .journey-content:before {
