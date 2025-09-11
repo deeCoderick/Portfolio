@@ -83,3 +83,4 @@ Open your portfolio in a browser and try:
 5. Page Up/Down keys
 
 Each method should smoothly transition between sections, displaying exactly one section per action.
+
