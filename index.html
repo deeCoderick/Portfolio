@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <!-- Fix journey items that vanish on hover - load this first for highest priority -->
-    <script src="assets/js/journey-fix.js" defer></script>
+    <!-- Removed: legacy journey-fix.js (no longer used with timeline) -->
+    <!-- <script src="assets/js/journey-fix.js" defer></script> -->
     
     <!-- Google Analytics Tag - Only loads in production -->
     <script>
@@ -39,16 +39,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
     </noscript>
     
-    <!-- Journey styles -->
-    <link rel="stylesheet" href="assets/css/journey.css">
-    <link rel="stylesheet" href="enhanced-journey.css">
+    <!-- Removed: legacy journey styles (replaced by inline timeline styles) -->
+    <!-- <link rel="stylesheet" href="assets/css/journey.css"> -->
+    <!-- <link rel="stylesheet" href="enhanced-journey.css"> -->
     
-    <!-- ScrollReveal with defer to improve loading performance -->
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js" defer></script>
+    <!-- Removed: ScrollReveal CDN (journey animations refactored; generic reveals removed) -->
+    <!-- <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js" defer></script> -->
     
-    <!-- Journey scripts with defer attribute -->
-    <script src="assets/js/journey-smooth.js" defer></script>
-    <script src="enhanced-journey.js" defer></script>
+    <!-- Removed: legacy journey scripts (replaced by timeline reveal) -->
+    <!-- <script src="assets/js/journey-smooth.js" defer></script> -->
+    <!-- <script src="enhanced-journey.js" defer></script> -->
     <!-- Direct theme implementation instead of external script -->
     <script>
         // Theme management for portfolio website
@@ -18392,579 +18392,264 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2 class="section-title">My Journey</h2>
             <p class="section-description">Key milestones and achievements that have shaped my personal and professional development.</p>
 
-            <!-- Horizontal Carousel for Journey -->
-            <div class="journey-carousel-container">
-                <button class="carousel-nav carousel-prev" aria-label="Previous journey item">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="journey-carousel">
-                    <!-- Journey Item 1: Birth -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">November 19, 1997</span>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">November 19, 1997</span>
                             <h3>A Star Was Born</h3>
                             <p>Born on International Men's Day, marking the beginning of my journey into this world.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-birthday-cake"></i>Birthday</span>
-                                <span class="journey-tag"><i class="fas fa-star"></i>Special Day</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-birthday-cake"></i>Birthday</span>
+                            <span class="timeline-tag"><i class="fas fa-star"></i>Special Day</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 2: School -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">May 2012</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2012</span>
                             <h3>Ravindra Bharathi Public School</h3>
                             <p>Graduated with outstanding academic performance, ranking in the top 3 students with a GPA of 9.8.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-trophy"></i>Top 3 in School</span>
-                                <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 9.8</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-trophy"></i>Top 3 in School</span>
+                            <span class="timeline-tag"><i class="fas fa-graduation-cap"></i>GPA 9.8</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 3: Junior College -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">May 2014</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2014</span>
                             <h3>Sri Chaitanya Junior College</h3>
                             <p>Achieved exceptional results in competitive examinations, securing top 1 percentile in JEE Mains and Advanced, along with 96.5% in board exams.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-medal"></i>Top 1%ile JEE</span>
-                                <span class="journey-tag"><i class="fas fa-award"></i>96.5% Board Exams</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-medal"></i>Top 1%ile JEE</span>
+                            <span class="timeline-tag"><i class="fas fa-award"></i>96.5% Board Exams</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 4: Bachelor's -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">May 2018</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2018</span>
                             <h3>Birla Institute of Technology, Mesra</h3>
                             <p>Completed Bachelor's degree with focus in Electronics and Communication Engineering, achieving a GPA of 7.3.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-microchip"></i>ECE</span>
-                                <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 7.3</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-microchip"></i>ECE</span>
+                            <span class="timeline-tag"><i class="fas fa-graduation-cap"></i>GPA 7.3</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 5: First Job -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">June 2018</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2018</span>
                             <h3>Wipro Technologies, Bengaluru</h3>
                             <p>Started professional career as Software Developer and Data Engineer.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-code"></i>Software Development</span>
-                                <span class="journey-tag"><i class="fas fa-database"></i>Data Engineering</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-code"></i>Software Development</span>
+                            <span class="timeline-tag"><i class="fas fa-database"></i>Data Engineering</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 6: Senior Role -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">January 2020</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">January 2020</span>
                             <h3>Senior Software Engineer at Wipro</h3>
                             <p>Promoted to Senior Software Engineer, leading cloud migration projects for CapitalOne, Hitachi, and DSM clients.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-cloud"></i>Cloud Migration</span>
-                                <span class="journey-tag"><i class="fas fa-users"></i>Project Leadership</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-cloud"></i>Cloud Migration</span>
+                            <span class="timeline-tag"><i class="fas fa-users"></i>Project Leadership</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 7: Master's -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">May 2022</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2022</span>
                             <h3>University at Buffalo</h3>
                             <p>Completed Master's degree with focus in Artificial Intelligence, securing a GPA of 3.5.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-brain"></i>AI Focus</span>
-                                <span class="journey-tag"><i class="fas fa-graduation-cap"></i>GPA 3.5</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-brain"></i>AI Focus</span>
+                            <span class="timeline-tag"><i class="fas fa-graduation-cap"></i>GPA 3.5</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 8: Amazon -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">June 2022</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2022</span>
                             <h3>Amazon.com</h3>
                             <p>Started working as a Software Engineer at Amazon, joining one of the world's leading tech companies.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fas fa-building"></i>Big Tech</span>
-                                <span class="journey-tag"><i class="fas fa-laptop-code"></i>Software Engineering</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fas fa-building"></i>Big Tech</span>
+                            <span class="timeline-tag"><i class="fas fa-laptop-code"></i>Software Engineering</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Journey Item 9: AWS Certification -->
-                    <div class="journey-card">
-                        <div class="journey-content">
-                            <span class="journey-date">April 2023</span>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">April 2023</span>
                             <h3>AWS Solutions Architect Certified</h3>
                             <p>Achieved AWS Solutions Architect Professional certification, demonstrating advanced cloud expertise.</p>
-                            <div class="journey-tags">
-                                <span class="journey-tag"><i class="fab fa-aws"></i>AWS</span>
-                                <span class="journey-tag"><i class="fas fa-certificate"></i>Certification</span>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag"><i class="fab fa-aws"></i>AWS</span>
+                            <span class="timeline-tag"><i class="fas fa-certificate"></i>Certification</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <button class="carousel-nav carousel-next" aria-label="Next journey item">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <!-- Journey Indicator Dots -->
-            <div class="carousel-indicators">
-                <!-- Dots will be added dynamically with JavaScript -->
             </div>
         </div>
     </section>
 
 <style>
-/* Journey Carousel Styles */
-.journey-carousel-container {
+/* Journey Timeline Styles */
+.timeline {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 0;
-    z-index: 5;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding-left: 20px;
 }
 
-.journey-carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
-    padding: 20px 10px;
-    -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
-    scrollbar-width: none;  /* Hide scrollbar in Firefox */
-    width: 100%;
-}
-
-/* Hide scrollbar */
-.journey-carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.journey-card {
-    min-width: calc(33.333% - 20px); /* Show approximately 3 cards at once */
-    max-width: calc(33.333% - 20px);
-    perspective: 1000px;
-    opacity: 1;
-    scroll-snap-align: start;
-    transition: all 0.4s ease;
-    flex: 0 0 calc(33.333% - 20px);
-    height: 480px;
-    display: flex;
-    flex-direction: column;
-    overflow: visible !important;
-    box-sizing: border-box !important;
-}
-
-.journey-card .journey-content {
-    background: rgba(15, 20, 40, 0.9);
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(108, 138, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transform-style: preserve-3d;
-    height: 100%;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: visible !important;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-/* Mobile text fixes */
-@media (max-width: 768px) {
-    .journey-card {
-        min-width: calc(92vw - 10px) !important;
-        max-width: calc(92vw - 10px) !important;
-        flex: 0 0 calc(92vw - 10px) !important;
-        width: calc(92vw - 10px) !important;
-    }
-    
-    .journey-card h3,
-    .journey-card p,
-    .journey-date,
-    .journey-tag {
-        word-break: normal !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        text-overflow: clip !important;
-        overflow: visible !important;
-        hyphens: auto !important;
-        -webkit-hyphens: auto !important;
-        -moz-hyphens: auto !important;
-        line-break: auto !important;
-    }
-    
-    .journey-card h3 {
-        font-size: 1.1rem !important;
-        line-height: 1.4 !important;
-    }
-    
-    .journey-card p {
-        font-size: 0.85rem !important;
-        line-height: 1.5 !important;
-    }
-    
-    .journey-card .journey-content {
-        overflow: visible !important;
-        height: auto !important;
-        min-height: 280px !important;
-        padding: 25px !important;
-        width: 100% !important;
-    }
-}
-
-.journey-card .journey-content:before {
+.timeline:before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 28px;
+    width: 2px;
     height: 100%;
-    background: linear-gradient(135deg, rgba(108, 138, 255, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%);
-    z-index: -1;
+    background: linear-gradient(180deg, rgba(108,138,255,0.6), rgba(108,138,255,0.1));
 }
 
-.journey-card:hover .journey-content {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(108, 138, 255, 0.2);
-    border: 1px solid rgba(108, 138, 255, 0.3);
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 28px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.journey-card .journey-date {
+.timeline-item.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.timeline-marker {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6c8aff, #5b68ff);
+    box-shadow: 0 0 0 4px rgba(108,138,255,0.15), 0 6px 18px rgba(0,0,0,0.35);
+    margin-top: 10px;
+}
+
+.timeline-content {
+    background: rgba(20, 25, 50, 0.98);
+    padding: 28px 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(108, 138, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+.timeline-date {
     display: inline-block;
     background: linear-gradient(135deg, #6c8aff, #5b68ff);
-    color: white;
-    padding: 8px 18px;
-    border-radius: 30px;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 24px;
     font-weight: 600;
-    margin-bottom: 22px;
-    box-shadow: 0 5px 15px rgba(108, 138, 255, 0.3);
-    position: relative;
-    z-index: 1;
-    font-size: 0.95rem;
-    align-self: flex-start;
-    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
 }
 
-.journey-card h3 {
-    color: white;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    position: relative;
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: 0.3px;
-}
-
-.journey-card p {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.7;
-    margin-bottom: 30px;
-    flex-grow: 1;
-    font-size: 1.05rem;
+.timeline-content h3 {
+    color: #fff;
+    margin: 6px 0 14px 0;
+    font-size: 1.5rem;
+    line-height: 1.35;
     letter-spacing: 0.2px;
 }
 
-.journey-tags {
+.timeline-content p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 16px 0;
+}
+
+.timeline-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: auto;
-}
-
-.journey-tag {
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.95);
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
     gap: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    letter-spacing: 0.3px;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.journey-tag i {
+.timeline-tag {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.98);
+    padding: 6px 12px;
+    border-radius: 24px;
     font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.timeline-tag i {
     color: #6c8aff;
 }
 
-.journey-tag:hover {
-    background: rgba(108, 138, 255, 0.2);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(108, 138, 255, 0.2);
+/* Light theme overrides */
+html[data-theme="light"] .timeline-content {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
-/* Light theme adjustments */
-html[data-theme="light"] .journey-card .journey-content {
-    background: rgba(250, 252, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
+html[data-theme="light"] .timeline-content h3 { color: #1a1a2e; }
+html[data-theme="light"] .timeline-content p { color: #404050; }
+html[data-theme="light"] .timeline-tag { background: rgba(108,138,255,0.08); color: #334; }
 
-html[data-theme="light"] .journey-card h3 {
-    color: #1a1a2e;
-}
-
-html[data-theme="light"] .journey-card p {
-    color: #505060;
-}
-
-html[data-theme="light"] .journey-tag {
-    background: rgba(0, 0, 0, 0.05);
-    color: #505060;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Carousel Navigation Buttons */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(15, 20, 40, 0.8);
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 6;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(108, 138, 255, 0.2);
-}
-
-.carousel-prev {
-    left: -25px;
-}
-
-.carousel-next {
-    right: -25px;
-}
-
-.carousel-nav:hover {
-    background: #6c8aff;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 5px 20px rgba(108, 138, 255, 0.4);
-}
-
-.carousel-nav:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.carousel-dot.active {
-    background: #6c8aff;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(108, 138, 255, 0.5);
-}
-
-/* Light theme adjustments for carousel elements */
-html[data-theme="light"] .carousel-nav {
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="light"] .carousel-nav:hover {
-    background: #6c8aff;
-    color: white;
-    box-shadow: 0 5px 20px rgba(108, 138, 255, 0.3);
-}
-
-html[data-theme="light"] .carousel-dot {
-    background: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .carousel-dot.active {
-    background: #6c8aff;
-    box-shadow: 0 0 10px rgba(108, 138, 255, 0.4);
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    .journey-card {
-        min-width: 280px;
-        max-width: 280px;
-        flex: 0 0 280px;
-    }
-    
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .carousel-prev {
-        left: -10px;
-    }
-    
-    .carousel-next {
-        right: -10px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1200px) {
-    .journey-card {
-        min-width: calc(50% - 20px);
-        max-width: calc(50% - 20px);
-        flex: 0 0 calc(50% - 20px);
-    }
+    .timeline { padding-left: 16px; }
+    .timeline:before { left: 24px; }
+    .timeline-item { grid-template-columns: 48px 1fr; gap: 12px; }
+    .timeline-content { padding: 22px 22px; }
+    .timeline-content h3 { font-size: 1.25rem; }
+    .timeline-content p { font-size: 0.98rem; line-height: 1.7; }
 }
 </style>
 
 <script>
-// Journey Carousel Functionality
+// Journey Timeline reveal
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.journey-carousel');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    const indicators = document.querySelector('.carousel-indicators');
-    const cards = Array.from(document.querySelectorAll('.journey-card'));
-    
-    // Set animation delay index for each card
-    cards.forEach((card, index) => {
-        card.style.setProperty('--card-index', index);
-    });
-    
-    // Create indicator dots
-    cards.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => scrollToCard(index));
-        indicators.appendChild(dot);
-    });
-    
-    const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-    
-    // Update active dot based on scroll position
-    carousel.addEventListener('scroll', () => {
-        const scrollPosition = carousel.scrollLeft;
-        const cardWidth = carousel.querySelector('.journey-card').offsetWidth + 20; // card width + gap
-        const activeIndex = Math.round(scrollPosition / cardWidth);
-        
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === activeIndex);
-        });
-        
-        // Update button states
-        prevButton.disabled = scrollPosition <= 0;
-        nextButton.disabled = scrollPosition >= carousel.scrollWidth - carousel.clientWidth;
-    });
-    
-    // Scroll to specific card
-    function scrollToCard(index) {
-        const cardWidth = carousel.querySelector('.journey-card').offsetWidth + 20; // card width + gap
-        carousel.scrollTo({
-            left: index * cardWidth,
-            behavior: 'smooth'
-        });
+    const items = document.querySelectorAll('.timeline-item');
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('visible'));
+        return;
     }
-    
-    // Button click handlers
-    prevButton.addEventListener('click', () => {
-        const cardWidth = carousel.querySelector('.journey-card').offsetWidth + 20;
-        carousel.scrollBy({
-            left: -cardWidth,
-            behavior: 'smooth'
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                io.unobserve(entry.target);
+            }
         });
-    });
-    
-    nextButton.addEventListener('click', () => {
-        const cardWidth = carousel.querySelector('.journey-card').offsetWidth + 20;
-        carousel.scrollBy({
-            left: cardWidth,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Enable horizontal scrolling with mouse wheel
-    carousel.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const scrollAmount = e.deltaY > 0 ? 100 : -100;
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }, { passive: false });
-    
-    // Add floating particles to journey section
-    const journeySection = document.querySelector('.journey-section');
-    for (let i = 0; i < 20; i++) {
-        createParticle(journeySection);
-    }
-    
-    function createParticle(container) {
-        const particle = document.createElement('div');
-        particle.classList.add('journey-particle');
-        
-        // Random position
-        const top = Math.random() * 100;
-        const left = Math.random() * 100;
-        particle.style.top = `${top}%`;
-        particle.style.left = `${left}%`;
-        
-        // Random size
-        const size = Math.random() * 3 + 1;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        // Random animation
-        const duration = Math.random() * 30 + 10;
-        particle.style.animation = `particleFloat ${duration}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 10}s`;
-        
-        container.appendChild(particle);
-    }
-    
-    // Initial button state
-    prevButton.disabled = true;
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    items.forEach(el => io.observe(el));
 });
 </script>
 
@@ -19366,7 +19051,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="fas fa-envelope"></i>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p><a href="mailto:ananth.deepaksharma3@gmail.com">ananth.deepaksharma3@gmail.com</a></p>
+                            <p>
+                                <button type="button" class="email-button" id="contactEmailBtn">
+                                    <i class="fas fa-envelope-open"></i> Email me
+                                </button>
+                                <span class="email-status" id="contactEmailStatus" aria-live="polite"></span>
+                            </p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -19671,6 +19361,33 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: translateX(5px);
     }
 
+    /* Email button styling */
+    .email-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        background: rgba(108, 138, 255, 0.15);
+        color: #fff;
+        border: 1px solid rgba(108, 138, 255, 0.35);
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
+    html[data-theme="light"] .email-button {
+        color: #1a1a2e;
+    }
+    .email-button:hover {
+        background: rgba(108, 138, 255, 0.25);
+        transform: translateY(-1px);
+    }
+    .email-status {
+        margin-left: 8px;
+        font-size: 0.9rem;
+        color: #9aa4ff;
+    }
+
     @media (max-width: 992px) {
         .contact-content {
             grid-template-columns: 1fr;
@@ -19703,6 +19420,62 @@ document.addEventListener('DOMContentLoaded', function() {
     </style>
 
     <script>
+    // Obfuscated email reveal to deter basic scrapers
+    (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('contactEmailBtn');
+            var statusEl = document.getElementById('contactEmailStatus');
+            if (!btn) return;
+            
+            function getEmail() {
+                // Build: ananth.deepaksharma2 + @ + gmail + .com
+                var u1 = 'ananth';
+                var dot = '.';
+                var u2 = 'deepaksharma2';
+                var at = '@';
+                var d1 = 'gmail';
+                var d2 = '.com';
+                return u1 + dot + u2 + at + d1 + d2;
+            }
+            
+            function openMailClient() {
+                var email = getEmail();
+                var subject = encodeURIComponent('Hello from your portfolio');
+                var body = encodeURIComponent('Hi Ananth,\n\n');
+                window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+            }
+            
+            function copyToClipboard(text) {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+                // Fallback
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                var ok = false;
+                try { ok = document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+                return ok ? Promise.resolve() : Promise.reject();
+            }
+            
+            btn.addEventListener('click', function() {
+                var email = getEmail();
+                // Try to open mail client first; also copy to clipboard for convenience
+                openMailClient();
+                copyToClipboard(email).then(function() {
+                    if (statusEl) { statusEl.textContent = ' (email copied)'; }
+                }).catch(function() {
+                    if (statusEl) { statusEl.textContent = ' (email ready)'; }
+                });
+            });
+        });
+    })();
+    </script>
     function handleSubmit(event) {
         event.preventDefault();
         
@@ -20145,86 +19918,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 
-    <!-- Initialize ScrollReveal for animations -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize ScrollReveal
-            const sr = ScrollReveal({
-                origin: 'bottom',
-                distance: '30px',
-                duration: 800,
-                delay: 300,
-                easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-                reset: false
-            });
-            
-            // Animate sections and elements
-            sr.reveal('.section-title', {
-                origin: 'top',
-                delay: 100
-            });
-
-            // Special handling for light mode journey section
-            const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
-            
-            // Journey section optimized animations with reduced delay and duration in light mode
-            if (isLightMode) {
-                // Force immediate reveal for journey items in light mode
-                document.querySelectorAll('.journey-item').forEach(item => {
-                    item.style.opacity = '1';
-                    item.style.visibility = 'visible';
-                    item.style.transform = 'translateY(0)';
-                });
-                
-                // Apply faster animations with no delay for timeline elements
-                sr.reveal('.journey-timeline::before', {
-                    origin: 'top',
-                    delay: 0,
-                    duration: 600,
-                    scale: 1
-                });
-                
-                sr.reveal('.journey-date', {
-                    delay: 0,
-                    interval: 50,
-                    scale: 1
-                });
-            } else {
-                // Normal animation timing for dark mode
-                sr.reveal('.journey-timeline::before', {
-                    origin: 'top',
-                    delay: 200,
-                    duration: 1200,
-                    scale: 1
-                });
-                
-                sr.reveal('.journey-item:nth-child(odd) .journey-content', {
-                    origin: 'left',
-                    delay: 300,
-                    interval: 200
-                });
-                
-                sr.reveal('.journey-item:nth-child(even) .journey-content', {
-                    origin: 'right',
-                    delay: 300,
-                    interval: 200
-                });
-                
-                sr.reveal('.journey-date', {
-                    delay: 500,
-                    interval: 200,
-                    scale: 0.8
-                });
-            }
-            
-            // About, Skills, Portfolio sections
-            sr.reveal('.about-content', { delay: 200 });
-            sr.reveal('.skills-content', { delay: 200 });
-            sr.reveal('.portfolio-tabs', { delay: 200 });
-            sr.reveal('.portfolio-item', { delay: 300, interval: 100 });
-            sr.reveal('.contact-methods, .contact-form', { delay: 200, interval: 200 });
-        });
-    </script>
+    <!-- Removed: ScrollReveal setup (no longer needed) -->
+    <!-- <script> ... </script> -->
 
     <!-- Final journey section fix script -->
     <script>
