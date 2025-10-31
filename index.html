@@ -19047,23 +19047,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>Seattle, Washington</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item clickable" id="contactEmailItem" aria-label="Email: Click to compose">
                         <i class="fas fa-envelope"></i>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p>
-                                <button type="button" class="email-button" id="contactEmailBtn">
-                                    <i class="fas fa-envelope-open"></i> Email me
-                                </button>
-                                <span class="email-status" id="contactEmailStatus" aria-live="polite"></span>
-                            </p>
+                            <p>Click to compose</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item clickable" id="workEmailItem" aria-label="Work Inquiries: Click to compose">
                         <i class="fas fa-briefcase"></i>
                         <div class="contact-details">
                             <h3>Work Inquiries</h3>
-                            <p>Open to freelance opportunities and collaborations</p>
+                            <p>Open to freelance opportunities and collaborations — click to compose</p>
                         </div>
                     </div>
                 </div>
@@ -19361,32 +19356,10 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: translateX(5px);
     }
 
-    /* Email button styling */
-    .email-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 14px;
-        background: rgba(108, 138, 255, 0.15);
-        color: #fff;
-        border: 1px solid rgba(108, 138, 255, 0.35);
-        border-radius: 999px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.25s ease;
-    }
-    html[data-theme="light"] .email-button {
-        color: #1a1a2e;
-    }
-    .email-button:hover {
-        background: rgba(108, 138, 255, 0.25);
-        transform: translateY(-1px);
-    }
-    .email-status {
-        margin-left: 8px;
-        font-size: 0.9rem;
-        color: #9aa4ff;
-    }
+    /* Make contact items clickable affordance */
+    .contact-item.clickable { cursor: pointer; }
+    .contact-item.clickable:hover { background: rgba(255, 255, 255, 0.08); }
+    html[data-theme="light"] .contact-item.clickable:hover { background: rgba(0, 0, 0, 0.08); }
 
     @media (max-width: 992px) {
         .contact-content {
@@ -19420,62 +19393,50 @@ document.addEventListener('DOMContentLoaded', function() {
     </style>
 
     <script>
-    // Obfuscated email reveal to deter basic scrapers
+    // Make the entire contact items clickable; obfuscate emails in JS
     (function() {
         document.addEventListener('DOMContentLoaded', function() {
-            var btn = document.getElementById('contactEmailBtn');
-            var statusEl = document.getElementById('contactEmailStatus');
-            if (!btn) return;
-            
-            function getEmail() {
-                // Build: ananth.deepaksharma2 + @ + gmail + .com
-                var u1 = 'ananth';
-                var dot = '.';
-                var u2 = 'deepaksharma2';
+            var contactEmailItem = document.getElementById('contactEmailItem');
+            var workEmailItem = document.getElementById('workEmailItem');
+
+            function buildEmail(user, domain) {
                 var at = '@';
-                var d1 = 'gmail';
-                var d2 = '.com';
-                return u1 + dot + u2 + at + d1 + d2;
+                var dot = '.';
+                return user + at + domain + dot + 'com';
             }
-            
-            function openMailClient() {
-                var email = getEmail();
+
+            function openMail(email) {
                 var subject = encodeURIComponent('Hello from your portfolio');
                 var body = encodeURIComponent('Hi Ananth,\n\n');
                 window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
             }
-            
-            function copyToClipboard(text) {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    return navigator.clipboard.writeText(text);
-                }
-                // Fallback
-                var ta = document.createElement('textarea');
-                ta.value = text;
-                ta.style.position = 'fixed';
-                ta.style.opacity = '0';
-                document.body.appendChild(ta);
-                ta.focus();
-                ta.select();
-                var ok = false;
-                try { ok = document.execCommand('copy'); } catch (e) {}
-                document.body.removeChild(ta);
-                return ok ? Promise.resolve() : Promise.reject();
-            }
-            
-            btn.addEventListener('click', function() {
-                var email = getEmail();
-                // Try to open mail client first; also copy to clipboard for convenience
-                openMailClient();
-                copyToClipboard(email).then(function() {
-                    if (statusEl) { statusEl.textContent = ' (email copied)'; }
-                }).catch(function() {
-                    if (statusEl) { statusEl.textContent = ' (email ready)'; }
+
+            function attachClick(el, emailParts) {
+                if (!el) return;
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', function() {
+                    var email = buildEmail(emailParts.user, emailParts.domain);
+                    openMail(email);
                 });
-            });
+                el.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        var email = buildEmail(emailParts.user, emailParts.domain);
+                        openMail(email);
+                    }
+                });
+                el.tabIndex = 0;
+                el.setAttribute('role', 'button');
+            }
+
+            // Primary contact email: ananth.deepaksharma2@gmail.com
+            attachClick(contactEmailItem, { user: 'ananth.deepaksharma2', domain: 'gmail' });
+            // Work inquiries email: ananth.deepaksharma3@gmail.com
+            attachClick(workEmailItem, { user: 'ananth.deepaksharma3', domain: 'gmail' });
         });
     })();
     </script>
+    <script>
     function handleSubmit(event) {
         event.preventDefault();
         
