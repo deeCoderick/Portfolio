@@ -95,6 +95,33 @@
             color: #333;
         }
         
+        .project-counter {
+            margin: 0.5rem 0 1rem 0;
+        }
+        
+        #project-count {
+            display: inline-block;
+            background: rgba(108, 138, 255, 0.2);
+            color: #6c8aff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(108, 138, 255, 0.3);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        html[data-theme="light"] #project-count {
+            background: rgba(108, 138, 255, 0.1);
+            color: #4a67d9;
+            border: 1px solid rgba(108, 138, 255, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .tag-filter-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -135,28 +162,73 @@
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
             margin-bottom: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Make TECH project cards appear in a single horizontal row */
+        #tech-projects-section .projects-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 0.5rem; /* space for scrollbar */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Each card stays its own width and snaps nicely */
+        #tech-projects-section .project-card-link {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+        
+        /* Reasonable card width for horizontal layout */
+        #tech-projects-section .project-card {
+            width: 820px;
+            max-width: 92vw;
         }
         
         @media (max-width: 768px) {
             .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            /* Switch to vertical layout on mobile */
+            .project-card {
+                flex-direction: column;
+                min-height: auto;
+                max-height: none;
+            }
+            
+            .project-image {
+                width: 100%;
+                min-width: auto;
+                height: 200px;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
             }
         }
         
         /* Project Card */
         .project-card {
             background: rgba(30, 30, 50, 0.7);
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
-            height: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 280px;
+            max-height: 350px;
         }
         
         .project-card-link {
@@ -179,10 +251,12 @@
         }
         
         .project-image {
-            height: 200px;
+            width: 40%;
+            min-width: 300px;
             background-size: cover;
             background-position: center;
             position: relative;
+            flex-shrink: 0;
         }
         
         .project-image::before {
@@ -196,17 +270,20 @@
         }
         
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem 2.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            min-width: 0; /* Allows text to wrap properly */
         }
         
         .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: #fff;
+            line-height: 1.2;
         }
         
         html[data-theme="light"] .project-title {
@@ -216,9 +293,10 @@
         .project-description {
             margin-bottom: 1.5rem;
             color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
             flex-grow: 1;
+            max-width: 100%;
         }
         
         html[data-theme="light"] .project-description {
@@ -337,6 +415,11 @@
             
             .tag-btn {
                 padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            #project-count {
+                padding: 0.3rem 0.8rem;
                 font-size: 0.8rem;
             }
             
@@ -1054,6 +1137,9 @@
             <div class="tag-filter-container">
                 <div class="tag-filter-heading">
                     <h3>Filter by Technology</h3>
+                    <div class="project-counter">
+                        <span id="project-count">Loading projects...</span>
+                    </div>
                 </div>
                 <div class="tag-filter-buttons">
                     <button class="tag-btn active" data-filter="all">All Projects</button>
@@ -1108,7 +1194,6 @@
                                 <span class="tech-tag">AWS</span>
                             </div>
                             <div class="project-links">
-                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
                                 <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
                             </div>
                         </div>
@@ -1129,7 +1214,6 @@
                                 <span class="tech-tag">PostgreSQL</span>
                             </div>
                             <div class="project-links">
-                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
                                 <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
                             </div>
                         </div>
@@ -1150,7 +1234,6 @@
                                 <span class="tech-tag">Firebase</span>
                             </div>
                             <div class="project-links">
-                                <span class="project-link"><i class="fas fa-globe"></i> Live Demo</span>
                                 <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
                             </div>
                         </div>
@@ -1635,6 +1718,32 @@
             // Initial check
             updateBackToTopButton();
             
+            // Function to update project counter
+            function updateProjectCounter() {
+                const activeSection = document.querySelector('.project-section.active');
+                if (activeSection) {
+                    const projectCards = activeSection.querySelectorAll('.project-card');
+                    const visibleCards = activeSection.querySelectorAll('.project-card-link[style*="display: block"], .project-card-link:not([style*="display: none"])');
+                    const totalProjects = projectCards.length;
+                    const visibleProjects = visibleCards.length;
+                    
+                    const counterElement = document.getElementById('project-count');
+                    if (counterElement) {
+                        if (visibleProjects === totalProjects) {
+                            counterElement.textContent = `Showing all ${totalProjects} projects`;
+                        } else {
+                            counterElement.textContent = `Showing ${visibleProjects} of ${totalProjects} projects`;
+                        }
+                        
+                        // Add animation effect
+                        counterElement.style.animation = 'none';
+                        setTimeout(() => {
+                            counterElement.style.animation = 'fadeIn 0.3s ease-in-out';
+                        }, 10);
+                    }
+                }
+            }
+            
             // Filter functionality
             const filterButtons = document.querySelectorAll('.tag-btn');
             
@@ -1669,6 +1778,11 @@
                                 }, 300);
                             }
                         });
+                        
+                        // Update counter after a short delay to ensure display changes take effect
+                        setTimeout(() => {
+                            updateProjectCounter();
+                        }, 350);
                     }
                 });
             });
@@ -1683,6 +1797,11 @@
                     tagButton.click();
                 }
             }
+            
+            // Initialize project counter on page load
+            setTimeout(() => {
+                updateProjectCounter();
+            }, 100);
             
             // LeetCode Section Animation
             function animateLeetCodeStats() {
@@ -1806,6 +1925,11 @@
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
                     });
+                    
+                    // Update project counter
+                    setTimeout(() => {
+                        updateProjectCounter();
+                    }, 100);
                     
                     // Reset filter to "All Projects" if there are filter buttons
                     const filterButtons = targetSection.querySelectorAll('.tag-btn');

@@ -11,13 +11,14 @@ function initTheme() {
     // Find manual theme toggle button
     const themeToggleButton = document.querySelector('.theme-toggle');
     
-    if (themeToggleButton) {
+    if (themeToggleButton && !window.themeManager) {
         // Update the toggle appearance based on current theme
         updateToggleAppearance(savedTheme, themeToggleButton);
         
         // Ensure click handler is attached
         themeToggleButton.addEventListener('click', function() {
             toggleTheme(themeToggleButton);
+            UISound.play('toggle');
         });
     }
 }
@@ -119,3 +120,146 @@ setTimeout(function() {
         updateToggleAppearance(currentTheme, themeToggleButton);
     }
 }, 500); 
+
+// ==============================
+// Subtle UI Sound Effects (WebAudio)
+// ==============================
+const UISound = (function() {
+    let ctx = null;
+    let unlocked = false;
+    let masterGain = null;
+    const volume = 0.06; // Gentle default volume
+
+    function ensureContext() {
+        if (!ctx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return false;
+            ctx = new AudioContext();
+            masterGain = ctx.createGain();
+            masterGain.gain.value = volume;
+            masterGain.connect(ctx.destination);
+        }
+        if (ctx && ctx.state === 'suspended') {
+            ctx.resume();
+        }
+        return !!ctx;
+    }
+
+    function unlockOnFirstGesture() {
+        if (unlocked) return;
+        const handler = () => {
+            if (ensureContext()) {
+                unlocked = true;
+                document.removeEventListener('pointerdown', handler, true);
+                document.removeEventListener('keydown', handler, true);
+            }
+        };
+        document.addEventListener('pointerdown', handler, true);
+        document.addEventListener('keydown', handler, true);
+    }
+
+    function tone(frequency, durationMs, type = 'sine', attack = 0.005, release = 0.08) {
+        if (!ensureContext()) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(frequency, now);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(1, now + attack);
+        const end = now + durationMs / 1000;
+        gain.gain.exponentialRampToValueAtTime(0.0001, end + release);
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start(now);
+        osc.stop(end + release + 0.02);
+    }
+
+    function chord(freqs, durationMs) {
+        freqs.forEach((f, i) => tone(f, durationMs - i * 15, 'sine', 0.005, 0.1));
+    }
+
+    function play(kind) {
+        const disabled = localStorage.getItem('ui-sound') === 'off';
+        if (disabled) return;
+        switch (kind) {
+            case 'toggle':
+                chord([440, 660], 120); // Soft pleasant toggle
+                break;
+            case 'hover':
+                tone(520, 60, 'triangle');
+                break;
+            case 'click':
+                tone(280, 70, 'square');
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Auto-init gesture unlock
+    unlockOnFirstGesture();
+
+    // Bind generic UI hover/click sounds (lightweight)
+    document.addEventListener('mouseover', (e) => {
+        const el = e.target.closest('.btn, .portfolio-nav-button');
+        if (el) play('hover');
+    }, { passive: true });
+    document.addEventListener('click', (e) => {
+        const el = e.target.closest('.btn, .portfolio-nav-button, .theme-toggle');
+        if (el) play('click');
+    }, { passive: true });
+
+    return { play };
+})();
+
+// ==============================
+// Micro-animations: reveal + magnetic hover
+// ==============================
+(function initMicroAnimations() {
+    // Inject minimal styles for reveal animation
+    const style = document.createElement('style');
+    style.textContent = `
+        .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
+        .reveal.revealed{opacity:1;transform:translateY(0)}
+    `;
+    document.head.appendChild(style);
+
+    const candidates = ['.card', '.portfolio-item', '.contact-item', '.skill-category'];
+    const elements = document.querySelectorAll(candidates.join(','));
+    elements.forEach(el => el.classList.add('reveal'));
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    elements.forEach(el => io.observe(el));
+
+    // Magnetic hover for buttons/cards (subtle)
+    function attachMagnetic(el, strength = 8) {
+        let raf = null;
+        function onMove(e) {
+            const rect = el.getBoundingClientRect();
+            const relX = e.clientX - rect.left - rect.width / 2;
+            const relY = e.clientY - rect.top - rect.height / 2;
+            const tx = Math.max(-strength, Math.min(strength, (relX / (rect.width / 2)) * strength));
+            const ty = Math.max(-strength, Math.min(strength, (relY / (rect.height / 2)) * strength));
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+                el.style.transform = `translate(${tx}px, ${ty}px)`;
+            });
+        }
+        function onLeave() {
+            if (raf) cancelAnimationFrame(raf);
+            el.style.transform = 'translate(0, 0)';
+        }
+        el.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', onLeave);
+    }
+
+    document.querySelectorAll('.btn, .portfolio-nav-button').forEach(el => attachMagnetic(el));
+})();

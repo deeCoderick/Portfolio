@@ -11,21 +11,21 @@ function initializeTheme() {
         // Update initial icon state
         updateToggleIcons(savedTheme);
         
-        // Add click event listener
+        // Add click event listener (delegate to global manager if present)
         themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            // Update theme
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update icons
-            updateToggleIcons(newTheme);
-            
-            // Add animation class
-            themeToggle.classList.add('animated');
-            setTimeout(() => themeToggle.classList.remove('animated'), 300);
+            const manager = window.themeManager;
+            if (manager && typeof manager.toggle === 'function') {
+                manager.toggle();
+            } else {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleIcons(newTheme);
+            }
+            // Add animation class aligned with CSS
+            themeToggle.classList.add('theme-animate');
+            setTimeout(() => themeToggle.classList.remove('theme-animate'), 300);
         });
     }
 }
