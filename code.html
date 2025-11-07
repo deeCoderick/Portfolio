@@ -28,7 +28,6 @@
     <link rel="mask-icon" href="assets/Logo/logo.png" color="#000000">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="theme-toggle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -170,29 +169,8 @@
             margin-right: auto;
         }
         
-        /* Make TECH project cards appear in a single horizontal row */
-        #tech-projects-section .projects-grid {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            padding-bottom: 0.5rem; /* space for scrollbar */
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
         
-        /* Each card stays its own width and snaps nicely */
-        #tech-projects-section .project-card-link {
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-        }
-        
-        /* Reasonable card width for horizontal layout */
-        #tech-projects-section .project-card {
-            width: 820px;
-            max-width: 92vw;
-        }
+        /* Ensure single-column layout across breakpoints */
         
         @media (max-width: 768px) {
             .projects-grid {
@@ -270,7 +248,7 @@
         }
         
         .project-content {
-            padding: 2rem 2.5rem;
+            padding: 2rem 2.5rem 2.5rem; /* extra bottom padding for buttons */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -328,6 +306,7 @@
             display: flex;
             gap: 1rem;
             margin-top: auto;
+            padding-top: 0.5rem;
         }
         
         .project-link {
@@ -1104,19 +1083,7 @@
                         </button>
                     </div>
                     
-                    <!-- Soft Skills Projects -->
-                    <div class="overview-card" onclick="showSection('soft-skills-section')">
-                        <div class="overview-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="overview-title">Leadership & Management</h3>
-                        <p class="overview-description">Team leadership, mentorship programs, event coordination, and process improvement initiatives.</p>
-                        <div class="overview-count">4 Key Projects</div>
-                        <button class="overview-cta">
-                            <i class="fas fa-arrow-right"></i>
-                            View Soft Skills
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1243,200 +1210,360 @@
                 <!-- All other projects... -->
                 <a href="project-universal-mcp-gateway.html" class="project-card-link">
                     <div class="project-card" data-tags="llm api gateway">
-                        <div class="project-image" style="background-image: url('assets/images/projects/gateway.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Universal MCP Gateway</h3>
                             <p class="project-description">Bridges LLMs to private APIs via Model‑Context‑Protocol; think "API Gateway for AI agents".</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">LLM</span>
+                                <span class="tech-tag">API Gateway</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">TypeScript</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-ai-knowledge-lake.html" class="project-card-link">
                     <div class="project-card" data-tags="supabase ai vector">
-                        <div class="project-image" style="background-image: url('assets/images/projects/knowledge-lake.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=2069&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">AI Knowledge Lake</h3>
                             <p class="project-description">Supabase‑style stack that ingests, vectorizes, and chats with your docs.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Supabase</span>
+                                <span class="tech-tag">Embeddings</span>
+                                <span class="tech-tag">RAG</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-multi-agent-research-assistant.html" class="project-card-link">
                     <div class="project-card" data-tags="multi-agent research ai">
-                        <div class="project-image" style="background-image: url('assets/images/projects/research-assistant.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Multi‑Agent Research Assistant</h3>
                             <p class="project-description">OWL‑inspired system where planner, researcher, and writer agents collaborate.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Agents</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenAI</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-cli-mcp-tools.html" class="project-card-link">
                     <div class="project-card" data-tags="cli mcp tools">
-                        <div class="project-image" style="background-image: url('assets/images/projects/cli-tools.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">CLI MCP Tools</h3>
                             <p class="project-description">Turns any HTTP MCP server into local shell commands (auto‑completes & JSON output).</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">CLI</span>
+                                <span class="tech-tag">TypeScript</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-self-updating-portfolio-builder.html" class="project-card-link">
                     <div class="project-card" data-tags="portfolio ai nextjs">
-                        <div class="project-image" style="background-image: url('assets/images/projects/portfolio-builder.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Self‑Updating Portfolio Builder</h3>
                             <p class="project-description">AI converts résumé → Next.js site; Github‑Actions rebuild on commit.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">GitHub Actions</span>
+                                <span class="tech-tag">Vercel</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-precise-timing-tts-engine.html" class="project-card-link">
                     <div class="project-card" data-tags="tts voice ai">
-                        <div class="project-image" style="background-image: url('assets/images/projects/tts-engine.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Precise‑Timing TTS Engine</h3>
                             <p class="project-description">Open‑source voice model that respects exact duration for media workflows.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">DSP</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-digital-twin-chatbot.html" class="project-card-link">
                     <div class="project-card" data-tags="chatbot digital-twin ai">
-                        <div class="project-image" style="background-image: url('assets/images/projects/digital-twin.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1497014381710-8fd1f10eb5f8?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Digital‑Twin Chatbot</h3>
                             <p class="project-description">Personal assistant trained on my notes & style; can draft emails and tweets.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">LLM</span>
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">Voice</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-multimodal-speech-model.html" class="project-card-link">
                     <div class="project-card" data-tags="speech transformer ai">
-                        <div class="project-image" style="background-image: url('assets/images/projects/speech-model.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Multimodal Speech Model</h3>
                             <p class="project-description">Text+audio Transformer producing natural speech on consumer GPUs.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Transformers</span>
+                                <span class="tech-tag">Speech</span>
+                                <span class="tech-tag">CUDA</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-agent-container-spec.html" class="project-card-link">
                     <div class="project-card" data-tags="agent container spec">
-                        <div class="project-image" style="background-image: url('assets/images/projects/agent-container.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2069&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Agent Container Spec</h3>
                             <p class="project-description">Portable archive (zip) bundling agent weights, memory, and tools.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Spec</span>
+                                <span class="tech-tag">Serialization</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-blender-copilot.html" class="project-card-link">
                     <div class="project-card" data-tags="blender copilot 3d">
-                        <div class="project-image" style="background-image: url('assets/images/projects/blender-copilot.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Blender Copilot</h3>
                             <p class="project-description">Natural‑language → 3‑D geometry via MCP calls to Blender Python API.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Blender</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">MCP</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-crypto-hft-backtester.html" class="project-card-link">
                     <div class="project-card" data-tags="crypto hft rust">
-                        <div class="project-image" style="background-image: url('assets/images/projects/hft-backtester.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Crypto HFT Backtester</h3>
                             <p class="project-description">Tick‑level simulation of limit‑order‑book strategies in Rust.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Rust</span>
+                                <span class="tech-tag">Backtesting</span>
+                                <span class="tech-tag">LOB</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-staking-smart-contract-suite.html" class="project-card-link">
                     <div class="project-card" data-tags="staking smart-contract solidity">
-                        <div class="project-image" style="background-image: url('assets/images/projects/staking-contract.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Staking Smart‑Contract Suite</h3>
                             <p class="project-description">Audited ERC‑20/1155 contracts with upgradeable proxies.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Solidity</span>
+                                <span class="tech-tag">Hardhat</span>
+                                <span class="tech-tag">OpenZeppelin</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-iot-telemetry-platform.html" class="project-card-link">
                     <div class="project-card" data-tags="iot telemetry kafka druid">
-                        <div class="project-image" style="background-image: url('assets/images/projects/iot-platform.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">IoT Telemetry Platform</h3>
                             <p class="project-description">MQTT edge → Kafka / Druid dashboards with per‑device auth.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">MQTT</span>
+                                <span class="tech-tag">Kafka</span>
+                                <span class="tech-tag">Druid</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-legged-robot-slam-stack.html" class="project-card-link">
                     <div class="project-card" data-tags="robot slam ros2 lidar">
-                        <div class="project-image" style="background-image: url('assets/images/projects/robot-slam.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1581091215367-59ab6dcef1b0?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Legged‑Robot SLAM Stack</h3>
                             <p class="project-description">ROS2 package for lidar‑based autonomy in GNSS‑denied spaces.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">ROS2</span>
+                                <span class="tech-tag">LiDAR</span>
+                                <span class="tech-tag">C++</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-end-to-end-ml-pipeline.html" class="project-card-link">
                     <div class="project-card" data-tags="ml pipeline airflow">
-                        <div class="project-image" style="background-image: url('assets/images/projects/ml-pipeline.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">End‑to‑End ML Pipeline</h3>
                             <p class="project-description">Airflow orchestrated feature store, model training, and CI/CD.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Airflow</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-customer-ltv-predictor.html" class="project-card-link">
                     <div class="project-card" data-tags="ltv predictor gradient-boosting">
-                        <div class="project-image" style="background-image: url('assets/images/projects/ltv-predictor.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Customer LTV Predictor</h3>
                             <p class="project-description">Gradient‑boosting & cohort analysis for e‑commerce retention.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">XGBoost</span>
+                                <span class="tech-tag">Pandas</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-bias-behavior-experiment-app.html" class="project-card-link">
                     <div class="project-card" data-tags="bias behavior experiment">
-                        <div class="project-image" style="background-image: url('assets/images/projects/bias-experiment.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Bias‑Behavior Experiment App</h3>
                             <p class="project-description">Gamified tasks logging decision‑bias metrics for research.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-serverless-e-commerce-pay-by-bank.html" class="project-card-link">
                     <div class="project-card" data-tags="serverless ecommerce astro fednow">
-                        <div class="project-image" style="background-image: url('assets/images/projects/serverless-ecommerce.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Serverless E‑Commerce Pay‑by‑Bank</h3>
                             <p class="project-description">Astro storefront + FedNow rails Step‑Functions backend.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Step Functions</span>
+                                <span class="tech-tag">Astro</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-federated-expense-classifier.html" class="project-card-link">
                     <div class="project-card" data-tags="federated expense classifier tflite">
-                        <div class="project-image" style="background-image: url('assets/images/projects/expense-classifier.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1585247226801-bc613c441316?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Federated Expense Classifier</h3>
                             <p class="project-description">On‑device TensorFlow Lite model with TFF aggregator.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">TensorFlow Lite</span>
+                                <span class="tech-tag">Federated</span>
+                                <span class="tech-tag">Android</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
                 
                 <a href="project-quantum-safe-file-vault.html" class="project-card-link">
                     <div class="project-card" data-tags="quantum safe file vault tauri">
-                        <div class="project-image" style="background-image: url('assets/images/projects/file-vault.jpg')"></div>
+                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1974&auto=format&fit=crop')"></div>
                         <div class="project-content">
                             <h3 class="project-title">Quantum‑Safe File Vault</h3>
                             <p class="project-description">Kyber‑encrypted vault with Tauri desktop UI.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Rust</span>
+                                <span class="tech-tag">Tauri</span>
+                                <span class="tech-tag">Kyber</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link"><i class="fas fa-globe"></i> View Project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -1551,100 +1678,7 @@
             </div>
         </div>
 
-        <!-- Soft Skills Section -->
-        <div class="project-section" id="soft-skills-section">
-            <button class="section-back-btn" onclick="showOverview()">
-                <i class="fas fa-arrow-left"></i>
-                Back to Overview
-            </button>
-            
-            <div class="section-header">
-                <h2 class="section-title">Leadership & Management</h2>
-                <p class="section-description">Showcasing my leadership, mentoring, event management, and operational efficiency improvement projects.</p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Team Leadership & Management -->
-                <a href="project-team-leadership-management.html" class="project-card-link">
-                    <div class="project-card" data-tags="leadership management teambuilding">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Team Leadership & Management</h3>
-                            <p class="project-description">Led cross-functional teams to successfully deliver complex software projects, improving productivity and reducing turnover through effective management practices.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Team Building</span>
-                                <span class="tech-tag">Strategic Planning</span>
-                                <span class="tech-tag">Conflict Resolution</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-certificate"></i> Certification</a>
-                                <a href="#" class="project-link"><i class="fas fa-user-tie"></i> Portfolio</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Technical Mentorship Program -->
-                <a href="project-technical-mentorship-program.html" class="project-card-link">
-                    <div class="project-card" data-tags="mentorship coaching development">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Technical Mentorship Program</h3>
-                            <p class="project-description">Developed and led a structured mentorship program for junior developers, creating learning paths and providing guidance to accelerate skill acquisition.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Career Development</span>
-                                <span class="tech-tag">Knowledge Transfer</span>
-                                <span class="tech-tag">Technical Coaching</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-chalkboard-teacher"></i> Resources</a>
-                                <a href="#" class="project-link"><i class="fas fa-book"></i> Materials</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Tech Conference Coordination -->
-                <a href="project-tech-conference-coordination.html" class="project-card-link">
-                    <div class="project-card" data-tags="events planning logistics">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Tech Conference Coordination</h3>
-                            <p class="project-description">Planned and executed technology conferences and hackathons, managing logistics, speaker selection, and technical requirements while staying within budget constraints.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Event Planning</span>
-                                <span class="tech-tag">Logistics Management</span>
-                                <span class="tech-tag">Speaker Coordination</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-calendar-check"></i> Portfolio</a>
-                                <a href="#" class="project-link"><i class="fas fa-photo-video"></i> Highlights</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- DevOps Workflow Optimization -->
-                <a href="project-devops-workflow-optimization.html" class="project-card-link">
-                    <div class="project-card" data-tags="devops process efficiency">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">DevOps Workflow Optimization</h3>
-                            <p class="project-description">Redesigned development and operations processes to improve efficiency, reduce costs, and enhance product quality through structured methodologies.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Process Improvement</span>
-                                <span class="tech-tag">Resource Management</span>
-                                <span class="tech-tag">Operational Efficiency</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-cogs"></i> Portfolio</a>
-                                <a href="#" class="project-link"><i class="fas fa-chart-line"></i> Metrics</a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+        <!-- Soft Skills Section intentionally removed -->
     </main>
 
     <!-- Back to top button -->
