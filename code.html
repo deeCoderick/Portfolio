@@ -1839,7 +1839,6 @@
             
             // LeetCode Section Animation
             function animateLeetCodeStats() {
-                console.log('animateLeetCodeStats called');
                 // Real data from De_Maverick's LeetCode profile (updated January 2025)
                 // To keep this updated: Visit https://leetcode.com/u/De_Maverick/ and update the numbers below
                 const leetcodeData = {
@@ -1871,22 +1870,10 @@
                 const mediumProgressEl = document.getElementById('medium-progress');
                 const hardProgressEl = document.getElementById('hard-progress');
                 
-                console.log('Elements found:', {
-                    problemsSolved: !!problemsSolvedEl,
-                    acceptanceRate: !!acceptanceRateEl,
-                    contestRating: !!contestRatingEl,
-                    leetcodeRank: !!leetcodeRankEl,
-                    yearlySubmissions: !!yearlySubmissionsEl,
-                    maxStreak: !!maxStreakEl
-                });
-                
                 // If elements don't exist, return early
                 if (!problemsSolvedEl) {
-                    console.log('LeetCode elements not found, returning');
                     return;
                 }
-                
-                console.log('Setting values immediately for testing');
                 // Test by setting values immediately first
                 problemsSolvedEl.textContent = leetcodeData.problemsSolved;
                 acceptanceRateEl.textContent = leetcodeData.acceptanceRate + '%';
@@ -1902,10 +1889,7 @@
                 easyProgressEl.style.width = ((leetcodeData.easy / leetcodeData.problemsSolved) * 100) + '%';
                 mediumProgressEl.style.width = ((leetcodeData.medium / leetcodeData.problemsSolved) * 100) + '%';
                 hardProgressEl.style.width = ((leetcodeData.hard / leetcodeData.problemsSolved) * 100) + '%';
-                
-                console.log('Values set immediately, starting animations');
-                
-                return; // Temporary return to test immediate values
+                return;
             }
             
             // Function to reset LeetCode stats to initial state
