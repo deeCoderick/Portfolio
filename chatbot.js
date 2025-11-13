@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
         enabled: true,
         version: '2.0',
         debugMode: false,
-        // Enable this to keep Donna conversational while full features are being built
-        developmentMode: true,
         // Input restrictions
         maxMessageLength: 500,
         // EC2 Service Configuration
@@ -50,19 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Add development badge in header
-        try {
-            const titleEl = chatbotHeader ? chatbotHeader.querySelector('h3') : null;
-            if (titleEl && !titleEl.querySelector('.beta-badge')) {
-                const badge = document.createElement('span');
-                badge.className = 'beta-badge';
-                badge.textContent = 'Beta';
-                titleEl.appendChild(badge);
-            }
-        } catch (e) {
-            // non-fatal
-        }
-        
         // Test API connection
         testConnection();
         
@@ -85,9 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     addBotMessage("Welcome to Ananth's portfolio! I can help you navigate and answer questions about his work, skills, and projects.");
                 }, 1500);
-                setTimeout(() => {
-                    addBotMessage("Heads up: I’m in active development. I’ll give helpful, concise answers for now while the full experience is being built. 💡");
-                }, 2200);
                 setTimeout(() => {
                     addBotMessage("How can I assist you today?");
                 }, 2500);
@@ -258,87 +240,44 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show typing indicator
         showTypingIndicator();
         
-        // DEVELOPMENT MODE: always respond locally with a helpful, concise answer
-        if (CHATBOT_CONFIG.developmentMode) {
-            setTimeout(() => {
-                hideTypingIndicator();
-                addBotMessage(getDevelopmentResponse(message));
-                isLoading = false;
-                updateUI();
-            }, 600);
-            return;
-        }
-        
-        // PRODUCTION/HYBRID: use API with graceful fallback
         try {
+            // Try to get AI response from EC2 service
             const response = await callChatbotAPI(message);
+            
+            // Hide typing indicator
             hideTypingIndicator();
+            
+            // Add AI response
             addBotMessage(response);
+            
+            // Reset retry count on success
             retryCount = 0;
+            
         } catch (error) {
             console.error('Chatbot error:', error);
             hideTypingIndicator();
+            
+            // Handle different error types
             if (retryCount < CHATBOT_CONFIG.apiConfig.retryAttempts) {
                 retryCount++;
                 addBotMessage(
-                    `Network is a bit busy. Retrying... (${retryCount}/${CHATBOT_CONFIG.apiConfig.retryAttempts})`
+                    `Connection issue. Retrying... (${retryCount}/${CHATBOT_CONFIG.apiConfig.retryAttempts})`
                 );
+                
+                // Retry after delay
                 setTimeout(() => {
+                    // Re-add the message to retry
                     chatInput.value = message;
                     sendMessage();
-                }, 1200);
+                }, 2000);
             } else {
-                addBotMessage(getDevelopmentResponse(message));
+                addBotMessage(getOfflineResponse(message), true);
                 retryCount = 0;
             }
         } finally {
             isLoading = false;
             updateUI();
         }
-    }
-    
-    // Development-mode response: concise, friendly, and useful
-    function getDevelopmentResponse(message) {
-        const text = message.toLowerCase();
-        
-        // Quick intents
-        if (/hello|hi|hey|yo|good (morning|afternoon|evening)/.test(text)) {
-            return "Hi! I’m Donna. I’m still being built, but I can help with Ananth’s projects, skills, and contact info. Ask away! 😊";
-        }
-        if (/help|what can you do|commands/.test(text)) {
-            return `Here’s what I can help with right now:<br>
-• Navigate: “show projects”, “skills”, “contact”<br>
-• Info: “who is Ananth?”, “experience”, “resume”<br>
-• Links: “github”, “linkedin”, “email”<br><br>
-Note: I’m in active development — smarter answers are coming soon.`;
-        }
-        if (/project|portfolio|work|build|made/.test(text)) {
-            return `You can browse featured projects in the Tech Projects section of this page. If you want specifics, ask “show AI projects” or “e‑commerce project details”.`;
-        }
-        if (/skill|stack|tech|tools/.test(text)) {
-            return `Ananth works with JavaScript/TypeScript, Python, React, Node, AWS, and more. Want a particular area — frontend, backend, ML, or cloud?`;
-        }
-        if (/resume|cv/.test(text)) {
-            return `You can find the résumé under Resumes in the assets folder or contact Ananth for the latest version. Want me to open the Contact section?`;
-        }
-        if (/contact|email|reach|connect/.test(text)) {
-            return `You can reach Ananth at <a href="mailto:ananth.deepaksharma@gmail.com" class="chat-link">ananth.deepaksharma@gmail.com</a> or via the Contact section.`;
-        }
-        if (/github/.test(text)) {
-            return `Here’s the GitHub profile: <a href="https://github.com/deeCoderick" target="_blank" rel="noopener noreferrer" class="chat-link">deeCoderick</a>.`;
-        }
-        if (/linkedin/.test(text)) {
-            return `Here’s the LinkedIn: <a href="https://www.linkedin.com/in/ananthdeepaks/" target="_blank" rel="noopener noreferrer" class="chat-link">Ananth Deepak Sharma Nanduri</a>.`;
-        }
-        if (/who.*ananth|about.*ananth|tell.*ananth/.test(text)) {
-            return `Ananth is a software engineer with projects across AI, web apps, and systems. You can explore the Journey and Skills sections for background and capabilities.`;
-        }
-        if (/donna|about you|who are you/.test(text)) {
-            return `I’m D.O.N.N.A., an AI assistant for this portfolio. I’m in early development — for now I can answer portfolio questions and provide quick links.`;
-        }
-        
-        // Generic, helpful fallback
-        return `Got it! While I’m still being built, I can help with portfolio navigation, projects, skills, and contact details. Try “help” to see options — or ask me something specific.`;
     }
     
     // Call chatbot API
@@ -398,17 +337,16 @@ Note: I’m in active development — smarter answers are coming soon.`;
             return `Available commands:<br>
                 • "clear chat" - Clear chat history<br>
                 • "help" - Show this help message<br><br>
-                You can also ask me about Ananth's projects, skills, experience, or anything else!<br><br>
-                Note: I’m currently in development — answers are simplified for now.`;
+                You can also ask me about Ananth's projects, skills, experience, or anything else!`;
         }
         
         // Intelligent offline responses
         if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-            return "Hello! I’m in development and can help with basic information about Ananth’s portfolio.";
+            return "Hello! I'm currently experiencing connectivity issues, but I can still help with basic information about Ananth's portfolio.";
         }
         
         if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
-            return "You can explore Ananth's projects in the Portfolio section. I’m in development mode — fuller answers are coming soon!";
+            return "You can explore Ananth's projects in the Portfolio section. I'm currently offline but will be back soon with full AI capabilities!";
         }
         
         if (lowerMessage.includes('contact') || lowerMessage.includes('email')) {
@@ -416,7 +354,7 @@ Note: I’m in active development — smarter answers are coming soon.`;
         }
         
         if (lowerMessage.includes('donna') || lowerMessage.includes('about you')) {
-            return "I'm D.O.N.N.A., Ananth's AI assistant. I’m in active development — learn more at <a href='project-donna.html' class='chat-link'>Project D.O.N.N.A.</a>";
+            return "I'm D.O.N.N.A., Ananth's AI assistant. Currently experiencing connectivity issues, but you can learn more about my development at <a href='project-donna.html' class='chat-link'>Project D.O.N.N.A.</a>";
         }
         
         if (lowerMessage.includes('skill') || lowerMessage.includes('technology')) {
@@ -427,7 +365,7 @@ Note: I’m in active development — smarter answers are coming soon.`;
             return "Ananth has over 5 years of experience in software development, working with companies like Amazon and Wipro. Check out his journey section for more details! 💼";
         }
         
-        return "I’m currently in development mode. I can still help with portfolio navigation, projects, skills, and contact details. Try “help” for options!";
+        return "I'm currently experiencing connectivity issues with my AI service. Please try again in a moment, or explore the portfolio manually. For urgent inquiries, please use the contact form.";
     }
 
     // Handle send button click
@@ -864,20 +802,6 @@ chatbotStyles.textContent = `
         max-width: 90%;
         font-size: 14px;
     }
-}
-
-/* Development notice badge */
-.beta-badge {
-    display: inline-block;
-    margin-left: 8px;
-    padding: 2px 8px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #4a5568;
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    border-radius: 999px;
-    vertical-align: middle;
 }
 `;
 
