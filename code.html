@@ -1680,27 +1680,8 @@
                 updateProjectCounter();
             }, 100);
             
-            // LeetCode Section Animation
-            function animateLeetCodeStats() {
-                console.log('animateLeetCodeStats called');
-                // Real data from De_Maverick's LeetCode profile (updated January 2025)
-                // To keep this updated: Visit https://leetcode.com/u/De_Maverick/ and update the numbers below
-                const leetcodeData = {
-                    problemsSolved: 332,
-                    acceptanceRate: 85.2, // Calculated from submissions vs solved
-                    contestRating: 1520, // Estimated based on rank 303,120
-                    easy: 275,
-                    medium: 55,
-                    hard: 2,
-                    totalProblems: 3571,
-                    rank: 303120,
-                    badges: 1,
-                    yearlySubmissions: 32,
-                    activeDays: 12,
-                    maxStreak: 3
-                };
-                
-                // Check if LeetCode elements exist
+            // LeetCode Section - Fetch and populate from API
+            async function animateLeetCodeStats() {
                 const problemsSolvedEl = document.getElementById('problems-solved');
                 const acceptanceRateEl = document.getElementById('acceptance-rate');
                 const contestRatingEl = document.getElementById('contest-rating');
@@ -1713,42 +1694,66 @@
                 const easyProgressEl = document.getElementById('easy-progress');
                 const mediumProgressEl = document.getElementById('medium-progress');
                 const hardProgressEl = document.getElementById('hard-progress');
-                
-                console.log('Elements found:', {
-                    problemsSolved: !!problemsSolvedEl,
-                    acceptanceRate: !!acceptanceRateEl,
-                    contestRating: !!contestRatingEl,
-                    leetcodeRank: !!leetcodeRankEl,
-                    yearlySubmissions: !!yearlySubmissionsEl,
-                    maxStreak: !!maxStreakEl
-                });
-                
-                // If elements don't exist, return early
-                if (!problemsSolvedEl) {
-                    console.log('LeetCode elements not found, returning');
+
+                // Ensure required elements exist
+                if (!problemsSolvedEl || !acceptanceRateEl || !leetcodeRankEl || !easyCountEl || !mediumCountEl || !hardCountEl) {
                     return;
                 }
-                
-                console.log('Setting values immediately for testing');
-                // Test by setting values immediately first
-                problemsSolvedEl.textContent = leetcodeData.problemsSolved;
-                acceptanceRateEl.textContent = leetcodeData.acceptanceRate + '%';
-                contestRatingEl.textContent = leetcodeData.contestRating;
-                leetcodeRankEl.textContent = leetcodeData.rank.toLocaleString();
-                yearlySubmissionsEl.textContent = leetcodeData.yearlySubmissions;
-                maxStreakEl.textContent = leetcodeData.maxStreak;
-                easyCountEl.textContent = leetcodeData.easy;
-                mediumCountEl.textContent = leetcodeData.medium;
-                hardCountEl.textContent = leetcodeData.hard;
-                
-                // Set progress bars immediately
-                easyProgressEl.style.width = ((leetcodeData.easy / leetcodeData.problemsSolved) * 100) + '%';
-                mediumProgressEl.style.width = ((leetcodeData.medium / leetcodeData.problemsSolved) * 100) + '%';
-                hardProgressEl.style.width = ((leetcodeData.hard / leetcodeData.problemsSolved) * 100) + '%';
-                
-                console.log('Values set immediately, starting animations');
-                
-                return; // Temporary return to test immediate values
+
+                // Default placeholders for fields not provided by the API
+                const setSafeText = (el, value) => {
+                    if (el) el.textContent = value;
+                };
+
+                try {
+                    const response = await fetch('https://leetcode-stats-api.herokuapp.com/De_Maverick', { cache: 'no-store' });
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    const data = await response.json();
+
+                    // Basic fields
+                    const totalSolved = Number(data.totalSolved) || 0;
+                    const easySolved = Number(data.easySolved) || 0;
+                    const mediumSolved = Number(data.mediumSolved) || 0;
+                    const hardSolved = Number(data.hardSolved) || 0;
+                    const acceptanceRate = typeof data.acceptanceRate === 'number' ? data.acceptanceRate : Number(data.acceptanceRate) || 0;
+                    const ranking = Number(data.ranking) || 0;
+
+                    setSafeText(problemsSolvedEl, totalSolved.toString());
+                    setSafeText(acceptanceRateEl, `${acceptanceRate.toFixed(2)}%`);
+                    setSafeText(leetcodeRankEl, ranking ? ranking.toLocaleString() : '-');
+
+                    // Fields not available from this API
+                    setSafeText(contestRatingEl, '-');
+                    setSafeText(maxStreakEl, '-');
+
+                    // Yearly submissions from submissionCalendar (sum all entries)
+                    let yearlySubmissions = 0;
+                    if (data.submissionCalendar && typeof data.submissionCalendar === 'object') {
+                        for (const key in data.submissionCalendar) {
+                            yearlySubmissions += Number(data.submissionCalendar[key]) || 0;
+                        }
+                    }
+                    setSafeText(yearlySubmissionsEl, yearlySubmissions ? yearlySubmissions.toString() : '-');
+
+                    // Difficulty breakdown counts
+                    setSafeText(easyCountEl, easySolved.toString());
+                    setSafeText(mediumCountEl, mediumSolved.toString());
+                    setSafeText(hardCountEl, hardSolved.toString());
+
+                    // Progress bars relative to total solved
+                    const denom = totalSolved > 0 ? totalSolved : (easySolved + mediumSolved + hardSolved) || 1;
+                    if (easyProgressEl) easyProgressEl.style.width = `${(easySolved / denom) * 100}%`;
+                    if (mediumProgressEl) mediumProgressEl.style.width = `${(mediumSolved / denom) * 100}%`;
+                    if (hardProgressEl) hardProgressEl.style.width = `${(hardSolved / denom) * 100}%`;
+                } catch (err) {
+                    // Graceful fallback: leave placeholders; no console noise in production UI
+                    setSafeText(contestRatingEl, '-');
+                    setSafeText(yearlySubmissionsEl, '-');
+                    setSafeText(maxStreakEl, '-');
+                    if (easyProgressEl) easyProgressEl.style.width = '0%';
+                    if (mediumProgressEl) mediumProgressEl.style.width = '0%';
+                    if (hardProgressEl) hardProgressEl.style.width = '0%';
+                }
             }
             
             // Function to reset LeetCode stats to initial state
