@@ -1434,6 +1434,18 @@
     </style>
     
     <style>
+    /* Center and evenly place cards in Portfolio (Tech Projects) */
+    #portfolio .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        justify-content: center;
+        align-items: stretch;
+    }
+    @media (max-width: 768px) {
+        #portfolio .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+    }
+    
     /* Portfolio Navigation Buttons */
     .portfolio-nav-buttons {
         display: flex;
